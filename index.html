@@ -554,28 +554,33 @@ td:first-child { font-weight: 500; color: var(--ink); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-light);
-  margin: 32px 0 16px;
-  padding-bottom: 6px;
+  margin: 20px 0 8px;
+  padding-bottom: 4px;
   border-bottom: 1px solid var(--rule);
+  column-span: all;
+}
+#glossary-body {
+  column-count: 2;
+  column-gap: 40px;
 }
 .glossary-term {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--paper-mid);
+  margin-bottom: 8px;
+  padding-bottom: 0;
+  break-inside: avoid;
 }
-.glossary-term:last-child { border-bottom: none; }
+.glossary-term:last-child { }
 .glossary-term h4 {
   font-family: var(--mono);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--accent);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   letter-spacing: 0.04em;
 }
 .glossary-term p {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--ink-mid);
-  line-height: 1.6;
+  line-height: 1.45;
   margin: 0;
 }
 .glossary-no-results {
@@ -586,11 +591,95 @@ td:first-child { font-weight: 500; color: var(--ink); }
   padding: 24px 0;
 }
 
+/* ── TTS BUTTON ── */
+.tts-trigger {
+  height: 52px;
+  padding: 0 18px;
+  background: var(--paper-mid);
+  color: var(--ink);
+  border: none;
+  border-right: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: background 0.15s;
+}
+.tts-trigger:hover { background: var(--rule); }
+.tts-trigger.playing { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tts-trigger.playing:hover { background: var(--ink-mid); }
+
+.tts-bar {
+  position: fixed;
+  bottom: 0;
+  left: var(--sidebar-w);
+  right: 0;
+  height: 40px;
+  background: var(--ink);
+  color: var(--paper);
+  display: none;
+  align-items: center;
+  gap: 0;
+  z-index: 200;
+  border-top: 1px solid #333;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.tts-bar.visible { display: flex; }
+.tts-section-label {
+  padding: 0 18px;
+  color: #999;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.tts-section-label strong { color: var(--paper); font-weight: 500; }
+.tts-progress-wrap {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: #333;
+}
+.tts-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.3s linear;
+}
+.tts-controls {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.tts-ctrl {
+  height: 40px;
+  padding: 0 14px;
+  background: transparent;
+  border: none;
+  border-left: 1px solid #333;
+  color: #aaa;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: color 0.12s, background 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.tts-ctrl:hover { color: var(--paper); background: #2a2a2a; }
+.tts-ctrl.tts-speed-active { color: var(--accent); }
+
 /* ── CHAT WIDGET ── */
 .chat-trigger {
-  position: fixed;
-  top: 0;
-  right: 0;
   height: 52px;
   padding: 0 22px;
   background: var(--accent);
@@ -601,7 +690,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
   letter-spacing: 0.09em;
   text-transform: uppercase;
   cursor: pointer;
-  z-index: 300;
+  z-index: 301;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -834,11 +923,45 @@ td:first-child { font-weight: 500; color: var(--ink); }
   </div>
 </nav>
 
-<!-- CHAT TRIGGER -->
-<button class="chat-trigger" onclick="chatToggle()" id="chat-trigger-btn">
-  <span class="chat-trigger-icon">◈</span>
-  <span class="chat-label">Spør om dokumentet</span>
-</button>
+<!-- TOPPKNAPPER: begge knapper i én fast wrapper -->
+<div style="position:fixed;top:0;right:0;z-index:301;display:flex;align-items:stretch;">
+  <button class="tts-trigger" id="tts-trigger-btn" onclick="ttsToggle()" title="Les opp denne delen">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.5 4.5H3.5L6.5 2V11L3.5 8.5H1.5V4.5Z" stroke="currentColor" stroke-width="1.1" fill="none" stroke-linejoin="round"/>
+      <path d="M8.5 4.5C9.4 5.1 10 5.8 10 6.5C10 7.2 9.4 7.9 8.5 8.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+      <path d="M9.8 2.8C11.1 3.7 12 5 12 6.5C12 8 11.1 9.3 9.8 10.2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span id="tts-btn-label">Les opp</span>
+  </button>
+  <button class="chat-trigger" onclick="chatToggle()" id="chat-trigger-btn">
+    <span class="chat-trigger-icon">◈</span>
+    <span class="chat-label">Spør om dokumentet</span>
+  </button>
+</div>
+
+<!-- TTS BAR -->
+<div class="tts-bar" id="tts-bar">
+  <div class="tts-progress-wrap"><div class="tts-progress-fill" id="tts-progress"></div></div>
+  <span class="tts-section-label" id="tts-bar-label">—</span>
+  <div class="tts-controls">
+    <button class="tts-ctrl" id="tts-speed-btn" onclick="ttsCycleSpeed()" title="Endre hastighet">1×</button>
+    <button class="tts-ctrl" onclick="ttsStop()" title="Stopp">&#9632; Stopp</button>
+  </div>
+</div>
+
+<!-- TTS KEY OVERLAY -->
+<div id="tts-key-overlay" style="display:none;position:fixed;top:52px;right:0;width:340px;background:var(--paper);border:1px solid var(--rule);border-top:2px solid var(--ink);z-index:298;padding:18px 20px;box-shadow:-4px 4px 24px rgba(0,0,0,0.12);">
+  <p style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:10px;">ElevenLabs API-nøkkel</p>
+  <p style="font-size:15px;color:var(--ink-mid);margin-bottom:14px;font-family:var(--serif);line-height:1.5;">Lagres kun i nettleserøkten. Hent gratis nøkkel på <a href="https://elevenlabs.io" target="_blank" style="color:var(--accent);">elevenlabs.io</a>.</p>
+  <div style="display:flex;gap:8px;">
+    <input type="password" id="tts-key-input" placeholder="sk_..." autocomplete="off"
+      style="flex:1;padding:8px 10px;font-size:13px;font-family:var(--mono);border:1px solid var(--rule);background:var(--paper-mid);color:var(--ink);outline:none;"
+      onkeydown="if(event.key==='Enter')ttsSaveKey();" />
+    <button onclick="ttsSaveKey()"
+      style="padding:8px 16px;background:var(--ink);color:var(--paper);border:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:0.07em;white-space:nowrap;">LAGRE</button>
+  </div>
+  <p id="tts-key-error" style="display:none;font-size:13px;color:var(--accent);margin-top:8px;font-family:var(--mono);"></p>
+</div>
 
 <!-- CHAT PANEL -->
 <div class="chat-panel" id="chat-panel">
@@ -3388,8 +3511,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <h4>PEM — Post-Exertional Malaise</h4>
       <p>Forverring av symptomer etter fysisk eller kognitiv anstrengelse, typisk med 12–48 timers forsinkelse og varighet fra dager til uker. Definert av IOM 2015 som det obligatoriske og sentrale diagnostiske kriteriet for ME/CFS. Norsk: anstrengelsesutløst symptomforverring.</p>
     </div>
-    <div class="glossary-term" data-terms="kanadakriteriene canadakriteriene carruthers">
-      <h4>Kanadakriteriene</h4>
+    <div class="glossary-term" data-terms="canadakriteriene canadakriteriene carruthers">
+      <h4>Canadakriteriene</h4>
       <p>Diagnostiske kriterier for ME/CFS utviklet av Carruthers et al. (2003). Krever åtte symptomer inkludert PEM. Brukt internasjonalt som gullstandard i klinisk og forskningsmessig sammenheng. Anbefalt av Helsedirektoratets veileder fra 2014.</p>
     </div>
     <div class="glossary-term" data-terms="oxford-kriterier oxford sharpe 1991">
@@ -3906,6 +4029,341 @@ ${docText}`;
     if (input) input.focus();
   });
 }
+
+/* ══════════════════════════════════════════
+   TTS — ElevenLabs eleven_multilingual_v2
+══════════════════════════════════════════ */
+const TTS = {
+  voiceId: 'xGjmhWq2AMS3nq2QHauS',
+  model: 'eleven_turbo_v2_5',
+  chunks: [],
+  audioUrls: {},   // idx -> blob URL | null (fetching) | 'error'
+  currentIdx: 0,
+  currentAudio: null,
+  playing: false,
+  stopped: false,
+  speedLabels: ['0.9×','1×','1.1×','1.2×'],
+  speedValues: [0.9, 1.0, 1.1, 1.2],
+  speedIdx: 1,
+};
+
+/* ── Nøkkelhåndtering ── */
+function ttsGetKey() { return sessionStorage.getItem('el_key') || ''; }
+
+function ttsSaveKey() {
+  const inp = document.getElementById('tts-key-input');
+  const err = document.getElementById('tts-key-error');
+  const key = inp ? inp.value.trim() : '';
+  if (!key) { if (err) { err.textContent = 'Tast inn en nøkkel.'; err.style.display = 'block'; } return; }
+  sessionStorage.setItem('el_key', key);
+  document.getElementById('tts-key-overlay').style.display = 'none';
+  if (err) err.style.display = 'none';
+  ttsStart();
+}
+
+function ttsShowKeyOverlay() {
+  const ov = document.getElementById('tts-key-overlay');
+  if (ov) { ov.style.display = 'block'; }
+  const inp = document.getElementById('tts-key-input');
+  if (inp) setTimeout(() => inp.focus(), 80);
+}
+
+/* ── Tekstekstraksjon og chunking ── */
+function ttsGetActivePanel() {
+  const hash = location.hash.replace('#','');
+  const id = hash && document.getElementById(hash) ? hash : 'p1';
+  return document.getElementById(id);
+}
+
+function ttsGetPanelTitle(panel) {
+  const numEl = document.querySelector(`a[href="#${panel.id}"] .nav-del-num`);
+  const titleEl = document.querySelector(`a[href="#${panel.id}"] .nav-del-title`);
+  const num = numEl ? numEl.textContent.trim() : '';
+  const title = titleEl ? titleEl.textContent.trim() : panel.id;
+  return num ? `Del ${num} — ${title}` : title;
+}
+
+function ttsExtractParagraphs(panel) {
+  const paras = [];
+  panel.querySelectorAll('h2, h3, h4, p, blockquote p, li').forEach(el => {
+    const txt = el.textContent.replace(/\s+/g, ' ').trim();
+    if (txt.length > 12) paras.push(txt);
+  });
+  return paras;
+}
+
+function ttsBuildChunks(paras, maxChars = 900) {
+  const chunks = [];
+  let buf = '';
+  paras.forEach(p => {
+    if (buf.length + p.length + 1 > maxChars && buf) {
+      chunks.push(buf.trim());
+      buf = '';
+    }
+    if (p.length > maxChars) {
+      // Split long paragraph at sentence boundaries
+      const sents = p.match(/[^.!?]+[.!?]+["»]?\s*/g) || [p];
+      sents.forEach(s => {
+        if (buf.length + s.length > maxChars && buf) { chunks.push(buf.trim()); buf = ''; }
+        buf += s;
+      });
+    } else {
+      buf += (buf ? ' ' : '') + p;
+    }
+  });
+  if (buf.trim()) chunks.push(buf.trim());
+  return chunks;
+}
+
+/* ── Henting og avspilling ── */
+async function ttsFetch(idx) {
+  if (idx < 0 || idx >= TTS.chunks.length) return;
+  if (TTS.audioUrls[idx] !== undefined) return;
+  TTS.audioUrls[idx] = null;
+
+  const key = ttsGetKey();
+  const text = TTS.chunks[idx];
+  const speed = TTS.speedValues[TTS.speedIdx];
+
+  try {
+    const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${TTS.voiceId}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'audio/mpeg',
+        'Content-Type': 'application/json',
+        'xi-api-key': key,
+      },
+      body: JSON.stringify({
+        text,
+        model_id: TTS.model,
+        language_code: 'no',
+        voice_settings: {
+          stability: 0.75,
+          similarity_boost: 0.70,
+          speed: 0.85,
+        }
+      })
+    });
+
+    if (resp.status === 401) {
+      sessionStorage.removeItem('el_key');
+      TTS.audioUrls[idx] = 'error';
+      ttsStop();
+      ttsShowKeyOverlay();
+      const err = document.getElementById('tts-key-error');
+      if (err) { err.textContent = 'Ugyldig nøkkel — prøv igjen.'; err.style.display = 'block'; }
+      return;
+    }
+    if (!resp.ok) {
+      const errBody = await resp.text().catch(() => '');
+      TTS.audioUrls[idx] = 'error';
+      if (idx === TTS.currentIdx) {
+        ttsBarError('API-feil ' + resp.status + (errBody ? ': ' + errBody.slice(0,80) : ''));
+      }
+      if (TTS.playing && idx === TTS.currentIdx) ttsPlayChunk(idx + 1);
+      return;
+    }
+
+    const blob = await resp.blob();
+    TTS.audioUrls[idx] = URL.createObjectURL(blob);
+    ttsSetLoading(false);
+
+    if (TTS.playing && idx === TTS.currentIdx && !TTS.currentAudio?.src) {
+      ttsPlayChunk(idx);
+    }
+  } catch(e) {
+    TTS.audioUrls[idx] = 'error';
+    ttsSetLoading(false);
+    if (idx === TTS.currentIdx) {
+      const msg = e.message && e.message.includes('fetch')
+        ? 'Kan ikke nå ElevenLabs. Kjør filen via http:// (f.eks. python3 -m http.server 8000)'
+        : 'Nettverksfeil: ' + e.message;
+      ttsBarError(msg);
+      ttsStop();
+    }
+  }
+}
+
+function ttsPlayChunk(idx) {
+  if (TTS.stopped || idx >= TTS.chunks.length) { ttsStop(); return; }
+  TTS.currentIdx = idx;
+  ttsUpdateProgress();
+
+  // Pre-hent neste to chunks
+  ttsFetch(idx + 1);
+  ttsFetch(idx + 2);
+
+  const url = TTS.audioUrls[idx];
+  if (url === undefined || url === null) {
+    // Ikke klar ennå — ttsFetch vil kalle ttsPlayChunk når ferdig
+    ttsSetLabel('Laster...');
+    ttsFetch(idx);
+    return;
+  }
+  if (url === 'error') { ttsPlayChunk(idx + 1); return; }
+
+  if (TTS.currentAudio) { TTS.currentAudio.pause(); TTS.currentAudio = null; }
+
+  const audio = new Audio(url);
+  TTS.currentAudio = audio;
+  ttsSetLabel(null); // tilbake til tittel
+  audio.onended = () => { if (TTS.playing) ttsPlayChunk(idx + 1); };
+  audio.onerror = () => { if (TTS.playing) ttsPlayChunk(idx + 1); };
+  audio.play().catch(() => {});
+}
+
+function ttsSetLabel(override) {
+  const el = document.getElementById('tts-bar-label');
+  if (!el) return;
+  if (override) { el.textContent = override; return; }
+  el.innerHTML = '<strong>' + TTS._title + '</strong>';
+}
+
+/* ── Hoved-API ── */
+function ttsBarError(msg) {
+  const el = document.getElementById('tts-bar-label');
+  if (el) el.innerHTML = '<span style="color:#e07060;">' + msg + '</span>';
+  const bar = document.getElementById('tts-bar');
+  if (bar) bar.classList.add('visible');
+}
+
+function ttsStart() {
+  const panel = ttsGetActivePanel();
+  TTS._title = ttsGetPanelTitle(panel);
+  TTS.chunks = ttsBuildChunks(ttsExtractParagraphs(panel));
+  TTS.audioUrls = {};
+  TTS.currentIdx = 0;
+  TTS.stopped = false;
+
+  const barLabel = document.getElementById('tts-bar-label');
+  if (barLabel) barLabel.innerHTML = '<strong>' + TTS._title + '</strong>';
+
+  ttsSetLoading(true);
+  ttsUpdateUI(true);
+
+  ttsFetch(0);
+  ttsFetch(1);
+  ttsPlayChunk(0);
+}
+
+function ttsToggle() {
+  // Skjul nøkkel-overlay ved klikk utenfor
+  document.getElementById('tts-key-overlay').style.display = 'none';
+
+  if (TTS.playing) {
+    // Pause
+    TTS.playing = false;
+    if (TTS.currentAudio) TTS.currentAudio.pause();
+    ttsUpdateUI(false);
+    return;
+  }
+
+  // Fortsett fra pause
+  if (TTS.currentAudio && TTS.currentAudio.paused && TTS.currentAudio.src) {
+    TTS.playing = true;
+    TTS.stopped = false;
+    TTS.currentAudio.play().catch(() => {});
+    ttsUpdateUI(true);
+    return;
+  }
+
+  // Ny sesjon
+  if (!ttsGetKey()) { ttsShowKeyOverlay(); return; }
+  ttsStart();
+}
+
+function ttsStop() {
+  TTS.playing = false;
+  TTS.stopped = true;
+  if (TTS.currentAudio) { TTS.currentAudio.pause(); TTS.currentAudio = null; }
+  // Frigir blob-URLer
+  Object.values(TTS.audioUrls).forEach(u => { if (u && u !== 'error') URL.revokeObjectURL(u); });
+  TTS.audioUrls = {};
+  TTS.chunks = [];
+  TTS.currentIdx = 0;
+
+  const btn = document.getElementById('tts-trigger-btn');
+  const lbl = document.getElementById('tts-btn-label');
+  const bar = document.getElementById('tts-bar');
+  const fill = document.getElementById('tts-progress');
+  if (btn) btn.classList.remove('playing');
+  if (lbl) lbl.textContent = 'Les opp';
+  if (bar) bar.classList.remove('visible');
+  if (fill) fill.style.width = '0%';
+}
+
+function ttsCycleSpeed() {
+  TTS.speedIdx = (TTS.speedIdx + 1) % TTS.speedLabels.length;
+  const btn = document.getElementById('tts-speed-btn');
+  if (btn) {
+    btn.textContent = TTS.speedLabels[TTS.speedIdx];
+    btn.classList.toggle('tts-speed-active', TTS.speedIdx !== 1);
+  }
+  // Tøm hurtigbufferen så ny hastighet gjelder fra neste chunk
+  const cur = TTS.currentIdx;
+  Object.keys(TTS.audioUrls).forEach(k => {
+    if (parseInt(k) > cur) {
+      const u = TTS.audioUrls[k];
+      if (u && u !== 'error') URL.revokeObjectURL(u);
+      delete TTS.audioUrls[k];
+    }
+  });
+}
+
+function ttsUpdateProgress() {
+  const total = TTS.chunks.length;
+  const pct = total ? Math.round((TTS.currentIdx / total) * 100) : 0;
+  const fill = document.getElementById('tts-progress');
+  if (fill) fill.style.width = pct + '%';
+}
+
+function ttsUpdateUI(playing) {
+  TTS.playing = playing;
+  const btn = document.getElementById('tts-trigger-btn');
+  const lbl = document.getElementById('tts-btn-label');
+  const bar = document.getElementById('tts-bar');
+  if (playing) {
+    if (btn) btn.classList.add('playing');
+    if (lbl) lbl.textContent = 'Pause';
+    if (bar) bar.classList.add('visible');
+    positionTtsBtn();
+  } else {
+    if (btn) btn.classList.remove('playing');
+    if (lbl) lbl.textContent = 'Fortsett';
+  }
+}
+
+function ttsSetLoading(on) {
+  const lbl = document.getElementById('tts-btn-label');
+  const btn = document.getElementById('tts-trigger-btn');
+  if (on) {
+    if (lbl) lbl.textContent = 'Laster…';
+    if (btn) btn.style.opacity = '0.7';
+  } else {
+    if (btn) btn.style.opacity = '';
+  }
+}
+
+function positionTtsBtn() {
+  const chatBtn = document.getElementById('chat-trigger-btn');
+  const ttsBtn = document.getElementById('tts-trigger-btn');
+  if (chatBtn && ttsBtn) ttsBtn.style.right = chatBtn.offsetWidth + 'px';
+}
+
+// Lukk nøkkel-overlay ved klikk utenfor
+document.addEventListener('click', e => {
+  const ov = document.getElementById('tts-key-overlay');
+  const triggerBtn = document.getElementById('tts-trigger-btn');
+  if (ov && ov.style.display !== 'none' && !ov.contains(e.target) && e.target !== triggerBtn && !triggerBtn.contains(e.target)) {
+    ov.style.display = 'none';
+  }
+});
+
+window.addEventListener('hashchange', () => { if (TTS.playing || TTS.currentAudio) ttsStop(); });
+window.addEventListener('load', positionTtsBtn);
+window.addEventListener('resize', positionTtsBtn);
+
+/* ══════════════════════════════════════════ */
 
 function chatAddMsg(role, content) {
   const msgs = document.getElementById('chat-messages');

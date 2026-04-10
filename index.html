@@ -490,6 +490,284 @@ td:first-child { font-weight: 500; color: var(--ink); }
 .hq-num { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--accent); width: 28px; flex-shrink: 0; padding-top: 3px; }
 .hq-body h4 { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 .hq-body p { font-size: 18px; color: var(--ink-mid); line-height: 1.6; margin: 0; }
+
+/* ── P3 STICKY BJELKE ── */
+.p3-subnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper-mid);
+  border-bottom: 1px solid var(--rule);
+  margin: -24px -72px 28px -72px;
+  padding: 0 72px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.p3-subnav::-webkit-scrollbar { display: none; }
+.p3-subnav a {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  padding: 9px 14px 8px;
+  border-right: 1px solid var(--rule);
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+}
+.p3-subnav a:first-child { border-left: none; }
+.p3-subnav a:hover { color: var(--accent); background: var(--paper); }
+
+/* ── GLOSSARY ── */
+.glossary-search-wrap {
+  margin-bottom: 28px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--paper);
+  padding: 16px 0 12px;
+  margin-left: -72px;
+  margin-right: -72px;
+  padding-left: 72px;
+  padding-right: 72px;
+  border-bottom: 1px solid var(--rule);
+}
+#glossary-search {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 18px;
+  font-family: var(--serif);
+  border: 1px solid var(--rule);
+  background: var(--paper-mid);
+  color: var(--ink);
+  outline: none;
+}
+#glossary-search:focus { border-color: var(--accent); }
+.glossary-cat-heading {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin: 32px 0 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.glossary-term {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--paper-mid);
+}
+.glossary-term:last-child { border-bottom: none; }
+.glossary-term h4 {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+.glossary-term p {
+  font-size: 18px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+.glossary-no-results {
+  display: none;
+  font-size: 18px;
+  color: var(--ink-light);
+  font-style: italic;
+  padding: 24px 0;
+}
+
+/* ── CHAT WIDGET ── */
+.chat-trigger {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 52px;
+  padding: 0 22px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s;
+}
+.chat-trigger:hover { background: #a83a24; }
+.chat-trigger-icon { font-size: 14px; }
+
+.chat-panel {
+  position: fixed;
+  top: 52px;
+  right: 0;
+  width: 480px;
+  height: 540px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--accent);
+  display: none;
+  flex-direction: column;
+  z-index: 299;
+  box-shadow: -6px 6px 32px rgba(0,0,0,0.14);
+}
+.chat-panel.open { display: flex; }
+
+.chat-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  flex-shrink: 0;
+}
+.chat-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--ink-light);
+  padding: 0 4px;
+  line-height: 1;
+}
+.chat-close:hover { color: var(--ink); }
+
+.chat-suggestions {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+.chat-suggestion {
+  padding: 9px 13px;
+  background: var(--paper-mid);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: var(--serif);
+  color: var(--ink-mid);
+  text-align: left;
+  line-height: 1.4;
+  transition: border-color 0.15s, color 0.15s;
+}
+.chat-suggestion:hover { border-color: var(--accent); color: var(--ink); }
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.chat-msg-user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: #fff;
+  padding: 9px 13px;
+  max-width: 82%;
+  font-size: 16px;
+  font-family: var(--serif);
+  line-height: 1.5;
+}
+.chat-msg-assistant {
+  align-self: flex-start;
+  background: var(--paper-mid);
+  border: 1px solid var(--rule);
+  padding: 10px 13px;
+  max-width: 92%;
+  font-size: 16px;
+  font-family: var(--serif);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.chat-msg-assistant a { color: var(--accent); }
+.chat-msg-error {
+  font-size: 15px;
+  color: var(--psyk);
+  font-style: italic;
+}
+.chat-typing {
+  display: flex;
+  gap: 4px;
+  padding: 4px 0;
+}
+.chat-typing span {
+  width: 6px; height: 6px;
+  background: var(--ink-light);
+  border-radius: 50%;
+  animation: chatbounce 1.2s infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes chatbounce {
+  0%,60%,100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+.chat-input-area {
+  padding: 10px 14px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.chat-input {
+  flex: 1;
+  padding: 9px 12px;
+  font-size: 16px;
+  font-family: var(--serif);
+  border: 1px solid var(--rule);
+  background: var(--paper-mid);
+  color: var(--ink);
+  resize: none;
+  height: 40px;
+  max-height: 80px;
+  outline: none;
+}
+.chat-input:focus { border-color: var(--accent); }
+.chat-send {
+  padding: 9px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.chat-send:hover { background: #a83a24; }
+.chat-send:disabled { background: var(--ink-light); cursor: not-allowed; }
+
+@media (max-width: 600px) {
+  .chat-panel { width: 100vw; right: 0; }
+  .chat-trigger span.chat-label { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -548,7 +826,50 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <span class="nav-del-title">Høringsspørsmål</span>
     </a>
   </div>
+  <div class="nav-del">
+    <a class="nav-del-header" href="#p8" style="text-decoration:none;display:flex;">
+      <span class="nav-del-num">VIII</span>
+      <span class="nav-del-title">Ordliste</span>
+    </a>
+  </div>
 </nav>
+
+<!-- CHAT TRIGGER -->
+<button class="chat-trigger" onclick="chatToggle()" id="chat-trigger-btn">
+  <span class="chat-trigger-icon">◈</span>
+  <span class="chat-label">Spør om dokumentet</span>
+</button>
+
+<!-- CHAT PANEL -->
+<div class="chat-panel" id="chat-panel">
+  <div class="chat-panel-header">
+    <span>The Wyller Continuum — assistent</span>
+    <button class="chat-close" onclick="chatToggle()" title="Lukk">✕</button>
+  </div>
+  <div id="chat-key-area" style="padding:12px 14px;border-bottom:1px solid var(--rule);display:none;flex-shrink:0;">
+    <p style="font-size:14px;color:var(--ink-mid);margin-bottom:8px;font-family:var(--mono);letter-spacing:0.04em;">ANTHROPIC API-NØKKEL — lagres kun i nettleserøkten</p>
+    <div style="display:flex;gap:8px;">
+      <input type="password" id="chat-key-input" placeholder="sk-ant-api03-..." 
+        style="flex:1;padding:8px 10px;font-size:14px;font-family:var(--mono);border:1px solid var(--rule);background:var(--paper-mid);color:var(--ink);outline:none;"
+        onkeydown="if(event.key==='Enter')chatSaveKey()" />
+      <button onclick="chatSaveKey()" 
+        style="padding:8px 14px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;">LAGRE</button>
+    </div>
+  </div>
+  <div class="chat-suggestions" id="chat-suggestions">
+    <button class="chat-suggestion" onclick="chatSuggest(this)">Hva er sammenhengen mellom Wyller og FHI?</button>
+    <button class="chat-suggestion" onclick="chatSuggest(this)">Hva sier dokumentet om LP-studien?</button>
+    <button class="chat-suggestion" onclick="chatSuggest(this)">Hva skjedde i Gulating-dommen?</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-input-area">
+    <textarea class="chat-input" id="chat-input" placeholder="Still et spørsmål om dokumentet..." rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chatSend();}
+                 this.style.height='40px';this.style.height=Math.min(this.scrollHeight,80)+'px';"
+    ></textarea>
+    <button class="chat-send" id="chat-send-btn" onclick="chatSend()">Send</button>
+  </div>
+</div>
 
 <!-- MAIN -->
 <main class="main">
@@ -682,6 +1003,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <div class="tl-sub"><div class="tl-sub-year">11. mars</div><div class="tl-sub-text">saktemensikkert.me: «20 år med klagestorm — fortsatt ingen endring».</div></div>
         <div class="tl-sub"><div class="tl-sub-year">15. mars</div><div class="tl-sub-text">forskersonen.no: Landmark, «Det er på tide å si farvel til ME-diagnosen» — publisert dagen før Wyllers podkast.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">16. mars</div><div class="tl-sub-text">Podcasten ep. 41: Wyller presenterer sustained arousal uendret. Ingen av de biomedisinske funnene fra 2023–2025 nevnes.</div></div>
+        <div class="tl-sub"><div class="tl-sub-year">10. april</div><div class="tl-sub-text">forskersonen.no: Landmark, «ME er diagnosen som ikke kan motbevises» — oppfølger til mars-kronikken. Argumenterer for at ME-diagnosen er ufalsifiserbar og dermed uvitenskapelig, at PEM ikke er spesifikt for ME, og at diagnosen skader pasientene. Interessekonflikt deklarert i siste linje: LP-instruktør med eget selskap og deltaker i Oslo Chronic Fatigue Network. Landmark siterer IOM 2015 som kilde (ref. 2) — den samme rapporten som definerer PEM som obligatorisk diagnostisk kriterium og er inklusjonsbetingelse i hennes egen LP-studie.</div></div>
         <div class="tl-item"><div class="tl-year">4. mai 26</div><div class="tl-text"><strong>Høringsfrist — nasjonal faglig retningslinje for langvarig utmattelse inkludert ME/CFS.</strong></div></div>
       
       </div>
@@ -968,6 +1290,17 @@ td:first-child { font-weight: 500; color: var(--ink); }
     </div>
 
         <div class="panel" id="p3">
+      <div class="p3-subnav">
+        <a href="#nettverkskartet">Nettverkskart</a>
+        <a href="#de-fem-beslutningsarenaene">Fem arenaer</a>
+        <a href="#finansieringsstrømmene-som-strukturell-makt">Finansiering</a>
+        <a href="#rn-stiftelse">Recovery Norge</a>
+        <a href="#lp-studien">LP-studien</a>
+        <a href="#det-internasjonale-nettverket">Internasjonalt</a>
+        <a href="#ocfc-manifest">OCFC-manifest</a>
+        <a href="#mars-2026">Mars 2026</a>
+        <a href="#interessekonfliktenes-konkrete-form">Interessekonflikter</a>
+      </div>
       <h2 id="net-aktorer">Det institusjonelle nettverket</h2>
 
       <p>Nettverket som beskrives i dette kapittelet er ikke en konspirasjon. Det er et faglig-institusjonelt samvirke som har vokst over tyve år gjennom felles teoretisk rammeverk, gjensidig legitimering og overlappende roller. Det analytisk påfallende er ikke at aktørene kjenner hverandre — det er at de simultant er til stede i alle arenaene der ME/CFS-politikk formes: forskningsmidlene, retningslinjearbeidet, rettssystemet, brukerorganisasjonene og offentlig debatt.</p>
@@ -1108,9 +1441,13 @@ td:first-child { font-weight: 500; color: var(--ink); }
             { id:'helland',    label:'Helland',    sub:'NKT · OUS · retningslinje',           tier:'t2', r:32,
               detail:'<strong>Ingrid Helland</strong><br>Leder NKT/OUS. Leder den institusjonen Helsedirektoratets evalueringer konkluderte ikke kunne dokumentere effekt. Arbeidsgruppedeltaker retningslinje 2024–26.' },
             { id:'brurberg',   label:'Brurberg',   sub:'FHI · Cochrane · Lancet 2022',        tier:'t2', r:32,
-              detail:'<strong>Kjetil Brurberg</strong><br>Forsker FHI. Medforfatter Cochrane CBT- og GET-review. Medforfatter Lancet-kommentaren «more ideology than science?» (2022) — sammen med Wyller og Flottorp. Ikke medlem av arbeidsgruppen for ny retningslinje.' },
+              detail:'<strong>Kjetil Brurberg</strong><br>Forsker FHI. Medforfatter Cochrane GET-review (Larun et al.) og CBT-review. Medforfatter Lancet-kommentaren «more ideology than science?» (2022) — sammen med Wyller og Flottorp. Ikke medlem av arbeidsgruppen for ny retningslinje.' },
+            { id:'larun',      label:'Larun',      sub:'FHI · Cochrane GET-review · Malterud-elev', tier:'t2', r:30,
+              detail:'<strong>Lillebeth Larun</strong><br>Forsker/førsteamanuensis FHI. Førsteforfatter på alle versjoner av Cochrane GET-oversikten for ME/CFS (2015–2024). Doktorgrad fra UiB 2011, veileder: Kirsti Malterud — medforfatter på Wyllers sustained arousal-artikkel 2009. Faglig samarbeidspartner med Trudie Chalder (PACE/COFFI) i individuell pasientdata-protokoll (Cochrane, 2018). I juni 2025 innrømte hun i kommentar til Cochrane at oversikten «may not apply» til pasienter definert etter nyere kriterier som krever PEM — dvs. de som faktisk har ME/CFS etter IOM 2015-definisjonen. Oppdateringsprosjektet stanset desember 2024.' },
             { id:'magnus',     label:'Magnus',     sub:'FHI · Senter for fruktbarhet og helse', tier:'t2', r:32,
               detail:'<strong>Per Magnus</strong><br>Fagdirektør, Folkehelseinstituttet, Senter for fruktbarhet og helse. Medsignerte FHI-høringsinspillet til NICE desember 2020. Deltaker det hemmelige seminaret oktober 2022. Sendte i 2019 brev til Helsedirektoratet og ba dem støtte LP-RCT — hadde først en rådgivende rolle, og er nå i monitoreringskomiteen for studien etter at den mistet etisk godkjenning og ble re-søkt.' },
+            { id:'rortveit',  label:'Rørtveit',   sub:'FHI-direktør · SIPCOV · COFFI',       tier:'t2', r:34,
+              detail:'<strong>Guri Rørtveit</strong><br>Administrerende direktør FHI fra 2024 (utnevnt 20. des. 2023). Professor, Institutt for global helse og samfunnsmedisin, Universitetet i Bergen. Satt i styringskomiteen til SIPCOV-studien (CBT/GET mot long covid, PI: Wyller) sammen med Flottorp, Reme og Jacobsen — dokumentert i studieprotokoll NCT05196451, s. 7–8. Deltaker i COFFI Helseregister. MUPS-gruppe Dnlf 2009–2016. Som FHI-direktør er hun øverste leder for Flottorp og Brurberg.' },
             { id:'reme',       label:'Reme',       sub:'MindBodyLab · OCFN-leder',            tier:'t2', r:36,
               detail:'<strong>Silje Endresen Reme</strong><br>Professor UiO, leder Mind Body Lab, leder Oslo Chronic Fatigue Network. MBRT-utvikler. Veileder for Landmark. Arrangør hemmelig seminar okt. 2022. Binder alle tre lagene sammen.' },
             { id:'landmark',   label:'Landmark',   sub:'LP-instruktør · ph.d. · RN-medgrunnlegger',  tier:'t3', r:26,
@@ -1131,6 +1468,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
               detail:'<strong>Michael Sharpe</strong><br>Professor emeritus Oxford. PACE-arkitekt. Simultant i COFFI og OCFN. President, European Association of Psychosomatic Medicine.' },
             { id:'chalder',    label:'Chalder',    sub:'KCL · PACE · COFFI · OCFN',           tier:'t4', r:22,
               detail:'<strong>Trudie Chalder</strong><br>Professor King&#39;s College London. PACE-arkitekt. Simultant i COFFI og OCFN. Royalties fra selvhjelpsbøker om kronisk utmattelse.' },
+            { id:'white',      label:'White',      sub:'PACE · COFFI-grunnlegger · JNNP 2023', tier:'t4', r:24,
+              detail:'<strong>Peter D. White</strong><br>Professor i psykologisk medisin, Queen Mary University of London (nå pensjonert). En av tre principal investigators bak PACE-studien (Lancet 2011). Medforfatter på COFFIs grunnlagspublikasjon (2018) — operativt grunnleggermedlem, ikke advisory. Førsteforfatter på «Anomalies in the review process and interpretation of the evidence in the NICE guideline» (JNNP, des. 2023, 51 forfattere) — der Flottorp (nr. 17) og Wyller (nr. 48) er medforfattere. Medforfatter på tilsvar til Wüst et al. (Nature Communications, feb. 2025) der gruppen bevisst brukte 2017-versjonen av Cochrane-oversikten. Ifølge Tullers dokumentasjon (virology.ws, aug. 2017) deltok White i en faglig briefing av forsikringsselskapet Swiss Re der PACE-resultater ble presentert i en kontekst av skadebegrensning overfor ME-kravstillere.' },
             { id:'liira',      label:'Liira',      sub:'SJPHC-red. · OCFN · manifest',        tier:'t4', r:22,
               detail:'<strong>Helena Liira</strong><br>Sjefredaktør SJPHC 2016–2023. Medforfatter OCFC-manifest publisert i tidsskriftet hun redigerte. OCFN-styringsgruppen.' },
             { id:'kennair',    label:'Kennair',    sub:'NTNU psykologi · LP-RCT PI',          tier:'t3', r:26,
@@ -1148,7 +1487,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
             { id:'rn',         label:'RN',         sub:'Recovery Norge · stiftet jan. 2018',  tier:'struct', r:28,
               detail:'<strong>Recovery Norge</strong><br>Stiftet 15. jan. 2018. Opptaksvilkår: kun LP-friske. To representanter i Helsedirektoratets arbeidsgruppe.' },
             { id:'ocfc',       label:'OCFC',       sub:'51 forfattere · manifest 2023',        tier:'struct', r:28,
-              detail:'<strong>Oslo Chronic Fatigue Consortium — manifest 2023</strong><br>51 forfattere. Publisert i SJPHC redigert av medforfatter Liira. Direkte respons på NICE NG206 (2021).' },
+              detail:'<strong>Oslo Chronic Fatigue Consortium — manifest 2023</strong><br>51 forfattere. Publisert i SJPHC redigert av medforfatter Liira. Direkte respons på NICE NG206 (2021). Parallelt publiserte White (lead) med Flottorp og Wyller som medforfattere «Anomalies in the review process» (JNNP, des. 2023) — et separat 51-forfatterdokument mot NICE.' },
               { id:'nflp',      label:'NFLP',       sub:'LP-instruktørforbund · forening for kommersielle aktører', tier:'t3', r:22,
               detail:'<strong>NFLP</strong> — Norsk Forbund for Lightning Process Instruktører<br>Interesseorganisasjon for LP-instruktører i Norge. Stiftet 18. januar 2012. Seks registrerte instruktører inkl. Live Landmark. Har aktivt lobbyet Helsedirektoratet for å reklassifisere LP fra alternativ medisin til «kurs».' },
               { id:'ag',        label:'Arbeidsgruppe',  sub:'Helsedir. retningslinje 2024–26', tier:'struct', r:30,
@@ -1176,10 +1515,19 @@ td:first-child { font-weight: 500; color: var(--ink); }
             {s:'rn',        t:'vogt',        w:1.5},
             {s:'rn',        t:'kristiansen', w:2.0},
             {s:'flottorp',  t:'brurberg',    w:2.0},
+            {s:'larun',     t:'brurberg',    w:2.5},
+            {s:'larun',     t:'flottorp',    w:1.5, dash:true},
             {s:'flottorp',  t:'magnus',      w:1.5},
+            {s:'rortveit',  t:'wyller',      w:2.0},
+            {s:'rortveit',  t:'flottorp',    w:2.0},
+            {s:'rortveit',  t:'reme',        w:1.5},
             {s:'magnus',    t:'wyller',      w:1.5, dash:true},
             {s:'flottorp',  t:'ocfc',        w:1.5},
             {s:'sharpe',    t:'coffi',       w:2.0},
+            {s:'white',     t:'wyller',      w:2.0},
+            {s:'white',     t:'coffi',       w:2.5},
+            {s:'white',     t:'flottorp',    w:1.5},
+            {s:'white',     t:'ocfc',        w:2.0},
             {s:'chalder',   t:'coffi',       w:2.0},
             {s:'sharpe',    t:'ocfn',        w:2.0},
             {s:'chalder',   t:'ocfn',        w:2.0},
@@ -1408,10 +1756,22 @@ td:first-child { font-weight: 500; color: var(--ink); }
               <td>2 — Institusjonell forankring</td>
             </tr>
             <tr>
+              <td><strong>Lillebeth Larun</strong></td>
+              <td>Folkehelseinstituttet, Avdeling for helsetjenesteforskning</td>
+              <td>Forsker/førsteamanuensis. Førsteforfatter på alle versjoner av Cochrane GET-oversikten for ME/CFS (søk avsluttet mai 2014; siste versjon desember 2024). Doktorgrad UiB 2011, veileder Kirsti Malterud (medforfatter sustained arousal 2009). Faglig samarbeidspartner med Trudie Chalder (PACE, COFFI) i Cochrane-protokoll for individuell pasientdata (2018). I juni 2025 erkjente hun i kommentar til Cochrane at oversikten «may not apply» til pasienter med PEM-definert ME/CFS — det diagnostiske kriteriet som gjelder siden IOM 2015. Oppdateringsprosjektet stanset 16. desember 2024.</td>
+              <td>2 — Institusjonell forankring</td>
+            </tr>
+            <tr>
               <td><strong>Per Magnus</strong></td>
               <td>Folkehelseinstituttet, Senter for fruktbarhet og helse</td>
               <td>Fagdirektør. Medsignerte FHI-høringsinspillet til NICE desember 2020 — forsøket på å forhindre tilbaketrekking av CBT og GET. Deltaker det hemmelige seminaret oktober 2022.</td>
               <td>2 — Institusjonell forankring</td>
+            </tr>
+            <tr>
+              <td><strong>Guri Rørtveit</strong></td>
+              <td>Folkehelseinstituttet (administrerende direktør) · Universitetet i Bergen</td>
+              <td>FHI-direktør fra 2024. Satt i styringskomiteen til SIPCOV-studien (PI: Wyller) — CBT og gradert trening mot long covid, med sustained arousal som eksplisitt patofysiologisk rammeverk — sammen med Flottorp, Reme og Jacobsen (SIPCOV-protokoll NCT05196451, s. 7–8, februar 2022). Deltaker COFFI Helseregister. MUPS-gruppe 2009–2016. Som FHI-direktør er hun øverste leder for Flottorp og Brurberg — begge sentrale nettverksaktører.</td>
+              <td>1 — Norsk kjerne</td>
             </tr>
             <tr>
               <td><strong>Silje Endresen Reme</strong></td>
@@ -1480,6 +1840,12 @@ td:first-child { font-weight: 500; color: var(--ink); }
               <td>4 — Internasjonalt</td>
             </tr>
             <tr>
+              <td><strong>Peter D. White</strong></td>
+              <td>Queen Mary University of London (pensjonert)</td>
+              <td>PACE-arkitekt (principal investigator). Medforfatter på COFFIs grunnlagspublikasjon (2018) — operativt grunnleggermedlem. Førsteforfatter på «Anomalies in the review process» (JNNP, desember 2023, 51 forfattere) — der Flottorp (nr. 17) og Wyller (nr. 48) er medforfattere. Det norske kjernenettverket underskrev et britisk-ledet motangrep mot NICE med White i spissen. Medforfatter på tilsvar til Wüst et al. (feb. 2025) der gruppen brukte 2017-versjonen av Cochrane-oversikten. Ifølge Tullers dokumentasjon (virology.ws, august 2017) deltok White i en faglig briefing av forsikringsselskapet Swiss Re der PACE-resultater ble presentert i en kontekst av skadebegrensning overfor ME-kravstillere — en kobling mellom biopsykososial behandlingsforskning og forsikringsindustriens utbetalingsbegrensning.</td>
+              <td>4 — Internasjonalt</td>
+            </tr>
+            <tr>
               <td><strong>Helena Liira</strong></td>
               <td>Scandinavian Journal of Primary Health Care (sjefredaktør 2016–2023) · OCFN styringsgruppe</td>
               <td>Sjefredaktør i tidsskriftet som publiserte OCFC-manifestet hun selv medforfattet. Den mest eksplisitte formelle rollekollisjon i kildekomplekset.</td>
@@ -1516,7 +1882,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <p>Nettverket er til stede simultant i alle arenaene der ME/CFS-politikk formes. Arenaene og aktørene beskrives i detalj nedenfor.</p>
 
 <h3 id="de-fem-beslutningsarenaene">Fem beslutningsarenaer: nettverkets samtidige rekkevidde</h3>
-      <p>Det som er avgjørende er ikke at disse aktørene kjenner hverandre. Det er at de simultant er til stede i alle fire arenaene der ME/CFS-politikk formes:</p>
+      <p>Det som er avgjørende er ikke at disse aktørene kjenner hverandre. Det er at de simultant er til stede i alle fem arenaene der ME/CFS-politikk formes:</p>
       <h4>Arena 1: Forskning og publisering</h4>
       <p>Wyller leder PAEDIA-gruppen ved Ahus og er faglig leder for REHAB-FATIGUE (KLINBEFORSK, 25 mill. kr, 2026). Han leder COFFI (Collaborative on Fatigue Following Infection) — et internasjonalt konsortium med Sharpe og Chalder i scientific advisory committee, de to primærforfatterne av PACE-studien (Pacing, graded Activity and Cognitive behaviour therapy: a randomised Evaluation — Lancet, 2011). Kennair leder LP-RCT ved Norges teknisk-naturvitenskapelige universitet (NTNU) med Landmark som kontaktperson — delfinansiert av Forskningsrådet (1,8 mill. kr, offentlig ph.d.) og kommuner i Oslo-området. Helsedirektoratet, NAV og NKT støtter studien.</p>
       <p>COFFI-nettverket produserer litteraturen som danner grunnlaget for nettverkets faglige posisjoner. Wyllers systematiske oversikt fra 2025 («Immunological associations in post-infective fatigue syndromes») er basert på 30 studier, der 19 (63 %) er fra nettverkets egne forfattere.</p>
@@ -1525,6 +1891,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <h4>Arena 2: Retningslinjearbeid</h4>
 
       <p>Helsedirektoratets arbeidsgruppe for ny nasjonal retningslinje (nedsatt 2024, høringsutkast februar 2026) teller 21 medlemmer. Fra nettverket: Helland (Nasjonal kompetansetjeneste for CFS/ME / Oslo universitetssykehus). Brurberg (FHI) er ikke medlem av arbeidsgruppen, men er medforfatter av Lancet-kommentaren «more ideology than science?» (2022) — sammen med Wyller og Flottorp. Maja Wilhelmsen (Universitetssykehuset Nord-Norge, spesialist i fysikalsk medisin og rehabilitering) er arbeidsgruppedeltaker, sitter samtidig i referansegruppen til Nasjonal kompetansetjeneste for CFS/ME, leder arbeidsutvalget for regionalt fagnettverk CFS/ME i Helse Nord, og er i styringsgruppen for REHAB-FATIGUE — fire samtidige roller i overlappende beslutningsarenaer. Recovery Norge — organisasjonen medgrunnlagt av Landmark og ledet av Kristiansen, med opptaksvilkår begrenset til dem som har blitt friske — fikk to representanter (Ann Kristin Grøntjernet og Hannah Sagstad). ME-foreningen, med 6 300 medlemmer, fikk én (Trude Schei). Norsk Covidforening (ca. 1 500 medlemmer) fikk én (Carina Mørch-Storstein). ME-foreldrene, med 270 medlemmer, fikk én pårørenderepresentant (Tanja Thorsen). Recovery Norge har rundt 250 medlemmer. Helsedirektoratet ga dermed organisasjonen med færrest medlemmer dobbelt så mange representanter som organisasjonen med flest.</p>
+
+      <p>Et aktørforhold som ikke tidligere er synliggjort i nettverksdokumentasjonen: Guri Rørtveit — administrerende direktør i FHI fra 2024 — satt i styringskomiteen til Wyllers SIPCOV-studie (NCT05196451) da hun ble utnevnt. Styringskomiteen for SIPCOV består av Wyller (PI), Rørtveit (Universitetet i Bergen), Flottorp (FHI), Reme og Jacobsen (Psykologisk institutt, UiO) — nøyaktig den samme kjernen av nettverket som dokumenteres i dette essayet. SIPCOV er en RCT som tester kortvarig atferdsintervensjon (CBT og gradert trening) mot long covid, med sustained arousal-modellen som eksplisitt patofysiologisk rammeverk: protokollteksten beskriver at intervensjonen skal «counteract patients' worries and symptom monitoring, and to reassure them that desired activities and graded exercise are both beneficial and safe» (SIPCOV-protokoll, s. 5). NICE NG206 fraråder eksplisitt gradert trening for ME-pasienter med PEM. Som FHI-direktør er Rørtveit nå øverste leder for Flottorp — sakkyndig i Gulating lagmannsrett og prosjektansvarlig for 2006-retningslinjearbeidet — og for Brurberg, medforfatter av Lancet-kommentaren «more ideology than science?» (2022). Hun ble utnevnt til stillingen 20. desember 2023 mens SIPCOV var aktivt rekrutterende.</p>
 
       <p>Høringsutkastet løser opp ME/CFS som distinkt diagnose i kategorien «langvarig utmattelse» uten operasjonell definisjon av post-exertional malaise (PEM). Arbeidsgruppen er sterkt delt. Fire faglige medlemmer tok dissens fra én retning; tre brukerrepresentanter tok dissens fra motsatt retning. Innholdet i ingen av dissensene er gjengitt i det offentlige høringsdokumentet. At syv av 21 arbeidsgruppedeltakere — en tredjedel — tok formell dissens, og at dissensene peker i to retninger med substansielt dokumentert begrunnelse, er ikke reflektert i Helsedirektoratets kommunikasjon om at arbeidet er «bredt og tverrfaglig forankret».</p>
 
@@ -1669,7 +2037,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p>Det er en bevegelse fra personlig recovery-fortelling (2007) via bok med tidligere helseminister og nåværende statsminister Støres forord (2009) via LP-instruktørsertifisering og kursdrift (2008–) via faglig publisering i Tidsskriftet og OCFC-manifest (2016–2023) via ph.d.-kandidatur under Kennair ved NTNU (fra 2020) til Recovery Norges brukerrepresentasjon i Helsedirektoratets retningslinjearbeid (2024–26). Det er ikke en tilfeldig karrierebane. Det er et systematisk arbeid med å flytte en personlig erfaring inn i institusjonell makt.</p>
 
-      <h4>Landmarks doktorgradsarbeid: randomisert kontrollert studie på Lightning Process</h4>
+      <h4 id="lp-studien">Landmarks doktorgradsarbeid: randomisert kontrollert studie på Lightning Process</h4>
 
       <p>Kjernen i Landmarks ph.d.-arbeid er en randomisert kontrollert studie registrert på ClinicalTrials.gov (Unique Protocol ID: 394844): «A 3-day Course for Adults With Chronic Fatigue Syndrome/Myalgic Encephalopathy (CFS/ME): a Randomized Controlled Trial». Studien er ledet av professor Leif Edward Ottesen Kennair, Institutt for psykologi, NTNU. Reme, Wyller og Per Magnus er også involvert i studien — Per Magnus sendte i 2019 brev til Helsedirektoratet og ba dem støtte studien, hadde først en rådgivende rolle og er nå i monitoreringskomiteen etter at studien mistet etisk godkjenning og måtte re-søkes. Kennair er psykolog med bred publisering innen evolusjonspsykologi og kognitiv atferdsterapi. Han har ingen kjent klinisk bakgrunn i ME/CFS-feltet utover denne studien. Landmark er opplistet som navngitt kontaktperson — hun er dermed simultant PI-kontakt, kommersiell LP-instruktør og ph.d.-kandidat som evaluerer sin egen intervensjon.</p>
 
@@ -1683,6 +2051,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <p>Sponsor er NTNU. Samarbeidspartnere inkluderer Universitetet i Oslo, Haukeland universitetssykehus og Lørenskog kommune. University of Bristol — Esther Crawleys institusjon — var opplistet som samarbeidspartner i 2022-registreringen, men er fjernet i 2025-versjonen. Studien mottar støtte fra Helsedirektoratet, NAV og Nasjonal kompetansetjeneste for CFS/ME.</p>
 
       <p>To analytiske observasjoner er relevante. For det første: studiens inklusjonskriterium er ME/CFS-diagnose basert på kanadiske kriterier — de samme kriteriene Landmark i sin Forskersonen-kronikk (mars 2026) argumenterte for å avvikle. Studien anerkjenner operasjonelt PEM som diagnostisk obligatorisk, mens kronikken fremstiller PEM som en ikke-spesifikk forventningseffekt. For det andre: studien er vesentlig forsinket. Den måneden kronikken ble publisert — mars 2026 — var etter den opprinnelige planen total fullføring av studien. Kronikken ble publisert mens studien fortsatt rekrutterer, og uten at resultater foreligger.</p>
+
+      <p>Den 10. april 2026 publiserte Landmark en oppfølgerkronikk på forskersonen.no under tittelen «ME er diagnosen som ikke kan motbevises». Artikkelen viderefører mars-kronikken med en ny innrammingsstruktur: problemet er ikke bare at ME-diagnosen mangler biologisk forankring, men at den prinsipielt <em>ikke kan falsifiseres</em> — og at en ufalsifiserbar diagnose per definisjon er uvitenskapelig. Interessekonflikten er nå deklarert i siste linje — «LP-instruktør med bistilling i eget selskap» og «deltaker i Oslo Chronic Fatigue Network» — men ikke i ingressen og ikke i tilknytning til de faglige påstandene. Den interne selvmotsigelsen fra mars-kronikken repeteres: Landmark siterer IOM 2015 som autoritativ kilde (ref. 2 i kildelisten), mens IOM 2015-rapporten er nøyaktig den rapporten som definerer PEM som <em>obligatorisk</em> diagnostisk kriterium — og som utgjør det vitenskapelige grunnlaget for de kanadiske kriteriene Landmarks LP-RCT bruker som inklusjonsbetingelse. To kronikker i løpet av 26 dager fremmer identiske konklusjoner i samme kanal, uten at resultatene fra den pågående RCT-en foreligger.</p>
 
 
 
@@ -1732,7 +2102,17 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p>David Tuller (UC Berkeley) svarte i mai 2022 med artikkelen «Their position is hypocritical and untenable», og dokumenterte at forfatterne av Lancet-kommentaren selv hadde langt mer ideologisk pregede interesser i saken enn NICE-komiteen — inkludert direkte finansielle interesser i CBT-manualer, LP-kursing og psykosomatisk behandling. Tuller konkluderte: «These critics want NICE and others to recommend treatments that have not been shown to work and to ignore a rigorous process that found otherwise.»</p>
 
-      <p>Tidslinjen er analytisk avgjørende: 2006 (Flottorp/Brurberg norsk kunnskapsoppsummering pro-CBT) → 2019 (Cochrane-revisjon av GET) → desember 2020 (FHI-høringssvar til NICE, forsøk på å stoppe NG206) → oktober 2021 (NICE NG206 publisert, CBT/GET frarådes for PEM-pasienter) → februar 2022 (Lancet-motangrep: «ideology not science»). Og deretter: oktober 2022 (hemmelig seminar på UiO).</p>
+      <p>En intern FHI-e-post fra Flottorp — adressert til et NEM-medlem (Nasjonal etisk forskningskomité), gjengitt i en bekymringsmelding til FHI fra 2022 og tilgjengelig som vedlegg — kaster lys over hennes forståelse av Cochrane-prosessen. Flottorp skriver: «Vi var oppmerksomme på at ME-aktivistene i UK ønsket å få Cochrane til å trekke oversikten pga. da pågående prosess med oppdatering av retningslinjer for CFS/ME i NICE i UK.» Formuleringen er analytisk bemerkelsesverdig: Flottorp karakteriserer den faglige kritikken mot Cochrane-oversikten — kritikk som blant annet ble fremmet av Cochranes eget Independent Advisory Group (IAG) og av det britiske ME-forskermiljøet — som «aktivistpress», og presenterer FHIs aktive forsvar av oversikten som å ha «forhindret» tilbaketrekkingen. Samme e-post er konteksten for det som en uavhengig presentasjon av saken (Struthers, UK, 2022) karakteriserte som at FHI-representanten «manipulerte» Cochrane til å beholde den ønskede evidenskvalitetsvurderingen som moderat — på tross av Cochranes eget ønske om å nedgradere den. Det samme mønsteret av aktiv intervensjon — utenfor normal faglig kanal — vises i e-poster fra 2020 der Flottorp kontakter kolleger med ønske om å «stoppe dette tullet» da NAFKAM planla et faglig seminar om Lightning Process, med begrunnelse i bekymring for Landmarks studie: en FHI-forsker som forsøker å forhindre at et statlig faglig organ vurderer et kommersielt kurs som hennes faglige allierte er instruktør i.</p>
+
+      <p>Forhistorien til Cochrane-oversiktens tilblivelse er relevant for å forstå nettverksdynamikken. Larun tok doktorgraden ved Universitetet i Bergen i 2011 med Kirsti Malterud som veileder — Malterud er den samme forskeren som medforfattet Wyllers sustained arousal-artikkel i 2009. I 2018 publiserte Larun og Brurberg en Cochrane-protokoll for en individuell pasientdata-analyse av treningsterapi ved CFS, der Trudie Chalder — primærforfatter av PACE-studien og COFFI-rådgiver — er medforfatter. Det faglige nettverket rundt Cochrane-oversikten er altså ikke tilfeldig: det er nøyaktig det nettverket Wyller-samarbeidet knytter seg til internasjonalt.</p>
+
+      <p>16. desember 2024 stanset Cochrane oppdateringsprosjektet som hadde vært annonsert siden 2019. Den gjeldende versjonen er uendret fra 2019, med søk avsluttet i mai 2014 — elleve år uten oppdatering på et felt som i mellomtiden produserte Wüst et al. (Nature Communications, 2023), DecodeME (2025) og Hoel et al. (Cell Reports Medicine, 2026). Den redaksjonelle merknaden fastsetter kun at «a pilot project for engaging interest holders in the development of an update ... has now been discontinued».</p>
+
+      <p>I juni 2025 svarte Larun på en kritisk kommentar fra Cochranes Independent Advisory Group (IAG), ledet av Hilda Bastian. Svaret inneholder en innrømmelse med vidtrekkende konsekvenser for oversiktens anvendelighet: hun skriver at oversikten dekker «patients with <em>some</em> form of chronic fatigue» og at den «may or may not apply to all subgroups including those falling within more recent narrower definitions». David Tuller (virology.ws, 25. september 2025) påpeker det som er den logiske implikasjonen: «narrower definitions» betyr alle kriteriesett som krever PEM som obligatorisk diagnostisk kriterium — dvs. Canadakriteriene, IOM 2015, og de definisjonene som har vært anbefalte internasjonalt siden minst 2015. Larun erkjenner dermed at oversikten som i ett tiår har utgjort det primære internasjonale kunnskapsgrunnlaget for gradert trening ved ME/CFS, ikke nødvendigvis gjelder for pasienter som faktisk har ME/CFS. Cochrane-oversikten heter «Exercise therapy for chronic fatigue syndrome». Dens førsteforfatter sier i 2025 at den kanskje ikke gjelder for ME/CFS-pasienter.</p>
+
+      <p>I tillegg: i februar 2025 publiserte Wyller, Sharpe og Garner — med flere — et kritisk tilsvar til Wüst et al. (Nature Communications, 2023) om muskelfunnene ved ME/CFS. I tilsvaret siterte de 2017-versjonen av Cochrane-oversikten — ikke 2019-versjonen. Tuller dokumenterer (virology.ws, 15. februar 2025) at 2019-versjonen inneholder språk som «vannet ut tolkningen av funnene, fremhevet usikkerheten i bevisene og bemerket mangelen på tilstrekkelige data om potensielle skader» — formuleringer som ikke støtter det argumentet Wyller, Sharpe og Garner ønsket å fremføre. Wüst og medforfatterne påpekte eksplisitt i sitt svar (Nature Communications, februar 2025) at kritikerne hadde brukt den utdaterte versjonen.</p>
+
+      <p>Tidslinjen er analytisk avgjørende: 2006 (Flottorp/Brurberg norsk kunnskapsoppsummering pro-CBT) → 2019 (Cochrane-revisjon av GET, med løfte om ny gjennomgang) → desember 2020 (FHI-høringssvar til NICE, forsøk på å stoppe NG206) → oktober 2021 (NICE NG206 publisert, CBT/GET frarådes for PEM-pasienter) → februar 2022 (Lancet-motangrep: «ideology not science») → desember 2024 (Cochrane stanser oppdateringsprosjektet) → juni 2025 (Larun innrømmer at oversikten kanskje ikke gjelder ME/CFS slik definert siden IOM 2015). Og deretter: oktober 2022 (hemmelig seminar på UiO).</p>
 
 
       <h3 id="hemmelig-seminar">Oktober 2022: det hemmelige seminaret</h3>
@@ -1754,6 +2134,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p>«Chronic fatigue syndromes: real illnesses that people can recover from» ble publisert i Scandinavian Journal of Primary Health Care 23. september 2023. 51 forfattere. De fleste deltakerne fra det hemmelige seminaret oktober 2022 er blant forfatterne. Innsendelsesdato: 17. februar 2023. Akseptdato: 7. juli 2023.</p>
 
+      <p>Tre måneder senere — desember 2023 — publiserte Peter D. White (Queen Mary University of London, PACE-arkitekt og COFFI-grunnlegger) som førsteforfatter en separat artikkel med 51 medforfattere i Journal of Neurology, Neurosurgery and Psychiatry: «Anomalies in the review process and interpretation of the evidence in the NICE guideline for chronic fatigue syndrome and myalgic encephalomyelitis». Blant medforfatterne: Flottorp (nr. 17), Sharpe (nr. 41), Wessely (nr. 47), Wyller (nr. 48). Artikkelen argumenterer for åtte feil i NICEs prosess og konklusjon. De to dokumentene — OCFC-manifestet og JNNP-artikkelen — er separate publikasjoner med delvis overlappende forfatterlister og identisk posisjon: NICE NG206 er feil. Det norske kjernenettverket (Flottorp, Wyller) underskrev begge — det SJPHC-publiserte konsortiumdokumentet og det britisk-ledede JNNP-motangrepet med White i spissen.</p>
+
       <p>Publikasjonskanalen er ikke tilfeldig. Tidsskriftet ble redigert av Helena Liira fra 2016 til 2023. Liira er selv medforfatter på artikkelen. I interessekonflikt-erklæringen er dette opplyst som «Helena Liira is the former Editor in Chief of the Scandinavian Journal of Primary Health Care» — formulert i fortid, men presist beskrivende for situasjonen da artikkelen ble innsendt og akseptert. David Tuller karakteriserte tidsskriftet i april 2026 som «something of a house organ for members of the biopsychosocial ideological brigades».</p>
 
       <p>Interessekonfliktene i disclosure-avsnittet er usedvanlig tydelige, og bør leses i sammenheng:</p>
@@ -1768,6 +2150,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
             <tr><td>Henrik Vogt</td><td>«initiated and was the former leader of Recovery Norway»</td><td>Grunnlegger av organisasjonen som nå har to plasser i Helsedirektoratets arbeidsgruppe</td></tr>
             <tr><td>Michael Sharpe</td><td>President of European Association of Psychosomatic Medicine; royalties for academic publications</td><td>PACE-arkitekt, president i den psykosomatiske bevegelsens europeiske fagorganisasjon</td></tr>
             <tr><td>Trudie Chalder</td><td>Royalties for self-help books; research grants from Guy's and St Thomas' Charity, NIHR and UKRI</td><td>PACE-arkitekt, direkte finansiell interesse i CBT-litteratur</td></tr>
+            <tr><td>Peter D. White</td><td>Principal investigator PACE; ifølge Tullers dokumentasjon (virology.ws, 2017) deltok White i briefing av forsikringsselskapet Swiss Re der PACE-resultater ble presentert i kontekst av skadebegrensning overfor ME-kravstillere</td><td>PACE-arkitekt, COFFI-grunnlegger, førsteforfatter JNNP-motangrep mot NICE der Flottorp og Wyller er medforfattere</td></tr>
             <tr><td>Silje Endresen Reme</td><td>«honorariums for lectures and workshops about stress and health»</td><td>Leder Mind Body Lab, MBRT-utvikler, arrangør av hemmelig seminar</td></tr>
           </tbody>
         </table>
@@ -1865,6 +2248,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p><strong>27. mars — ME-foreldrene:</strong> Lanserer underskriftskampanje — «Opprop for egen retningslinje for ME med PEM, G93.3» — og ber pasienter, pårørende og støttespillere signere.</p>
 
+      <p><strong>10. april 2026 — forskersonen.no:</strong> Landmark publiserer «ME er diagnosen som ikke kan motbevises» — oppfølger til mars-kronikken. Artikkelen argumenterer for at ME-diagnosen er ufalsifiserbar og dermed uvitenskapelig, at PEM ikke er spesifikt for ME og forekommer ved depresjon, fibromyalgi og helseangst, og at diagnosen beskytter seg selv snarere enn pasientene. Den analytisk sentrale selvmotsigelsen: kronikken siterer IOM 2015 (ref. 2 i kildelisten) som autoritet — den samme rapporten der PEM defineres som det obligatoriske og sentrale diagnostiske kriteriet for ME/CFS, og som er inklusjonsbetingelse i Landmarks egen LP-RCT. Interessekonflikt er deklarert i siste linje av artikkelen: «LP-instruktør med bistilling i eget selskap» og «deltaker i Oslo Chronic Fatigue Network». Interessekonflikten er ikke gjengitt i ingressen eller i tilknytning til de faglige påstandene i brødteksten. Den samlede tekstmassen — to kronikker og seminarinnlegget (høst 2025) — representerer en vedvarende og koordinert offentlig kommunikasjonskampanje for Landmarks posisjoner, fremført i rollen som ph.d.-kandidat ved UiO mens hun evaluerer sitt eget kommersielle kurs i en pågående RCT.</p>
+
       <p><strong>April 2026 — forskersonen.no:</strong> Fluge, Mella og Tronstad — ME-forskningsgruppen ved Haukeland universitetssykehus og Universitetet i Bergen — publiserer kronikken «Retningslinjer for ME bommer på sykdomsforståelsen». De skriver at høringsutkastet har «grunnleggende faglige svakheter» og at sykdomsforståelsen det bygger på ikke er i tråd med internasjonal biomedisinsk forskning. Det er den faglig tyngste direkte tilbakevisningen av høringsutkastet fra norske ME-forskere, og den kommer fra gruppen som har ledet den biomedisinske ME-forskningen i Norge i to tiår.</p>
 
       <h4>Mønsteret</h4>
@@ -1915,6 +2300,13 @@ td:first-child { font-weight: 500; color: var(--ink); }
               <td class="coi-yes">FHI-forsker — ikke arbeidsgruppedeltaker i ny retningslinje 2024–26</td>
               <td class="coi-no">—</td>
               <td class="coi-part">Ikke aktuelt (ikke i arbeidsgruppen)</td>
+            </tr>
+            <tr>
+              <td>Rørtveit</td>
+              <td class="coi-yes">Styringskomité SIPCOV — studie som tester CBT/GET med sustained arousal som rammeverk (PI: Wyller)</td>
+              <td class="coi-yes">FHI-direktør + øverste leder for Flottorp (sakkyndig Gulating) og Brurberg (Lancet 2022)</td>
+              <td class="coi-no">—</td>
+              <td class="coi-no">Ikke offentlig deklarert i forbindelse med FHI-utnevnelse</td>
             </tr>
             <tr>
               <td>Helland</td>
@@ -2620,7 +3012,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <ul class="source-list">
         <li><strong>Wyller VBB, Eriksen HR, Malterud K</strong> <a href="https://doi.org/10.1186/1744-9081-5-2" target="_blank" style="color:var(--accent)">Can sustained arousal explain the Chronic Fatigue Syndrome?</a> <em>Behav Brain Funct</em>. 2009;5:2.</li>
         <li><strong>Wyller VBB, Jacobsen HA, Thaulow E, Wyller TB et al.</strong> <a href="https://doi.org/10.1097/01.pec.0000467345.41996.7b" target="_blank" style="color:var(--accent)">Emotion regulation and psychobiological phenotyping in adolescents with chronic fatigue syndrome (NorCAPITAL).</a> <em>Pediatr Emerg Care</em>. 2015. [Primær NorCAPITAL-publikasjon: klonidin ga ingen symptomlindring; klonidin reduserte fysisk aktivitet og økte utmattelse]</li>
-        <li><strong>Larun L, Brurberg KG, Odgaard-Jensen J, Price JR</strong> <a href="https://doi.org/10.1002/14651858.CD003200.pub8" target="_blank" style="color:var(--accent)">Exercise therapy for chronic fatigue syndrome.</a> <em>Cochrane Database Syst Rev</em>. 2019;10:CD003200. [Revidert 2019 under NICEs pågående gjennomgang; NICE valgte å gjøre egen review og forkastet Cochrane-konklusjonen]</li>
+        <li><strong>White PD, Abbey S, Angus B et al.</strong> <a href="https://doi.org/10.1136/jnnp-2022-330463" target="_blank" style="color:var(--accent)">Anomalies in the review process and interpretation of the evidence in the NICE guideline for chronic fatigue syndrome and myalgic encephalomyelitis.</a> <em>J Neurol Neurosurg Psychiatry</em>. 2023;94(12):1056–1063. [51 forfattere inkl. Flottorp nr. 17 og Wyller nr. 48; parallelt med OCFC-manifestet]</li>
+        <li><strong>Larun L, Brurberg KG, Odgaard-Jensen J, Price JR</strong> <a href="https://doi.org/10.1002/14651858.CD003200.pub8" target="_blank" style="color:var(--accent)">Exercise therapy for chronic fatigue syndrome.</a> <em>Cochrane Database Syst Rev</em>. 2019;10:CD003200. [Revidert 2019; oppdateringsprosjektet stanset 16. des. 2024. Larun erkjente juni 2025 at oversikten «may not apply» til PEM-definert ME/CFS. Wyller/Sharpe/Garner siterte 2017-versjonen (ikke 2019) i tilsvar til Wüst et al., feb. 2025]</li>
         <li><strong>Flottorp SA, Brurberg KG, Fink P, Knoop H, Wyller VBB</strong> <a href="https://doi.org/10.1016/S0140-6736(21)02596-8" target="_blank" style="color:var(--accent)">New NICE guideline on chronic fatigue syndrome: more ideology than science?</a> <em>Lancet</em>. 2022;399(10325):611–613.</li>
         <li><strong>Wyller VBB, Chalder T, Crawley E et al. (Oslo Chronic Fatigue Consortium — 51 forfattere)</strong> <a href="https://doi.org/10.1080/02813432.2023.2259780" target="_blank" style="color:var(--accent)">Chronic fatigue syndromes: real illnesses that people can recover from.</a> <em>Scand J Prim Health Care</em>. 2023;41(4):325–328. [Manifest publisert i tidsskrift redigert av medforfatter Liira; direkte respons på NICE NG206 (2021)]</li>
         <li><strong>White PD, Goldsmith KA, Johnson AL et al</strong> <a href="https://doi.org/10.1016/S0140-6736(11)60096-2" target="_blank" style="color:var(--accent)">Comparison of adaptive pacing therapy, cognitive behaviour therapy, graded exercise therapy, and specialist medical care for chronic fatigue syndrome (PACE): a randomised trial</a> <em>Lancet</em>. 2011;377(9768):823–836.</li>
@@ -2628,6 +3021,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <li><strong>Edwards J</strong> <a href="https://doi.org/10.1177/1359105317700886" target="_blank" style="color:var(--accent)">PACE team response shows a disregard for the principles of science</a> <em>J Health Psychol</em>. 2017;22(9):1155–1158. [«Makes the PACE trial a non-starter in the eyes of any physician or clinical pharmacologist familiar with problems of systematic bias in trial execution»]</li>
         <li><strong>Kongsnes BEB et al</strong> <a href="https://doi.org/10.1080/10253890.2026.2638303" target="_blank" style="color:var(--accent)">The association between hair cortisol levels, Epstein-Barr virus infections and chronic fatigue in adolescents</a> <em>Stress</em>. 2026;29(1):2638303.</li>
         <li><strong>Fluge Ø, Mella O, Tronstad KJ.</strong> <a href="https://www.forskersonen.no/kronikk-me-medisin-og-helse/retningslinjer-for-me-bommer-pa-sykdomsforstaelsen/2644846" target="_blank" style="color:var(--accent)">Retningslinjer for ME bommer på sykdomsforståelsen.</a> Forskersonen/forskning.no; april 2026.</li>
+        <li><strong>Wyller VBB et al.</strong> Short-time behavioural intervention in post-Covid syndrome (SIPCOV): study protocol. ClinicalTrials.gov NCT05196451, februar 2022. <a href="https://cdn.clinicaltrials.gov/large-docs/51/NCT05196451/Prot_000.pdf" target="_blank" style="color:var(--accent)">Protokoll PDF</a> — Styringskomité s. 7–8.</li>
+        <li><strong>Landmark L.</strong> <a href="https://www.forskersonen.no/me-medisin-og-helse-psykologi/me-er-diagnosen-som-ikke-kan-motbevises/2648032" target="_blank" style="color:var(--accent)">ME er diagnosen som ikke kan motbevises.</a> Forskersonen/forskning.no; 10. april 2026.</li>
       </ul>
       <div class="source-group-label">Vitenskapelige artikler — biomedisinsk forskning</div>
       <ul class="source-list">
@@ -2973,12 +3368,550 @@ td:first-child { font-weight: 500; color: var(--ink); }
       </details>
 </div>
 
+
+<!-- DEL VIII: ORDLISTE -->
+<div class="panel" id="p8">
+  <h2>Ordliste og begreper</h2>
+  <p style="color:var(--ink-mid);font-size:18px;margin-bottom:0;">48 fagtermer og forkortelser brukt i dokumentet. Søk i feltet under for å filtrere.</p>
+  <div class="glossary-search-wrap">
+    <input type="text" id="glossary-search" placeholder="Søk — skriv f.eks. «PEM», «PACE» eller «GRADE»…" oninput="glossaryFilter(this.value)" autocomplete="off" />
+  </div>
+  <div id="glossary-body">
+
+    <div class="glossary-cat-heading" data-cat="diagnose">Diagnostiske kriterier og sykdomsdefinisjon</div>
+
+    <div class="glossary-term" data-terms="me cfs myalgic encephalomyelitis chronic fatigue syndrome g93.3">
+      <h4>ME/CFS</h4>
+      <p>Myalgic Encephalomyelitis/Chronic Fatigue Syndrome. Nevrologisk sykdom klassifisert under G93.3 i ICD-10. Karakterisert av vedvarende utmattelse, kognitiv svikt, søvnforstyrrelser og post-exertional malaise (PEM). WHO har klassifisert tilstanden under nevrologi siden 1969.</p>
+    </div>
+    <div class="glossary-term" data-terms="pem post-exertional malaise anstrengelsesutløst forverring">
+      <h4>PEM — Post-Exertional Malaise</h4>
+      <p>Forverring av symptomer etter fysisk eller kognitiv anstrengelse, typisk med 12–48 timers forsinkelse og varighet fra dager til uker. Definert av IOM 2015 som det obligatoriske og sentrale diagnostiske kriteriet for ME/CFS. Norsk: anstrengelsesutløst symptomforverring.</p>
+    </div>
+    <div class="glossary-term" data-terms="kanadakriteriene canadakriteriene carruthers">
+      <h4>Kanadakriteriene</h4>
+      <p>Diagnostiske kriterier for ME/CFS utviklet av Carruthers et al. (2003). Krever åtte symptomer inkludert PEM. Brukt internasjonalt som gullstandard i klinisk og forskningsmessig sammenheng. Anbefalt av Helsedirektoratets veileder fra 2014.</p>
+    </div>
+    <div class="glossary-term" data-terms="oxford-kriterier oxford sharpe 1991">
+      <h4>Oxford-kriterier</h4>
+      <p>Diagnostiske kriterier fra 1991 (Sharpe et al.) som kun krever kronisk utmattelse i seks måneder — ingen krav om PEM eller andre spesifikke symptomer. Brukt i PACE-studien og i Cochrane-oversikten (Larun et al.). Kritisert for å fange inn en bredere populasjon enn ME/CFS slik sykdommen er definert i dag.</p>
+    </div>
+    <div class="glossary-term" data-terms="iom 2015 institute of medicine national academy">
+      <h4>IOM 2015</h4>
+      <p>Rapport fra US Institute of Medicine (nå National Academy of Medicine): «Beyond Myalgic Encephalomyelitis/Chronic Fatigue Syndrome: Redefining an Illness». Definerte PEM som obligatorisk diagnostisk kriterium og karakteriserte ME/CFS som «en alvorlig, kronisk, kompleks, systemisk sykdom».</p>
+    </div>
+    <div class="glossary-term" data-terms="fukuda-kriterier fukuda cdc 1994">
+      <h4>Fukuda-kriterier</h4>
+      <p>CDC-kriterier fra 1994. Brukt i mye eldre ME/CFS-forskning. Krever kronisk utmattelse pluss fire av åtte tilleggssymptomer. Inkluderer ikke PEM som obligatorisk.</p>
+    </div>
+    <div class="glossary-term" data-terms="long covid long-covid post-covid senfølger">
+      <h4>Long covid / post-COVID-tilstand</h4>
+      <p>Vedvarende symptomer etter SARS-CoV-2-infeksjon. Overlapper klinisk og biologisk med ME/CFS, inkludert PEM, kognitiv svikt og autonom dysfunksjon. WHO-definisjon: symptomer som oppstår vanligvis innen tre måneder etter akutt COVID-19 og varer minst to måneder.</p>
+    </div>
+    <div class="glossary-term" data-terms="g93.3 icd kode diagnose">
+      <h4>G93.3</h4>
+      <p>ICD-10-kode for ME/CFS (postviral utmattelsessyndrom) i spesialisthelsetjenesten. Antall pasienter med denne koden i Norge falt fra 3 854 (2017) til 2 426 (2025).</p>
+    </div>
+    <div class="glossary-term" data-terms="r53 icd kode tretthet uvelhet">
+      <h4>R53</h4>
+      <p>ICD-10-kode for «uvelhet og tretthet» — et symptom uten etiologisk innhold. Steg fra 4 747 til over 6 000 i samme periode G93.3 falt. Diagnostisk fortrengning: pasienter kodes med R53 i stedet for G93.3.</p>
+    </div>
+    <div class="glossary-term" data-terms="icpc-2 primærhelsetjeneste fastlege kode">
+      <h4>ICPC-2</h4>
+      <p>International Classification of Primary Care, versjon 2. Brukes i norsk primærhelsetjeneste. Har ingen kode for ME/CFS — nærmeste er A04 (slapphet/tretthet). Gjør det strukturelt umulig å registrere ME/CFS-diagnose hos fastlege.</p>
+    </div>
+
+    <div class="glossary-cat-heading" data-cat="behandling">Behandlingsformer og intervensjoner</div>
+
+    <div class="glossary-term" data-terms="cbt kognitiv atferdsterapi cognitive behavioural therapy">
+      <h4>CBT — Kognitiv atferdsterapi</h4>
+      <p>Psykologisk behandlingsmetode som i ME/CFS-kontekst bygger på antakelsen om at feilaktige sykdomsoppfatninger og aktivitetsunngåelse opprettholder utmattelsen. Frarådt av NICE NG206 (2021) som kurativ behandling for ME/CFS-pasienter med PEM.</p>
+    </div>
+    <div class="glossary-term" data-terms="get gradert treningsterapi graded exercise therapy">
+      <h4>GET — Gradert treningsterapi</h4>
+      <p>Behandlingsmetode basert på antakelsen om at dekondisjonering opprettholder ME/CFS. Frarådt av NICE NG206 (2021) for ME/CFS-pasienter med PEM. Wüst et al. (Nature Communications, 2023) dokumenterte muskelbiopsi-funn som forklarer hvorfor trening kan forverre tilstanden.</p>
+    </div>
+    <div class="glossary-term" data-terms="lp lightning process parker kurs">
+      <h4>LP — Lightning Process</h4>
+      <p>Kommersielt kurs utviklet av britisk osteopat Phil Parker. Basert på nevroplastisitetsteorier og mentale teknikker. Ca. 20 000 kr per deltaker. Instruktører krever ingen helsefaglig utdanning. NICE NG206 fraråder eksplisitt LP for ME/CFS-pasienter.</p>
+    </div>
+    <div class="glossary-term" data-terms="mbrt mind body reprocessing therapy reme jacobsen">
+      <h4>MBRT — Mind Body Reprocessing Therapy</h4>
+      <p>Behandlingssystem utviklet ved Mind Body Lab (Reme og Jacobsen, UiO). Basert på prediktiv prosessering, klassisk læring og relasjonsrammeteori. Eneste engelskspråklige vitenskapelige publisering er et upublisert preprint (2025). Testes i MINIRICO-studien (KLINBEFORSK, 25 mill. kr).</p>
+    </div>
+    <div class="glossary-term" data-terms="daratumumab haukeland fluge mella behandling">
+      <h4>Daratumumab</h4>
+      <p>Monoklonalt antistoff opprinnelig brukt mot myelomatose. Testes ved Haukeland universitetssykehus (Fluge/Mella) mot ME/CFS basert på autoantistoff-hypotesen. Pilotforsøk 2025 (n=14): 60 % klinisk og objektiv bedring. Finansiert av ME-fondet og private bidrag — ikke offentlige midler.</p>
+    </div>
+    <div class="glossary-term" data-terms="pacing energistyring aktivitetstilpasning">
+      <h4>Pacing</h4>
+      <p>Energistyringsmetode der pasienten tilpasser aktivitetsnivå til tilgjengelig energi for å unngå PEM. Ikke en terapeutisk intervensjon, men en mestringsstrategi. Anbefalt av NICE NG206.</p>
+    </div>
+    <div class="glossary-term" data-terms="igg-aferese aferese autoantistoff fjerning">
+      <h4>IgG-aferese</h4>
+      <p>Fjerning av IgG-antistoffer fra blodet. Scheibenbogen/Charité (Lancet Regional Health Europe, 2024): klinisk bedring i kontrollert studie etter fjerning av autoantistoffer mot adrenerge reseptorer.</p>
+    </div>
+
+    <div class="glossary-cat-heading" data-cat="teori">Teori og rammeverk</div>
+
+    <div class="glossary-term" data-terms="sustained arousal stressrespons wyller teori">
+      <h4>Sustained arousal</h4>
+      <p>Wyllers teoretiske modell (formalisert 2009): ME/CFS forklares som en vedvarende aktivering av hjernens stressrespons, der biologiske funn som immunaktivering er epifenomener — konsekvenser av stressresponsen, ikke primære sykdomsmekanismer. Teoriens kausale kjerne er falsifisert av Kongsnes et al. (Stress, 2026) fra Wyllers egen forskningsgruppe.</p>
+    </div>
+    <div class="glossary-term" data-terms="prediktiv hjerne prediktiv prosessering forventning">
+      <h4>Prediktiv hjerne-teori</h4>
+      <p>Nevrovitenskapelig modell der hjernen konstruerer sanseopplevelser basert på forventninger. Brukes av Wyller, Reme og Jacobsen som teoretisk ramme for sustained arousal og MBRT. Presenteres med optiske illusjoner som analogi på Recovery Norge-seminaret 2025.</p>
+    </div>
+    <div class="glossary-term" data-terms="biopsykososial modell rammeverk psykologisk">
+      <h4>Biopsykososial modell</h4>
+      <p>Rammeverk som forstår sykdom som samspill mellom biologiske, psykologiske og sosiale faktorer. I ME/CFS-kontekst brukt til å begrunne psykologiske og atferdsmessige behandlinger. Skilles fra biomedisinsk modell som søker primære biologiske mekanismer.</p>
+    </div>
+    <div class="glossary-term" data-terms="nocebo forventning media dekning">
+      <h4>Nocebo-effekt</h4>
+      <p>Negativ helseeffekt forårsaket av forventning om skade — speilbildet av placebo. Wyller argumenterer i Vaksinepodden mars 2026 at mediedekning av long covid skaper nocebo-effekter. Ziyad Al-Aly: «Det er ikke noe empirisk evidens for noe slikt.»</p>
+    </div>
+    <div class="glossary-term" data-terms="mups medisinsk uforklarte plager symptomer">
+      <h4>MUPS — Medisinsk uforklarte plager og symptomer</h4>
+      <p>Paraplybegrep for symptombaserte tilstander uten påvist organisk årsak. ME/CFS kategoriseres som MUPS i deler av det norske fagmiljøet. Kontroversiell kategorisering siden IOM 2015 definerte ME/CFS som en selvstendig sykdom. Legeforeningens MUPS-gruppe inkluderer Prydz og Jøssang.</p>
+    </div>
+
+    <div class="glossary-cat-heading" data-cat="metode">Metode, institusjoner og studier</div>
+
+    <div class="glossary-term" data-terms="grade grading recommendations assessment evidens kvalitet">
+      <h4>GRADE</h4>
+      <p>Grading of Recommendations, Assessment, Development and Evaluation. Internasjonalt system for å vurdere kvaliteten på forskningsevidens og styrken av behandlingsanbefalinger. Flottorp er GRADE-ekspert. Metoden forutsetter at lav evidenskvalitet gir svakere anbefalinger — en sammenheng høringsutkastet 2026 ikke konsekvent reflekterer.</p>
+    </div>
+    <div class="glossary-term" data-terms="pace pace-studien white chalder sharpe lancet 2011">
+      <h4>PACE-studien</h4>
+      <p>«Pacing, graded Activity and Cognitive behaviour therapy: a randomised Evaluation» (White, Chalder, Sharpe et al., Lancet 2011). Største RCT på CBT og GET ved ME/CFS. £5 mill., delfinansiert av Department for Work and Pensions. Kritisert for svekket «recovery»-definisjon etter datainnsamling. NICE NG206 (2021) konkluderte at studien ikke gir tilstrekkelig grunnlag for CBT/GET-anbefalinger.</p>
+    </div>
+    <div class="glossary-term" data-terms="rct randomisert kontrollert studie gullstandard">
+      <h4>RCT — Randomisert kontrollert studie</h4>
+      <p>Gullstandard for klinisk effektforskning. Deltakere fordeles tilfeldig til behandlings- og kontrollgrupper. Resultater er ikke gyldige dersom inklusjonskriteriene rekrutterer feil populasjon — et kjerneproblem i GET/CBT-studier som bruker Oxford-kriterier.</p>
+    </div>
+    <div class="glossary-term" data-terms="norcapital klonidin wyller sympatikus">
+      <h4>NorCAPITAL</h4>
+      <p>Wyllers klonidin-studie (data 2010–2012, publisert 2015). Testet klonidin som farmakologisk hemmer av sympatikusaktivitet, basert på sustained arousal-teorien. Klonidin ga ingen symptomlindring — økte faktisk utmattelse. Wyller tolket ikke dette som falsifikasjon av teorien.</p>
+    </div>
+    <div class="glossary-term" data-terms="sipcov rørtveit kysthospitalet long covid cbt">
+      <h4>SIPCOV</h4>
+      <p>«Short-time behavioural intervention in post-Covid syndrome». RCT ledet av Wyller (Ahus), n=310. Tester CBT og gradert trening mot long covid med sustained arousal som rammeverk. Styringskomité: Wyller, Rørtveit, Flottorp, Reme, Jacobsen. ClinicalTrials.gov NCT05196451.</p>
+    </div>
+    <div class="glossary-term" data-terms="cfq chalder fatigue questionnaire spørreskjema">
+      <h4>CFQ — Chalder Fatigue Questionnaire</h4>
+      <p>11-spørsmåls selvrapporteringsskjema for utmattelse. Utviklet av Trudie Chalder. Brukt som primærutfallsmål i PACE og som inklusjonsinstrument i REHAB-FATIGUE. NINDS (USA) godkjenner ikke CFQ som inklusjonsinstrument i forskning på postinfeksiøs utmattelse. Terskel CFQ>4 fanger inn dagligdags tretthet.</p>
+    </div>
+    <div class="glossary-term" data-terms="cpet belastningstest sykkelttest pem objektiv">
+      <h4>CPET — Cardiopulmonary Exercise Test</h4>
+      <p>To-dagers belastningstesting. Objektiv metode for å dokumentere PEM: pasienter med ME/CFS viser signifikant redusert arbeidskapasitet på dag to, noe friske kontroller ikke gjør. Over 30 studier har replisert funnet.</p>
+    </div>
+    <div class="glossary-term" data-terms="klinbeforsk finansiering forskningsmidler 25 millioner">
+      <h4>KLINBEFORSK</h4>
+      <p>Nasjonalt program for klinisk behandlingsforskning i spesialisthelsetjenesten. Bevilget 25 mill. kr til REHAB-FATIGUE/MINIRICO i februar 2026. Programmet vurderer ikke faglige uenigheter i tildelingsprosessen — opplyst i svarbrev mars 2026.</p>
+    </div>
+    <div class="glossary-term" data-terms="decodeme genetikk genomomfattende edinburgh ponting">
+      <h4>DecodeME</h4>
+      <p>Genomomfattende assosiasjonsstudie fra University of Edinburgh (Ponting et al., 2025, n>17 000). Identifiserte åtte signifikante genetiske loki uten overlapp med angst, depresjon eller generell utmattelse. Dokumenterer at ME/CFS har en selvstendig genetisk arkitektur.</p>
+    </div>
+    <div class="glossary-term" data-terms="nem nasjonal etisk forskningskomite">
+      <h4>NEM</h4>
+      <p>Nasjonal etisk forskningskomité for medisin og helsefag. Flottorps e-post om Cochrane-prosessen var adressert til et NEM-medlem — den er et primærdokument som viser hennes innramming av fagkritikk som «aktivistpress».</p>
+    </div>
+    <div class="glossary-term" data-terms="nafkam alternativ medisin tromsø uit">
+      <h4>NAFKAM</h4>
+      <p>Nasjonalt forskningssenter innen komplementær og alternativ medisin, UiT. Sendte bekymringsmelding til Helsedirektoratet i 2011 etter tre negative LP-meldinger. Opprettholdt risikovurderingen i 2015 og 2020. Flottorp forsøkte å forhindre et NAFKAM-seminar om LP i 2020.</p>
+    </div>
+    <div class="glossary-term" data-terms="coffi collaborative fatigue following infection wyller internasjonalt">
+      <h4>COFFI</h4>
+      <p>Collaborative on Fatigue Following Infection. Internasjonalt forskningskonsortium ledet av Wyller. Scientific advisory committee: Sharpe og Chalder. Grunnlagt 2015/2018 med White som operativt medforfatter. Bruker Fukuda-kriterier, ikke kanadakriterier.</p>
+    </div>
+    <div class="glossary-term" data-terms="ocfn oslo chronic fatigue network reme internasjonalt">
+      <h4>OCFN</h4>
+      <p>Oslo Chronic Fatigue Network. Internasjonalt nettverk ledet av Reme ved Mind Body Lab, UiO. Styringsgruppe inkluderer Sharpe, Chalder, Garner og Liira. Bredere enn COFFI — dekker behandling, ikke bare forskning.</p>
+    </div>
+    <div class="glossary-term" data-terms="ocfc oslo chronic fatigue consortium manifest 51 forfattere">
+      <h4>OCFC</h4>
+      <p>Oslo Chronic Fatigue Consortium. 51-forfattergruppen bak to dokumenter mot NICE: «Chronic fatigue syndromes: real illnesses» (SJPHC, 2023) og «Anomalies in the review process» (JNNP, 2023, White som lead). Norske medforfattere inkluderer Flottorp og Wyller.</p>
+    </div>
+    <div class="glossary-term" data-terms="nkt nasjonal kompetansetjeneste oslo universitetssykehus helland">
+      <h4>NKT</h4>
+      <p>Nasjonal kompetansetjeneste for CFS/ME, Oslo universitetssykehus. Ledet av Ingrid Helland. Helsedirektoratets egne evalueringer konkluderte at tjenesten ikke kan dokumentere effekt av sin virksomhet. Tjenesten fortsatte uendret.</p>
+    </div>
+    <div class="glossary-term" data-terms="rek regional etisk komite godkjenning forskningsetikk">
+      <h4>REK</h4>
+      <p>Regionale komiteer for medisinsk og helsefaglig forskningsetikk. LP-studien til Landmark mistet etisk godkjenning og måtte re-søkes — Per Magnus gikk fra rådgiverrolle til monitoreringskomité etter re-søknad.</p>
+    </div>
+    <div class="glossary-term" data-terms="mind body lab reme jacobsen uio mbrt">
+      <h4>Mind Body Lab</h4>
+      <p>Forskningsgruppe ved Psykologisk institutt, UiO, ledet av Reme og Jacobsen. Utvikler av MBRT. Arrangør av det hemmelige seminaret oktober 2022. Leder Oslo Chronic Fatigue Network.</p>
+    </div>
+    <div class="glossary-term" data-terms="minirico pedersen long covid nikotinamid klinbeforsk">
+      <h4>MINIRICO</h4>
+      <p>«Mental Intervention og Nikotinamid Ribosid-supplement ved langvarig Covid». RCT ledet av Maria Pedersen (Ahus/UiO), 2×2 faktoriell design, n=310. Tester MBRT og nikotinamid ribosid (ChromaDex/TRU NIAGEN). Finansiert av KLINBEFORSK (25 mill. kr, 2026).</p>
+    </div>
+    <div class="glossary-term" data-terms="rehab-fatigue klinbeforsk wyller faglig leder 25 millioner">
+      <h4>REHAB-FATIGUE</h4>
+      <p>KLINBEFORSK-prosjekt (25 mill. kr, februar 2026) ledet av Wyller som faglig leder. Overordnet prosjektramme som inkluderer MINIRICO. Bruker CFQ som måleinstrument.</p>
+    </div>
+    <div class="glossary-term" data-terms="loteca selvakumar barn unge long covid ahus">
+      <h4>LoTECA</h4>
+      <p>«Long-Term Effects of COVID-19 in Children and Adolescents». Studie ved Ahus/UiO, ledet av Joel Selvakumar. Fant at biomarkører ikke predikerer long covid ved seks måneder, men at nevrotisisme og ensomhet gjør det.</p>
+    </div>
+    <div class="glossary-term" data-terms="rituxme rituximab fluge mella haukeland negativt resultat">
+      <h4>RituxME</h4>
+      <p>Fase 3-studie på rituximab ved ME/CFS (Fluge/Mella, Haukeland). 151 pasienter, randomisert, dobbeltblindet. Negativt resultat publisert i Annals of Internal Medicine 2019. Forskerne aksepterte funnet og gikk videre til daratumumab — et eksempel på ordinær vitenskapelig revisjon.</p>
+    </div>
+    <div class="glossary-term" data-terms="nav arbeids velferdsetat trygd uføretrygd">
+      <h4>NAV</h4>
+      <p>Arbeids- og velferdsetaten. Krever gjennomføring av anbefalt behandling som vilkår for trygdeytelser — inkludert behandlinger Fafo-rapporten viser gjør pasienter sykere. Statens prosedyre i Gulating-saken: den biomedisinske modellen er feil.</p>
+    </div>
+    <div class="glossary-term" data-terms="npr norsk pasientregister registerdata diagnose">
+      <h4>NPR — Norsk pasientregister</h4>
+      <p>Primærkilden for G93.3- og R53-kodingsdata brukt i Del IV. Viser fall i G93.3 og stigning i R53 — diagnostisk fortrengning dokumentert over 2017–2025.</p>
+    </div>
+    <div class="glossary-term" data-terms="ssb statistisk sentralbyrå inntekt trygd registerdata">
+      <h4>SSB — Statistisk sentralbyrå</h4>
+      <p>Inntekts- og trygdedata koblet mot NPR i Kielland og Liu (2025, n=8 485). Grunnlaget for dokumentasjonen av at 95 % av norske ME-pasienter ikke bedres over tre år.</p>
+    </div>
+    <div class="glossary-term" data-terms="icd-10 icd-11 who klassifikasjon sykdom">
+      <h4>ICD-10 / ICD-11</h4>
+      <p>WHOs internasjonale klassifikasjon av sykdommer. ICD-11 gir ME/CFS kode 8E49 under nevrologi og skiller det fra psykosomatiske tilstander som klassifiseres under «Bodily Distress Disorder» (6C20). Norge bruker fortsatt ICD-10.</p>
+    </div>
+    <div class="glossary-term" data-terms="helsedirektoratet retningslinje høring mai 2026">
+      <h4>Helsedirektoratet</h4>
+      <p>Norsk fagdirektorat under Helse- og omsorgsdepartementet. Ansvarlig for nasjonal faglig retningslinje for langvarig utmattelse inkl. ME/CFS. Høringsutkast publisert 4. februar 2026. Høringsfrist 4. mai 2026.</p>
+    </div>
+    <div class="glossary-term" data-terms="nice ng206 storbritannia retningslinje 2021">
+      <h4>NICE NG206</h4>
+      <p>National Institute for Health and Care Excellence (UK). Retningslinje publisert oktober 2021 etter 18 måneder og over 900 referanser. Konklusjon: CBT og GET frarådes for ME/CFS-pasienter med PEM; LP frarådes eksplisitt. Wyller, Flottorp og Brurberg svarte med Lancet-kommentaren «more ideology than science?» (2022).</p>
+    </div>
+    <div class="glossary-term" data-terms="nk-celler natural killer immunforsvar biologisk">
+      <h4>NK-celler</h4>
+      <p>Natural killer-celler. Del av medfødt immunforsvar. Redusert NK-celleaktivitet er et av de mest repliserte biologiske funnene ved ME/CFS internasjonalt.</p>
+    </div>
+    <div class="glossary-term" data-terms="autoantistoffer antistoffer charité scheibenbogen">
+      <h4>Autoantistoffer</h4>
+      <p>Antistoffer rettet mot kroppens egne strukturer. Wirth og Scheibenbogen (Charité, 2021) dokumenterte autoantistoffer mot adrenerge reseptorer som fører til vasokonstriksjon og hypoksi ved ME/CFS.</p>
+    </div>
+    <div class="glossary-term" data-terms="mitokondrier energi wüst muskelbiopsi">
+      <h4>Mitokondrier</h4>
+      <p>Cellenes energiproduserende organeller. Wüst et al. (Nature Communications, 2023) dokumenterte redusert mitokondriell kapasitet i muskelvev hos ME/CFS-pasienter — direkte vevsfunn, uavhengig av selvrapportering.</p>
+    </div>
+    <div class="glossary-term" data-terms="preload-svikt ortostatisk hjertesvikt blodvolum">
+      <h4>Preload-svikt</h4>
+      <p>Utilstrekkelig venøs tilbakestrøm til hjertet, resulterer i redusert slagvolum ved oppreist stilling. Dokumentert ved ME/CFS, forklarer ortostatisk intoleranse og kognitive symptomer ved aktivitet.</p>
+    </div>
+
+  </div><!-- /glossary-body -->
+  <p class="glossary-no-results" id="glossary-no-results">Ingen treff. Prøv et annet søkeord.</p>
+
+  <p style="font-size:15px;color:var(--ink-light);margin-top:32px;font-style:italic;">
+    Spørsmål stilt via chat-widgeten kan logges med tidsstempel for å forbedre dokumentets innhold. Ingen personopplysninger lagres.
+  </p>
+</div>
+<!-- /DEL VIII -->
+
   </div><!-- /panel-wrap -->
 
   <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
 
 </main>
 
+
+
+<script>
+// ── BJELKE NAVIGATION — scroll within p3 without changing hash ──
+(function() {
+  function initBjelke() {
+    const wrap = document.querySelector('.panel-wrap');
+    if (!wrap) return;
+    document.querySelectorAll('.p3-subnav a').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').replace('#', '');
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        // Ensure p3 is the active panel
+        if (window.location.hash !== '#p3') {
+          history.replaceState(null, '', '#p3');
+          // Trigger CSS :target repaint
+          document.querySelectorAll('.panel').forEach(function(p) {
+            p.style.display = '';
+          });
+        }
+        // Scroll panel-wrap to target, offset by bjelke height (~37px)
+        var wrapTop = wrap.getBoundingClientRect().top;
+        var targetTop = target.getBoundingClientRect().top;
+        wrap.scrollTop = wrap.scrollTop + (targetTop - wrapTop) - 42;
+      });
+    });
+  }
+  // Run after DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBjelke);
+  } else {
+    initBjelke();
+  }
+})();
+
+// ── GLOSSARY FILTER ──
+function glossaryFilter(q) {
+  q = q.toLowerCase().trim();
+  const terms = document.querySelectorAll('.glossary-term');
+  const cats = document.querySelectorAll('.glossary-cat-heading');
+  let totalVisible = 0;
+
+  // Show/hide terms
+  terms.forEach(t => {
+    const text = (t.dataset.terms || '') + ' ' + t.textContent.toLowerCase();
+    const show = !q || text.includes(q);
+    t.style.display = show ? '' : 'none';
+    if (show) totalVisible++;
+  });
+
+  // Hide category headings if all terms in that category are hidden
+  cats.forEach(cat => {
+    let next = cat.nextElementSibling;
+    let hasVisible = false;
+    while (next && !next.classList.contains('glossary-cat-heading')) {
+      if (next.classList.contains('glossary-term') && next.style.display !== 'none') hasVisible = true;
+      next = next.nextElementSibling;
+    }
+    cat.style.display = hasVisible ? '' : 'none';
+  });
+
+  const noResults = document.getElementById('glossary-no-results');
+  if (noResults) noResults.style.display = totalVisible === 0 ? 'block' : 'none';
+}
+
+// ── SCROLL POSITION PRESERVATION ──
+(function() {
+  const wrap = document.querySelector('.panel-wrap');
+  if (!wrap) return;
+
+  function currentHash() {
+    return window.location.hash || '#p1';
+  }
+
+  function savePos(hash) {
+    if (hash) sessionStorage.setItem('scroll' + hash, wrap.scrollTop);
+  }
+
+  function restorePos(hash) {
+    const saved = sessionStorage.getItem('scroll' + hash);
+    wrap.scrollTop = saved ? parseInt(saved, 10) : 0;
+  }
+
+  let prevHash = currentHash();
+
+  window.addEventListener('hashchange', function() {
+    savePos(prevHash);
+    prevHash = currentHash();
+    // Small delay to allow panel to render
+    setTimeout(() => restorePos(prevHash), 30);
+  });
+})();
+
+// ── CHAT WIDGET ──
+let chatHistory = [];
+let chatOpen = false;
+
+function chatToggle() {
+  chatOpen = !chatOpen;
+  const panel = document.getElementById('chat-panel');
+  if (panel) panel.classList.toggle('open', chatOpen);
+  if (chatOpen) {
+    // Show API key area if no key stored
+    const keyArea = document.getElementById('chat-key-area');
+    if (keyArea) keyArea.style.display = chatGetKey() ? 'none' : 'block';
+    const input = document.getElementById('chat-input');
+    if (input) setTimeout(() => input.focus(), 100);
+  }
+}
+
+// Close on ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && chatOpen) chatToggle();
+});
+
+function chatSuggest(btn) {
+  const suggestions = document.getElementById('chat-suggestions');
+  if (suggestions) suggestions.style.display = 'none';
+  const text = btn.textContent.trim();
+  chatSubmit(text);
+}
+
+function chatSend() {
+  const input = document.getElementById('chat-input');
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  input.style.height = '40px';
+  const suggestions = document.getElementById('chat-suggestions');
+  if (suggestions) suggestions.style.display = 'none';
+  chatSubmit(text);
+}
+
+function chatGetKey() {
+  return sessionStorage.getItem('anthropic_key') || '';
+}
+
+function chatSaveKey() {
+  const inp = document.getElementById('chat-key-input');
+  if (!inp) return;
+  const key = inp.value.trim();
+  if (!key.startsWith('sk-')) {
+    inp.style.borderColor = 'var(--accent)';
+    return;
+  }
+  sessionStorage.setItem('anthropic_key', key);
+  const keyArea = document.getElementById('chat-key-area');
+  if (keyArea) keyArea.style.display = 'none';
+  inp.value = '';
+}
+
+function chatGetDocText() {
+  // Extract visible text from the document for context
+  // Use a cached version if available
+  if (window._chatDocText) return window._chatDocText;
+  const clone = document.querySelector('.panel-wrap').cloneNode(true);
+  // Remove scripts and canvas
+  clone.querySelectorAll('script,canvas,style').forEach(el => el.remove());
+  const text = clone.innerText || clone.textContent || '';
+  // Trim to ~30k chars to stay within context
+  window._chatDocText = text.replace(/\s+/g, ' ').trim().slice(0, 120000);
+  return window._chatDocText;
+}
+
+function chatSubmit(question) {
+  const apiKey = chatGetKey();
+  if (!apiKey) {
+    const keyArea = document.getElementById('chat-key-area');
+    if (keyArea) keyArea.style.display = 'block';
+    chatAddMsg('assistant', '<span style="color:var(--ink-mid);font-size:15px;">Lim inn din Anthropic API-nøkkel i feltet over for å bruke chat-funksjonen.</span>');
+    return;
+  }
+
+  // Add user message
+  chatAddMsg('user', question);
+  chatHistory.push({ role: 'user', content: question });
+
+  // Show typing indicator
+  const typingId = 'typing-' + Date.now();
+  const msgs = document.getElementById('chat-messages');
+  if (msgs) {
+    const typing = document.createElement('div');
+    typing.className = 'chat-msg-assistant';
+    typing.id = typingId;
+    typing.innerHTML = '<div class="chat-typing"><span></span><span></span><span></span></div>';
+    msgs.appendChild(typing);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  const sendBtn = document.getElementById('chat-send-btn');
+  if (sendBtn) sendBtn.disabled = true;
+
+  const docText = chatGetDocText();
+  const systemPrompt = `Du er en assistent for dokumentet "The Wyller Continuum" — en analytisk gjennomgang av norsk ME/CFS-forskning 2006–2026. Svar alltid på norsk. Svar kun basert på dokumentets innhold. Vær presis og konkret. Når du refererer til en seksjon, inkluder en HTML-lenke slik: <a href="#anker-id">seksjonsnavn</a>. Hvis spørsmålet ikke kan besvares fra dokumentet, si det eksplisitt.
+
+Dokumentet:
+
+${docText}`;
+
+  const messages = chatHistory.slice(-8); // max 8 turns history
+
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 1024,
+      system: systemPrompt,
+      messages: messages,
+      stream: true,
+    })
+  })
+  .then(async response => {
+    const typingEl = document.getElementById(typingId);
+    if (typingEl) typingEl.remove();
+
+    if (response.status === 401) {
+      sessionStorage.removeItem('anthropic_key');
+      throw new Error('Ugyldig API-nøkkel. Prøv igjen.');
+    }
+    if (!response.ok) {
+      const errText = await response.text().catch(() => '');
+      throw new Error('HTTP ' + response.status + (errText ? ': ' + errText : ''));
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let assistantText = '';
+    const msgEl = chatAddMsg('assistant', '');
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value, { stream: true });
+      chunk.split('\n').forEach(line => {
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6).trim();
+          if (data === '[DONE]') return;
+          try {
+            const json = JSON.parse(data);
+            // Anthropic SSE format
+            if (json.type === 'content_block_delta' && json.delta?.type === 'text_delta') {
+              assistantText += json.delta.text;
+              msgEl.innerHTML = assistantText;
+              msgEl.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.onclick = function(e) {
+                  e.preventDefault();
+                  const id = a.getAttribute('href').replace('#','');
+                  const el = document.getElementById(id);
+                  const wrap = document.querySelector('.panel-wrap');
+                  if (el && wrap) {
+                    const wrapTop = wrap.getBoundingClientRect().top;
+                    const elTop = el.getBoundingClientRect().top;
+                    wrap.scrollTop = wrap.scrollTop + (elTop - wrapTop) - 60;
+                  }
+                };
+              });
+              if (msgs) msgs.scrollTop = msgs.scrollHeight;
+            }
+          } catch(e) {}
+        }
+      });
+    }
+    chatHistory.push({ role: 'assistant', content: assistantText });
+  })
+  .catch(err => {
+    const typingEl = document.getElementById(typingId);
+    if (typingEl) typingEl.remove();
+    chatAddMsg('assistant', '<span class="chat-msg-error">Feil: ' + err.message + '</span>');
+  })
+  .finally(() => {
+    if (sendBtn) sendBtn.disabled = false;
+    const input = document.getElementById('chat-input');
+    if (input) input.focus();
+  });
+}
+
+function chatAddMsg(role, content) {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return null;
+  const div = document.createElement('div');
+  div.className = role === 'user' ? 'chat-msg-user' : 'chat-msg-assistant';
+  div.innerHTML = content;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+</script>
 
 </body>
 </html>

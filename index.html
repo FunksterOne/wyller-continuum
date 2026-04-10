@@ -3772,15 +3772,20 @@ function chatSaveKey() {
 }
 
 function chatGetDocText() {
-  // Extract visible text from the document for context
-  // Use a cached version if available
   if (window._chatDocText) return window._chatDocText;
-  const clone = document.querySelector('.panel-wrap').cloneNode(true);
-  // Remove scripts and canvas
-  clone.querySelectorAll('script,canvas,style').forEach(el => el.remove());
-  const text = clone.innerText || clone.textContent || '';
-  // Trim to ~30k chars to stay within context
-  window._chatDocText = text.replace(/\s+/g, ' ').trim().slice(0, 120000);
+  // Extract only from content panels p1-p7 (skip p8 ordliste)
+  const panels = ['p1','p2','p3','p4','p5','p6','p7'];
+  let text = '';
+  panels.forEach(id => {
+    const panel = document.getElementById(id);
+    if (!panel) return;
+    const clone = panel.cloneNode(true);
+    // Remove non-content elements
+    clone.querySelectorAll('script,canvas,style,nav,.p3-subnav,table,svg,.network-wrap').forEach(el => el.remove());
+    text += (clone.innerText || clone.textContent || '') + '\n\n';
+  });
+  // Clean up and limit to 60k chars (~15k tokens) — more than enough for navigation
+  window._chatDocText = text.replace(/\t/g, ' ').replace(/ {3,}/g, ' ').replace(/\n{3,}/g, '\n\n').trim().slice(0, 60000);
   return window._chatDocText;
 }
 
@@ -3830,7 +3835,7 @@ ${docText}`;
       'anthropic-dangerous-direct-browser-access': 'true',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
       system: systemPrompt,
       messages: messages,

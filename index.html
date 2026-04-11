@@ -813,20 +813,26 @@ td:first-child { font-weight: 500; color: var(--ink); }
   <div class="search-results" id="search-results"></div>
 </div>
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   var atlasInput = document.getElementById('atlas-search');
   if (!atlasInput) return;
   atlasInput.addEventListener('keydown', function(e){
     if (e.key === 'Enter') {
       var q = atlasInput.value.trim();
       if (q) {
-        window.open('https://www.cfsmeatlas.com/evidence?search=' + encodeURIComponent(q), '_blank');
+        var a = document.createElement('a');
+        a.href = 'https://www.cfsmeatlas.com/evidence?search=' + encodeURIComponent(q);
+        a.target = '_blank';
+        a.rel = 'noopener';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
         atlasInput.value = '';
       }
     }
     if (e.key === 'Escape') atlasInput.value = '';
   });
-})();
+});
 </script>
 
 <!-- MAIN -->
@@ -945,7 +951,6 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <div class="tl-sub"><div class="tl-sub-year">2021</div><div class="tl-sub-text">NICE NG206: CBT og GET frarådes for ME-pasienter med PEM etter 18 måneder og over 900 referanser. NICE fraråder eksplisitt Lightning Process. Norge gjør ingenting.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2021</div><div class="tl-sub-text">Wirth og Scheibenbogen (Charité Berlin, <em>Autoimmunity Reviews</em>): autoantistoffer mot adrenerge reseptorer fører til vasokonstriksjon og hypoksi.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2021</div><div class="tl-sub-text">Tyskland IQWiG: CBT og GET frarådes. Bundesministerium für Gesundheit investerer 50 millioner euro i biomedisinsk ME/CFS-forskning.</div></div>
-        <div class="tl-sub"><div class="tl-sub-year">2021</div><div class="tl-sub-text">Wüst (Vrije Universiteit Amsterdam, <em>Nature Communications</em>): muskelbiopsi viser redusert mitokondriell kapasitet og kapillærsvikt — vevsfunn uavhengige av selvrapportering, forverres etter PEM.</div></div>
         </div>
       </div>
       </div><!-- /ps tl-2019 -->
@@ -962,7 +967,6 @@ td:first-child { font-weight: 500; color: var(--ink); }
         </div>
         <div class="tl-col tl-col-bio">
           <div class="tl-col-header">Biomedisinsk og kritisk evidens</div>
-        <div class="tl-sub"><div class="tl-sub-year">2022</div><div class="tl-sub-text">Australia NHMRC oppdaterer ME/CFS-retningslinje: CBT og GET frarådes for pasienter med PEM.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2022</div><div class="tl-sub-text">Germain, Hanson et al. (Cornell, <em>JCI Insight</em>): plasma-metabolomikk viser forstyrret belastningsrespons og nedsatt restitusjon etter maksimal belastningstest — objektive metabolske avvik.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2023</div><div class="tl-sub-text">Sundaram, Iwasaki et al. (<em>Nature</em>, n=275): lymfocytt-avvik, EBV-reaktivering og vedvarende lavt kortisol.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2023</div><div class="tl-sub-text">Wang, Hwang, Nath et al. (NIH, <em>PNAS</em>): WASF3-genet — mitokondriell dysfunksjon og forstyrret energiproduksjon som molekylær mekanisme bak treningsintoleranser ved ME/CFS.</div></div>
@@ -982,6 +986,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         </div>
         <div class="tl-col tl-col-bio">
           <div class="tl-col-header">Biomedisinsk og kritisk evidens</div>
+        <div class="tl-sub"><div class="tl-sub-year">jun. 2024</div><div class="tl-sub-text">Australia: Helseminister Mark Butler (ALP) bevilger 1,1 mill. AUD til NHMRC for å utvikle nye nasjonale ME/CFS-retningslinjer — første gang siden 2002-retningslinjene (RACP) som anbefalte CBT og GET. NHMRC skriver eksplisitt at de aldri har hatt godkjente retningslinjer for ME/CFS. Guideline Development Committee nedsettes.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2024</div><div class="tl-sub-text">Appelman og Wüst (<em>Nature Communications</em>): muskelfunn fra biopsi forverres signifikant etter provosert PEM-episode — direkte vevsbiomarkkør for post-exertional malaise.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2024</div><div class="tl-sub-text">Iu, Iwasaki et al. (Yale, <em>PNAS</em>): CD8+ T-celler er transkripsjonsreprogrammert mot uttømming ved ME/CFS — parallelt med funn ved kroniske virusinfeksjoner.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2024</div><div class="tl-sub-text">Cervia-Hasler et al. (<em>Science</em>, n=113): vedvarende komplementdysregulering med tromboinflamasjon — replikert i to uavhengige kohorter.</div></div>
@@ -1027,7 +1032,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         </div>
         <div class="tl-col tl-col-bio">
           <div class="tl-col-header">Biomedisinsk og kritisk evidens</div>
-
+        <div class="tl-sub"><div class="tl-sub-year">mars 2026</div><div class="tl-sub-text">Australia NHMRC Guideline Development Committee: møtereferat 26. mars 2026 — retningslinjearbeidet pågår. Australia har ikke oppdaterte ME/CFS-retningslinjer siden 2002 (RACP, CBT og GET anbefalt). NHMRC-prosessen er pågående parallelt med norsk høringsprosess.</div></div>
         </div>
       </div>
       </div><!-- /ps tl-feb26 -->

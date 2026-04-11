@@ -5,6 +5,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://doi.org">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Wyller Continuum</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -857,7 +858,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-2006"><div class="tl-year">2006</div><div class="tl-text">Wyller medforfattet rapport nr. 9–2006 (NOKC): «Diagnostisering og behandling av CFS/ME». Legger det faglige grunnlaget for norsk behandlingstilbud — anbefaler CBT og gradert trening.</div></div>
+        <div class="tl-item"><div class="tl-year">2006</div><div class="tl-text">Wyller medforfattet rapport nr. 9–2006 (NOKC): «Diagnostisering og behandling av CFS/ME». Legger det faglige grunnlaget for norsk behandlingstilbud — anbefaler CBT og gradert trening.</div></div>
         <div class="tl-item"><div class="tl-year">2007</div><div class="tl-text">Wyller avlegger doktorgrad. Phil Parker linker avhandlingen til Lightning Process som vitenskapelig begrunnelse.</div></div>
         <div class="tl-item"><div class="tl-year">2009</div><div class="tl-text">Sustained arousal-teorien formaliseres: «Can sustained arousal explain the Chronic Fatigue Syndrome?» (<em>Behavioral and Brain Functions</em>). Biologiske funn plasseres nedstrøms.</div></div>
         <div class="tl-item"><div class="tl-year">2009</div><div class="tl-text">Landmark publiserer «Vekk meg når det er over — diagnose ME» (Kagge). Forord av Jonas Gahr Støre. Fungerer som rekrutteringsverktøy for Lightning Process i Norge.</div></div>
@@ -873,13 +874,14 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-2010"><div class="tl-year">2010–12</div><div class="tl-text">NorCAPITAL-studien gjennomføres: klonidin testes som farmakologisk hemmer av sympatikusaktivitet.</div></div>
+        <div class="tl-item"><div class="tl-year">2010–12</div><div class="tl-text">NorCAPITAL-studien gjennomføres: klonidin testes som farmakologisk hemmer av sympatikusaktivitet.</div></div>
         <div class="tl-item"><div class="tl-year">2011</div><div class="tl-text">PACE-studien (White, Sharpe, Chalder et al., <em>Lancet</em>): CBT og GET fremstilles å gi bedring. Hjørnestenen i biopsykososialt evidensgrunnlag internasjonalt og i Norge.</div></div>
         <div class="tl-item"><div class="tl-year">2012</div><div class="tl-text">Nasjonal kompetansetjeneste for CFS/ME opprettes ved Oslo universitetssykehus.</div></div>
         <div class="tl-item"><div class="tl-year">2012</div><div class="tl-text">Norsk Forbund for Lightning Process Instruktører (NFLP) stiftet — lobber for å reklassifisere LP fra alternativ behandling til «kurs».</div></div>
         <div class="tl-item"><div class="tl-year">2013</div><div class="tl-text">Crawley et al. SMILE-studie (<em>BMJ Open</em>, n=100): LP hos barn med CFS/ME. Studien NICE eksplisitt fraråder å generalisere, brukes likevel av norsk legeforening og Flottorp som evidensgrunnlag.</div></div>
-        <div class="tl-item"><div class="tl-year">2017</div><div class="tl-text">White deltar i faglig briefing av forsikringsselskapet Swiss Re der PACE-resultater presenteres i kontekst av skadebegrensning overfor ME-kravstillere (dokumentert av David Tuller, virology.ws, august 2017).</div></div>
         <div class="tl-item"><div class="tl-year">2016</div><div class="tl-text">Revidert utgave av Landmarks bok (Arneberg forlag). Støres forord beholdes.</div></div>
+        <div class="tl-item"><div class="tl-year">2017</div><div class="tl-text">White deltar i faglig briefing av forsikringsselskapet Swiss Re der PACE-resultater presenteres i kontekst av skadebegrensning overfor ME-kravstillere (dokumentert av David Tuller, virology.ws, august 2017).</div></div>
+        
         <div class="tl-item"><div class="tl-year">sep. 2017</div><div class="tl-text">Recovery Norge lanseres i Aftenposten: 46 underskrivere — 14 med LP-kommersielle interesser, udeklarert.</div></div>
         <div class="tl-item"><div class="tl-year">jan. 2018</div><div class="tl-text">Recovery Norge stiftet 15. januar — to uker etter Forbrukertilsynets nye håndhevingsregler for alternativ behandling.</div></div>
         <div class="tl-item"><div class="tl-year">sep. 2018</div><div class="tl-text">Recovery Norge sender brev til HOD med 51 signaturer — 8 er LP-instruktører, ikke opplyst.</div></div>
@@ -910,7 +912,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-2019"><div class="tl-year">2019</div><div class="tl-text">Den norske legeforenings barnepsykiatriske veileder (21. mars): LP fremstilles som legitimt behandlingsalternativ for barn med ME/CFS. 75 % «friske» ved 18 år — basert på studier uten PEM-krav. CBT og GET anbefalt.</div></div>
+        <div class="tl-item"><div class="tl-year">2019</div><div class="tl-text">Den norske legeforenings barnepsykiatriske veileder (21. mars): LP fremstilles som legitimt behandlingsalternativ for barn med ME/CFS. 75 % «friske» ved 18 år — basert på studier uten PEM-krav. CBT og GET anbefalt.</div></div>
         <div class="tl-item"><div class="tl-year">2019</div><div class="tl-text">Wyller tar ledelsen av COFFI (Collaborative on Fatigue Following Infection). Scientific advisory committee: Sharpe og Chalder — primærforfatterne av PACE.</div></div>
         <div class="tl-item"><div class="tl-year">2019</div><div class="tl-text">Per Magnus (FHI-fagdirektør) sender brev til Helsedirektoratet og ber dem støtte Landmarks LP-RCT.</div></div>
         <div class="tl-item"><div class="tl-year">2020</div><div class="tl-text">Norges forskningsråd tildeler 11,9 mill. kr til «Immunologiske sykdomsmekanismer ved CFS/ME» (Wyller). Midlene brukes på Covid-kohort. Tre av fire planlagte studier er ikke rapportert.</div></div>
@@ -932,8 +934,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-2022"><div class="tl-year">2022</div><div class="tl-text">Wyller, Flottorp et al.: «New NICE guideline on chronic fatigue syndrome: more ideology than science?» (<em>Lancet</em>) — motangrep på NICE NG206.</div></div>
-        <div class="tl-item"><div class="tl-year">feb. 2022</div><div class="tl-text">SIPCOV-protokoll publisert på ClinicalTrials.gov (NCT05196451): Wyller PI, Rørtveit og Flottorp i styringskomité. CBT og gradert aktivitet testes mot long covid-pasienter.</div></div>
+        <div class="tl-item"><div class="tl-year">2022</div><div class="tl-text">Wyller, Flottorp et al.: «New NICE guideline on chronic fatigue syndrome: more ideology than science?» (<em>Lancet</em>) — motangrep på NICE NG206.</div></div>
+        <div class="tl-item"><div class="tl-year">feb. 2022</div><div class="tl-text">SIPCOV-protokoll publisert på ClinicalTrials.gov (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>): Wyller PI, Rørtveit og Flottorp i styringskomité. CBT og gradert aktivitet testes mot long covid-pasienter.</div></div>
         <div class="tl-item"><div class="tl-year">okt. 2022</div><div class="tl-text">Det hemmelige seminaret på UiO: «hvordan vi kan endre det offentlige narrativet». Sharpe, Chalder, Knoop, Fink, White deltar. Arrangert av Reme.</div></div>
         <div class="tl-item"><div class="tl-year">sep. 2023</div><div class="tl-text">Oslo Chronic Fatigue Consortium-manifest (<em>SJPHC</em>): 51 forfattere inkl. Wyller og Flottorp, publisert i tidsskrift redigert av medforfatter Liira.</div></div>
         <div class="tl-item"><div class="tl-year">des. 2023</div><div class="tl-text">White et al. (<em>JNNP</em>): «Anomalies in the review process» — 51 forfattere inkl. Flottorp og Wyller. Koordinert internasjonalt motangrep på NICE.</div></div>
@@ -954,7 +956,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-2024"><div class="tl-year">2024</div><div class="tl-text">Helsedirektoratets arbeidsgruppe nedsettes. Recovery Norge: 2 representanter. ME-foreningen (6 300 syke): 1 representant.</div></div>
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-text">Helsedirektoratets arbeidsgruppe nedsettes. Recovery Norge: 2 representanter. ME-foreningen (6 300 syke): 1 representant.</div></div>
         <div class="tl-item"><div class="tl-year">des. 2024</div><div class="tl-text">Larun et al. Cochrane GET-oversikt stopper oppdateringsprosjektet — tolv år etter søkeavslutning i 2014.</div></div>
         </div>
         <div class="tl-col tl-col-bio">
@@ -972,7 +974,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-2025"><div class="tl-year">feb. 25</div><div class="tl-text">White et al. publiserer tilsvar til Wüst — bruker bevisst 2017-versjonen av Cochrane-oversikten. Wyller og Flottorp er medforfattere.</div></div>
+        <div class="tl-item"><div class="tl-year">feb. 25</div><div class="tl-text">White et al. publiserer tilsvar til Wüst — bruker bevisst 2017-versjonen av Cochrane-oversikten. Wyller og Flottorp er medforfattere.</div></div>
         <div class="tl-item"><div class="tl-year">mars 25</div><div class="tl-text">FHI publiserer kunnskapsgrunnlag (25. mars): 17 kvalitative studier, 306 deltakere. PEM «lite omtalt». Kielland og Liu (8 485 pasienter) ekskludert. Crawley LP-studie inkludert.</div></div>
         <div class="tl-item"><div class="tl-year">jun. 25</div><div class="tl-text">Larun erkjenner i kommentar til Cochrane at GET-oversikten «may not apply» til PEM-pasienter.</div></div>
         <div class="tl-item"><div class="tl-year">jul. 25</div><div class="tl-text">MBRT-preprint (Jacobsen og Reme, Authorea): ikke fagfellevurdert. Advarsel om preliminære data presenteres ikke på seminaret.</div></div>
@@ -996,7 +998,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-feb26"><div class="tl-year">4. feb.</div><div class="tl-text">Flottorp (FHI) leverer sakkyndigerklæring til Gulating: anbefaler LP til sengeliggende ME-syk, bruker Recovery Norges hjemmeside som kunnskapsgrunnlag.</div></div>
+        <div class="tl-item"><div class="tl-year">4. feb.</div><div class="tl-text">Flottorp (FHI) leverer sakkyndigerklæring til Gulating: anbefaler LP til sengeliggende ME-syk, bruker Recovery Norges hjemmeside som kunnskapsgrunnlag.</div></div>
         <div class="tl-item"><div class="tl-year">4. feb.</div><div class="tl-text">KLINBEFORSK bevilger 25 mill. kr til REHAB-FATIGUE/MINIRICO, Wyller faglig leder. Helsedirektoratets høringsutkast publiseres.</div></div>
         <div class="tl-item"><div class="tl-year">23. feb.</div><div class="tl-text">Prydz (arbeidsgruppedeltaker), Aftenposten: hevder de fleste ME-pasienter han kjenner ble «helt friske» — basert på 8–10 pasienter, alle med PEM.</div></div>
         <div class="tl-item"><div class="tl-year">2026</div><div class="tl-text">Pedersen (Ahus/UiO) tildeles 2,5 mill. kr fra Helse Sør-Øst til MBRT for barn og unge.</div></div>
@@ -1011,7 +1013,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-mars26"><div class="tl-year">15. mars</div><div class="tl-text">Landmark: «Det er på tide å si farvel til ME-diagnosen» (forskersonen.no) — dagen før Wyllers podkast.</div></div>
+        <div class="tl-item"><div class="tl-year">15. mars</div><div class="tl-text">Landmark: «Det er på tide å si farvel til ME-diagnosen» (forskersonen.no) — dagen før Wyllers podkast.</div></div>
         <div class="tl-item"><div class="tl-year">16. mars</div><div class="tl-text">Vaksinepodden ep. 41: Wyller presenterer sustained arousal uendret. Ingen biomedisinske funn fra 2023–2026 nevnes.</div></div>
         </div>
         <div class="tl-col tl-col-bio">
@@ -1033,7 +1035,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="tl-parallel">
         <div class="tl-col tl-col-psyk">
           <div class="tl-col-header">Biopsykososialt</div>
-        <div class="tl-item" id="tl-apr26"><div class="tl-year">10. april</div><div class="tl-text">Landmark: «ME er diagnosen som ikke kan motbevises» (forskersonen.no) — argumenterer at PEM ikke er spesifikt for ME og at diagnosen skader pasientene.</div></div>
+        <div class="tl-item"><div class="tl-year">10. april</div><div class="tl-text">Landmark: «ME er diagnosen som ikke kan motbevises» (forskersonen.no) — argumenterer at PEM ikke er spesifikt for ME og at diagnosen skader pasientene.</div></div>
         <div class="tl-item"><div class="tl-year">4. mai</div><div class="tl-text"><strong>Høringsfrist — nasjonal faglig retningslinje for langvarig utmattelse inkludert ME/CFS.</strong></div></div>
         </div>
         <div class="tl-col tl-col-bio">
@@ -1058,6 +1060,17 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div class="panel-section ps-active" id="teorien-sustained-arousal-og-prediktiv-hjerne" data-sec="teorien-sustained-arousal-og-prediktiv-hjerne">
 
       <p>Sustained arousal-teorien hevder at ME/CFS er en vedvarende aktivering av hjernens stressrespons der biologiske funn som immunaktivering og autonom dysfunksjon er sekundære konsekvenser — ikke primære sykdomsmekanismer.</p>
+
+      <details style="margin:20px 0;">
+        <summary style="cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);list-style:none;"><span style="color:var(--accent);">▶</span>
+          Begrepsforklaring — Sustained arousal</summary>
+        <div style="background:var(--paper-mid);border-radius:0 0 4px 4px;padding:16px 20px;margin-top:0;">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px;">Begrepsforklaring — Sustained arousal</div>
+          <p style="font-size:16px;color:var(--ink-mid);line-height:1.6;margin:0 0 10px;">«Sustained arousal» (vedvarende aktivering) er Wyllers betegnelse på den antatte kjernepatologien ved ME/CFS: en vedvarende aktivering av hjernens stressrespons som opprinnelig ble utløst av en infeksjon eller annen belastning, men som ikke slår seg av etter at den utløsende faktoren er borte. Teorien er formalisert i Wyller, Eriksen og Malterud (Behavioral and Brain Functions, 2009) og utgjør det teoretiske grunnlaget for både kognitiv atferdsterapi (CBT), gradert treningsterapi (GET) og Lightning Process som behandlingsvalg.</p>
+          <p style="font-size:16px;color:var(--ink-mid);line-height:1.6;margin:0 0 10px;">Teoriens kausale premiss er at biologiske funn ved ME/CFS — immunaktivering, autonom dysfunksjon, hormonelle avvik — er <em>konsekvenser</em> av den vedvarende stressresponsen, ikke primære sykdomsmekanismer. Behandlingens logikk følger direkte: ved å endre tankemønstre og gradvis eksponere pasienten for aktivitet «avlæres» stressresponsen.</p>
+          <p style="font-size:16px;color:var(--ink-mid);line-height:1.6;margin:0;">Kongsnes et al. (Stress, 2026) — publisert av Wyllers egen forskningsgruppe — finner at kausalitetspilen er motsatt: utmattelsen forutgår stressresponsen. Teoriens kausale premiss er dermed indikert omvendt av egne data, uten at dette er kommentert i Wyllers offentlige formidling.</p>
+        </div>
+      </details>
 
       <p>Hypotesen har tre ledd: en infeksjon eller psykososial belastning utløser en stressrespons → stressresponsen forblir aktiv, drevet av forventninger eller frykt for forverring → den vedvarende aktiveringen produserer symptomene. Behandlingskonsekvensen er direkte: hvis symptomene drives av en feilaktig alarm i hjernen, er riktig behandling å «lære av» alarmen gjennom kognitiv atferdsterapi og gradert aktivitet.</p>
 
@@ -1338,7 +1351,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <a href="#rn-stiftelse">Recovery Norge</a>
         <a href="#lp-studien">LP-studien</a>
         <a href="#mars-2026">Offentlig debatt</a>
-        <a href="#interessekonfliktenes-konkrete-form">Interessekonflikter</a>
+        <a href="#interessekonfliktenes-konkrete-form">Int.konflikter</a>
       </div>
       
 
@@ -1475,7 +1488,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
             { id:'wyller',     label:'Wyller',     sub:'PAEDIA · Ahus · UiO · COFFI',        tier:'t1', r:44,
               detail:'<strong>Vegard Bruun Bratholm Wyller</strong><br>Professor UiO, forskningsleder PAEDIA/Ahus, leder COFFI. Teoretisk ankerpunkt — sustained arousal-teorien (2009). Faglig leder REHAB-FATIGUE (25 mill. kr, 2026). Simultant til stede i alle beslutningsarenaer.' },
             { id:'flottorp',   label:'Flottorp',   sub:'FHI · GRADE · sakkyndig Gulating',   tier:'t1', r:38,
-              detail:'<strong>Signe Flottorp</strong><br>Forskningssjef FHI. Clarivate mest siterte 2025. Medforfatter Lancet 2022. Sakkyndig Gulating lagmannsrett feb. 2026. Bringer nettverkets posisjoner inn i rettssystemet med FHI-autoritet.' },
+              detail:'<strong>Signe Flottorp</strong><br>Forskningssjef FHI. Clarivate mest siterte 2025. Medforfatter Lancet 2022. Styringskomité SIPCOV (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>). Sakkyndig Gulating lagmannsrett feb. 2026. Bringer nettverkets posisjoner inn i rettssystemet med FHI-autoritet.' },
             { id:'helland',    label:'Helland',    sub:'NKT · OUS · retningslinje',           tier:'t2', r:32,
               detail:'<strong>Ingrid Helland</strong><br>Leder NKT/OUS. Leder den institusjonen Helsedirektoratets evalueringer konkluderte ikke kunne dokumentere effekt. Arbeidsgruppedeltaker retningslinje 2024–26.' },
             { id:'brurberg',   label:'Brurberg',   sub:'FHI · Cochrane · Lancet 2022',        tier:'t2', r:32,
@@ -1485,9 +1498,9 @@ td:first-child { font-weight: 500; color: var(--ink); }
             { id:'magnus',     label:'Magnus',     sub:'FHI · Senter for fruktbarhet og helse', tier:'t2', r:32,
               detail:'<strong>Per Magnus</strong><br>Fagdirektør, Folkehelseinstituttet, Senter for fruktbarhet og helse. Medsignerte FHI-høringsinspillet til NICE desember 2020. Deltaker det hemmelige seminaret oktober 2022. Sendte i 2019 brev til Helsedirektoratet og ba dem støtte LP-RCT — hadde først en rådgivende rolle, og er nå i monitoreringskomiteen for studien etter at den mistet etisk godkjenning og ble re-søkt.' },
             { id:'rortveit',  label:'Rørtveit',   sub:'FHI-direktør · SIPCOV · COFFI',       tier:'t2', r:34,
-              detail:'<strong>Guri Rørtveit</strong><br>Administrerende direktør FHI fra 2024 (utnevnt 20. des. 2023). Professor, Institutt for global helse og samfunnsmedisin, Universitetet i Bergen. Satt i styringskomiteen til SIPCOV-studien (CBT/GET mot long covid, PI: Wyller) sammen med Flottorp, Reme og Jacobsen — dokumentert i studieprotokoll NCT05196451, s. 7–8. Deltaker i COFFI Helseregister. MUPS-gruppe Dnlf 2009–2016. Som FHI-direktør er hun øverste leder for Flottorp og Brurberg.' },
+              detail:'<strong>Guri Rørtveit</strong><br>Administrerende direktør FHI fra 2024 (utnevnt 20. des. 2023). Professor, Institutt for global helse og samfunnsmedisin, Universitetet i Bergen. Satt i styringskomiteen til SIPCOV-studien (CBT/GET mot long covid, PI: Wyller) sammen med Flottorp, Reme og Jacobsen — dokumentert i studieprotokoll <a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>, s. 7–8. Deltaker i COFFI Helseregister. MUPS-gruppe Dnlf 2009–2016. Som FHI-direktør er hun øverste leder for Flottorp og Brurberg.' },
             { id:'reme',       label:'Reme',       sub:'MindBodyLab · OCFN-leder',            tier:'t2', r:36,
-              detail:'<strong>Silje Endresen Reme</strong><br>Professor UiO, leder Mind Body Lab, leder Oslo Chronic Fatigue Network. MBRT-utvikler. Veileder for Landmark. Arrangør hemmelig seminar okt. 2022. Binder alle tre lagene sammen.' },
+              detail:'<strong>Silje Endresen Reme</strong><br>Professor UiO, leder Mind Body Lab, leder Oslo Chronic Fatigue Network. MBRT-utvikler. Veileder for Landmark. Styringskomité SIPCOV (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>). Arrangør hemmelig seminar okt. 2022. Binder alle tre lagene sammen.' },
             { id:'landmark',   label:'Landmark',   sub:'LP-instruktør · ph.d. · RN-medgrunnlegger',  tier:'t3', r:26,
               detail:'<strong>Live Landmark</strong><br>LP-instruktør (~300 kurs, ~2 000 deltakere). Ph.d.-kandidat NTNU under Reme. Medgrunnlegger Recovery Norge (stiftelsesmøte jan. 2018). Utdannet journalist. Den mest sammensatte interessekonflikt-profilen i nettverket.' },
             { id:'vogt',       label:'Vogt',       sub:'Grunnlegger RN · OCFC',               tier:'t3', r:26,
@@ -1497,7 +1510,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
             { id:'pedersen',   label:'Pedersen',   sub:'Ahus · MINIRICO',                     tier:'t2', r:30,
               detail:'<strong>Maria Pedersen</strong><br>Postdoktor i Wyllers forskningsgruppe (Wyller var ph.d.-veileder). Del av prosjektgruppen REHAB-FATIGUE. Ansatt NKT. Tildelt 2,5 mill. kr fra Helse Sør-Øst (2026) til treårig prosjekt om MBRT for barn og unge — kan få mer avhengig av fremdrift. Medforfatter Kongsnes et al. (Stress, 2026) — studien som indikerer omvendt kausalitet.' },
             { id:'jacobsen',   label:'Jacobsen',   sub:'MindBodyLab · MBRT',                  tier:'t2', r:30,
-              detail:'<strong>Henrik Jacobsen</strong><br>Mind Body Lab/UiO. MBRT-medutvikler med Reme.' },
+              detail:'<strong>Henrik Jacobsen</strong><br>Mind Body Lab/UiO. MBRT-medutvikler med Reme. Styringskomité SIPCOV (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>).' },
             { id:'prydz',      label:'Prydz',      sub:'Allmennlege · Hdir-gruppe',           tier:'t3', r:26,
               detail:'<strong>Peter Prydz</strong><br>Allmennlege. Arbeidsgruppedeltaker retningslinje 2024–26.' },
             { id:'wilhelmsen', label:'Wilhelmsen', sub:'UNN · Hdir · NKT · REHAB-FATIGUE',    tier:'t3', r:26,
@@ -1511,7 +1524,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
             { id:'liira',      label:'Liira',      sub:'SJPHC-red. · OCFN · manifest',        tier:'t4', r:22,
               detail:'<strong>Helena Liira</strong><br>Sjefredaktør SJPHC 2016–2023. Medforfatter OCFC-manifest publisert i tidsskriftet hun redigerte. OCFN-styringsgruppen.' },
             { id:'kennair',    label:'Kennair',    sub:'NTNU psykologi · LP-RCT PI',          tier:'t3', r:26,
-              detail:'<strong>Leif Edward Ottesen Kennair</strong><br>Professor NTNU, Institutt for psykologi. PI for LP-RCT (ClinicalTrials.gov 394844). Landmark er navngitt kontaktperson. Studien delfinansiert av Forskningsrådet (1,8 mill. kr, offentlig ph.d.) og bidrag fra kommuner i Oslo-området. Helsedirektoratet, NAV og NKT støtter studien, men er ikke finansieringskilder. Opprinnelig fullføring 2026 — revidert til desember 2028.' },
+              detail:'<strong>Leif Edward Ottesen Kennair</strong><br>Professor NTNU, Institutt for psykologi. PI for LP-RCT (<a href="https://clinicaltrials.gov/study/NCT05236465" target="_blank">ClinicalTrials.gov NCT05236465</a>). Landmark er navngitt kontaktperson. Studien delfinansiert av Forskningsrådet (1,8 mill. kr, offentlig ph.d.) og bidrag fra kommuner i Oslo-området. Helsedirektoratet, NAV og NKT støtter studien, men er ikke finansieringskilder. Opprinnelig fullføring 2026 — revidert til desember 2028.' },
             { id:'knoop',      label:'Knoop',      sub:'Amsterdam · CBT-manual',              tier:'t4', r:22,
               detail:'<strong>Hans Knoop</strong><br>Amsterdam. Royalties fra CBT-manual for ME/CFS. Kuut et al.-studiene brukt i høringsutkastet. Deltaker hemmelig seminar okt. 2022.' },
             { id:'fink',       label:'Fink',       sub:'Aarhus · seminar 2022',               tier:'t4', r:22,
@@ -1778,7 +1791,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
             <tr>
               <td><strong>Signe Flottorp</strong></td>
               <td>Folkehelseinstituttet, Avdeling for helsetjenesteforskning</td>
-              <td>Forskningssjef, GRADE-ekspert (Grading of Recommendations Assessment, Development and Evaluation). Prosjektansvarlig 2006-oppsummering. Medforfatter Lancet 2022. Sakkyndig Gulating 2026. Bringer nettverkets posisjoner inn i rettssystemet med FHI-autoritet.</td>
+              <td>Forskningssjef, GRADE-ekspert (Grading of Recommendations Assessment, Development and Evaluation). Prosjektansvarlig 2006-oppsummering. Medforfatter Lancet 2022. Styringskomité SIPCOV (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>). Sakkyndig Gulating 2026. Bringer nettverkets posisjoner inn i rettssystemet med FHI-autoritet. FOI-frigjort korrespondanse (mai 2020) viser at Flottorp presset NAFKAM til å trekke tilbake og beklage sin 2011-advarsel mot Lightning Process, og karakteriserte faglig kritikk fra David Tuller (UC Berkeley, Senior Fellow in Public Health and Journalism) som «ME-aktivisme» — uten å nevne hans akademiske tilknytning.</td>
               <td>1 — Norsk kjerne</td>
             </tr>
             <tr>
@@ -1808,13 +1821,13 @@ td:first-child { font-weight: 500; color: var(--ink); }
             <tr>
               <td><strong>Guri Rørtveit</strong></td>
               <td>Folkehelseinstituttet (administrerende direktør) · Universitetet i Bergen</td>
-              <td>FHI-direktør fra 2024. Satt i styringskomiteen til SIPCOV-studien (PI: Wyller) — CBT og gradert trening mot long covid, med sustained arousal som eksplisitt patofysiologisk rammeverk — sammen med Flottorp, Reme og Jacobsen (SIPCOV-protokoll NCT05196451, s. 7–8, februar 2022). Deltaker COFFI Helseregister. MUPS-gruppe 2009–2016. Som FHI-direktør er hun øverste leder for Flottorp og Brurberg — begge sentrale nettverksaktører.</td>
+              <td>FHI-direktør fra 2024. Satt i styringskomiteen til SIPCOV-studien (PI: Wyller) — CBT og gradert trening mot long covid, med sustained arousal som eksplisitt patofysiologisk rammeverk — sammen med Flottorp, Reme og Jacobsen (SIPCOV-protokoll <a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>, s. 7–8, februar 2022). Deltaker COFFI Helseregister. MUPS-gruppe 2009–2016. Som FHI-direktør er hun øverste leder for Flottorp og Brurberg — begge sentrale nettverksaktører.</td>
               <td>1 — Norsk kjerne</td>
             </tr>
             <tr>
               <td><strong>Silje Endresen Reme</strong></td>
               <td>Universitetet i Oslo, Psykologisk institutt · Mind Body Lab · OCFN</td>
-              <td>Leder Oslo Chronic Fatigue Network. MBRT-utvikler. Veileder for Landmark. Arrangør hemmelig seminar okt. 2022. Binder alle tre lagene sammen.</td>
+              <td>Leder Oslo Chronic Fatigue Network. MBRT-utvikler. Veileder for Landmark. Styringskomité SIPCOV (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>). Arrangør hemmelig seminar okt. 2022. Binder alle tre lagene sammen.</td>
               <td>2 — Institusjonell forankring</td>
             </tr>
             <tr>
@@ -1844,13 +1857,13 @@ td:first-child { font-weight: 500; color: var(--ink); }
             <tr>
               <td><strong>Henrik Jacobsen</strong></td>
               <td>Universitetet i Oslo, Psykologisk institutt · Mind Body Lab</td>
-              <td>MBRT-medutvikler med Reme. Operativ levering av MBRT-intervensjonen.</td>
+              <td>MBRT-medutvikler med Reme. Operativ levering av MBRT-intervensjonen. Styringskomité SIPCOV (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>).</td>
               <td>3 — Operativt/kommersielt</td>
             </tr>
             <tr>
               <td><strong>Leif Edward Ottesen Kennair</strong></td>
               <td>Norges teknisk-naturvitenskapelige universitet, Institutt for psykologi</td>
-              <td>Principal investigator, LP-RCT (ClinicalTrials.gov 394844). Landmark er kontaktperson og ph.d.-kandidat under Kennair. Delfinansiert av Forskningsrådet (1,8 mill. kr, offentlig ph.d.) og kommuner i Oslo-området. Helsedirektoratet, NAV og NKT støtter studien. Opprinnelig fullføring 2026, revidert til desember 2028.</td>
+              <td>Principal investigator, LP-RCT (<a href="https://clinicaltrials.gov/study/NCT05236465" target="_blank">ClinicalTrials.gov NCT05236465</a>). Landmark er kontaktperson og ph.d.-kandidat under Kennair. Delfinansiert av Forskningsrådet (1,8 mill. kr, offentlig ph.d.) og kommuner i Oslo-området. Helsedirektoratet, NAV og NKT støtter studien. Opprinnelig fullføring 2026, revidert til desember 2028.</td>
               <td>3 — Operativt/kommersielt</td>
             </tr>
             <tr>
@@ -1933,11 +1946,11 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p>Helsedirektoratets arbeidsgruppe for ny nasjonal retningslinje (nedsatt 2024, høringsutkast februar 2026) teller 21 medlemmer. Fra nettverket: Helland (Nasjonal kompetansetjeneste for CFS/ME / Oslo universitetssykehus). Brurberg (FHI) er ikke medlem av arbeidsgruppen, men er medforfatter av Lancet-kommentaren «more ideology than science?» (2022) — sammen med Wyller og Flottorp. Maja Wilhelmsen (Universitetssykehuset Nord-Norge, spesialist i fysikalsk medisin og rehabilitering) er arbeidsgruppedeltaker, sitter samtidig i referansegruppen til Nasjonal kompetansetjeneste for CFS/ME, leder arbeidsutvalget for regionalt fagnettverk CFS/ME i Helse Nord, og er i styringsgruppen for REHAB-FATIGUE — fire samtidige roller i overlappende beslutningsarenaer. Recovery Norge — organisasjonen medgrunnlagt av Landmark og ledet av Kristiansen, med opptaksvilkår begrenset til dem som har blitt friske — fikk to representanter (Ann Kristin Grøntjernet og Hannah Sagstad). ME-foreningen, med 6 300 medlemmer, fikk én (Trude Schei). Norsk Covidforening (ca. 1 500 medlemmer) fikk én (Carina Mørch-Storstein). ME-foreldrene, med 270 medlemmer, fikk én pårørenderepresentant (Tanja Thorsen). Recovery Norge har rundt 250 medlemmer. Helsedirektoratet ga dermed organisasjonen med færrest medlemmer dobbelt så mange representanter som organisasjonen med flest.</p>
 
-      <p>Et aktørforhold som ikke tidligere er synliggjort i nettverksdokumentasjonen: Guri Rørtveit — administrerende direktør i FHI fra 2024 — satt i styringskomiteen til Wyllers SIPCOV-studie (NCT05196451) da hun ble utnevnt. Styringskomiteen for SIPCOV består av Wyller (PI), Rørtveit (Universitetet i Bergen), Flottorp (FHI), Reme og Jacobsen (Psykologisk institutt, UiO) — nøyaktig den samme kjernen av nettverket som dokumenteres i dette essayet. SIPCOV er en RCT som tester kortvarig atferdsintervensjon (CBT og gradert trening) mot long covid, med sustained arousal-modellen som eksplisitt patofysiologisk rammeverk: protokollteksten beskriver at intervensjonen skal «counteract patients' worries and symptom monitoring, and to reassure them that desired activities and graded exercise are both beneficial and safe» (SIPCOV-protokoll, s. 5). NICE NG206 fraråder eksplisitt gradert trening for ME-pasienter med PEM. Som FHI-direktør er Rørtveit nå øverste leder for Flottorp — sakkyndig i Gulating lagmannsrett og prosjektansvarlig for 2006-retningslinjearbeidet — og for Brurberg, medforfatter av Lancet-kommentaren «more ideology than science?» (2022). Hun ble utnevnt til stillingen 20. desember 2023 mens SIPCOV var aktivt rekrutterende.</p>
+      <p>Et aktørforhold som ikke tidligere er synliggjort i nettverksdokumentasjonen: Guri Rørtveit — administrerende direktør i FHI fra 2024 — satt i styringskomiteen til Wyllers SIPCOV-studie (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>) da hun ble utnevnt. Styringskomiteen for SIPCOV består av Wyller (PI), Rørtveit (Universitetet i Bergen), Flottorp (FHI), Reme og Jacobsen (Psykologisk institutt, UiO) — nøyaktig den samme kjernen av nettverket som dokumenteres i dette essayet. SIPCOV er en RCT som tester kortvarig atferdsintervensjon (CBT og gradert trening) mot long covid, med sustained arousal-modellen som eksplisitt patofysiologisk rammeverk: protokollteksten beskriver at intervensjonen skal «counteract patients' worries and symptom monitoring, and to reassure them that desired activities and graded exercise are both beneficial and safe» (SIPCOV-protokoll, s. 5). NICE NG206 fraråder eksplisitt gradert trening for ME-pasienter med PEM. Som FHI-direktør er Rørtveit nå øverste leder for Flottorp — sakkyndig i Gulating lagmannsrett og prosjektansvarlig for 2006-retningslinjearbeidet — og for Brurberg, medforfatter av Lancet-kommentaren «more ideology than science?» (2022). Hun ble utnevnt til stillingen 20. desember 2023 mens SIPCOV var aktivt rekrutterende.</p>
 
       <p>Høringsutkastet løser opp ME/CFS som distinkt diagnose i kategorien «langvarig utmattelse» uten operasjonell definisjon av post-exertional malaise (PEM). Arbeidsgruppen er sterkt delt. Fire faglige medlemmer tok dissens fra én retning; tre brukerrepresentanter tok dissens fra motsatt retning. Innholdet i ingen av dissensene er gjengitt i det offentlige høringsdokumentet. At syv av 21 arbeidsgruppedeltakere — en tredjedel — tok formell dissens, og at dissensene peker i to retninger med substansielt dokumentert begrunnelse, er ikke reflektert i Helsedirektoratets kommunikasjon om at arbeidet er «bredt og tverrfaglig forankret».</p>
 
-      <p><em>De fire faglige dissensene</em> er nå alle offentliggjort og er nær identiske. Ingjerd Helene Jøssang skriver at teksten «legger totalt sett for mye vekt på å unngå belastninger» og at «rehabiliteringsperspektivet med sikte på bedring og tilfriskning er for lite». Tom Farmen Nerli skriver at veilederen «vil ha en noceboeffekt fordi den indirekte oppfordrer til unngåelsesatferd og tar bort håpet om bedring». Linn Breen Herner — psykologspesialist ved S-BUP, Oslo universitetssykehus Rikshospitalet — skriver at anbefalingene om aktivitet er «preget av at pasienten må passe på, følge med, regulere ned», at dette gir en «negativ forventning til utfall av intervensjonen (nocebo)», og etterspør eksplisitt at «biopsykososial forståelse, som er et anerkjent rammeverk globalt i arbeidet med pasientgruppen», burde vært tydeligere vektlagt. Peter Prydz skriver at «teksten legger generelt for mye vekt på å unngå belastninger» og at «rehabiliteringsperspektivet med sikte på bedring og tilfriskning er for lite vektlagt». Han legger til at han «beklager» dissensen ettersom han «opplever at vi ble hørt på områder som angår allmennlegenes oppdrag» — en formulering som antyder at dissensen er begrenset til de delene der han ikke fikk gjennomslag, ikke en total avvisning av prosessen.</p>
+      <p><em>De fire faglige dissensene</em> er nå alle offentliggjort og er nær identiske. Ingjerd Helene Jøssang skriver at teksten «legger totalt sett for mye vekt på å unngå belastninger» og at «rehabiliteringsperspektivet med sikte på bedring og tilfriskning er for lite». Tom Farmen Nerli — spesialist ved Kysthospitalet Stavern og medlem av styringskomitéen i Wyllers SIPCOV-studie (<a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>) — skriver at veilederen «vil ha en noceboeffekt fordi den indirekte oppfordrer til unngåelsesatferd og tar bort håpet om bedring». Linn Breen Herner — psykologspesialist ved S-BUP, Oslo universitetssykehus Rikshospitalet — skriver at anbefalingene om aktivitet er «preget av at pasienten må passe på, følge med, regulere ned», at dette gir en «negativ forventning til utfall av intervensjonen (nocebo)», og etterspør eksplisitt at «biopsykososial forståelse, som er et anerkjent rammeverk globalt i arbeidet med pasientgruppen», burde vært tydeligere vektlagt. Peter Prydz skriver at «teksten legger generelt for mye vekt på å unngå belastninger» og at «rehabiliteringsperspektivet med sikte på bedring og tilfriskning er for lite vektlagt». Han legger til at han «beklager» dissensen ettersom han «opplever at vi ble hørt på områder som angår allmennlegenes oppdrag» — en formulering som antyder at dissensen er begrenset til de delene der han ikke fikk gjennomslag, ikke en total avvisning av prosessen.</p>
 
       <p><em>De tre brukerrepresentantdissensene</em> peker i motsatt retning med konkret faglig begrunnelse. Trude Schei (ME-foreningen) dokumenterer at retningslinjens vage formuleringer er direkte skadelige i rettslig sammenheng — NAV har tidligere argumentert at alle behandlinger nevnt i eksisterende veileder skal være forsøkt, og at forverring etter behandling ikke er realistisk. En ny retningslinje i samme form vil gi NAV samme tolkningsrom. Schei krever at retningslinjen operasjonaliserer PEM og skiller tydelig mellom ME/CFS og utmattelse uten PEM i behandlingsrådene. Tanja Thorsen (ME-foreldrene) dokumenterer at Helsedirektoratet ved arbeidsgruppens oppstart forespeilet to separate kliniske løp — ett for ME/CFS etter strenge kriterier, ett for langvarig utmattelse uten PEM — og at dette ikke er realisert. Hun påpeker at studier NICE vurderer som lav eller svært lav kvalitet, er vurdert som middels kvalitet i høringsutkastet uten at avviket er begrunnet. Carina Mørch-Storstein (Norsk Covidforening) identifiserer ni konkrete svakheter, konkluderer med at utkastet «mangler faglig presisjon, er ikke i tråd med internasjonale standarder og ivaretar ikke pasientsikkerheten for personer med postviral sykdom», og at «enkelte anbefalinger er faglig feil eller potensielt skadelige» for pasienter med PEM og autonom dysfunksjon.</p>
 
@@ -1973,6 +1986,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <p>Kapittelet «Kronisk utmattelsessyndrom» forfattet av Helene Gjone og Stein Førde (publisert 21. mars 2019 av Den norske legeforening / Norsk barne- og ungdomspsykiatrisk forening) er den normative kliniske standarden for norsk barnepraksis. Kapittelet representerer ikke én leges personlige syn — det er fagforeningens offisielle retningslinje, gjeldende for alle spesialister i barne- og ungdomspsykiatri i Norge.</p>
 
       <p>Innholdet gjenspeiler det biopsykososiale rammeverket punkt for punkt. Teorireferansene er Wyller 2009 (sustained arousal, ref [17]) og Wyller 2008 (sympatikusaktivering, ref [22]). Brurberg og Flottorp (FHI) er kilden for diagnosekriterikritikken (ref [5]). Crawley et al. (2018) — barnestudien som National Institute for Health and Care Excellence (NICE) eksplisitt fraråder å bruke som grunnlag for generaliserte LP-anbefalinger — er den eneste evidenskilden for Lightning Process (ref [30]), og Lightning Process omtales positivt: «Flere beskrives å ha god nytte av dette».</p>
+
+      <p>Den metodiske historien bak Crawley et al. (2018) er dokumentert av David Tuller, DrPH (Senior Fellow in Public Health and Journalism, University of California, Berkeley) i en korrespondanse med NAFKAM-leder Miek Jong som ble offentliggjort via FOI-krav i 2022. Studien ble gjennomført med outcome-swapping etter at data var samlet inn fra over halvparten av deltakerne: det opprinnelige primærutfallet — skoleoppmøte ved seks måneder, et objektivt mål med nullresultat — ble byttet ut med selvrapportert fysisk funksjon, som ga positive resultater. Tidsskriftet <em>Archives of Disease in Childhood</em> publiserte en 3 000 ord lang korreksjon og revidert versjon med identiske konklusjoner, fremfor tilbaketrekking — forsvart av et 1 000 ord langt redaksjonelt notat. Et etterfølgende brev til BMJ-redaktør Fiona Godlee ble signert av over 70 eksperter fra Harvard, Columbia, UCL og Berkeley. Dette er den samme studien som brukes som evidensgrunnlag i Flottorps sakkyndigerklæring til Gulating lagmannsrett (februar 2026) og i FHIs kunnskapsgrunnlag for 2026-retningslinjen — begge steder uten omtale av korreksjonsprosessen.</p>
 
       <p>Prognosen som formidles er systematisk optimistisk: Norris et al. (2017) brukes til å si at 75 prosent av 16-åringer med ME/CFS ikke lenger er syke ved 18 år. Krilow et al.: 43 prosent friske, 52 prosent bedret. Disse estimatene er hentet fra studier med Oxfordkriterier eller CDC-kriterier — ikke Canadakriterier med obligatorisk PEM. De er ikke konsistente med Kielland og Liu (2025), der registerdata på 8 485 norske ME/CFS-pasienter viser 95 prosent uten bedring over tre år.</p>
 
@@ -2049,7 +2064,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <p>Reme innledet Landmarks fraværende foredrag med en presentasjon av henne som person — ME-diagnose 2004–2007, bedring via Lightning Process, LP-instruktør siden 2008:</p>
 
       <blockquote>
-        <p>«Hun hadde selv diagnosen ME/CFS fra 2004 til 2007, var alvorlig syk og sengeliggende, og ble frisk ved å delta på et kurs i Lightning Process. [...] Hun har holdt omtrent 300 kurs med til sammen rundt 2 000 deltakere.»</p>
+        <p>«Hun hadde selv diagnosen ME/CFS fra 2004 til 2007, var alvorlig syk og sengeliggende, og ble frisk ved å delta på et kurs i Lightning Process. [...] Hun har holdt omtrent ~300 kurs med til sammen ~2 000 deltakere.»</p>
         <cite>Reme, presenterer Landmark, RN-seminar, 02:48:24 og 02:49:04</cite>
       </blockquote>
 
@@ -2091,7 +2106,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <div class="panel-section" id="lp-studien" data-sec="lp-studien">
 
-      <p>Kjernen i Landmarks ph.d.-arbeid er en randomisert kontrollert studie registrert på ClinicalTrials.gov (Unique Protocol ID: 394844): «A 3-day Course for Adults With Chronic Fatigue Syndrome/Myalgic Encephalopathy (CFS/ME): a Randomized Controlled Trial». Studien er ledet av professor Leif Edward Ottesen Kennair, Institutt for psykologi, NTNU. Reme, Wyller og Per Magnus er også involvert i studien — Per Magnus sendte i 2019 brev til Helsedirektoratet og ba dem støtte studien, hadde først en rådgivende rolle og er nå i monitoreringskomiteen etter at studien mistet etisk godkjenning og måtte re-søkes. Kennair er psykolog med bred publisering innen evolusjonspsykologi og kognitiv atferdsterapi. Han har ingen kjent klinisk bakgrunn i ME/CFS-feltet utover denne studien. Landmark er opplistet som navngitt kontaktperson — hun er dermed simultant PI-kontakt, kommersiell LP-instruktør og ph.d.-kandidat som evaluerer sin egen intervensjon.</p>
+      <p>Kjernen i Landmarks ph.d.-arbeid er en randomisert kontrollert studie registrert på ClinicalTrials.gov (<a href="https://clinicaltrials.gov/study/NCT05236465" target="_blank">NCT05236465</a>): «A 3-day Course for Adults With Chronic Fatigue Syndrome/Myalgic Encephalopathy (CFS/ME): a Randomized Controlled Trial». Studien er ledet av professor Leif Edward Ottesen Kennair, Institutt for psykologi, NTNU. Reme, Wyller og Per Magnus er også involvert i studien — Per Magnus sendte i 2019 brev til Helsedirektoratet og ba dem støtte studien, hadde først en rådgivende rolle og er nå i monitoreringskomiteen etter at studien mistet etisk godkjenning og måtte re-søkes. Kennair er psykolog med bred publisering innen evolusjonspsykologi og kognitiv atferdsterapi. Han har ingen kjent klinisk bakgrunn i ME/CFS-feltet utover denne studien. Landmark er opplistet som navngitt kontaktperson — hun er dermed simultant PI-kontakt, kommersiell LP-instruktør og ph.d.-kandidat som evaluerer sin egen intervensjon.</p>
 
       <p>Studien ble første gang registrert 4. februar 2022. Opprinnelig estimert primærfullføring var mars 2024, total fullføring mars 2026. Per siste oppdatering (november 2025) er begge datoene vesentlig forskjøvet: primærfullføring januar 2027, total fullføring desember 2028. Studien er aktivt rekrutterende. På Recovery Norge-seminaret høsten 2025 presenterte Reme følgende på Landmarks vegne:</p>
 
@@ -2248,7 +2263,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <thead><tr><th>Finansiør</th><th>År</th><th>Beløp</th><th>Prosjekt</th><th>Leder</th><th>Rammeverk</th></tr></thead>
         <tbody>
           <tr><td>Forskningsrådet</td><td>2020</td><td>11,9 mill. kr</td><td>Immunologiske sykdomsmekanismer ved CFS/ME</td><td>Wyller</td><td>Biopsykososialt</td></tr>
-          <tr><td>KLINBEFORSK</td><td>2026</td><td>25 mill. kr</td><td>REHAB-FATIGUE / MINIRICO</td><td>Wyller (faglig leder) · Pedersen (prosjektgruppe, NKT)</td><td>Biopsykososialt</td></tr>
+          <tr><td>KLINBEFORSK</td><td>2026</td><td>25 mill. kr</td><td>REHAB-FATIGUE / MINIRICO</td><td>Wyller (PI) · Pedersen (prosjektgruppe, NKT)</td><td>Biopsykososialt</td></tr>
           <tr><td>Helse Sør-Øst RHF</td><td>2026</td><td>2,5 mill. kr (år 1, treårig — kan øke)</td><td>MBRT for barn og unge</td><td>Maria Pedersen (NKT / Ahus)</td><td>Biopsykososialt</td></tr>
           <tr><td>Stiftelsen DAM</td><td>2021</td><td>Ukjent</td><td>LoTECA (via Recovery Norge)</td><td>Selvakumar</td><td>Biopsykososialt</td></tr>
           <tr><td>Helsedirektoratet/NAV</td><td>2023</td><td>Ukjent</td><td>LP-RCT (via NTNU)</td><td>Landmark/Kennair</td><td>Biopsykososialt</td></tr>
@@ -2544,13 +2559,13 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
     <div class="panel" id="p4">
       <div class="panel-subnav">
-        <a href="#koder">Kodeøkosystemet</a>
-        <a href="#reg-fortrengning">Diagnostisk fortrengning</a>
-        <a href="#reg-usynlig">Det usynlige gapet</a>
+        <a href="#koder">Koder</a>
+        <a href="#reg-fortrengning">Fortrengning</a>
+        <a href="#reg-usynlig">Usynlig gap</a>
         <a href="#reg-kielland">Kielland & Liu</a>
         <a href="#reg-fafo">Fafo/SINTEF</a>
-        <a href="#reg-konsekvenser">Systemkonsekvenser</a>
-        <a href="#reg-paradoks">Tre paradokser</a>
+        <a href="#reg-konsekvenser">Konsekvenser</a>
+        <a href="#reg-paradoks">Paradokser</a>
         <a href="#reg-flottorp">Gulating-dommen</a>
       </div>
       
@@ -2576,43 +2591,43 @@ td:first-child { font-weight: 500; color: var(--ink); }
           <tbody>
             <tr style="border-bottom:1px solid var(--rule);">
               <td style="padding:9px 12px;font-weight:500;">ICD-10</td>
-              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;color:var(--reg);">G93.3</td>
+              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;">G93.3</td>
               <td style="padding:9px 12px;">Post-viral fatigue syndrome (ME/CFS)</td>
               <td style="padding:9px 12px;">Spesialisthelsetjenesten</td>
               <td style="padding:9px 12px;">NPR</td>
-              <td style="padding:9px 12px;color:var(--bio);">Nevrologisk — kapittel VI</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--rule);background:var(--psyk-light);">
-              <td style="padding:9px 12px;font-weight:500;">ICD-10</td>
-              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;color:var(--psyk);">F48.0</td>
-              <td style="padding:9px 12px;">Nevrasteni</td>
-              <td style="padding:9px 12px;">Spesialisthelsetjenesten</td>
-              <td style="padding:9px 12px;">NPR</td>
-              <td style="padding:9px 12px;color:var(--psyk);">Psykisk — kapittel V (alternativkode)</td>
+              <td style="padding:9px 12px;">Nevrologisk — kapittel VI</td>
             </tr>
             <tr style="border-bottom:1px solid var(--rule);">
               <td style="padding:9px 12px;font-weight:500;">ICD-10</td>
-              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;color:var(--ink-mid);">R53</td>
+              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;">F48.0</td>
+              <td style="padding:9px 12px;">Nevrasteni</td>
+              <td style="padding:9px 12px;">Spesialisthelsetjenesten</td>
+              <td style="padding:9px 12px;">NPR</td>
+              <td style="padding:9px 12px;">Psykisk — kapittel V (alternativkode)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:9px 12px;font-weight:500;">ICD-10</td>
+              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;">R53</td>
               <td style="padding:9px 12px;">Uvelhet og tretthet (symptomkode)</td>
               <td style="padding:9px 12px;">Spesialisthelsetjenesten</td>
               <td style="padding:9px 12px;">NPR</td>
-              <td style="padding:9px 12px;color:var(--ink-light);">Ingen — symptom uten etiologi</td>
+              <td style="padding:9px 12px;">Ingen — symptom uten etiologi</td>
             </tr>
-            <tr style="border-bottom:1px solid var(--rule);background:var(--paper-mid);">
+            <tr style="border-bottom:1px solid var(--rule);">
               <td style="padding:9px 12px;font-weight:500;">ICPC-2</td>
-              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;color:var(--ink-mid);">A04</td>
+              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;">A04</td>
               <td style="padding:9px 12px;">Slapphet/tretthet</td>
               <td style="padding:9px 12px;">Fastleger</td>
               <td style="padding:9px 12px;">KUHR</td>
-              <td style="padding:9px 12px;color:var(--ink-light);">Ingen — ME/CFS-kode finnes ikke i ICPC-2</td>
+              <td style="padding:9px 12px;">Ingen — ME/CFS-kode finnes ikke i ICPC-2</td>
             </tr>
-            <tr style="border-bottom:2px solid var(--rule);background:var(--bio-light);">
+            <tr style="border-bottom:2px solid var(--rule);">
               <td style="padding:9px 12px;font-weight:500;">ICD-11</td>
-              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;color:var(--bio);">8E49</td>
+              <td style="padding:9px 12px;font-family:var(--mono);font-size:13px;">8E49</td>
               <td style="padding:9px 12px;">ME/CFS</td>
               <td style="padding:9px 12px;">Innføres Norge ca. 2028–29</td>
               <td style="padding:9px 12px;">NPR (fremtidig)</td>
-              <td style="padding:9px 12px;color:var(--bio);">Nevrologisk — F48.0 fjernet som alternativ</td>
+              <td style="padding:9px 12px;">Nevrologisk — F48.0 fjernet som alternativ</td>
             </tr>
           </tbody>
         </table>
@@ -2630,29 +2645,100 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <div class="chart-box">
         <div class="chart-title">G93.3 (ME/CFS) vs. R53 (uvelhet/tretthet) — norsk spesialisthelsetjeneste 2017–2025</div>
-        <div class="hbar-chart">
-          <div class="hbar-row"><div class="hbar-year">2017</div><div class="hbar-track"><div class="hbar-fill hbar-g93" style="width:59.3%"><span class="hbar-val" style="color:#fff;">3,854</span></div></div><div class="hbar-num" style="color:var(--reg);">G93.3</div></div>
-          <div class="hbar-row"><div class="hbar-year"></div><div class="hbar-track"><div class="hbar-fill hbar-r53" style="width:73.0%"><span class="hbar-val" style="color:#fff;">4,747</span></div></div><div class="hbar-num" style="color:var(--psyk-mid);">R53</div></div>
-          <div class="hbar-row"><div class="hbar-spacer" style="grid-column:1/-1;"></div></div>
-          <div class="hbar-row"><div class="hbar-year">2019</div><div class="hbar-track"><div class="hbar-fill hbar-g93" style="width:51.1%"><span class="hbar-val" style="color:#fff;">3,321</span></div></div><div class="hbar-num" style="color:var(--reg);">G93.3</div></div>
-          <div class="hbar-row"><div class="hbar-year"></div><div class="hbar-track"><div class="hbar-fill hbar-r53" style="width:77.7%"><span class="hbar-val" style="color:#fff;">5,048</span></div></div><div class="hbar-num" style="color:var(--psyk-mid);">R53</div></div>
-          <div class="hbar-row"><div class="hbar-spacer" style="grid-column:1/-1;"></div></div>
-          <div class="hbar-row"><div class="hbar-year">2021</div><div class="hbar-track"><div class="hbar-fill hbar-g93" style="width:42.7%"><span class="hbar-val" style="color:#fff;">2,775</span></div></div><div class="hbar-num" style="color:var(--reg);">G93.3</div></div>
-          <div class="hbar-row"><div class="hbar-year"></div><div class="hbar-track"><div class="hbar-fill hbar-r53" style="width:82.3%"><span class="hbar-val" style="color:#fff;">5,350</span></div></div><div class="hbar-num" style="color:var(--psyk-mid);">R53</div></div>
-          <div class="hbar-row"><div class="hbar-spacer" style="grid-column:1/-1;"></div></div>
-          <div class="hbar-row"><div class="hbar-year">2023</div><div class="hbar-track"><div class="hbar-fill hbar-g93" style="width:39.1%"><span class="hbar-val" style="color:#fff;">2,543</span></div></div><div class="hbar-num" style="color:var(--reg);">G93.3</div></div>
-          <div class="hbar-row"><div class="hbar-year"></div><div class="hbar-track"><div class="hbar-fill hbar-r53" style="width:89.4%"><span class="hbar-val" style="color:#fff;">5,812</span></div></div><div class="hbar-num" style="color:var(--psyk-mid);">R53</div></div>
-          <div class="hbar-row"><div class="hbar-spacer" style="grid-column:1/-1;"></div></div>
-          <div class="hbar-row"><div class="hbar-year">2025</div><div class="hbar-track"><div class="hbar-fill hbar-g93" style="width:37.3%"><span class="hbar-val" style="color:#fff;">2,426</span></div></div><div class="hbar-num" style="color:var(--reg);">G93.3</div></div>
-          <div class="hbar-row"><div class="hbar-year"></div><div class="hbar-track"><div class="hbar-fill hbar-r53" style="width:93.2%"><span class="hbar-val" style="color:#fff;">6,061</span></div></div><div class="hbar-num" style="color:var(--psyk-mid);">R53</div></div>
-          <div class="hbar-row"><div class="hbar-spacer" style="grid-column:1/-1;"></div></div>
+        <div style="position:relative;height:260px;">
+          <canvas id="divergeChart"></canvas>
         </div>
         <div class="bar-legend" style="margin-top:14px; padding-top:12px; border-top:1px solid var(--rule);">
           <div class="legend-item"><div class="legend-dot" style="background:var(--reg)"></div><strong>G93.3 ME/CFS:</strong>&nbsp;3 854 (2017) → 2 426 (2025) &nbsp;−37 %</div>
           <div class="legend-item"><div class="legend-dot" style="background:var(--psyk-mid);opacity:0.8"></div><strong>R53 uvelhet/tretthet:</strong>&nbsp;4 747 (2017) → 6 061 (2025) &nbsp;+28 %</div>
         </div>
-        <div style="margin-top:8px;font-size:12px;color:var(--ink-light);font-family:var(--mono);">Kilde: Norsk pasientregister (NPR) via FHI. Mellomliggende år (2018, 2020, 2022, 2024) er lineært interpolert.</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--ink-light);font-family:var(--mono);">Kilde: Norsk pasientregister (NPR) via FHI. Kun år med tilgjengelige NPR-tall er plottet (2017, 2019, 2021, 2023, 2025).</div>
       </div>
+      <script>
+      (function() {
+        function initDivergeChart() {
+          var el = document.getElementById('divergeChart');
+          if (!el || !window.Chart) return;
+          var style = getComputedStyle(document.documentElement);
+          var reg   = style.getPropertyValue('--reg').trim()   || '#1a4a7a';
+          var psyk  = style.getPropertyValue('--psyk-mid').trim() || '#c44a32';
+          var rule  = style.getPropertyValue('--rule').trim()  || '#d8d0c4';
+          var ink   = style.getPropertyValue('--ink-light').trim() || '#888';
+          var paper = style.getPropertyValue('--paper').trim() || '#faf8f4';
+          new Chart(el, {
+            type: 'line',
+            data: {
+              labels: [2017, 2019, 2021, 2023, 2025],
+              datasets: [
+                {
+                  label: 'G93.3 ME/CFS',
+                  data: [3854, 3321, 2775, 2543, 2426],
+                  borderColor: reg,
+                  backgroundColor: reg,
+                  borderWidth: 2.5,
+                  pointRadius: 5,
+                  pointHoverRadius: 7,
+                  tension: 0.3
+                },
+                {
+                  label: 'R53 uvelhet/tretthet',
+                  data: [4747, 5048, 5350, 5812, 6061],
+                  borderColor: psyk,
+                  backgroundColor: psyk,
+                  borderWidth: 2.5,
+                  pointRadius: 5,
+                  pointHoverRadius: 7,
+                  tension: 0.3
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              interaction: { mode: 'index', intersect: false },
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  backgroundColor: '#fff',
+                  borderColor: rule,
+                  borderWidth: 1,
+                  titleColor: '#1c1c1c',
+                  bodyColor: '#444',
+                  titleFont: { family: "'DM Mono', monospace", size: 11 },
+                  bodyFont: { family: "'DM Mono', monospace", size: 12 },
+                  callbacks: {
+                    label: function(ctx) {
+                      return ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString('nb-NO');
+                    }
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  grid: { color: rule },
+                  ticks: { color: ink, font: { family: "'DM Mono', monospace", size: 11 } }
+                },
+                y: {
+                  min: 1500,
+                  max: 7000,
+                  grid: { color: rule },
+                  ticks: {
+                    color: ink,
+                    font: { family: "'DM Mono', monospace", size: 11 },
+                    callback: function(v) { return v.toLocaleString('nb-NO'); }
+                  }
+                }
+              }
+            }
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initDivergeChart);
+        } else {
+          initDivergeChart();
+        }
+      })();
+      </script>
 
       <p>Antall pasienter med G93.3-koden falt fra 3 854 i 2017 til 2 426 i 2025 — en nedgang på 37 prosent over åtte år. I samme periode steg R53 fra 4 747 til 6 061. I tillegg registreres F48.0 (nevrasteni, den psykosomatiske alternativkoden) for 1 205 pasienter — og U09.9 (post-covid-tilstand) for bare 66 pasienter, til tross for at FHIs egne data (White et al., januar 2026) viser 205 000 ekstra fastlegekonsultasjoner for utmattelse i 2024 alene. Bildet er konsistent: pasienter beveger seg fra en biologisk kode (G93.3) mot symptomkoder (R53), psykosomatiske koder (F48.0), eller registreres overhodet ikke (U09.9). Disse bevegelsene er ikke uavhengige. Pasienter forsvinner fra én kode og dukker opp i en annen. Det er ikke bedring. Det er diagnostisk fortrengning — pasienter som burde hatt en diagnose med etiologisk innhold, kodes i stedet med en symptomkode som ikke muliggjør epidemiologisk oppfølging, rettighetsvurdering eller forskning.</p>
 
@@ -2674,34 +2760,39 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div style="margin:20px 0;background:var(--paper-mid);border-radius:4px;padding:16px 20px;">
         <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:14px;">Registrert vs. reell sykdomsbyrde — norsk ME/CFS-populasjon 2025</div>
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="display:grid;grid-template-columns:220px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
+          <div style="display:grid;grid-template-columns:240px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
             <div style="color:var(--reg);font-weight:500;">G93.3 ME/CFS · NPR</div>
-            <div style="background:var(--reg);height:10px;width:12%;border-radius:2px;"></div>
+            <div style="background:var(--reg);height:10px;width:5.4%;border-radius:2px;"></div>
             <div style="font-family:var(--mono);font-size:13px;color:var(--reg);font-weight:600;">2 426</div>
           </div>
-          <div style="display:grid;grid-template-columns:220px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
+          <div style="display:grid;grid-template-columns:240px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
             <div style="color:var(--psyk);font-weight:500;">R53 uvelhet/tretthet · NPR</div>
-            <div style="background:var(--psyk-mid);height:10px;width:30%;border-radius:2px;opacity:0.7;"></div>
+            <div style="background:var(--psyk-mid);height:10px;width:13.5%;border-radius:2px;opacity:0.8;"></div>
             <div style="font-family:var(--mono);font-size:13px;color:var(--psyk);">6 061</div>
           </div>
-          <div style="display:grid;grid-template-columns:220px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
+          <div style="display:grid;grid-template-columns:240px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
             <div style="color:var(--psyk);font-weight:500;">F48.0 nevrasteni · NPR</div>
-            <div style="background:var(--psyk-mid);height:10px;width:6%;border-radius:2px;opacity:0.5;"></div>
+            <div style="background:var(--psyk-mid);height:10px;width:2.7%;border-radius:2px;opacity:0.5;"></div>
             <div style="font-family:var(--mono);font-size:13px;color:var(--psyk);">1 205</div>
           </div>
-          <div style="display:grid;grid-template-columns:220px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
+          <div style="display:grid;grid-template-columns:240px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
             <div style="color:var(--ink-light);font-weight:500;">U09.9 post-covid · NPR</div>
-            <div style="background:var(--ink-light);height:10px;width:0.4%;border-radius:2px;min-width:4px;"></div>
+            <div style="background:var(--ink-light);height:10px;width:0.1%;border-radius:2px;min-width:4px;"></div>
             <div style="font-family:var(--mono);font-size:13px;color:var(--ink-light);">66</div>
           </div>
           <div style="border-top:1px solid var(--rule);margin:4px 0;"></div>
-          <div style="display:grid;grid-template-columns:220px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
-            <div style="color:var(--psyk);font-weight:600;">Estimert reell populasjon</div>
-            <div style="background:var(--psyk);height:10px;width:100%;border-radius:2px;opacity:0.25;"></div>
-            <div style="font-family:var(--mono);font-size:13px;color:var(--psyk);font-weight:600;">~20 000</div>
+          <div style="display:grid;grid-template-columns:240px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
+            <div style="color:var(--ink-mid);font-weight:500;">Hdir. anslag (nedre grense)</div>
+            <div style="background:var(--ink-mid);height:10px;width:44.4%;border-radius:2px;opacity:0.2;"></div>
+            <div style="font-family:var(--mono);font-size:13px;color:var(--ink-mid);">~20 000</div>
+          </div>
+          <div style="display:grid;grid-template-columns:240px 1fr 90px;align-items:center;gap:12px;font-size:14px;">
+            <div style="color:var(--ink-mid);font-weight:600;">ME-foreningen / int. prevalens</div>
+            <div style="background:var(--ink-mid);height:10px;width:100%;border-radius:2px;opacity:0.12;"></div>
+            <div style="font-family:var(--mono);font-size:13px;color:var(--ink-mid);font-weight:600;">~45 000</div>
           </div>
         </div>
-        <div style="margin-top:12px;font-size:12px;color:var(--ink-light);">Kilder: Norsk pasientregister via FHI API (tall for 2025). U09.9-tallet reflekterer den dramatiske underregistreringen av post-covid. Populasjonsestimat: Helsedirektoratets eget anslag 10 000–20 000; ME-foreningen viser til internasjonale studier med 0,75–0,8 % prevalens (~45 000 i Norge). Ingen av tallene er registertellet.</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--ink-light);">Kilde: NPR via FHI API (2025). Skala mot ~45 000 (ME-foreningens estimat, 0,75–0,8 % prevalens). Hdir.s eget anslag er 10 000–20 000. Ingen av populasjonstallene er registertellet.</div>
       </div>
 
       <div class="method-note">
@@ -2731,17 +2822,17 @@ td:first-child { font-weight: 500; color: var(--ink); }
           <tbody>
             <tr>
               <td>Forverring</td>
-              <td style="text-align:right;font-family:var(--mono);color:var(--psyk);">38 %</td>
+              <td style="text-align:right;font-family:var(--mono);font-size:13px;">38 %</td>
               <td>Lavere inntekt og/eller høyere offentlige overføringer etter 3 år</td>
             </tr>
             <tr>
               <td>Ingen bedring</td>
-              <td style="text-align:right;font-family:var(--mono);color:var(--ink-mid);">57 %</td>
+              <td style="text-align:right;font-family:var(--mono);font-size:13px;">57 %</td>
               <td>Inntekt og overføringer stabilt på lavt nivå</td>
             </tr>
             <tr>
               <td>Noen form for bedring</td>
-              <td style="text-align:right;font-family:var(--mono);color:var(--bio);">5 %</td>
+              <td style="text-align:right;font-family:var(--mono);font-size:13px;">5 %</td>
               <td>Av disse: kun 3 av 733 med svært lav inntekt nådde medianlønn</td>
             </tr>
           </tbody>
@@ -3142,7 +3233,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <li><strong>Edwards J</strong> <a href="https://doi.org/10.1177/1359105317700886" target="_blank" style="color:var(--accent)">PACE team response shows a disregard for the principles of science</a> <em>J Health Psychol</em>. 2017;22(9):1155–1158. [«Makes the PACE trial a non-starter in the eyes of any physician or clinical pharmacologist familiar with problems of systematic bias in trial execution»]</li>
         <li><strong>Kongsnes BEB et al</strong> <a href="https://doi.org/10.1080/10253890.2026.2638303" target="_blank" style="color:var(--accent)">The association between hair cortisol levels, Epstein-Barr virus infections and chronic fatigue in adolescents</a> <em>Stress</em>. 2026;29(1):2638303.</li>
         <li><strong>Fluge Ø, Mella O, Tronstad KJ.</strong> <a href="https://www.forskersonen.no/kronikk-me-medisin-og-helse/retningslinjer-for-me-bommer-pa-sykdomsforstaelsen/2644846" target="_blank" style="color:var(--accent)">Retningslinjer for ME bommer på sykdomsforståelsen.</a> Forskersonen/forskning.no; april 2026.</li>
-        <li><strong>Wyller VBB et al.</strong> Short-time behavioural intervention in post-Covid syndrome (SIPCOV): study protocol. ClinicalTrials.gov NCT05196451, februar 2022. <a href="https://cdn.clinicaltrials.gov/large-docs/51/NCT05196451/Prot_000.pdf" target="_blank" style="color:var(--accent)">Protokoll PDF</a> — Styringskomité s. 7–8.</li>
+        <li><strong>Wyller VBB, Rørtveit G, Flottorp SA, Reme SE, Jacobsen HB, Jordbru A et al.</strong> <a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank" style="color:var(--accent)">Short-time behavioural intervention in post-Covid syndrome (SIPCOV): a pragmatic randomised controlled trial.</a> <em>ClinicalTrials.gov</em> <a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>; 21. februar 2022. <a href="https://cdn.clinicaltrials.gov/large-docs/51/NCT05196451/Prot_000.pdf" target="_blank" style="color:var(--accent)">Protokoll PDF</a> [Styringskomité: Wyller (PI), Rørtveit, Flottorp, Reme, Jacobsen, Jordbru, Horsdal, Aasland, Nerli — protokoll s. 7–8]</li>
+        <li><strong>Nerli TF, Selvakumar J, Cvejic E, Heier I, Pedersen M, Johnsen TL, Wyller VBB.</strong> <a href="https://doi.org/10.1001/jamanetworkopen.2024.50744" target="_blank" style="color:var(--accent)">Brief outpatient rehabilitation program for post–COVID-19 condition: a randomized clinical trial.</a> <em>JAMA Netw Open</em>. 2024;7(12):e2450744. [Eneste norske RCT i høringsutkastets evidensgrunnlag. Primærutfallet nådde ikke pre-spesifisert klinisk signifikansgrense (10 poeng SF-36-PFS). Nerli er arbeidsgruppedeltaker i Helsedirektoratets retningslinjearbeid 2024–26; Wyller er siste og overordnet medforfatter]</li>
         <li><strong>Landmark L.</strong> <a href="https://www.forskersonen.no/me-medisin-og-helse-psykologi/me-er-diagnosen-som-ikke-kan-motbevises/2648032" target="_blank" style="color:var(--accent)">ME er diagnosen som ikke kan motbevises.</a> Forskersonen/forskning.no; 10. april 2026.</li>
       </ul>
       </div><!-- /ps ref-psyk -->
@@ -3271,13 +3363,340 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <li><strong>[Debattinnlegg]</strong> <a href="https://www.forskersonen.no/covid19-debattinnlegg-me/det-er-pa-tide-a-ta-me-diagnosen-pa-alvor/2634924" target="_blank" style="color:var(--accent)">Det er på tide å ta ME-diagnosen på alvor.</a> Forskersonen. Mars 2026.</li>
         <li><strong>[Debattinnlegg]</strong> <a href="https://www.forskersonen.no/debattinnlegg-me-medisin-og-helse/a-avskaffe-me-diagnosen-loser-ingenting/2634880" target="_blank" style="color:var(--accent)">Å avskaffe ME-diagnosen løser ingenting.</a> Forskersonen. Mars 2026.</li>
         <li><strong>[Debattinnlegg]</strong> <a href="https://www.forskersonen.no/debattinnlegg-me-meninger/angrepet-pa-me-diagnosen-er-et-gufs-fra-fortiden/2641057" target="_blank" style="color:var(--accent)">Angrepet på ME-diagnosen er et gufs fra fortiden.</a> Forskersonen. Mars 2026.</li>
-      </ul>
+      
+        <li><strong>Per Magnus.</strong> Brev til Helsedirektoratet med anmodning om støtte til Landmarks LP-RCT. Folkehelseinstituttet, 2019. [Ikke offentlig publisert. Omtalt i LP-RCT-korrespondanse. Per Magnus hadde rådgivende rolle, deretter monitoreringskomité, etter at studien mistet etisk godkjenning]</li></ul>
       </div><!-- /ps ref-debatt -->
-      <div class="panel-section" id="ref-tuller" data-sec="ref-tuller"><div class="source-group-label">Internasjonal metodekritikk — David Tuller / Trial by Error</div>
+      <div class="panel-section" id="ref-tuller" data-sec="ref-tuller">
+      <div class="source-group-label">Internasjonal metodekritikk — David Tuller / Trial by Error</div>
+
+      <!-- TULLER NODEKART -->
+      <div style="margin: 18px 0 28px; background: var(--paper-mid); border-radius: 6px; padding: 4px; position: relative;">
+        <div id="tuller-net-legend" style="font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-light);padding:12px 16px 8px;display:flex;gap:20px;flex-wrap:wrap;">
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#c44a32;margin-right:5px;"></span>Norsk nettverk</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1a4a7a;margin-right:5px;"></span>Ekstern kritiker</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#555;margin-right:5px;"></span>Institusjon / prosess</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1a6b4a;margin-right:5px;"></span>Faglig motstand</span>
+        </div>
+        <canvas id="tullerCanvas" style="width:100%;display:block;cursor:grab;border-radius:4px;"></canvas>
+        <div id="tuller-net-tooltip" style="display:none;position:fixed;background:white;border:1px solid #d8d0c4;border-radius:4px;padding:12px 16px;max-width:300px;font-size:13px;line-height:1.5;box-shadow:0 2px 12px rgba(0,0,0,0.15);pointer-events:none;z-index:9999;"></div>
+      </div>
+      <script defer>
+      (function() {
+        const canvas  = document.getElementById('tullerCanvas');
+        const tooltip = document.getElementById('tuller-net-tooltip');
+        let initialized = false;
+        let animId = null;
+
+        function getW() {
+          const direct = canvas.parentElement.offsetWidth;
+          if (direct > 50) return direct - 8;
+          let el = canvas.parentElement.parentElement;
+          while (el && el.offsetWidth === 0) el = el.parentElement;
+          if (!el) return 680;
+          const st = window.getComputedStyle(el);
+          return Math.max(300, el.offsetWidth
+            - (parseFloat(st.paddingLeft)  || 0)
+            - (parseFloat(st.paddingRight) || 0) - 8);
+        }
+
+        function init() {
+          if (initialized) return;
+          const W = getW();
+          if (W < 30) return;
+          initialized = true;
+          build(W);
+        }
+
+        const ro = new ResizeObserver(() => {
+          if (!initialized) { init(); return; }
+          if (animId) cancelAnimationFrame(animId);
+          initialized = false;
+          hideTooltip();
+          setTimeout(init, 30);
+        });
+        ro.observe(canvas.parentElement);
+
+        window.addEventListener('load',       () => setTimeout(init, 80));
+        window.addEventListener('hashchange', () => setTimeout(init, 60));
+
+        let polls = 0;
+        const poll = setInterval(() => {
+          polls++;
+          if (initialized || polls > 60) { clearInterval(poll); return; }
+          if (canvas.offsetWidth > 0) init();
+        }, 150);
+
+        let buildAbort = null;
+
+        const tt = tooltip;
+        let ttNode = null;
+
+        function tierLabel(t) {
+          return { t1:'Norsk nettverk', ext:'Ekstern kritiker', inst:'Institusjon / prosess', mot:'Faglig motstand' }[t] || t;
+        }
+
+        function showTooltip(n, cx, cy) {
+          if (ttNode === n) return;
+          ttNode = n;
+          tt.innerHTML = '<div style="font-size:11px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-light);margin-bottom:4px;">'
+            + tierLabel(n.tier) + '</div>' + n.detail;
+          tt.style.display = 'block';
+          posTooltip(cx, cy);
+        }
+
+        function posTooltip(mx, my) {
+          if (!ttNode) return;
+          const ttW = 300, ttH = tt.offsetHeight || 120;
+          const vw = window.innerWidth, vh = window.innerHeight;
+          let tx = mx + 16, ty = my - 20;
+          if (tx + ttW > vw - 8) tx = mx - ttW - 16;
+          if (ty + ttH > vh - 8) ty = vh - ttH - 8;
+          if (ty < 4) ty = 4;
+          tt.style.left = Math.max(4, tx) + 'px';
+          tt.style.top  = ty + 'px';
+        }
+
+        function hideTooltip() { ttNode = null; tt.style.display = 'none'; }
+
+        function build(W) {
+          if (buildAbort) buildAbort.abort();
+          buildAbort = new AbortController();
+          const sig = buildAbort.signal;
+          const H = Math.min(Math.round(W * 0.68), 520);
+          const dpr = window.devicePixelRatio || 1;
+          canvas.width  = W * dpr;
+          canvas.height = H * dpr;
+          canvas.style.width  = W + 'px';
+          canvas.style.height = H + 'px';
+          canvas._W = W; canvas._H = H;
+          const ctx = canvas.getContext('2d');
+          ctx.scale(dpr, dpr);
+
+          const C = { t1:'#c44a32', ext:'#1a4a7a', inst:'#555555', mot:'#1a6b4a' };
+
+          const nodes = [
+            { id:'tuller',    label:'Tuller',         sub:'UC Berkeley · Trial by Error',      tier:'ext', r:38,
+              detail:'<strong>David Tuller, DrPH</strong><br>Senior Fellow in Public Health and Journalism, UC Berkeley. Dokumenterer norsk CBT/GET/LP-forskning 2018–2026 gjennom Trial by Error-serien på virology.ws. Har dekket NAFKAM-lobbying, NEM-prosessen, LP-RCT, Crawley outcome-swapping og Wyller/Flottorp-nettverkets roller.' },
+            { id:'flottorp',  label:'Flottorp',        sub:'FHI · forskningssjef',              tier:'t1', r:38,
+              detail:'<strong>Signe Flottorp</strong><br>Forskningssjef FHI. Presset NAFKAM-leder Miek Jong til å trekke LP-advarsel fra 2011 og beklage (april 2020). Forsøkte å stoppe NAFKAM-ekspertmøte om LP (feb. 2021). Sendte privat SMS og e-post til NEM-medlem Jo Røislien (mars–april 2022) for å påvirke LP-RCT-godkjenning. Medforfatter Lancet 2022. Sakkyndig Gulating lagmannsrett feb. 2026.' },
+            { id:'wyller',    label:'Wyller',          sub:'Ahus/UiO · COFFI · JAMA 2023',     tier:'t1', r:34,
+              detail:'<strong>Vegard Bruun Wyller</strong><br>Professor UiO, PI SIPCOV. Senior author JAMA Network Open 2023 — studie om long covid hos unge der Recovery Norge var udokumentert brukerorganisasjon og Dam-søker. Medforfatter Lancet 2022. Leder COFFI.' },
+            { id:'nafkam',    label:'NAFKAM / Jong',   sub:'LP-advarsel 2011 · presset 2020',  tier:'inst', r:30,
+              detail:'<strong>NAFKAM</strong> — Nasjonal forskningssenter for alternativ medisin. Leder: Miek Jong. Utstedte LP-advarsel til Helsedirektoratet 2011 basert på pasientrapporter om forverring. Flottorp krevde tilbaketrekking og beklagelse (april 2020). Planlagt ekspertmøte om LP avlyst mai 2021 etter press fra Flottorp-nettverket.' },
+            { id:'nem',       label:'NEM · Røislien',  sub:'etikknemnd · lobbyet apr. 2022',   tier:'inst', r:30,
+              detail:'<strong>NEM</strong> — Nasjonal etisk komité for medisin og helsefag. Jo Røislien: mottok privat SMS fra Flottorp 31. mars 2022 og privat e-post 5. april 2022 — oppfordring om å godkjenne LP-RCT. Røislien var én av 9 som stemte for godkjenning (mot 3). Prosessen ble avdekket via FOI-krav i november 2022.' },
+            { id:'befring',   label:'Befring / Agledahl', sub:'NEM-dissens · «uprofessionell»', tier:'mot', r:28,
+              detail:'<strong>Anne Kjersti Befring</strong> (NEM-nestleder, jurist UiO) og <strong>Kari Milch Agledahl</strong> (NEM-leder): stemte mot LP-RCT-godkjenning i 2022, samme som i 2021-avslaget. Befring karakteriserte Flottorps lobbying som «uprofessionell» og «et uttrykk for nettverksstyring utenfor åpne arenaer» — i en uttalelse til Tuller og Steinkopf desember 2022.' },
+            { id:'johnsen',   label:'Johnsen / Førde', sub:'NTNU/UiT · «stoppe tullet»',       tier:'inst', r:26,
+              detail:'<strong>Roar Johnsen</strong> (prof. em. NTNU) og <strong>Olav Helge Førde</strong> (prof. UiT): kontaktet av Flottorp februar 2021 for å «stoppe dette tullet» med NAFKAMs planlagte ekspertmøte om LP. Johnsen var del av LP-studiens beredskapsgruppe. Dokumentert i FOI-frigjorte e-poster.' },
+            { id:'rn',        label:'Recovery Norge',  sub:'Landmark · Dam · JAMA 2023',       tier:'t1', r:30,
+              detail:'<strong>Recovery Norge</strong> — medgrunnlagt av LP-instruktør Live Landmark (jan. 2018). 126 testimonials på nettstedet, 75 via LP. Oppgitt som brukerorganisasjon og Dam-søker for JAMA Network Open-studien 2023 (Wyller senior author) — ikke deklarert i artikkelen. Tuller avdekket manglende åpenhet (april 2023).' },
+            { id:'lprct',     label:'LP-RCT',          sub:'NCT05236465 · NEM-prosess 2021–22', tier:'inst', r:28,
+              detail:'<strong>LP-RCT</strong> (NCT05236465) — PI: Kennair (NTNU), kontaktperson: Landmark. NEM avslo 2021 pga. interessekonflikter og svakt studiedesign. Re-søknad 2022: godkjent 9 mot 3 etter Flottorps private lobbying. Crawley (Bristol) var samarbeidspartner 2022, fjernet 2025. Opprinnelig fullføring 2026, revidert til des. 2028.' },
+            { id:'crawley',   label:'Crawley',         sub:'Bristol · outcome-swap ADC 2018',  tier:'inst', r:26,
+              detail:'<strong>Esther Crawley</strong> — professor, University of Bristol. Lead investigator, barnestudi LP (ADC 2017/2018, SMILE-studie n=100). Outcome-swapping etter data samlet inn fra >50 % av deltakere: primærutfall byttet fra skoleoppmøte (objektivt, nullresultat) til selvrapportert fysisk funksjon (positivt). ADC publiserte 3 000 ord korreksjon fremfor tilbaketrekking. Brev til BMJ-redaktør Godlee signert av 70+ eksperter. Crawley (Bristol) var samarbeidspartner i norsk LP-RCT frem til 2025.' },
+            { id:'dam',       label:'Dam / JAMA',      sub:'finansiering · udekl. interessekonflikt', tier:'inst', r:26,
+              detail:'<strong>Dam Foundation</strong> — norsk helseforskningsfond. Finansierte JAMA Network Open-studien 2023 (Wyller senior author) om long covid hos unge. Dam-nettside oppgir Recovery Norge som «brukerorganisasjon» for prosjektet — opplysningen er ikke gjengitt i artikkelen. Tuller dokumenterte dette i april 2023.' },
+          ];
+
+          const edges = [
+            {s:'tuller',   t:'flottorp', w:2.5, dash:true},
+            {s:'tuller',   t:'wyller',   w:1.5, dash:true},
+            {s:'tuller',   t:'lprct',    w:1.5, dash:true},
+            {s:'tuller',   t:'crawley',  w:2.0, dash:true},
+            {s:'tuller',   t:'rn',       w:1.5, dash:true},
+            {s:'flottorp', t:'nafkam',   w:2.5},
+            {s:'flottorp', t:'nem',      w:2.5},
+            {s:'flottorp', t:'johnsen',  w:2.0},
+            {s:'flottorp', t:'wyller',   w:2.0},
+            {s:'wyller',   t:'rn',       w:2.0},
+            {s:'wyller',   t:'dam',      w:1.5},
+            {s:'rn',       t:'dam',      w:2.0},
+            {s:'rn',       t:'lprct',    w:1.5, dash:true},
+            {s:'nem',      t:'lprct',    w:2.0},
+            {s:'nem',      t:'befring',  w:1.5},
+            {s:'crawley',  t:'lprct',    w:1.5, dash:true},
+          ];
+
+          const nm = {};
+          nodes.forEach(n => nm[n.id] = n);
+
+          const COLS = 4;
+          const ROWS = Math.ceil(nodes.length / COLS);
+          nodes.forEach((n, i) => {
+            n.x  = W * ((i % COLS + 0.5) / COLS) + (Math.random()-.5) * W/COLS * 0.3;
+            n.y  = H * ((Math.floor(i/COLS) + 0.5) / ROWS) + (Math.random()-.5) * H/ROWS * 0.3;
+            n.vx = 0; n.vy = 0;
+          });
+
+          let tick = 0;
+          const MAX = 700;
+          let dragging = null, hovered = null;
+
+          function step() {
+            tick++;
+            const a = Math.max(0.004, 0.55 * Math.exp(-tick / 130));
+            for (let i = 0; i < nodes.length; i++) {
+              for (let j = i+1; j < nodes.length; j++) {
+                const A = nodes[i], B = nodes[j];
+                const dx = B.x-A.x, dy = B.y-A.y;
+                const d2 = dx*dx+dy*dy+0.01, d = Math.sqrt(d2);
+                const minD = A.r+B.r+28;
+                if (d < minD*10) {
+                  const f = a * 3.5 * minD*minD / d2;
+                  A.vx -= f*dx/d; A.vy -= f*dy/d;
+                  B.vx += f*dx/d; B.vy += f*dy/d;
+                }
+              }
+            }
+            edges.forEach(e => {
+              const A = nm[e.s], B = nm[e.t];
+              if (!A||!B) return;
+              const dx = B.x-A.x, dy = B.y-A.y;
+              const d  = Math.sqrt(dx*dx+dy*dy)||0.1;
+              const ideal = A.r+B.r+120+(2.5-e.w)*38;
+              const f = a * 0.04 * (d-ideal)/d;
+              A.vx += f*dx; A.vy += f*dy;
+              B.vx -= f*dx; B.vy -= f*dy;
+            });
+            nodes.forEach(n => {
+              if (n===dragging) return;
+              const pad = n.r+6;
+              if (n.x < pad*2.5)   n.vx += a*3*(pad*2.5-n.x);
+              if (n.x > W-pad*2.5) n.vx -= a*3*(n.x-(W-pad*2.5));
+              if (n.y < pad*2.5)   n.vy += a*3*(pad*2.5-n.y);
+              if (n.y > H-pad*2.5) n.vy -= a*3*(n.y-(H-pad*2.5));
+              n.vx *= 0.68; n.vy *= 0.68;
+              n.x = Math.max(pad, Math.min(W-pad, n.x+n.vx));
+              n.y = Math.max(pad, Math.min(H-pad, n.y+n.vy));
+            });
+          }
+
+          function hit(mx, my) {
+            for (let i = nodes.length-1; i>=0; i--) {
+              const n = nodes[i];
+              if ((mx-n.x)**2+(my-n.y)**2 <= (n.r+5)**2) return n;
+            }
+            return null;
+          }
+
+          function pt(e) {
+            const r = canvas.getBoundingClientRect();
+            const s = e.touches ? e.touches[0] : e;
+            return { x:(s.clientX-r.left)*W/r.width, y:(s.clientY-r.top)*H/r.height };
+          }
+
+          canvas.addEventListener('mousedown', e => {
+            const n = hit(pt(e).x, pt(e).y);
+            if (n) { dragging=n; canvas.style.cursor='grabbing'; tick=Math.min(tick,MAX-150); }
+          }, {signal: sig});
+          window.addEventListener('mouseup', () => { dragging=null; canvas.style.cursor='grab'; }, {signal: sig});
+
+          canvas.addEventListener('mousemove', e => {
+            const p = pt(e);
+            if (dragging) {
+              dragging.x = Math.max(dragging.r+4, Math.min(W-dragging.r-4, p.x));
+              dragging.y = Math.max(dragging.r+4, Math.min(H-dragging.r-4, p.y));
+              posTooltip(e.clientX, e.clientY);
+              return;
+            }
+            const n = hit(p.x, p.y);
+            if (n !== hovered) {
+              hovered = n;
+              canvas.style.cursor = n ? 'pointer' : 'grab';
+              if (n) showTooltip(n, e.clientX, e.clientY);
+              else   hideTooltip();
+            } else if (n) {
+              posTooltip(e.clientX, e.clientY);
+            }
+          }, {signal: sig});
+
+          canvas.addEventListener('mouseleave', () => { hovered=null; hideTooltip(); }, {signal: sig});
+
+          function draw() {
+            ctx.clearRect(0, 0, W, H);
+            edges.forEach(e => {
+              const A = nm[e.s], B = nm[e.t];
+              if (!A||!B) return;
+              const hot = hovered && (hovered.id===e.s||hovered.id===e.t);
+              ctx.beginPath();
+              ctx.moveTo(A.x, A.y);
+              ctx.lineTo(B.x, B.y);
+              ctx.setLineDash(e.dash ? [5,4] : []);
+              ctx.strokeStyle = hot ? C[A.tier]+'bb' : '#00000014';
+              ctx.lineWidth   = hot ? e.w*1.6 : e.w*0.55;
+              ctx.stroke();
+            });
+            ctx.setLineDash([]);
+            nodes.forEach(n => {
+              const col = C[n.tier];
+              const on  = n===hovered;
+              ctx.shadowColor = on ? col : 'transparent';
+              ctx.shadowBlur  = on ? 16 : 0;
+              ctx.beginPath();
+              ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+              ctx.fillStyle   = on ? col : col+'2e';
+              ctx.fill();
+              ctx.strokeStyle = col;
+              ctx.lineWidth   = on ? 2.5 : 1.5;
+              ctx.stroke();
+              ctx.shadowBlur  = 0;
+              ctx.fillStyle    = on ? '#fff' : col;
+              ctx.textAlign    = 'center';
+              ctx.textBaseline = 'middle';
+              const fs = n.r>=40?14 : n.r>=32?13 : n.r>=26?12 : 11;
+              ctx.font = '600 '+fs+'px -apple-system,sans-serif';
+              ctx.fillText(n.label, n.x, n.y);
+            });
+            if (tick < MAX || dragging) for (let i=0; i<6; i++) step();
+            animId = requestAnimationFrame(draw);
+          }
+          draw();
+
+          canvas.addEventListener('touchstart', e => {
+            e.preventDefault();
+            const p = pt(e);
+            const n = hit(p.x, p.y);
+            const t = e.touches[0];
+            if (n) showTooltip(n, t.clientX, t.clientY);
+            else   hideTooltip();
+          }, {passive:false, signal: sig});
+        }
+      })();
+      </script>
+      <!-- /TULLER NODEKART -->
+
+      <p style="color:var(--ink-mid);line-height:1.7;margin:0 0 24px;">David Tuller, DrPH er Senior Fellow in Public Health and Journalism ved University of California, Berkeley. Hans engasjement i Norge startet i 2018 etter at han ble oppmerksom på at det norske CBT/GET-miljøet — med Wyller og Flottorp som sentrale aktører — aktivt motarbeidet den samme faglige utviklingen han hadde fulgt i Storbritannia gjennom PACE-saken. Det utløsende momentet for den norske serien var det planlagte LP-forsøket: en studie der en kommersielt aktiv LP-instruktør (Landmark) var navngitt kontaktperson, der barnestudien som dannet evidensgrunnlaget (Crawley et al.) allerede var dokumentert metodisk svak gjennom outcome-swapping, og der FHIs forskningssjef (Flottorp) aktivt lobbyet for godkjenning — både offentlig og, som FOI-krav avdekket, via private kanaler til enkeltmedlemmer i etikknemnda. Tuller dokumenterte prosessen i 16 artikler fra 2018 til 2026. Artiklene dekker LP-RCT-prosessen fra første forslag til godkjenning, Flottorps presskampanje mot NAFKAM, Recovery Norges udokumenterte rolle i JAMA-studien og det norske høringsutkastets metodiske svakheter. Serien representerer den eneste sammenhengende engelskspråklige dokumentasjonen av det norske nettverkets virksomhet for et internasjonalt fagpublikum.</p>
+
       <ul class="source-list">
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2026/03/02/trial-by-error-norways-problematic-draft-guideline-combining-long-term-fatigue-and-me-cfs/" target="_blank" style="color:var(--accent)">Trial by Error: Norway's Problematic Draft Guideline Combining Long-Term Fatigue and ME/CFS.</a> Virology Blog. 2. mars 2026.</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2026/03/03/trial-by-error-more-on-norways-problematic-draft-guideline-for-long-term-fatigue-including-me-cfs/" target="_blank" style="color:var(--accent)">Trial by Error: More on Norway's Problematic Draft Guideline.</a> Virology Blog. 3. mars 2026.</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2026/03/13/trial-by-error-norway-disability-case-exposes-flaws-in-draft-guideline-for-long-term-fatigue-including-me-cfs/" target="_blank" style="color:var(--accent)">Trial by Error: Norway Disability Case Exposes Flaws in Draft Guideline.</a> Virology Blog. 13. mars 2026.</li>
+        <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2026 — Norsk retningslinje</span></li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2026/03/02/trial-by-error-norways-problematic-draft-guideline-combining-long-term-fatigue-and-me-cfs/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Problematic Draft Guideline Combining Long-Term Fatigue and ME/CFS.</a> Virology Blog. 2. mars 2026. [Kritikk av høringsutkastets sammenslåing av utmattelse og ME/CFS; de fire interne dissensene omtalt som representanter for «the interests of the biopsychosocial ideological brigades».]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2026/03/03/trial-by-error-more-on-norways-problematic-draft-guideline-for-long-term-fatigue-including-me-cfs/" target="_blank" style="color:var(--accent)">Trial By Error: More on Norway's Problematic Draft Guideline.</a> Virology Blog. 3. mars 2026. [Oppfølging: dokumenterer nettverksforbindelsen mellom Recovery Norge og LP-miljøet.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2026/03/13/trial-by-error-norway-disability-case-exposes-flaws-in-draft-guideline-for-long-term-fatigue-including-me-cfs/" target="_blank" style="color:var(--accent)">Trial By Error: Norway Disability Case Exposes Flaws in Draft Guideline.</a> Virology Blog. 13. mars 2026. [Gulating-saken: Flottorps sakkyndigerklæring analysert. «She exhibited a disturbing lack of knowledge about developments in ME/CFS research and acknowledged having only seen one patient with severe disease.»]</li>
+
+        <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2023 — JAMA / Recovery Norge</span></li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2023/04/07/trial-by-error-what-is-recovery-norways-role-in-the-jama-network-open-study-of-long-covid-in-young-people/" target="_blank" style="color:var(--accent)">Trial By Error: What is Recovery Norway's Role in the JAMA Network Open Study of Long Covid in Young People?</a> Virology Blog. 7. april 2023. [Wyller er senior author. Recovery Norge er brukerorganisasjon og Dam-søker — ikke deklarert i artikkelen. 75 av 126 testimonials på Recovery Norges nettside gjelder LP.]</li>
+
+        <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2022 — LP-RCT · NEM-lobbyisme · NAFKAM</span></li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/12/07/trial-by-error-top-lightning-process-proponent-privately-lobbied-for-approval-of-norways-lp-study/" target="_blank" style="color:var(--accent)">Trial By Error: Top Lightning Process Proponent Privately Lobbied for Approval of Norway's LP Study.</a> Virology Blog. 7. desember 2022. [FOI-dokumentert: Flottorp sendte privat SMS til NEM-medlem Jo Røislien 31. mars 2022 og privat e-post 5. april 2022 — ba om godkjenning av LP-RCT. NEM godkjente (9 mot 3). Befring (nestleder) karakteriserte det som «uprofessionell nettverksstyring».]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/07/20/trial-by-error-mom-speaks-out-about-nhs-abuse-of-daughter-norway-approves-lightning-process-study/" target="_blank" style="color:var(--accent)">Trial By Error: Norway Approves Lightning Process Study.</a> Virology Blog. 20. juli 2022. [NEM godkjente LP-RCT etter første avslag. Tuller dokumenterer studiens metodiske svakheter.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/05/31/trial-by-error-deja-vu-all-over-again-with-proposed-lightning-process-study-in-norway/" target="_blank" style="color:var(--accent)">Trial By Error: Deja Vu All Over Again with Proposed Lightning Process Study in Norway.</a> Virology Blog. 31. mai 2022. [Re-søknad LP-RCT etter første NEM-avslag 2021. Crawley (Bristol) fortsatt samarbeidspartner. Tuller argumenterer at studien ikke kan støttes vitenskapelig eller etisk.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/02/18/trial-by-error-my-letter-responding-to-norway-health-leaders-efforts-to-denigrate-my-activist-work/" target="_blank" style="color:var(--accent)">Trial By Error: My Letter Responding to Norway Health Leader's Efforts to Denigrate My «Activist» Work.</a> Virology Blog. 18. februar 2022 [oppdatert 2. mars 2022]. [FOI-frigjort korrespondanse (mai 2020): Flottorp presset NAFKAM-leder Miek Jong til å trekke tilbake LP-advarsel fra 2011 og karakteriserte Tuller som «ME-aktivist» uten å nevne hans Berkeley-tilknytning. Dokumenterer også outcome-swapping i Crawley et al. barnestudi (ADC 2017/2018).]</li>
+
+        <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2021 — NEM avslår LP-RCT</span></li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2021/07/13/trial-by-error-some-lightning-process-updates/" target="_blank" style="color:var(--accent)">Trial By Error: Some Lightning Process Updates.</a> Virology Blog. 13. juli 2021. [NEM opprettholdt avslag på LP-RCT. Oppdatering om norsk og britisk LP-situasjon.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2021/06/07/trial-by-error-norway-rejects-new-clinical-trial-of-woo-woo-lightning-process/" target="_blank" style="color:var(--accent)">Trial By Error: Norway Rejects New Clinical Trial of Woo-Woo Lightning Process.</a> Virology Blog. 7. juni 2021. [NEM avslo LP-RCT første gang — en «bit of a surprise» gitt norsk biopsykososial dominans. Interessekonfliktene og studiedesignfeilene dokumentert.]</li>
+
+        <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2020 — Norsk CBT-studie · LP-forslag · NAFKAM</span></li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/06/18/trial-by-error-bmj-responds-to-appeals-about-norways-cbt-music-therapy-study/" target="_blank" style="color:var(--accent)">Trial By Error: BMJ Responds to Appeals About Norway's CBT-Music Therapy Study.</a> Virology Blog. 18. juni 2020. [BMJ svarer på klager om norsk CBT/musikkterapistudie for ungdom med kronisk utmattelse.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/30/trial-by-error-two-letters-to-dagbladet-about-its-me-coverage/" target="_blank" style="color:var(--accent)">Trial By Error: Two Letters to Dagbladet About Its ME Coverage.</a> Virology Blog. 30. mai 2020. [Norsk mediedekning av LP-RCT-forslaget. Tuller dokumenterer feilinformasjon fra norske leger.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/22/trial-by-error-my-letter-to-senior-author-of-norways-cbt-music-therapy-study/" target="_blank" style="color:var(--accent)">Trial By Error: My Letter to Senior Author of Norway's CBT-Music Therapy Study.</a> Virology Blog. 22. mai 2020. [Direkte brev om metodefeil i norsk CBT/musikkterapistudie for ungdom med CFS etter akutt infeksjon.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/20/trial-by-error-norways-double-whammy-of-fuzzy-science/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Double Whammy of Fuzzy Science.</a> Virology Blog. 20. mai 2020. [To samtidige norske metodefeil: CBT/musikkstudie + LP-RCT-forslag. «Norway's got a double whammy going on.»]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/02/trial-by-error-norways-proposed-lightning-process-trial/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Proposed Lightning Process Trial.</a> Virology Blog. 2. mai 2020. [Første Tuller-artikkel om LP-RCT-forslaget. Bakgrunn: Crawley-studien og outcome-swapping. Etiske innvendinger mot norsk LP-studie.]</li>
+
+        <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2018 — Tidlig norsk dekning</span></li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2018/12/31/trial-by-error-my-norwegian-interview/" target="_blank" style="color:var(--accent)">Trial By Error: My Norwegian Interview.</a> Virology Blog. 31. desember 2018. [Intervju med Trude Schei, ME-foreningen. Tuller beskriver norsk biopsykososial dominans.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2018/12/12/trial-by-error-the-view-from-norway/" target="_blank" style="color:var(--accent)">Trial By Error: The View From Norway.</a> Virology Blog. 12. desember 2018. [Oversiktsartikkel: norsk CBT/GET-miljø, Wyllers rolle, LP-tilknytning. Tidligste dokumentasjon av norsk nettverksstruktur i Tuller-serien.]</li>
       </ul>
       </div><!-- /ps ref-tuller -->
       <div class="panel-section" id="ref-bruker" data-sec="ref-bruker"><div class="source-group-label">Brukerorganisasjoner og høringsdokumenter</div>
@@ -3290,9 +3709,9 @@ td:first-child { font-weight: 500; color: var(--ink); }
 <div class="panel" id="p7">
       <div class="panel-subnav">
         <a href="#p7-intro">Innledning</a>
-        <a href="#p7-metodikk">Metodisk bakgrunn</a>
-        <a href="#p7-faglig">Spørsmål 1–5: faglig grunnlag</a>
-        <a href="#p7-prosess">Spørsmål 6–10: prosess og habilitet</a>
+        <a href="#p7-metodikk">Metodikk</a>
+        <a href="#p7-faglig">Sp. 1–5: faglig</a>
+        <a href="#p7-prosess">Sp. 6–10: prosess</a>
       </div>
       <div class="panel-section ps-active" id="p7-intro" data-sec="p7-intro">
       <h2 id="horingssporsmal">Spørsmål til Helsedirektoratet</h2>
@@ -3347,7 +3766,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
             <tr><td>Peter Prydz</td><td>Legekontor, Hammerfest</td><td>Norsk forening for allmennmedisin</td><td>Spesialist i allmennmedisin · dissens. Dissens: for mye vekt på å unngå belastninger, rehabiliteringsperspektivet for lite vektlagt.</td></tr>
             <tr><td>Stine Nilsen Skogheim</td><td>Tromsø kommune</td><td>Norges ergoterapeutforbund</td><td>Ergoterapeut</td></tr>
             <tr><td>Tanja Thorsen</td><td>—</td><td>ME-foreldrene</td><td>Pårørenderepresentant</td></tr>
-            <tr><td>Tom Farmen Nerli</td><td>Sykehuset Vestfold, Kysthospitalet</td><td>—</td><td>Spesialist i fysikalsk medisin og rehabilitering · dissens. Dissens: retningslinjen vil ha noceboeffekt og tar bort håpet om bedring. Bidrar i Wyllers long covid-studie. Medforfatter av innlegg som psykologiserer ME/CFS (2023).</td></tr>
+            <tr><td>Tom Farmen Nerli</td><td>Sykehuset Vestfold, Kysthospitalet</td><td>—</td><td>Spesialist i fysikalsk medisin og rehabilitering · dissens. Dissens: retningslinjen vil ha noceboeffekt og tar bort håpet om bedring. Satt i styringskomitéen for Wyllers SIPCOV-studie (CBT/GET mot long covid, <a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>, protokoll s. 7–8). Førsteforfatter på Nerli og Wyller (2024) — den eneste norske RCT-en i høringsutkastets evidensgrunnlag, med Wyller som siste og overordnet medforfatter. Medforfatter av innlegg som psykologiserer ME/CFS (2023).</td></tr>
             <tr><td>Tormod Landmark</td><td>St. Olavs hospital / NTNU</td><td>—</td><td>Psykologspesialist. Bidratt til ME-studie på kognitiv terapi (2023). Foredragsholder på kurs «Utmattelse og CFS/ME».</td></tr>
             <tr><td>Trude Schei</td><td>—</td><td>Norges ME-forening</td><td>Brukerrepresentant · dissens</td></tr>
           </tbody>
@@ -3582,7 +4001,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
     </div>
     <div class="glossary-term" data-terms="daratumumab haukeland fluge mella behandling">
       <h4>Daratumumab</h4>
-      <p>Monoklonalt antistoff opprinnelig brukt mot myelomatose. Testes ved Haukeland universitetssykehus (Fluge/Mella) mot ME/CFS basert på autoantistoff-hypotesen. Pilotforsøk 2025 (n=14): 60 % klinisk og objektiv bedring. Finansiert av ME-fondet og private bidrag — ikke offentlige midler.</p>
+      <p>Monoklonalt antistoff opprinnelig brukt mot myelomatose. Testes ved Haukeland universitetssykehus (Fluge/Mella) mot ME/CFS basert på autoantistoff-hypotesen. Pilotforsøk 2025 (n=10): 60 % klinisk og objektiv bedring. Finansiert av ME-fondet og private bidrag — ikke offentlige midler.</p>
     </div>
     <div class="glossary-term" data-terms="pacing energistyring aktivitetstilpasning">
       <h4>Pacing</h4>
@@ -3636,7 +4055,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
     </div>
     <div class="glossary-term" data-terms="sipcov rørtveit kysthospitalet long covid cbt">
       <h4>SIPCOV</h4>
-      <p>«Short-time behavioural intervention in post-Covid syndrome». RCT ledet av Wyller (Ahus), n=310. Tester CBT og gradert trening mot long covid med sustained arousal som rammeverk. Styringskomité: Wyller, Rørtveit, Flottorp, Reme, Jacobsen. ClinicalTrials.gov NCT05196451.</p>
+      <p>«Short-time behavioural intervention in post-Covid syndrome». RCT ledet av Wyller (Ahus), n=310. Tester CBT og gradert trening mot long covid med sustained arousal som rammeverk. Styringskomité: Wyller, Rørtveit, Flottorp, Reme, Jacobsen. ClinicalTrials.gov <a href="https://clinicaltrials.gov/study/NCT05196451" target="_blank">NCT05196451</a>.</p>
     </div>
     <div class="glossary-term" data-terms="cfq chalder fatigue questionnaire spørreskjema">
       <h4>CFQ — Chalder Fatigue Questionnaire</h4>
@@ -3741,6 +4160,50 @@ td:first-child { font-weight: 500; color: var(--ink); }
     <div class="glossary-term" data-terms="preload-svikt ortostatisk hjertesvikt blodvolum">
       <h4>Preload-svikt</h4>
       <p>Utilstrekkelig venøs tilbakestrøm til hjertet, resulterer i redusert slagvolum ved oppreist stilling. Dokumentert ved ME/CFS, forklarer ortostatisk intoleranse og kognitive symptomer ved aktivitet.</p>
+    </div>
+
+
+    <div class="glossary-cat-heading" data-cat="forkortelser">Forkortelser og institusjonsnavn</div>
+
+    <div class="glossary-term" data-terms="foi freedom of information offentlighet dokumentinnsyn">
+      <h4>FOI</h4>
+      <p>Freedom of Information. Britisk lov om rett til offentlige dokumenter. Brukes i dokumentet om PACE-dataene — de rådataene som ble frigitt etter FOI-krav og rettsprosess, og som viste at recovery-definisjonen var endret etter datainnsamling.</p>
+    </div>
+    <div class="glossary-term" data-terms="gpcr g-protein reseptor autoantistoffer dysautonomia">
+      <h4>GPCR</h4>
+      <p>G protein-coupled receptor. Reseptorklasse som er mål for autoantistoffer dokumentert hos ME/CFS- og long covid-pasienter (Scheibenbogen, Charité). GPCR-autoantistoffer kobles til dysautonomia og ortostatisk intoleranse ved ME/CFS.</p>
+    </div>
+    <div class="glossary-term" data-terms="iag independent advisory group cochrane">
+      <h4>IAG</h4>
+      <p>Independent Advisory Group. Cochranes uavhengige rådgivningskomité. IAG anbefalte å nedgradere evidenskvaliteten i Larun et al. (GET-oversikten) — en anbefaling FHI/Flottorp aktivt motarbeidet, ifølge interne e-poster.</p>
+    </div>
+    <div class="glossary-term" data-terms="pifs post-infeksiøs utmattelse ppis vedvarende symptomer">
+      <h4>PIFS / PPIS</h4>
+      <p>Post-Infective Fatigue Syndrome / Persistent Post-Infectious Symptoms. Samlebetegnelse for vedvarende utmattelse etter infeksjon, uavhengig av patogen. Wyllers foretrukne begrep i SIPCOV og COFFI, fremfor ME/CFS. Betegnelsen unngår den nevrologiske klassifiseringen i ICD-10/11.</p>
+    </div>
+    <div class="glossary-term" data-terms="nokc nasjonalt kunnskapssenter helsetjenesten fhi">
+      <h4>NOKC</h4>
+      <p>Nasjonalt kunnskapssenter for helsetjenesten. Nå en del av FHI. Wyller og Flottorp var medforfattere på NOKC-rapport nr. 9–2006 om diagnostisering og behandling av CFS/ME — det første statlige kunnskapsgrunnlaget som legitimerte biopsykososial tilnærming i norsk helsevesen.</p>
+    </div>
+    <div class="glossary-term" data-terms="nlp nevrolingvistisk programmering parker lightning process">
+      <h4>NLP</h4>
+      <p>Nevrolingvistisk programmering (Neurolinguistic Programming). Pseudovitenskapelig metode utviklet på 1970-tallet. Phil Parker — grunnlegger av Lightning Process — er NLP-utøver. LP bygger på NLP-teknikker kombinert med positiv psykologi og livschoaching.</p>
+    </div>
+    <div class="glossary-term" data-terms="nihr national institute health research storbritannia">
+      <h4>NIHR</h4>
+      <p>National Institute for Health and Care Research. Britisk statlig forskningsfinansiør. Medfinansierte PACE-studien sammen med Medical Research Council (MRC) og Department for Work and Pensions (DWP). Samfinansieringen med DWP er analytisk relevant for spørsmålet om interessekonflikter i PACE.</p>
+    </div>
+    <div class="glossary-term" data-terms="ukri uk research innovation storbritannia forskningsmidler">
+      <h4>UKRI</h4>
+      <p>UK Research and Innovation. Britisk statlig forskningsfinansiør. Nevnt i interessekonflikt-erklæringer for PACE-arkitekter. Del av det britiske finansieringslandskapet der samfinansering med trygde- og forsikringsinteresser er dokumentert.</p>
+    </div>
+    <div class="glossary-term" data-terms="magenta studie gradert trening barn crawley bristol">
+      <h4>MAGENTA</h4>
+      <p>Randomisert studie av gradert trening for barn med ME/CFS (Crawley et al., Bristol). Viste at gradert treningsterapi ikke hadde statistisk signifikant effekt sammenlignet med kontrollgruppen. Flottorp kjente ikke til MAGENTA da hun avga sin sakkyndigerklæring i Gulating 2026.</p>
+    </div>
+    <div class="glossary-term" data-terms="mms morbidity mortality statistics icd-11 who kode">
+      <h4>MMS</h4>
+      <p>Morbidity and Mortality Statistics. WHO ICD-11s klassifikasjonssystem for sykdomsstatistikk. Brukt i dokumentet som referanse for ICD-11-koden 8E49 (ME/CFS som nevrologisk sykdom). MMS er den statistiske modulen, atskilt fra ICFs funksjonssystem.</p>
     </div>
 
   </div><!-- /glossary-body -->
@@ -4147,13 +4610,6 @@ function glossaryFilter(q) {
     setTimeout(() => restorePos(prevHash), 30);
   });
 })();
-
-
-</script>
-
-</body>
-</html>
-
 
 
 </script>

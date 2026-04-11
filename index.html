@@ -808,32 +808,9 @@ td:first-child { font-weight: 500; color: var(--ink); }
 <!-- TOPBAR SEARCH -->
 <div class="topbar-search" id="topbar-search-wrap">
   <a href="https://www.cfsmeatlas.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;height:100%;padding:0 16px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;border-right:1px solid var(--rule);white-space:nowrap;transition:background 0.12s,color 0.12s;" onmouseover="this.style.background='var(--paper)';this.style.color='var(--accent)';" onmouseout="this.style.background='';this.style.color='var(--ink-light)';">Atlas ↗</a>
-  <input type="text" id="atlas-search" placeholder="Søk i Atlas…" autocomplete="off" spellcheck="false" style="width:180px;border-right:1px solid var(--rule);" />
   <input type="text" id="global-search" placeholder="Søk i dokumentet…" autocomplete="off" spellcheck="false" style="width:180px;" />
   <div class="search-results" id="search-results"></div>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  var atlasInput = document.getElementById('atlas-search');
-  if (!atlasInput) return;
-  atlasInput.addEventListener('keydown', function(e){
-    if (e.key === 'Enter') {
-      var q = atlasInput.value.trim();
-      if (q) {
-        var a = document.createElement('a');
-        a.href = 'https://www.cfsmeatlas.com/evidence?search=' + encodeURIComponent(q);
-        a.target = '_blank';
-        a.rel = 'noopener';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        atlasInput.value = '';
-      }
-    }
-    if (e.key === 'Escape') atlasInput.value = '';
-  });
-});
-</script>
 
 <!-- MAIN -->
 <main class="main">
@@ -870,7 +847,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
       <p>I Norge prosederer staten på å nekte en alvorlig syk ung mann uføretrygd fordi han ikke er i stand til å delta på denne type behandling. Kolbjørn vant i lagmannsretten under dissens. Statens eget sakkyndige vitne vedgikk i retten at de aller sykeste pasientene ikke er med i forskningsstudiene som begrunner behandlingen hun anbefalte, og den nasjonale veilederen for behandling av ME-syke som lå til grunn for avslaget var fra 2014.</p>
 
-      <p>Det ledende biopsykososiale miljøet i Norge består av forskere, leger, psykologer og helseledere som hevder at Kolbjørn har en sykdom som skal sees på som et kontinuum. <span style="color:var(--accent);">Det beskriver noe som er uavbrutt og flytende, der ytterpunktene kan være svært ulike, men forbundet gjennom små, gradvise endringer. Det er definisjonen på et kontinuum.</span> For Kolbjørn endrer det ingenting.</p>
+      <p>Det ledende biopsykososiale miljøet i Norge består av forskere, leger, psykologer og helseledere som hevder at ME-pasienter har en sykdom som skal sees på som et kontinuum. <span style="color:var(--accent);">Det beskriver noe som er uavbrutt og flytende, der ytterpunktene kan være svært ulike, men forbundet gjennom små, gradvise endringer. Det er definisjonen på et kontinuum.</span> For Kolbjørn endrer det ingenting.</p>
 
       <p>Dette dokumentet gir et innblikk i hva den biopsykososiale teorien går ut på, hvordan nettverket som forankret den har operert, hvilken vitenskapen som har blitt ignorert, og hva pasientregisterdataene viser. Alt dette har fått svært store konsekvenser for mange tusen alvorlig syke mennesker i Norge. Helsedirektoratet har lagt ut høring om nasjonal faglig retningslinje for langvarig utmattelse, inkl. ME/CFS. Høringsfristen er 4. mai 2026.</p>
 

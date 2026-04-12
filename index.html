@@ -124,7 +124,7 @@ body {
 
 .sidebar-brand h1 {
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.4;
   color: var(--ink);
@@ -139,6 +139,7 @@ body {
   text-transform: uppercase;
   white-space: nowrap;
 }
+
 
 /* Nav items — akkordeon */
 .nav-del {
@@ -161,7 +162,7 @@ body {
 
 .nav-del-num {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 11px;
   letter-spacing: 0.07em;
   color: var(--ink-light);
   width: 22px;
@@ -170,7 +171,7 @@ body {
 
 .nav-del-title {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -191,7 +192,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  height: 44px;
+  height: 36px;
   z-index: 300;
   display: flex;
   align-items: center;
@@ -223,7 +224,7 @@ body {
 .search-results {
   display: none;
   position: fixed;
-  top: 44px;
+  top: 36px;
   right: 0;
   width: 480px;
   background: var(--paper);
@@ -335,13 +336,19 @@ mark.search-highlight {
   font-weight: 500;
   line-height: 1.15;
   margin-bottom: 6px;
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-lead {
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1.5;
   color: var(--ink-mid);
   font-style: italic;
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -415,7 +422,7 @@ body:has(.panel:target) #p1:not(:target) { display: none; }
 }
 
 .panel p { margin-bottom: 14px; color: var(--ink); max-width: 740px; margin-left: auto !important; margin-right: auto !important; }
-.panel h2, .panel h3, .panel h4, .panel blockquote { max-width: 740px; margin-left: auto; margin-right: auto; }
+.panel h2, .panel h3, .panel h4, .panel blockquote, .panel .quote-block { max-width: 740px; margin-left: auto; margin-right: auto; }
 .panel details { max-width: 740px; margin-left: auto !important; margin-right: auto !important; }
 .panel p strong { color: var(--ink); }
 
@@ -423,20 +430,17 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 20px 0; }
 
 /* ── BLOCKQUOTE ── */
 blockquote {
-  border-left: 3px solid var(--accent);
-  padding: 14px 22px;
+  padding: 4px 0 4px 24px;
   margin: 24px 0;
-  background: var(--paper-mid);
-  border-radius: 0 4px 4px 0;
 }
 
-blockquote p { font-style: italic; font-size: 17px; color: var(--ink); margin-bottom: 0; }
+blockquote p { font-style: italic; font-size: 18px; color: var(--ink); margin-bottom: 0; }
 blockquote cite {
   display: block;
   font-family: var(--mono);
-  font-size: 14px;
-  color: var(--ink-light);
-  margin-top: 8px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  margin-top: 10px;
   font-style: normal;
 }
 
@@ -504,7 +508,7 @@ blockquote cite {
 .callout-alert .callout-label { color: #7a4e00; }
 
 /* ── TABLES ── */
-.table-wrap { overflow-x: auto; margin: 20px auto !important; max-width: 1000px; }
+.table-wrap { overflow-x: auto; margin: 20px auto !important; max-width: 740px; }
 table { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.5; }
 th {
   background: #f2ede4 !important; color: #1c1c1c !important;
@@ -778,14 +782,45 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
 
 
+
+.title-tooltip {
+  border-bottom: 1px dotted var(--ink-mid);
+  cursor: help;
+  position: relative;
+  white-space: nowrap;
+}
+.title-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 300px;
+  background: var(--psyk);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+  padding: 14px 16px 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(139,44,26,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
+  white-space: normal;
+}
+.title-tooltip:hover::after {
+  opacity: 1;
+}
 </style>
 </head>
 <body>
 
 <!-- SIDEBAR -->
 <nav class="sidebar">
-  <div class="sidebar-brand">
-    <h1>ME/CFS-forskning i Norge 2006–2026</h1>
+  <div class="sidebar-brand" id="sidebar-brand" style="padding:20px;background:var(--paper);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:center;">
+    <p style="font-family:var(--serif);font-size:14px;font-style:italic;font-weight:500;color:var(--ink);line-height:1.5;margin:0;text-align:left;">Hvorfor tenker du deg<br><span style="display:block;text-align:right;">ikke bare frisk?</span></p>
   </div>
 
   <div class="nav-del">
@@ -798,14 +833,14 @@ td:first-child { font-weight: 500; color: var(--ink); }
   <div class="nav-del">
     <a class="nav-del-header" href="#p2" style="text-decoration:none;display:flex;">
       <span class="nav-del-num">II</span>
-      <span class="nav-del-title">Teorien som ikke lar seg korrigere</span>
+      <span class="nav-del-title">Stressteorien</span>
     </a>
   </div>
 
   <div class="nav-del">
     <a class="nav-del-header" href="#p3" style="text-decoration:none;display:flex;">
       <span class="nav-del-num">III</span>
-      <span class="nav-del-title">Det institusjonelle nettverket</span>
+      <span class="nav-del-title">Nettverket</span>
     </a>
   </div>
 
@@ -819,7 +854,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
   <div class="nav-del">
     <a class="nav-del-header" href="#p5" style="text-decoration:none;display:flex;">
       <span class="nav-del-num">V</span>
-      <span class="nav-del-title">Den andre vitenskapen</span>
+      <span class="nav-del-title">Biovitenskapen</span>
     </a>
   </div>
 
@@ -840,6 +875,13 @@ td:first-child { font-weight: 500; color: var(--ink); }
     <a class="nav-del-header" href="#p8" style="text-decoration:none;display:flex;">
       <span class="nav-del-num">VIII</span>
       <span class="nav-del-title">Ordliste</span>
+    </a>
+  </div>
+
+  <div class="nav-del">
+    <a class="nav-del-header" href="#p9" style="text-decoration:none;display:flex;">
+      <span class="nav-del-num">IX</span>
+      <span class="nav-del-title">Internasjonal kritikk</span>
     </a>
   </div>
 
@@ -873,7 +915,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
   <!-- HERO -->
   <div class="hero" id="net-hero">
-    <h1>The Wyller Continuum</h1>
+    <h1>The Wyller <span class="title-tooltip" data-tooltip="«Det interessante er ikke å tenke dette som enten-eller, men tenke det som et kontinuum. Vi studerer egentlig et fenomen som biologisk sett er et kontinuum. Sånn er symptomer. Vi har mer eller mindre av dem, men vi har ikke enten-eller.» ― Wyller, mars 2026">Continuum</span></h1>
     <p class="hero-lead">20 år med biopsykososial forståelse av ME har gitt oss Norges største medisinske skandale.</p>
   </div>
 
@@ -1138,33 +1180,33 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p>Argumentstrukturen er identisk med 2009-artikkelen. Terminologien er modernisert — «prediktiv hjerne» har erstattet «sustained arousal» — men det kausale premisset er uendret: biologien er sekundær, hjernens forventninger er primær.</p>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin:28px 0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;">
-        <div style="padding:20px 24px;border-right:1px solid var(--rule);">
+      <div style="max-width:740px;margin:28px auto;border:1px solid var(--rule);border-radius:4px;overflow:hidden;">
+        <div style="padding:20px 24px;border-bottom:1px solid var(--rule);">
           <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:18px;">Recovery Norge-seminaret · september 2025</div>
-          <blockquote style="margin:0 0 18px;border-left:none;padding:0;">
+          <blockquote style="margin:0 0 18px;padding:0;">
             <p>«Et grunnleggende element er at det vi opplever ikke er det som faktisk kommer til oss fra verden der ute eller fra kroppens indre, men et produkt av hva hjernen forventer og hva som kommer til oss.»</p>
             <cite>Wyller, s. 5, 00:37:20</cite>
           </blockquote>
-          <blockquote style="margin:0 0 18px;border-left:none;padding:0;">
+          <blockquote style="margin:0 0 18px;padding:0;">
             <p>«De som er mer ... hun kaller det for threat sensitivity, altså mer sensitive for alle typer trusler, vil ha lettere for feillæring. Lettere for å ha forventninger om at noe farlig skal skje.»</p>
             <cite>Wyller om sårbarhetsfaktorer, s. 7, 00:40:40</cite>
           </blockquote>
-          <blockquote style="margin:0;border-left:none;padding:0;">
+          <blockquote style="margin:0;padding:0;">
             <p>«En veldig god studie som viste at kognitiv atferdsterapi ga lavere utmattelse og høyere fysisk funksjon enn ingen behandling. [...] Hvis du tror på vitenskap, er dette faktisk en av de mest kritiserte studiene som finnes — og den har overlevd.»</p>
             <cite>Wyller om PACE-studien, s. 11, 00:43:13–00:44:17</cite>
           </blockquote>
         </div>
         <div style="padding:20px 24px;">
           <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:18px;">Vaksinepodden · mars 2026</div>
-          <blockquote style="margin:0 0 18px;border-left:none;padding:0;">
+          <blockquote style="margin:0 0 18px;padding:0;">
             <p>«Jeg er blant de som er tilhengere av å tenke mye mer om dette som et kontinuerlig fenomen. [...] Det interessante er ikke å tenke dette som enten-eller, men tenke det som et kontinuum. Vi studerer egentlig et fenomen som biologisk sett er et kontinuum. Sånn er symptomer. Vi har mer eller mindre av dem, men vi har ikke enten-eller.»</p>
             <cite>Wyller om ME/CFS-diagnosen som kategorisk begrep, Vaksinepodden ep. 41, mars 2026</cite>
           </blockquote>
-          <blockquote style="margin:0 0 18px;border-left:none;padding:0;">
+          <blockquote style="margin:0 0 18px;padding:0;">
             <p>«Stikkordet her er jo forventninger. [...] Det gir en inngang til å tenke om hvordan hjernen vår virker, og hva vi opplever. Enten det er infeksjoner eller visuelle sanseinntrykk eller hørselsinntrykk, er like mye et produkt av hva vi forventer, som hva vi kommer til oss av sanseinformasjon.»</p>
             <cite>Wyller om prediktiv hjerne-teori, Vaksinepodden ep. 41, mars 2026</cite>
           </blockquote>
-          <blockquote style="margin:0;border-left:none;padding:0;">
+          <blockquote style="margin:0;padding:0;">
             <p>«Det passer jo da med en hypotese om at dette er sekundært. [...] Men det er ikke det som driver plagene. Så årsakspilene er andre veien.»</p>
             <cite>Wyller om NorCAPITAL, Vaksinepodden ep. 41, mars 2026 — negativt resultat tolket som bekreftelse</cite>
           </blockquote>
@@ -1416,8 +1458,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
       
 
       <div class="panel-section ps-active" id="nettverkskartet" data-sec="nettverkskartet">
-      <p><em>Kartet viser nettverkets aktører som noder, fargekoding etter lag. Klikk på en node for å lese detaljer. Dra nodene fritt. Forbindelseslinjer markerer dokumenterte faglige og institusjonelle koblinger.</em></p>
-      <div style="margin: 28px 0; background: var(--paper-mid); border-radius: 6px; padding: 4px; position: relative;">
+      <div style="margin: 4px 0; background: var(--paper-mid); border-radius: 6px; padding: 4px; position: relative;">
         <div id="net-legend" style="font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-light);padding:12px 16px 8px;display:flex;gap:20px;flex-wrap:wrap;">
           <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#c44a32;margin-right:5px;"></span>Lag 1 — norsk kjerne</span>
           <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1a4a7a;margin-right:5px;"></span>Lag 2 — institusjonell forankring</span>
@@ -1426,6 +1467,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
           <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#2d9e6f;opacity:0.7;margin-right:5px;"></span>Struktur/arena</span>
         </div>
         <canvas id="netCanvas" style="width:100%;display:block;cursor:grab;border-radius:4px;"></canvas>
+        <p style="font-family:var(--mono);font-size:11px;color:var(--ink-light);padding:8px 16px 12px;margin:0;"><em>Kartet viser nettverkets aktører som noder, fargekoding etter lag. Klikk på en node for å lese detaljer. Dra nodene fritt. Forbindelseslinjer markerer dokumenterte faglige og institusjonelle koblinger.</em></p>
         <div id="net-tooltip" style="display:none;position:fixed;background:white;border:1px solid #d8d0c4;border-radius:4px;padding:12px 16px;max-width:300px;font-size:13px;line-height:1.5;box-shadow:0 2px 12px rgba(0,0,0,0.15);pointer-events:none;z-index:9999;"></div>
       </div>
       <script defer>
@@ -3437,8 +3479,546 @@ td:first-child { font-weight: 500; color: var(--ink); }
       </div><!-- /ps ref-debatt -->
       <div class="panel-section" id="ref-tuller" data-sec="ref-tuller">
       <div class="source-group-label">Internasjonal metodekritikk — David Tuller / Trial by Error</div>
+      <p style="font-size:17px;color:var(--ink-mid);line-height:1.6;max-width:740px;margin:16px auto;">Tullers dokumentasjon av det norske nettverket er samlet i <a href="#p9" style="color:var(--accent);">Del IX — Internasjonalt</a>, inkludert nodekart og 16 artikler fra Trial by Error-serien (2018–2026).</p>
+      </div><!-- /ps ref-tuller -->
+      <div class="panel-section" id="ref-bruker" data-sec="ref-bruker"><div class="source-group-label">Brukerorganisasjoner og høringsdokumenter</div>
+      <ul class="source-list">
+        <li><strong>ME-foreldrene.</strong> <a href="https://www.me-foreldrene.no/apent-brev-til-helsedirektoratet-om-retningslinjearbeidet" target="_blank" style="color:var(--accent)">Åpent brev til Helsedirektoratet om retningslinjearbeidet.</a> 2024.</li>
+      </ul>
+      </div><!-- /ps ref-bruker -->
 
-      <!-- TULLER NODEKART -->
+      <div class="panel-section" id="ref-om-kildene" data-sec="ref-om-kildene">
+      <div class="method-note">Sitater fra podkasten (mars 2026) er hentet fra den publiserte episoden. Sitater fra Recovery Norge-seminaret (Forskningsdagene 2025) er hentet fra en maskinoversatt norsk transkripsjon av Vimeo-opptaket; tidsstemplereferanser gjør det mulig å verifisere mot lydopptaket. Referanser følger NLM Vancouver-format. Titler er klikkbare lenker der DOI eller URL foreligger.</div>
+      </div><!-- /ps ref-om-kildene -->
+
+    </div><!-- /p6 -->
+
+<div class="panel" id="p7">
+      <div class="panel-subnav">
+        <a href="#p7-intro">Innledning</a>
+        <a href="#p7-metodikk">Metodikk</a>
+        <a href="#p7-faglig">Sp. 1–5: faglig</a>
+        <a href="#p7-prosess">Sp. 6–10: prosess</a>
+      </div>
+      <div class="panel-section ps-active" id="p7-intro" data-sec="p7-intro">
+      <h2 id="horingssporsmal">Spørsmål til Helsedirektoratet</h2>
+
+      <p>Del VII inneholder ti spørsmål til Helsedirektoratet om faglige og prosessuelle valg i høringsutkastet. Spørsmålene er formulert som konkrete forespørsler om begrunnelse og kan brukes direkte i formelle høringssvar innen 4. mai 2026.</p>
+
+      <p>Utgangspunktet er Helsedirektoratets egne formuleringer da høringsutkastet ble sendt på høring. Fungerende divisjonsdirektør Marius Kurås Skram uttalte:</p>
+
+      <blockquote>
+        <p>«Arbeidet er bredt og tverrfaglig forankret, med deltakere fra ulike deler av helse- og velferdstjenesten, representanter fra alle helseregioner og flere profesjoner. [...] I tillegg har fire bruker- og pårørendeorganisasjoner deltatt aktivt i arbeidsgruppen.»</p>
+        <cite>Marius Kurås Skram, Helsedirektoratet, pressemelding februar 2026</cite>
+      </blockquote>
+
+      <blockquote>
+        <p>«Utmattelse er et vanlig symptom ved mange tilstander, også etter gjennomgått infeksjon. Hvorfor utmattelse vedvarer hos noen, mens andre blir helt friske, gir ikke forskningen entydige svar på. Derfor har erfaringer fra fagfolk, pasienter og pårørende vært viktig, i tillegg til det kunnskapsgrunnlaget som eksisterer per i dag.»</p>
+        <cite>Marius Kurås Skram, Helsedirektoratet, pressemelding februar 2026</cite>
+      </blockquote>
+
+      <blockquote>
+        <p>«Det skjer mye spennende forskning innen feltet nå. Helsedirektoratet følger dette tett og vil oppdatere retningslinjen når det foreligger god og dokumentert, solid kunnskap.»</p>
+        <cite>Marius Kurås Skram, Helsedirektoratet, pressemelding februar 2026</cite>
+      </blockquote>
+
+      <p>Hver av disse formuleringene er konfronterbar med dokumentert faktainformasjon som fremgår av de foregående delene. «Bredt og tverrfaglig forankret»: Recovery Norge fikk dobbelt så mange representanter som ME-foreningen med tjuefem ganger så mange syke medlemmer, og syv av 21 arbeidsgruppedeltakere tok formell dissens. «Forskningen gir ikke entydige svar»: NICE, IOM, IQWiG og fire andre lands helsemyndigheter har konkludert entydig. «Vil oppdatere når solid kunnskap foreligger»: DecodeME, Cervia-Hasler, Wüst og Sundaram er allerede publisert i Nature, Science og PNAS. Spørsmålene nedenfor utdyper dette.</p>
+
+      <details style="margin:24px 0;border:1px solid var(--rule);border-radius:4px;">
+        <summary style="padding:12px 16px;cursor:pointer;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);list-style:none;display:flex;align-items:center;gap:8px;">
+          <span style="font-family:var(--mono);color:var(--accent);">▶</span>
+          Arbeidsgruppens sammensetning — 21 medlemmer
+        </summary>
+        <div style="padding:0 16px 16px;">
+
+      <div class="table-wrap" style="margin:20px 0;">
+        <table>
+          <thead><tr><th>Navn</th><th>Institusjon</th><th>Organisasjon</th><th>Rolle/spesialitet</th></tr></thead>
+          <tbody>
+            <tr><td>Anette Owesen Espe</td><td>Oslo kommune</td><td>Norsk Sykepleierforbund</td><td>Helsesykepleier</td></tr>
+            <tr><td>Ann Kristin Grøntjernet</td><td>Recovery Norge</td><td>Recovery Norge</td><td>Brukerrepresentant</td></tr>
+            <tr><td>Arnstein Finset</td><td>Universitetet i Oslo</td><td>Norsk psykologforening</td><td>Psykologspesialist. Medforfatter av biopsykososialt motinnlegg (2023). Bidratt til psykologisk ME-studie med Wyller (2011). Ekspertgruppe pakkeforløp.</td></tr>
+            <tr><td>Beate Klungland</td><td>Oslo kommune</td><td>Norges ergoterapeutforbund</td><td>Ergoterapeut</td></tr>
+            <tr><td>Carina Mørch-Storstein</td><td>—</td><td>Norsk Covidforening</td><td>Brukerrepresentant · dissens</td></tr>
+            <tr><td>Hanne Nygaard</td><td>Oslo universitetssykehus / Nasjonal kompetansetjeneste for CFS/ME</td><td>Norges fysioterapeutforbund</td><td>Fysioterapeut. Ansatt ved Nasjonal kompetansetjeneste for CFS/ME og CFS/ME-senteret Aker.</td></tr>
+            <tr><td>Hannah Sagstad</td><td>Recovery Norge</td><td>Recovery Norge</td><td>Brukerrepresentant</td></tr>
+            <tr><td>Ingjerd Helene Jøssang</td><td>—</td><td>Norsk forening for allmennmedisin</td><td>Spesialist i allmennmedisin · dissens. Leder for faggruppen MUPS (Medisinsk uforklarte plager og symptomer) i Legeforeningen.</td></tr>
+            <tr><td>Ingrid B. Helland</td><td>OUS / Kompetansetjenesten for CFS/ME</td><td>—</td><td>Spesialist i barnemedisin</td></tr>
+            <tr><td>Ingrid Skogdal</td><td>Unicare Friskvern / Drammen Fysioterapi</td><td>Norges fysioterapeutforbund</td><td>Fysioterapeut</td></tr>
+            <tr><td>Karen Walseth Hara</td><td>NAV</td><td>—</td><td>Koordinerende rådgivende overlege. Ekspertgruppe pakkeforløp for langvarig utmattelse. Bidratt til utmattelsestudier med psykosomatisk tilnærming.</td></tr>
+            <tr><td>Kristian Sommerfelt</td><td>Haukeland universitetssjukehus (emeritus)</td><td>European ME Clinicians Council</td><td>Professor emeritus i barnenevrologi. Over 30 års erfaring med ME hos barn og unge. Bidragsyter til biomedisinske ME-studier. Utvikler av FUNCAP-kartleggingsverktøy. Sakkyndig vitne for Kolbjørn i Gulating-saken.</td></tr>
+            <tr><td>Linn B. Herner</td><td>Oslo universitetssykehus, S-BUP Rikshospitalet</td><td>—</td><td>Psykologspesialist · dissens. Dissens: retningslinjen gir noceboeffekt, mangler bedringsperspektiv og nevner knapt biopsykososial forståelse.</td></tr>
+            <tr><td>Maja Wilhelmsen</td><td>Universitetssykehuset Nord-Norge</td><td>—</td><td>Spesialist i fysikalsk medisin og rehabilitering</td></tr>
+            <tr><td>Nina Langeland</td><td>Haukeland universitetssykehus</td><td>—</td><td>Spesialist i infeksjonsmedisin. Forsket på senfølger etter Giardia-epidemien (Bergen, 2004). Bidratt til long covid-studier. Leder for referansegruppen til Nasjonal kompetansetjeneste for CFS/ME.</td></tr>
+            <tr><td>Peter Prydz</td><td>Legekontor, Hammerfest</td><td>Norsk forening for allmennmedisin</td><td>Spesialist i allmennmedisin · dissens. Dissens: for mye vekt på å unngå belastninger, rehabiliteringsperspektivet for lite vektlagt.</td></tr>
+            <tr><td>Stine Nilsen Skogheim</td><td>Tromsø kommune</td><td>Norges ergoterapeutforbund</td><td>Ergoterapeut</td></tr>
+            <tr><td>Tanja Thorsen</td><td>—</td><td>ME-foreldrene</td><td>Pårørenderepresentant</td></tr>
+            <tr><td>Tom Farmen Nerli</td><td>Sykehuset Vestfold, Kysthospitalet</td><td>—</td><td>Spesialist i fysikalsk medisin og rehabilitering · dissens. Dissens: retningslinjen vil ha noceboeffekt og tar bort håpet om bedring. Satt i styringskomitéen for Wyllers SIPCOV-studie (CBT/GET mot long covid, NCT05196451, protokoll s. 7–8). Førsteforfatter på Nerli og Wyller (2024) — den eneste norske RCT-en i høringsutkastets evidensgrunnlag, med Wyller som siste og overordnet medforfatter. Medforfatter av innlegg som psykologiserer ME/CFS (2023).</td></tr>
+            <tr><td>Tormod Landmark</td><td>St. Olavs hospital / NTNU</td><td>—</td><td>Psykologspesialist. Bidratt til ME-studie på kognitiv terapi (2023). Foredragsholder på kurs «Utmattelse og CFS/ME».</td></tr>
+            <tr><td>Trude Schei</td><td>—</td><td>Norges ME-forening</td><td>Brukerrepresentant · dissens</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Alle fire faglige dissenser er nå offentliggjort. Jøssang, Nerli, Herner og Prydz bruker nær identiske begrunnelser: retningslinjen er for forsiktig med aktivitet, gir noceboeffekt og mangler bedringsperspektiv. Herner etterspør eksplisitt biopsykososial forståelse.</p>
+
+      <p>Helsedirektoratets habilitetsvurdering konkluderte med at «ingen interesser med konsekvenser for deltakelse i arbeidet er identifisert». Metodebeskrivelsen utdyper: «Det er sjelden deltakere ekskluderes fra Helsedirektoratets retningslinjeutvikling på grunn av inhabilitet. Helsedirektoratet ønsker bidragsytere med ulike ståsted inn i arbeidet for diskusjoner som kan bidra til fagutvikling.» Det vil si: kjente interessekonflikter anses som en faglig styrke, ikke et habilitetsproblem.</p>
+
+      <p>Brukerrepresentasjonen: Recovery Norge har to representanter (Grøntjernet og Sagstad), ME-foreningen, Norsk Covidforening og ME-foreldrene én hver. Recovery Norges opptaksvilkår begrenser medlemskap til dem som har blitt friske — pasienter som fortsatt er syke er ikke kvalifisert.</p>
+
+
+
+              </div>
+      </details>
+      <p>Høringsutkastet regulerer ikke bare de 2 400–3 800 pasientene som er synlige i Norsk pasientregister med G93.3-kode. Det regulerer behandlingstilbudet for alle som faller inn under kategorien «langvarig utmattelse» — inkludert long covid-pasienter med ME/CFS-lignende symptomer.</p>
+
+      <p>FHI-studien (White m.fl., januar 2026) viste at fastlegekonsultasjoner for utmattelse i 2024 lå 70 prosent over forventet nivå — 205 000 ekstra konsultasjoner sammenlignet med pre-pandemisk trend. Norsk kompetansetjeneste for sykehusinfeksjoner og beredskap har estimert at mellom 50 000 og 100 000 nordmenn kan ha funksjonsnedsettende long covid-symptomer med ME/CFS-lignende forløp. Disse pasientene er i dag i stor grad usynlige i helseregistrene fordi ICPC-2 mangler kode for tilstanden, og fordi spesialisthelsetjenestens G93.3-kode brukes restriktivt.</p>
+
+      <p>Dersom Helsedirektoratets retningslinje vedtas i nåværende form, vil disse pasientene møte en klinisk anbefaling som ikke skiller mellom ME/CFS med dokumentert PEM og annen langvarig utmattelse — og der aktivitetsbaserte intervensjoner fremstilles som en «nyttig» tilnærming. Wien-studien (Kaiserseder et al., Pneumologie, 2026) viste at 26,7 prosent av ME/CFS-pasienter avbrøt rehabiliteringsopphold på grunn av klinisk observert PEM-krasj. ACSM inkluderte i 2025 for første gang ME/CFS og PEM i sine offisielle retningslinjer for belastningstesting, med eksplisitt advarsel mot aktivitetsbasert tilnærming uten hensyn til PEM.</p>
+
+      <p>I et folkehelseperspektiv er dette den kvantitativt viktigste konsekvensen av høringsutkastet. Antall potensielle long covid-pasienter som eksponeres for en retningslinje uten operasjonell PEM-definisjon, er et multiplum av den tradisjonelle ME/CFS-populasjonen. Pandemieffekten gjør at det som i 2007 var et smalt fagpolitisk spørsmål, i 2026 er et spørsmål med direkte relevans for titusenvis av norske pasienter.</p>
+
+</div><!-- /ps p7-intro -->
+      <div class="panel-section" id="p7-faglig" data-sec="p7-faglig">
+      <div class="hq-item">
+        <div class="hq-num">1</div>
+        <div class="hq-body">
+          <h4>Post-exertional malaise: operasjonell definisjon</h4>
+          <p>Post-exertional malaise (PEM) er det diagnostisk obligatoriske kjernesymptomet ved ME/CFS ifølge US Institute of Medicine (IOM, 2015), Canadakriteriene, NICE NG206 og ICD-11 — karakterisert ved uforholdsmessig forverring etter minimal anstrengelse, med forsinkelse på timer til dager. Høringsutkastet bruker begrepet konsekvent uten å operasjonalisere det, og anbefaler aktivitetsbaserte intervensjoner uten å skille mellom pasienter med og uten bekreftet PEM. Wien-studien (Kaiserseder et al., 2026) dokumenterer konsekvensen: ME/CFS-pasienter med bekreftet PEM forverres under rehabilitering som bedrer alle andre, og 26,7 prosent avbrøt på grunn av klinisk observerte PEM-krasj. Hva er den faglige begrunnelsen for at det diagnostisk sentrale kriteriet ikke er operasjonalisert — og hvilken rettslig og klinisk beskyttelse har en pasient med PEM mot behandling som forverrer tilstanden, når retningslinjen ikke definerer kriteriet behandlingsanbefalingene er betinget av?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">2</div>
+        <div class="hq-body">
+          <h4>Kielland og Liu (2025): de eneste tilgjengelige norske registerdata er ikke sitert</h4>
+          <p>Kielland og Liu (Social Sciences &amp; Humanities Open, 2025) er den eneste systematiske analysen av langtidsprognose for norske ME/CFS-pasienter basert på administrative registerdata — 8 485 pasienter koblet mot Statistisk sentralbyrås inntekts- og trygdedata. Funnene er entydige: 95 prosent av pasientene ikke bedres over tre år, rehabiliteringsopphold stoppet ikke forverringen, og av 733 pasienter med svært lav inntekt ved diagnosetidspunktet returnerte kun tre til medianlønn. Studien er ikke sitert i høringsutkastets evidensgrunnlag. Hva er årsaken til at den eneste tilgjengelige populasjonsrepresentative norske langtidsstudien er utelatt — og hvordan begrunner Helsedirektoratet behandlingsanbefalinger for en pasientgruppe uten å ha forankret dem i eksisterende norske langtidsdata?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">3</div>
+        <div class="hq-body">
+          <h4>GRADE-metodikkens egne konklusjoner er ikke reflektert i anbefalingsstyrken</h4>
+          <p>Helsedirektoratets egne GRADE-vurderinger — tilgjengelig i evidenstabellene som vedlegg til høringsutkastet — vurderer tillit til effektestimatet for gradert aktivitet som <em>lav</em> for utmattelse og <em>svært lav</em> for fysisk funksjon, med heterogenitet I²=90,7 %. For kognitiv atferdsterapi vurderes alle utfall som <em>lav til svært lav</em>. For pasienter med PEM og Canadakriterier konkluderer retningslinjen selv med at «forskningsgrunnlaget er svakt» og at det er «få identifiserte studier». GRADE-metodikkens egne prinsipper tilsier at lav til svært lav evidenskvalitet skal gi svake anbefalinger («kan vurderes»), ikke sterke («bør»). Anbefalingsteksten formulerer likevel «bør» for aktivitetsregulering — for alle pasienter, inkludert dem med PEM. Hva er Helsedirektoratets faglige begrunnelse for å fravike GRADE-metodikkens egne konklusjoner i anbefalingsstyrken?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">4</div>
+        <div class="hq-body">
+          <h4>Internasjonal retningslinjekonsensus: seks land peker i én retning — Norge i en annen</h4>
+          <p>USA (IOM, 2015), Canada (Canadakriteriene), Nederland (Gezondheidsraad, 2018), Belgia (Superior Health Council, 2020), Tyskland (IQWiG, 2021) og Storbritannia (NICE NG206, 2021) har alle konkludert med at gradert treningsterapi er kontraindisert for ME/CFS-pasienter med PEM, at kognitiv atferdsterapi ikke er en kurativ behandling, og at PEM er et obligatorisk diagnostisk kriterium. Helsedirektoratets høringsutkast beveger seg i motsatt retning — elleve år etter IOM-rapporten og fem år etter NICE NG206. Hva er den faglige begrunnelsen for dette avviket, og hvilke spesifikke studier eller evidensgrunnlag gjør at norske helsemyndigheter i 2026 vurderer evidensen annerledes enn samtlige sammenlignbare land?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">5</div>
+        <div class="hq-body">
+          <h4>Maja Wilhelmsen: fire samtidige roller i overlappende beslutningsarenaer</h4>
+          <p>Maja Wilhelmsen (Universitetssykehuset Nord-Norge, spesialist i fysikalsk medisin og rehabilitering) er arbeidsgruppedeltaker i retningslinjearbeidet, sitter i referansegruppen til Nasjonal kompetansetjeneste for CFS/ME, leder arbeidsutvalget for regionalt fagnettverk CFS/ME i Helse Nord, og er i styringsgruppen for REHAB-FATIGUE — studien som tester den intervensjonen retningslinjen vurderer, finansiert med 25 millioner kroner fra KLINBEFORSK. Helsedirektoratets habilitetsvurdering konkluderte med at ingen interessekonflikter med konsekvenser for deltakelse ble identifisert. Hva er den konkrete faglige og prosessuelle begrunnelsen for at fire samtidige roller i retningslinjearbeid, faglig infrastruktur, regional koordinering og aktivt pågående intervensjonsstudie ikke utgjør en interessekonflikt med konsekvenser for deltakelse?</p>
+        </div>
+      </div>
+
+      </div><!-- /ps p7-faglig -->
+      <div class="panel-section" id="p7-prosess" data-sec="p7-prosess">
+      <div class="hq-item"><div class="hq-num">6</div>
+        <div class="hq-body">
+          <h4>Brukerrepresentasjon: Recovery Norges opptaksvilkår</h4>
+          <p>Recovery Norge fikk to representanter i arbeidsgruppen (Ann Kristin Grøntjernet og Hannah Sagstad). Organisasjonens egne opptaksvilkår begrenser medlemskap til personer som har blitt friske av ME/CFS — pasienter som fortsatt er syke er ikke kvalifisert for medlemskap. Norges ME-forening, med over 6 300 syke medlemmer, fikk én representant. Kildejournalistisk analyse viser at ca. 2/3 av Recovery Norges historier handler om bedring via Lightning Process — den behandlingsformen organisasjonens stifter forsker på i en pågående randomisert kontrollert studie. Hva er Helsedirektoratets begrunnelse for at erfaringen fra en selektert gruppe av friskmeldte pasienter — med strukturell overvekt av én behandlingsform — er representativ brukererfaring for en retningslinje som skal gjelde for alle pasienter med ME/CFS, inkludert dem som fortsatt er syke?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">7</div>
+        <div class="hq-body">
+          <h4>REHAB-FATIGUE og habiliteten til faglig leder</h4>
+          <p>Professor Wyller er faglig leder for REHAB-FATIGUE (KLINBEFORSK, 25 mill. kr, 2026) — der intervensjonsarmen er Mind Body Reprocessing Therapy (MBRT), et behandlingssystem utviklet av hans nære samarbeidspartner Silje Endresen Reme ved Universitetet i Oslo. Wyller er samtidig den sentrale faglige referansen for det biopsykososiale rammeverket som høringsutkastet hviler på. I podkasten mars 2026 omtalte han REHAB-FATIGUE som «lovende» uten å opplyse om bevilgningens størrelse, sin egen lederrolle eller at studiens eneste engelskspråklige vitenskapelige publisering er et upublisert preprint. Resultatene foreligger ikke. Hva er Helsedirektoratets vurdering av at den sentrale fagpersonen bak retningslinjens teoretiske grunnlag simultant er faglig leder for den eneste store offentlig finansierte intervensjonsstudien som tester dette grunnlagets behandlingsimplikasjoner?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">8</div>
+        <div class="hq-body">
+          <h4>Diagnostisk oppløsning av ME/CFS og WHO-klassifikasjonen</h4>
+          <p>WHO klassifiserte ME/CFS i ICD-11 utelukkende som nevrologisk sykdom (kode 8E49) og fjernet nevrasteni (F48) som alternativkode. Norsk implementering av ICD-11 er planlagt til 2028–29. Høringsutkastet løser opp ME/CFS som distinkt diagnose i kategorien «langvarig utmattelse» uten operasjonell PEM-definisjon — en retning som er uforenlig med ICD-11-klassifikasjonen. Den norske legeforeningens kapittel for barne- og ungdomspsykiatri (2019) anbefaler eksplisitt å «vurdere andre stress-relaterte diagnoser» ved ICD-11-innføringen. Hva er Helsedirektoratets posisjon til dette avviket fra WHO-klassifikasjonen, og hvordan planlegger Helsedirektoratet å håndtere motsetningen mellom en retningslinje som løser opp ME/CFS i «langvarig utmattelse» og en ICD-11-implementering som klassifiserer ME/CFS utelukkende som nevrologisk sykdom?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">9</div>
+        <div class="hq-body">
+          <h4>Dissensene: syv av 21 tok formell dissens — fra to motsatte retninger</h4>
+          <p>Syv av arbeidsgruppens 21 medlemmer tok formell dissens — en tredjedel. Brukerrepresentantenes dissenser er offentliggjort og inneholder konkrete, dokumenterte faglige innvendinger. Trude Schei (ME-foreningen) dokumenterer at høringsutkastets vage formuleringer vil gi NAV samme tolkningsrom som dagens veileder — og at forverring som følge av behandling dermed fortsatt ikke vil anerkjennes rettslig. Tanja Thorsen (ME-foreldrene) dokumenterer at Helsedirektoratet ved oppstart forespeilet to separate kliniske løp for ME/CFS og langvarig utmattelse, at dette ikke er realisert, og at studier NICE vurderer som lav kvalitet er vurdert som middels kvalitet i høringsutkastet uten at avviket er begrunnet. Carina Mørch-Storstein (Norsk Covidforening) fastslår at utkastet ikke er i tråd med internasjonale standarder, ikke hensyntar WHOs røde flagg om ortostatisk intoleranse og PEM, og at «enkelte anbefalinger er faglig feil eller potensielt skadelige» for pasienter med PEM. Alle fire faglige dissenser er nå offentliggjort, og alle fire er nær identiske: retningslinjen gir noceboeffekt, oppfordrer til unngåelsesatferd og mangler bedringsperspektiv. Herner tilføyer at «biopsykososial forståelse, som er et anerkjent rammeverk globalt i arbeidet med pasientgruppen, er knapt nevnt». Prydz tilføyer at han «beklager» dissensen fordi han «opplever at vi ble hørt på områder som angår allmennlegenes oppdrag» — en formulering som antyder at de faglige dissensene ikke er en total avvisning av prosessen, men en protest mot de delene der gruppen ikke nådde frem. Høringsinstansene har nå tilgang til samtlige syv dissenser — fire faglige fra én retning og tre brukerrepresentantdissenser fra motsatt retning. Samlet betyr dette at arbeidsgruppen er delt i tre retninger: faglig dissens for mer aktivitetstilnærming (Jøssang, Nerli, Herner og Prydz — alle fire med identisk begrunnelse), faglig dissens for mer pasientsikkerhet og PEM-presisjon (brukerrepresentantene), og et flertall som støtter utkastet. Helsedirektoratets kommunikasjon reflekterer ikke denne tredelte splittelsen. Vil Helsedirektoratet offentliggjøre de tre gjenværende faglige dissensene, slik at høringsinstansene kan vurdere det samlede bildet av uenigheten — og hvorfor ingen av dissensene fikk gjennomslag?</p>
+        </div>
+      </div>
+
+      <div class="hq-item">
+        <div class="hq-num">10</div>
+        <div class="hq-body">
+          <h4>Ansvaret for tyve år uten dokumenterte resultater</h4>
+          <p>Tre uavhengige datakilder over syv år peker i samme retning. Helsedirektoratets egne evalueringer konkluderte i 2018 at Nasjonal kompetansetjeneste for CFS/ME ikke kunne dokumentere effekt av sin virksomhet. Fafo/SINTEF (2023) konkluderte at rehabiliteringsopphold «stort sett gjør pasientene sykere enn de var før». Kielland og Liu (2025) viser at 95 prosent av norske ME-pasienter ikke bedres over tre år under gjeldende behandlingsregime, og at rehabiliteringsopphold ikke stoppet forverringen. Nasjonal kompetansetjeneste fortsatte etter evalueringen. Det biopsykososiale rammeverket videreføres i høringsutkastet. Det er ikke et spørsmål om faglig uenighet. Det er et spørsmål om institusjonelt ansvar: hva er Helsedirektoratets svar på spørsmålet om hva som skal til for at dokumentert ineffektivitet over syv år, fra tre uavhengige kilder, får konsekvenser for de anbefalingene som er ansvarlige for den?</p>
+        </div>
+      </div>
+
+      </div><!-- /ps p7-prosess -->
+      <div class="panel-section" id="p7-metodikk" data-sec="p7-metodikk">
+      <h3 id="metodisk-bakgrunn">Metodisk bakgrunn for spørsmålene</h3>
+      <p>Denne seksjonen gir det metodologiske grunnlaget for spørsmålene — for lesere som ønsker å forstå de faglige standardene de er formulert ut fra.</p>
+
+      <p>En gjennomgående svakhet i nettverkets litteratur er sirkulær sitering: nettverket siterer primært egne studier som bevis for egne konklusjoner. Wyllers systematiske oversikt fra 2025 er basert på 30 studier der 19 (63 prosent) er fra nettverkets egne forfattere.</p>
+
+      <p>OCFC-manifestet (2023) er et eklatant eksempel. Artikkelen hevder at «after 40 years of research neither a specific biological defect or pathology, nor a specific biomarker, has been identified». Referanselisten inneholder 46 referanser. Av disse er ref [39] Knoop et al. 2007 — en studie der Hans Knoop er medforfatter. Knoop oppgir royalties fra en CBT-manual i interessekonflikt-erklæringen. Han siterer sin egen litteratur som bevis for at CBT kan gi full bedring, i et manifest han selv har signert. Ref [43] er Sharpe, Chalder og White — PACE-arkitektene — som siterer sin egen oppsummeringsartikkel som «evidence-based care». Sharpe og Chalder oppgir royalties og lederverv i sine egne interessekonflikt-erklæringer.</p>
+
+      <p>Vitenskapelig konsensus oppstår når <em>uavhengige</em> forskergrupper, med ulike metoder og uten koordinert felles rammeverk, konvergerer mot samme funn. Det er en annen prosess enn at et koordinert nettverk produserer en felleserklæring og siterer hverandre. Størrelse i et konsensusnettverk dokumenterer koordinering — ikke replisering.</p>
+
+      <h4>GRADE og sammenhengen mellom evidenskvalitet og anbefalingsstyrke</h4>
+
+      <p>GRADE-systemet (Grading of Recommendations Assessment, Development and Evaluation) er den internasjonale standarden for retningslinjearbeid. Det vurderer tillit til effektestimater langs fire dimensjoner: risiko for skjevhet, konsistens, direkthet og presisjon. Konklusjonen kobles eksplisitt til anbefalingsstyrken: lav til svært lav evidenskvalitet skal gi svake anbefalinger («kan vurderes»), ikke sterke («bør»).</p>
+
+      <p>Helsedirektoratets høringsutkast (2026) har gjennomført GRADE-vurderinger. Evidenstabellene — tilgjengelig som PDF fra Helsedirektoratets egne nettsider — viser:</p>
+
+      <p>For gradert aktivitet: tillit til effektestimatet vurdert som <em>lav</em> for utmattelse og <em>svært lav</em> for fysisk funksjon (ved oppfølging), med heterogenitet I²=90,7 %. For kognitiv atferdsterapi: tillit til effektestimatet vurdert som <em>lav til svært lav</em> for alle utfall (utmattelse, fysisk funksjon, depresjon, angst). For PICO-spesifikt rettet mot pasienter med PEM og Canadakriterier: retningslinjen konkluderer selv med at «forskningsgrunnlaget er svakt» og at det er «få identifiserte studier».</p>
+
+      <p>Anbefalingsteksten formulerer likevel «bør» for aktivitetsregulering — for alle pasienter, inkludert dem med PEM. Dette er et direkte brudd med GRADE-metodikkens prinsipper. Det er ikke en redaksjonell tilfeldighet. Det er resultatet av at klinisk erfaring og brukererfaring fra Recovery Norges miljø er tillagt vekt som kompenserer for fraværet av sterk forskningsmessig evidens — i tråd med retningslinjen metodebeskrivelse: «På områder der det er funnet mindre forskningsbasert kunnskap [...] blir klinisk kunnskap og brukerkunnskap tillagt større vekt.»</p>
+
+      <h4>Representativitet i studiepopulasjonen — inklusjonskriteriene avgjør alt</h4>
+
+      <p>Den mest gjennomgripende metodologiske svakheten i CBT- og GET-litteraturen er diskrepansen mellom inklusjonspopulasjon og den populasjonen konklusjonene er ment å gjelde for. Maas et al. (2024) — en av de sentrale metaanalysene for CBT i høringsutkastet — inkluderer studier som primært bruker Oxford- og CDC/Fukuda-kriterier. Oxfordkriteriene krever kun kronisk utmattelse i minimum seks måneder. De krever ikke PEM. De ble trukket tilbake av sine egne opphavspersoner.</p>
+
+      <p>Canadakriteriene — som retningslinjen selv anbefaler for ME/CFS-diagnose (punkt 10) — krever PEM som obligatorisk kriterium, i tillegg til søvnforstyrrelser, smerter, nevrokognitive symptomer og autonome/nevroendokrine/immunologiske symptomer. Det er en fundamentalt annen pasientpopulasjon. En studie av Oxford-pasienter kan ikke generere gyldige konklusjoner om ME/CFS-pasienter med Canadakriterier.</p>
+
+      <p>Wien-studien (Kaiserseder et al., Pneumologie 2026) dokumenterer dette empirisk: i en post-covid rehabiliteringskohorte (n=216) oppfylte 6,9 prosent Canadakriteriene. Denne gruppen forbedret seg ikke i fatigue under rehabilitering (Δ+1,3 mot Δ−5,1 i kontrollgruppen, p<0,001). 26,7 prosent avbrøt rehabiliteringen — alle pga. PEM-krasj. Rehabilitering virker for post-covid-pasienter uten ME/CFS. Det virker ikke for dem med ME/CFS. En samlet analyse av begge gruppene ville gi en gjennomsnittlig positiv effekt — som ikke er meningsfull for ME/CFS-pasienten.</p>
+
+      <h4>Klinisk versus statistisk signifikans</h4>
+
+      <p>En statistisk signifikant effekt (p<0,05) er ikke nødvendigvis klinisk relevant. Det som teller klinisk er effektstørrelse, absolutt risikoreduksjon og NNT (number needed to treat). Effektstørrelsene i CBT-litteraturen — standardisert gjennomsnittlig effekt (SMD) på −0,52 for utmattelse i Maas et al. (2024) — er i det moderate registeret. Med lav til svært lav tillit til estimatene, og med usikkerhet om overførbarhet til Canadakriterier-populasjonen, er dette utilstrekkelig grunnlag for en sterk anbefaling rettet mot en pasientgruppe med gjennomsnittlig 17 år med sykdomsbelastning.</p>
+
+      <p>Til sammenligning: daratumumab-piloten ved Haukeland (professor Fluge, professor Mella og professor Tronstad, 2025) viste 60 prosent klinisk og objektiv bedring hos 10 pasienter (6 av 10) med ME/CFS. Det er en liten studie — pilotstudier er per definisjon for små til å gi sikre konklusjoner. Men effektstørrelsen er dramatisk annerledes, mekanismen er biologisk spesifikk (CD38-positiv plasmacelle-depletering), og resultatet er objektivt målt, ikke selvrapportert. Den randomiserte oppfølgingsstudien vil gi svar. Den er privatfinansiert.</p>
+
+      <h4>Langtidsoppfølging og den virkelige prøven</h4>
+
+      <p>Studier av CBT og GET måler typisk endringer over 3–18 måneder, med subjektive utfallsmål. Det er den kortsiktige prøven. Den virkelige prøven er langtidsregistrering av faktisk funksjonsnivå i den reelle pasientpopulasjonen — arbeidsdeltakelse, inntektsutvikling, helsetjenestbruk — over 3–5 år eller mer.</p>
+
+      <p>Kielland og Liu (Social Sciences & Humanities Open, 2025) er den eneste studien som gir dette langtidsperspektivet for norske ME/CFS-pasienter. Administrative registerdata fra 8 485 pasienter med G93.3-diagnose, koblet mot SSBs inntekts- og trygdedata: 57 prosent ingen bedring, 38 prosent forverring, 5 prosent noen form for bedring. Av 733 personer med svært lav inntekt ved diagnosetidspunktet: tre år senere hadde kun tre returnert til medianlønn. Rehabiliteringsopphold stoppet ikke forverringen. Dette er den virkelige langtidseffekten av den biopsykososiale behandlingstilnærmingen anvendt på den norske ME/CFS-populasjonen over tyve år. Den er ikke referert i høringsutkastet.</p>
+
+      <p>Wien-studien (2026) dokumenterer det samme i et tredje datasett: fatigue bedres ikke i ME/CFS-gruppen under rehabilitering, mens gangtest-mål kan vise fremgang. Det betyr at man kan fremstille rehabilitering som «effektiv» basert på kliniske outputmål (CROM) uten at pasientene opplever bedring på egne velferdsmål (PROM). Dette er præsis den diskrepansen som gjør det mulig å opprettholde et behandlingsregime over tiår uten å konfrontere dets reelle mangel på effekt i praksis.</p>
+
+      <h4>Hva en metodologisk forsvarlig retningslinje ville ha krevd</h4>
+
+      <p>En metodologisk forsvarlig nasjonal retningslinje for ME/CFS i 2026 ville ha:</p>
+
+      <p>Gjennomført systematiske litteratursøk på biologisk patofysiologi, immunologi og biomarkørforskning — ikke bare på aktivitetsbaserte intervensjoner og CBT. Brukt separate PICO-analyser for pasienter diagnostisert etter Canadakriteriene med bekreftet PEM, adskilt fra pasienter med generell langvarig utmattelse. Reflektert GRADE-vurderingenes faktiske konklusjoner (lav til svært lav evidenskvalitet) i anbefalingsstyrken. Nevnt NICE NG206 (2021) i evidensgrunnlaget for aktivitetsregulering — der den er mest relevant — ikke bare under legemidler. Opplyst eksplisitt om at Nerli og Wyller (2024) — ifølge høringsutkastets evidensgrunnlag den eneste norske RCT-en — er en studie der arbeidsgruppedeltakeren Nerli er førsteforfatter og professor Wyller er siste og overordnet medforfatter. Inkludert registerdata fra Kielland og Liu (2025) som dokumentasjon på den faktiske langtidseffekten av gjeldende behandlingstilnærming.</p>
+
+      <p>Ingen av disse kravene er urimelige. Det er standardkravene til kunnskapsbasert retningslinjearbeid, slik de er beskrevet i Helsedirektoratets egen metodeveileder.</p>
+
+    
+      </div><!-- /ps p7-metodikk -->
+</div><!-- /panel p7 -->
+
+<!-- DEL VIII: ORDLISTE -->
+<div class="panel" id="p8">
+  <div class="panel-subnav">
+    <a href="#p8" style="pointer-events:none;">Ordliste og begreper</a>
+  </div>
+  <h2 style="display:none;">Ordliste og begreper</h2>
+  <p style="color:var(--ink-mid);font-size:18px;margin-bottom:24px;">63 fagtermer og forkortelser brukt i dokumentet.</p>
+  <div id="glossary-body">
+
+    <div class="glossary-cat-heading" data-cat="diagnose">Diagnostiske kriterier og sykdomsdefinisjon</div>
+
+    <div class="glossary-term" data-terms="me cfs myalgic encephalomyelitis chronic fatigue syndrome g93.3">
+      <h4>ME/CFS</h4>
+      <p>Myalgic Encephalomyelitis/Chronic Fatigue Syndrome. Nevrologisk sykdom klassifisert under G93.3 i ICD-10. Karakterisert av vedvarende utmattelse, kognitiv svikt, søvnforstyrrelser og post-exertional malaise (PEM). WHO har klassifisert tilstanden under nevrologi siden 1969.</p>
+    </div>
+    <div class="glossary-term" data-terms="pem post-exertional malaise anstrengelsesutløst forverring">
+      <h4>PEM — Post-Exertional Malaise</h4>
+      <p>Forverring av symptomer etter fysisk eller kognitiv anstrengelse, typisk med 12–48 timers forsinkelse og varighet fra dager til uker. Definert av IOM 2015 som det obligatoriske og sentrale diagnostiske kriteriet for ME/CFS. Norsk: anstrengelsesutløst symptomforverring.</p>
+    </div>
+    <div class="glossary-term" data-terms="kanadakriteriene canadakriteriene carruthers">
+      <h4>Canadakriteriene</h4>
+      <p>Diagnostiske kriterier for ME/CFS utviklet av Carruthers et al. (2003). Krever åtte symptomer inkludert PEM. Brukt internasjonalt som gullstandard i klinisk og forskningsmessig sammenheng. Anbefalt av Helsedirektoratets veileder fra 2014.</p>
+    </div>
+    <div class="glossary-term" data-terms="oxford-kriterier oxford sharpe 1991">
+      <h4>Oxford-kriterier</h4>
+      <p>Diagnostiske kriterier fra 1991 (Sharpe et al.) som kun krever kronisk utmattelse i seks måneder — ingen krav om PEM eller andre spesifikke symptomer. Brukt i PACE-studien og i Cochrane-oversikten (Larun et al.). Kritisert for å fange inn en bredere populasjon enn ME/CFS slik sykdommen er definert i dag.</p>
+    </div>
+    <div class="glossary-term" data-terms="iom 2015 institute of medicine national academy">
+      <h4>IOM 2015</h4>
+      <p>Rapport fra US Institute of Medicine (nå National Academy of Medicine): «Beyond Myalgic Encephalomyelitis/Chronic Fatigue Syndrome: Redefining an Illness». Definerte PEM som obligatorisk diagnostisk kriterium og karakteriserte ME/CFS som «en alvorlig, kronisk, kompleks, systemisk sykdom».</p>
+    </div>
+    <div class="glossary-term" data-terms="fukuda-kriterier fukuda cdc 1994">
+      <h4>Fukuda-kriterier</h4>
+      <p>CDC-kriterier fra 1994. Brukt i mye eldre ME/CFS-forskning. Krever kronisk utmattelse pluss fire av åtte tilleggssymptomer. Inkluderer ikke PEM som obligatorisk.</p>
+    </div>
+    <div class="glossary-term" data-terms="long covid long-covid post-covid senfølger">
+      <h4>Long covid / post-COVID-tilstand</h4>
+      <p>Vedvarende symptomer etter SARS-CoV-2-infeksjon. Overlapper klinisk og biologisk med ME/CFS, inkludert PEM, kognitiv svikt og autonom dysfunksjon. WHO-definisjon: symptomer som oppstår vanligvis innen tre måneder etter akutt COVID-19 og varer minst to måneder.</p>
+    </div>
+    <div class="glossary-term" data-terms="g93.3 icd kode diagnose">
+      <h4>G93.3</h4>
+      <p>ICD-10-kode for ME/CFS (postviral utmattelsessyndrom) i spesialisthelsetjenesten. Antall pasienter med denne koden i Norge falt fra 3 854 (2017) til 2 426 (2025).</p>
+    </div>
+    <div class="glossary-term" data-terms="r53 icd kode tretthet uvelhet">
+      <h4>R53</h4>
+      <p>ICD-10-kode for «uvelhet og tretthet» — et symptom uten etiologisk innhold. Steg fra 4 747 til over 6 000 i samme periode G93.3 falt. Diagnostisk fortrengning: pasienter kodes med R53 i stedet for G93.3.</p>
+    </div>
+    <div class="glossary-term" data-terms="icpc-2 primærhelsetjeneste fastlege kode">
+      <h4>ICPC-2</h4>
+      <p>International Classification of Primary Care, versjon 2. Brukes i norsk primærhelsetjeneste. Har ingen kode for ME/CFS — nærmeste er A04 (slapphet/tretthet). Gjør det strukturelt umulig å registrere ME/CFS-diagnose hos fastlege.</p>
+    </div>
+
+    <div class="glossary-cat-heading" data-cat="behandling">Behandlingsformer og intervensjoner</div>
+
+    <div class="glossary-term" data-terms="cbt kognitiv atferdsterapi cognitive behavioural therapy">
+      <h4>CBT — Kognitiv atferdsterapi</h4>
+      <p>Psykologisk behandlingsmetode som i ME/CFS-kontekst bygger på antakelsen om at feilaktige sykdomsoppfatninger og aktivitetsunngåelse opprettholder utmattelsen. Frarådt av NICE NG206 (2021) som kurativ behandling for ME/CFS-pasienter med PEM.</p>
+    </div>
+    <div class="glossary-term" data-terms="get gradert treningsterapi graded exercise therapy">
+      <h4>GET — Gradert treningsterapi</h4>
+      <p>Behandlingsmetode basert på antakelsen om at dekondisjonering opprettholder ME/CFS. Frarådt av NICE NG206 (2021) for ME/CFS-pasienter med PEM. Wüst et al. (Nature Communications, 2023) dokumenterte muskelbiopsi-funn som forklarer hvorfor trening kan forverre tilstanden.</p>
+    </div>
+    <div class="glossary-term" data-terms="lp lightning process parker kurs">
+      <h4>LP — Lightning Process</h4>
+      <p>Kommersielt kurs utviklet av britisk osteopat Phil Parker. Basert på nevroplastisitetsteorier og mentale teknikker. Ca. 20 000 kr per deltaker. Instruktører krever ingen helsefaglig utdanning. NICE NG206 fraråder eksplisitt LP for ME/CFS-pasienter.</p>
+    </div>
+    <div class="glossary-term" data-terms="mbrt mind body reprocessing therapy reme jacobsen">
+      <h4>MBRT — Mind Body Reprocessing Therapy</h4>
+      <p>Behandlingssystem utviklet ved Mind Body Lab (Reme og Jacobsen, UiO). Basert på prediktiv prosessering, klassisk læring og relasjonsrammeteori. Eneste engelskspråklige vitenskapelige publisering er et upublisert preprint (2025). Testes i MINIRICO-studien (KLINBEFORSK, 25 mill. kr).</p>
+    </div>
+    <div class="glossary-term" data-terms="daratumumab haukeland fluge mella behandling">
+      <h4>Daratumumab</h4>
+      <p>Monoklonalt antistoff opprinnelig brukt mot myelomatose. Testes ved Haukeland universitetssykehus (Fluge/Mella) mot ME/CFS basert på autoantistoff-hypotesen. Pilotforsøk 2025 (n=10): 60 % klinisk og objektiv bedring. Finansiert av ME-fondet og private bidrag — ikke offentlige midler.</p>
+    </div>
+    <div class="glossary-term" data-terms="pacing energistyring aktivitetstilpasning">
+      <h4>Pacing</h4>
+      <p>Energistyringsmetode der pasienten tilpasser aktivitetsnivå til tilgjengelig energi for å unngå PEM. Ikke en terapeutisk intervensjon, men en mestringsstrategi. Anbefalt av NICE NG206.</p>
+    </div>
+    <div class="glossary-term" data-terms="igg-aferese aferese autoantistoff fjerning">
+      <h4>IgG-aferese</h4>
+      <p>Fjerning av IgG-antistoffer fra blodet. Scheibenbogen/Charité (Lancet Regional Health Europe, 2024): klinisk bedring i kontrollert studie etter fjerning av autoantistoffer mot adrenerge reseptorer.</p>
+    </div>
+
+    <div class="glossary-cat-heading" data-cat="teori">Teori og rammeverk</div>
+
+    <div class="glossary-term" data-terms="sustained arousal stressrespons wyller teori">
+      <h4>Sustained arousal</h4>
+      <p>Wyllers teoretiske modell (formalisert 2009): ME/CFS forklares som en vedvarende aktivering av hjernens stressrespons, der biologiske funn som immunaktivering er epifenomener — konsekvenser av stressresponsen, ikke primære sykdomsmekanismer. Teoriens kausale kjerne er falsifisert av Kongsnes et al. (Stress, 2026) fra Wyllers egen forskningsgruppe.</p>
+    </div>
+    <div class="glossary-term" data-terms="prediktiv hjerne prediktiv prosessering forventning">
+      <h4>Prediktiv hjerne-teori</h4>
+      <p>Nevrovitenskapelig modell der hjernen konstruerer sanseopplevelser basert på forventninger. Brukes av Wyller, Reme og Jacobsen som teoretisk ramme for sustained arousal og MBRT. Presenteres med optiske illusjoner som analogi på Recovery Norge-seminaret 2025.</p>
+    </div>
+    <div class="glossary-term" data-terms="biopsykososial modell rammeverk psykologisk">
+      <h4>Biopsykososial modell</h4>
+      <p>Rammeverk som forstår sykdom som samspill mellom biologiske, psykologiske og sosiale faktorer. I ME/CFS-kontekst brukt til å begrunne psykologiske og atferdsmessige behandlinger. Skilles fra biomedisinsk modell som søker primære biologiske mekanismer.</p>
+    </div>
+    <div class="glossary-term" data-terms="nocebo forventning media dekning">
+      <h4>Nocebo-effekt</h4>
+      <p>Negativ helseeffekt forårsaket av forventning om skade — speilbildet av placebo. Wyller argumenterer i Vaksinepodden mars 2026 at mediedekning av long covid skaper nocebo-effekter. Ziyad Al-Aly: «Det er ikke noe empirisk evidens for noe slikt.»</p>
+    </div>
+    <div class="glossary-term" data-terms="mups medisinsk uforklarte plager symptomer">
+      <h4>MUPS — Medisinsk uforklarte plager og symptomer</h4>
+      <p>Paraplybegrep for symptombaserte tilstander uten påvist organisk årsak. ME/CFS kategoriseres som MUPS i deler av det norske fagmiljøet. Kontroversiell kategorisering siden IOM 2015 definerte ME/CFS som en selvstendig sykdom. Legeforeningens MUPS-gruppe inkluderer Prydz og Jøssang.</p>
+    </div>
+
+    <div class="glossary-cat-heading" data-cat="metode">Metode, institusjoner og studier</div>
+
+    <div class="glossary-term" data-terms="grade grading recommendations assessment evidens kvalitet">
+      <h4>GRADE</h4>
+      <p>Grading of Recommendations, Assessment, Development and Evaluation. Internasjonalt system for å vurdere kvaliteten på forskningsevidens og styrken av behandlingsanbefalinger. Flottorp er GRADE-ekspert. Metoden forutsetter at lav evidenskvalitet gir svakere anbefalinger — en sammenheng høringsutkastet 2026 ikke konsekvent reflekterer.</p>
+    </div>
+    <div class="glossary-term" data-terms="pace pace-studien white chalder sharpe lancet 2011">
+      <h4>PACE-studien</h4>
+      <p>«Pacing, graded Activity and Cognitive behaviour therapy: a randomised Evaluation» (White, Chalder, Sharpe et al., Lancet 2011). Største RCT på CBT og GET ved ME/CFS. £5 mill., delfinansiert av Department for Work and Pensions. Kritisert for svekket «recovery»-definisjon etter datainnsamling. NICE NG206 (2021) konkluderte at studien ikke gir tilstrekkelig grunnlag for CBT/GET-anbefalinger.</p>
+    </div>
+    <div class="glossary-term" data-terms="rct randomisert kontrollert studie gullstandard">
+      <h4>RCT — Randomisert kontrollert studie</h4>
+      <p>Gullstandard for klinisk effektforskning. Deltakere fordeles tilfeldig til behandlings- og kontrollgrupper. Resultater er ikke gyldige dersom inklusjonskriteriene rekrutterer feil populasjon — et kjerneproblem i GET/CBT-studier som bruker Oxford-kriterier.</p>
+    </div>
+    <div class="glossary-term" data-terms="norcapital klonidin wyller sympatikus">
+      <h4>NorCAPITAL</h4>
+      <p>Wyllers klonidin-studie (data 2010–2012, publisert 2015). Testet klonidin som farmakologisk hemmer av sympatikusaktivitet, basert på sustained arousal-teorien. Klonidin ga ingen symptomlindring — økte faktisk utmattelse. Wyller tolket ikke dette som falsifikasjon av teorien.</p>
+    </div>
+    <div class="glossary-term" data-terms="sipcov rørtveit kysthospitalet long covid cbt">
+      <h4>SIPCOV</h4>
+      <p>«Short-time behavioural intervention in post-Covid syndrome». RCT ledet av Wyller (Ahus), n=310. Tester CBT og gradert trening mot long covid med sustained arousal som rammeverk. Styringskomité: Wyller, Rørtveit, Flottorp, Reme, Jacobsen. ClinicalTrials.gov NCT05196451.</p>
+    </div>
+    <div class="glossary-term" data-terms="cfq chalder fatigue questionnaire spørreskjema">
+      <h4>CFQ — Chalder Fatigue Questionnaire</h4>
+      <p>11-spørsmåls selvrapporteringsskjema for utmattelse. Utviklet av Trudie Chalder. Brukt som primærutfallsmål i PACE og som inklusjonsinstrument i REHAB-FATIGUE. NINDS (USA) godkjenner ikke CFQ som inklusjonsinstrument i forskning på postinfeksiøs utmattelse. Terskel CFQ>4 fanger inn dagligdags tretthet.</p>
+    </div>
+    <div class="glossary-term" data-terms="cpet belastningstest sykkelttest pem objektiv">
+      <h4>CPET — Cardiopulmonary Exercise Test</h4>
+      <p>To-dagers belastningstesting. Objektiv metode for å dokumentere PEM: pasienter med ME/CFS viser signifikant redusert arbeidskapasitet på dag to, noe friske kontroller ikke gjør. Over 30 studier har replisert funnet.</p>
+    </div>
+    <div class="glossary-term" data-terms="klinbeforsk finansiering forskningsmidler 25 millioner">
+      <h4>KLINBEFORSK</h4>
+      <p>Nasjonalt program for klinisk behandlingsforskning i spesialisthelsetjenesten. Bevilget 25 mill. kr til REHAB-FATIGUE/MINIRICO i februar 2026. Programmet vurderer ikke faglige uenigheter i tildelingsprosessen — opplyst i svarbrev mars 2026.</p>
+    </div>
+    <div class="glossary-term" data-terms="decodeme genetikk genomomfattende edinburgh ponting">
+      <h4>DecodeME</h4>
+      <p>Genomomfattende assosiasjonsstudie fra University of Edinburgh (Ponting et al., 2025, n>17 000). Identifiserte åtte signifikante genetiske loki uten overlapp med angst, depresjon eller generell utmattelse. Dokumenterer at ME/CFS har en selvstendig genetisk arkitektur.</p>
+    </div>
+    <div class="glossary-term" data-terms="nem nasjonal etisk forskningskomite">
+      <h4>NEM</h4>
+      <p>Nasjonal etisk forskningskomité for medisin og helsefag. Flottorps e-post om Cochrane-prosessen var adressert til et NEM-medlem — den er et primærdokument som viser hennes innramming av fagkritikk som «aktivistpress».</p>
+    </div>
+    <div class="glossary-term" data-terms="nafkam alternativ medisin tromsø uit">
+      <h4>NAFKAM</h4>
+      <p>Nasjonalt forskningssenter innen komplementær og alternativ medisin, UiT. Sendte bekymringsmelding til Helsedirektoratet i 2011 etter tre negative LP-meldinger. Opprettholdt risikovurderingen i 2015 og 2020. Flottorp forsøkte å forhindre et NAFKAM-seminar om LP i 2020.</p>
+    </div>
+    <div class="glossary-term" data-terms="coffi collaborative fatigue following infection wyller internasjonalt">
+      <h4>COFFI</h4>
+      <p>Collaborative on Fatigue Following Infection. Internasjonalt forskningskonsortium ledet av Wyller. Scientific advisory committee: Sharpe og Chalder. Grunnlagt 2015/2018 med White som operativt medforfatter. Bruker Fukuda-kriterier, ikke kanadakriterier.</p>
+    </div>
+    <div class="glossary-term" data-terms="ocfn oslo chronic fatigue network reme internasjonalt">
+      <h4>OCFN</h4>
+      <p>Oslo Chronic Fatigue Network. Internasjonalt nettverk ledet av Reme ved Mind Body Lab, UiO. Styringsgruppe inkluderer Sharpe, Chalder, Garner og Liira. Bredere enn COFFI — dekker behandling, ikke bare forskning.</p>
+    </div>
+    <div class="glossary-term" data-terms="ocfc oslo chronic fatigue consortium manifest 51 forfattere">
+      <h4>OCFC</h4>
+      <p>Oslo Chronic Fatigue Consortium. 51-forfattergruppen bak to dokumenter mot NICE: «Chronic fatigue syndromes: real illnesses» (SJPHC, 2023) og «Anomalies in the review process» (JNNP, 2023, White som lead). Norske medforfattere inkluderer Flottorp og Wyller.</p>
+    </div>
+    <div class="glossary-term" data-terms="nkt nasjonal kompetansetjeneste oslo universitetssykehus helland">
+      <h4>NKT</h4>
+      <p>Nasjonal kompetansetjeneste for CFS/ME, Oslo universitetssykehus. Ledet av Ingrid Helland. Helsedirektoratets egne evalueringer konkluderte at tjenesten ikke kan dokumentere effekt av sin virksomhet. Tjenesten fortsatte uendret.</p>
+    </div>
+    <div class="glossary-term" data-terms="rek regional etisk komite godkjenning forskningsetikk">
+      <h4>REK</h4>
+      <p>Regionale komiteer for medisinsk og helsefaglig forskningsetikk. LP-studien til Landmark mistet etisk godkjenning og måtte re-søkes — Per Magnus gikk fra rådgiverrolle til monitoreringskomité etter re-søknad.</p>
+    </div>
+    <div class="glossary-term" data-terms="mind body lab reme jacobsen uio mbrt">
+      <h4>Mind Body Lab</h4>
+      <p>Forskningsgruppe ved Psykologisk institutt, UiO, ledet av Reme og Jacobsen. Utvikler av MBRT. Arrangør av det hemmelige seminaret oktober 2022. Leder Oslo Chronic Fatigue Network.</p>
+    </div>
+    <div class="glossary-term" data-terms="minirico pedersen long covid nikotinamid klinbeforsk">
+      <h4>MINIRICO</h4>
+      <p>«Mental Intervention og Nikotinamid Ribosid-supplement ved langvarig Covid». RCT ledet av Maria Pedersen (Ahus/UiO), 2×2 faktoriell design, n=310. Tester MBRT og nikotinamid ribosid (ChromaDex/TRU NIAGEN). Finansiert av KLINBEFORSK (25 mill. kr, 2026).</p>
+    </div>
+    <div class="glossary-term" data-terms="rehab-fatigue klinbeforsk wyller faglig leder 25 millioner">
+      <h4>REHAB-FATIGUE</h4>
+      <p>KLINBEFORSK-prosjekt (25 mill. kr, februar 2026) ledet av Wyller som faglig leder. Overordnet prosjektramme som inkluderer MINIRICO. Bruker CFQ som måleinstrument.</p>
+    </div>
+    <div class="glossary-term" data-terms="loteca selvakumar barn unge long covid ahus">
+      <h4>LoTECA</h4>
+      <p>«Long-Term Effects of COVID-19 in Children and Adolescents». Studie ved Ahus/UiO, ledet av Joel Selvakumar. Fant at biomarkører ikke predikerer long covid ved seks måneder, men at nevrotisisme og ensomhet gjør det.</p>
+    </div>
+    <div class="glossary-term" data-terms="rituxme rituximab fluge mella haukeland negativt resultat">
+      <h4>RituxME</h4>
+      <p>Fase 3-studie på rituximab ved ME/CFS (Fluge/Mella, Haukeland). 151 pasienter, randomisert, dobbeltblindet. Negativt resultat publisert i Annals of Internal Medicine 2019. Forskerne aksepterte funnet og gikk videre til daratumumab — et eksempel på ordinær vitenskapelig revisjon.</p>
+    </div>
+    <div class="glossary-term" data-terms="nav arbeids velferdsetat trygd uføretrygd">
+      <h4>NAV</h4>
+      <p>Arbeids- og velferdsetaten. Krever gjennomføring av anbefalt behandling som vilkår for trygdeytelser — inkludert behandlinger Fafo-rapporten viser gjør pasienter sykere. Statens prosedyre i Gulating-saken: den biomedisinske modellen er feil.</p>
+    </div>
+    <div class="glossary-term" data-terms="npr norsk pasientregister registerdata diagnose">
+      <h4>NPR — Norsk pasientregister</h4>
+      <p>Primærkilden for G93.3- og R53-kodingsdata brukt i Del IV. Viser fall i G93.3 og stigning i R53 — diagnostisk fortrengning dokumentert over 2017–2025.</p>
+    </div>
+    <div class="glossary-term" data-terms="ssb statistisk sentralbyrå inntekt trygd registerdata">
+      <h4>SSB — Statistisk sentralbyrå</h4>
+      <p>Inntekts- og trygdedata koblet mot NPR i Kielland og Liu (2025, n=8 485). Grunnlaget for dokumentasjonen av at 95 % av norske ME-pasienter ikke bedres over tre år.</p>
+    </div>
+    <div class="glossary-term" data-terms="icd-10 icd-11 who klassifikasjon sykdom">
+      <h4>ICD-10 / ICD-11</h4>
+      <p>WHOs internasjonale klassifikasjon av sykdommer. ICD-11 gir ME/CFS kode 8E49 under nevrologi og skiller det fra psykosomatiske tilstander som klassifiseres under «Bodily Distress Disorder» (6C20). Norge bruker fortsatt ICD-10.</p>
+    </div>
+    <div class="glossary-term" data-terms="helsedirektoratet retningslinje høring mai 2026">
+      <h4>Helsedirektoratet</h4>
+      <p>Norsk fagdirektorat under Helse- og omsorgsdepartementet. Ansvarlig for nasjonal faglig retningslinje for langvarig utmattelse inkl. ME/CFS. Høringsutkast publisert 4. februar 2026. Høringsfrist 4. mai 2026.</p>
+    </div>
+    <div class="glossary-term" data-terms="nice ng206 storbritannia retningslinje 2021">
+      <h4>NICE NG206</h4>
+      <p>National Institute for Health and Care Excellence (UK). Retningslinje publisert oktober 2021 etter 18 måneder og over 900 referanser. Konklusjon: CBT og GET frarådes for ME/CFS-pasienter med PEM; LP frarådes eksplisitt. Wyller, Flottorp og Brurberg svarte med Lancet-kommentaren «more ideology than science?» (2022).</p>
+    </div>
+    <div class="glossary-term" data-terms="nk-celler natural killer immunforsvar biologisk">
+      <h4>NK-celler</h4>
+      <p>Natural killer-celler. Del av medfødt immunforsvar. Redusert NK-celleaktivitet er et av de mest repliserte biologiske funnene ved ME/CFS internasjonalt.</p>
+    </div>
+    <div class="glossary-term" data-terms="autoantistoffer antistoffer charité scheibenbogen">
+      <h4>Autoantistoffer</h4>
+      <p>Antistoffer rettet mot kroppens egne strukturer. Wirth og Scheibenbogen (Charité, 2021) dokumenterte autoantistoffer mot adrenerge reseptorer som fører til vasokonstriksjon og hypoksi ved ME/CFS.</p>
+    </div>
+    <div class="glossary-term" data-terms="mitokondrier energi wüst muskelbiopsi">
+      <h4>Mitokondrier</h4>
+      <p>Cellenes energiproduserende organeller. Wüst et al. (Nature Communications, 2023) dokumenterte redusert mitokondriell kapasitet i muskelvev hos ME/CFS-pasienter — direkte vevsfunn, uavhengig av selvrapportering.</p>
+    </div>
+    <div class="glossary-term" data-terms="preload-svikt ortostatisk hjertesvikt blodvolum">
+      <h4>Preload-svikt</h4>
+      <p>Utilstrekkelig venøs tilbakestrøm til hjertet, resulterer i redusert slagvolum ved oppreist stilling. Dokumentert ved ME/CFS, forklarer ortostatisk intoleranse og kognitive symptomer ved aktivitet.</p>
+    </div>
+
+
+    <div class="glossary-cat-heading" data-cat="forkortelser">Forkortelser og institusjonsnavn</div>
+
+    <div class="glossary-term" data-terms="foi freedom of information offentlighet dokumentinnsyn">
+      <h4>FOI</h4>
+      <p>Freedom of Information. Britisk lov om rett til offentlige dokumenter. Brukes i dokumentet om PACE-dataene — de rådataene som ble frigitt etter FOI-krav og rettsprosess, og som viste at recovery-definisjonen var endret etter datainnsamling.</p>
+    </div>
+    <div class="glossary-term" data-terms="gpcr g-protein reseptor autoantistoffer dysautonomia">
+      <h4>GPCR</h4>
+      <p>G protein-coupled receptor. Reseptorklasse som er mål for autoantistoffer dokumentert hos ME/CFS- og long covid-pasienter (Scheibenbogen, Charité). GPCR-autoantistoffer kobles til dysautonomia og ortostatisk intoleranse ved ME/CFS.</p>
+    </div>
+    <div class="glossary-term" data-terms="iag independent advisory group cochrane">
+      <h4>IAG</h4>
+      <p>Independent Advisory Group. Cochranes uavhengige rådgivningskomité. IAG anbefalte å nedgradere evidenskvaliteten i Larun et al. (GET-oversikten) — en anbefaling FHI/Flottorp aktivt motarbeidet, ifølge interne e-poster.</p>
+    </div>
+    <div class="glossary-term" data-terms="pifs post-infeksiøs utmattelse ppis vedvarende symptomer">
+      <h4>PIFS / PPIS</h4>
+      <p>Post-Infective Fatigue Syndrome / Persistent Post-Infectious Symptoms. Samlebetegnelse for vedvarende utmattelse etter infeksjon, uavhengig av patogen. Wyllers foretrukne begrep i SIPCOV og COFFI, fremfor ME/CFS. Betegnelsen unngår den nevrologiske klassifiseringen i ICD-10/11.</p>
+    </div>
+    <div class="glossary-term" data-terms="nokc nasjonalt kunnskapssenter helsetjenesten fhi">
+      <h4>NOKC</h4>
+      <p>Nasjonalt kunnskapssenter for helsetjenesten. Nå en del av FHI. Wyller og Flottorp var medforfattere på NOKC-rapport nr. 9–2006 om diagnostisering og behandling av CFS/ME — det første statlige kunnskapsgrunnlaget som legitimerte biopsykososial tilnærming i norsk helsevesen.</p>
+    </div>
+    <div class="glossary-term" data-terms="nlp nevrolingvistisk programmering parker lightning process">
+      <h4>NLP</h4>
+      <p>Nevrolingvistisk programmering (Neurolinguistic Programming). Pseudovitenskapelig metode utviklet på 1970-tallet. Phil Parker — grunnlegger av Lightning Process — er NLP-utøver. LP bygger på NLP-teknikker kombinert med positiv psykologi og livschoaching.</p>
+    </div>
+    <div class="glossary-term" data-terms="nihr national institute health research storbritannia">
+      <h4>NIHR</h4>
+      <p>National Institute for Health and Care Research. Britisk statlig forskningsfinansiør. Medfinansierte PACE-studien sammen med Medical Research Council (MRC) og Department for Work and Pensions (DWP). Samfinansieringen med DWP er analytisk relevant for spørsmålet om interessekonflikter i PACE.</p>
+    </div>
+    <div class="glossary-term" data-terms="ukri uk research innovation storbritannia forskningsmidler">
+      <h4>UKRI</h4>
+      <p>UK Research and Innovation. Britisk statlig forskningsfinansiør. Nevnt i interessekonflikt-erklæringer for PACE-arkitekter. Del av det britiske finansieringslandskapet der samfinansering med trygde- og forsikringsinteresser er dokumentert.</p>
+    </div>
+    <div class="glossary-term" data-terms="magenta studie gradert trening barn crawley bristol">
+      <h4>MAGENTA</h4>
+      <p>Randomisert studie av gradert trening for barn med ME/CFS (Crawley et al., Bristol). Viste at gradert treningsterapi ikke hadde statistisk signifikant effekt sammenlignet med kontrollgruppen. Flottorp kjente ikke til MAGENTA da hun avga sin sakkyndigerklæring i Gulating 2026.</p>
+    </div>
+    <div class="glossary-term" data-terms="mms morbidity mortality statistics icd-11 who kode">
+      <h4>MMS</h4>
+      <p>Morbidity and Mortality Statistics. WHO ICD-11s klassifikasjonssystem for sykdomsstatistikk. Brukt i dokumentet som referanse for ICD-11-koden 8E49 (ME/CFS som nevrologisk sykdom). MMS er den statistiske modulen, atskilt fra ICFs funksjonssystem.</p>
+    </div>
+
+  </div><!-- /glossary-body -->
+
+</div>
+<!-- /DEL VIII -->
+
+<!-- DEL IX -->
+<div class="panel" id="p9">
+  <div class="panel-subnav">
+    <a href="#p9-tuller">David Tuller</a>
+    <a href="#p9-nodekart">Nettverkskart</a>
+    <a href="#p9-artikler">Artikler</a>
+  </div>
+  <h2 style="display:none;">Internasjonalt</h2>
+
+  <div class="panel-section ps-active" id="p9-tuller" data-sec="p9-tuller">
+    <h3>Systemkritikk utenfra</h3>
+    <p>Det norske biopsykososiale nettverket er ikke bare dokumentert fra innsiden — gjennom registerdata, rettsdokumenter og FOI-frigjorte e-poster. Det er også dokumentert fra utsiden, av en uavhengig akademisk journalist som fulgte de samme aktørene gjennom PACE-saken i Storbritannia og gjenkjente mønsteret da det dukket opp i Norge.</p>
+    <div style="border:1px solid var(--bio);border-radius:4px;padding:20px 24px;margin:24px auto;max-width:740px;background:var(--bio-light);">
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bio);margin-bottom:12px;">Ekstern kritiker — uavhengig av norske pasientorganisasjoner</div>
+      <h4 style="margin:0 0 10px;color:var(--ink);">David Tuller, DrPH — UC Berkeley</h4>
+      <p style="margin:0;font-size:17px;color:var(--ink-mid);line-height:1.6;">Senior Fellow in Public Health and Journalism ved University of California, Berkeley. Hans engasjement i Norge startet i 2018 etter at han ble oppmerksom på at det norske CBT/GET-miljøet — med Wyller og Flottorp som sentrale aktører — aktivt motarbeidet den samme faglige utviklingen han hadde fulgt i Storbritannia gjennom PACE-saken. Det utløsende momentet for den norske serien var det planlagte LP-forsøket: en studie der en kommersielt aktiv LP-instruktør (Landmark) var navngitt kontaktperson, der barnestudien som dannet evidensgrunnlaget (Crawley et al.) allerede var dokumentert metodisk svak gjennom outcome-swapping, og der FHIs forskningssjef (Flottorp) aktivt lobbyet for godkjenning — både offentlig og, som FOI-krav avdekket, via private kanaler til enkeltmedlemmer i etikknemnda. Tuller dokumenterte prosessen i 16 artikler fra 2018 til 2026. Serien representerer den eneste sammenhengende engelskspråklige dokumentasjonen av det norske nettverkets virksomhet for et internasjonalt fagpublikum.</p>
+    </div>
+  </div><!-- /ps p9-tuller -->
+
+  <div class="panel-section" id="p9-nodekart" data-sec="p9-nodekart">
+    <!-- TULLER NODEKART -->
       <div style="margin: 18px 0 28px; background: var(--paper-mid); border-radius: 6px; padding: 4px; position: relative;">
         <div id="tuller-net-legend" style="font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-light);padding:12px 16px 8px;display:flex;gap:20px;flex-wrap:wrap;">
           <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#c44a32;margin-right:5px;"></span>Norsk nettverk</span>
@@ -3734,9 +4314,11 @@ td:first-child { font-weight: 500; color: var(--ink); }
       })();
       </script>
       <!-- /TULLER NODEKART -->
+      <p style="font-family:var(--mono);font-size:11px;color:var(--ink-light);padding:8px 16px 12px;margin:0;"><em>Kartet viser aktørene og forbindelsene som er dokumentert gjennom Trial by Error-serien. Stiplete linjer markerer Tullers dokumentasjonsspor. Klikk på en node for detaljer.</em></p>
+  </div><!-- /ps p9-nodekart -->
 
-      <p style="color:var(--ink-mid);line-height:1.7;margin:0 0 24px;">David Tuller, DrPH er Senior Fellow in Public Health and Journalism ved University of California, Berkeley. Hans engasjement i Norge startet i 2018 etter at han ble oppmerksom på at det norske CBT/GET-miljøet — med Wyller og Flottorp som sentrale aktører — aktivt motarbeidet den samme faglige utviklingen han hadde fulgt i Storbritannia gjennom PACE-saken. Det utløsende momentet for den norske serien var det planlagte LP-forsøket: en studie der en kommersielt aktiv LP-instruktør (Landmark) var navngitt kontaktperson, der barnestudien som dannet evidensgrunnlaget (Crawley et al.) allerede var dokumentert metodisk svak gjennom outcome-swapping, og der FHIs forskningssjef (Flottorp) aktivt lobbyet for godkjenning — både offentlig og, som FOI-krav avdekket, via private kanaler til enkeltmedlemmer i etikknemnda. Tuller dokumenterte prosessen i 16 artikler fra 2018 til 2026. Artiklene dekker LP-RCT-prosessen fra første forslag til godkjenning, Flottorps presskampanje mot NAFKAM, Recovery Norges udokumenterte rolle i JAMA-studien og det norske høringsutkastets metodiske svakheter. Serien representerer den eneste sammenhengende engelskspråklige dokumentasjonen av det norske nettverkets virksomhet for et internasjonalt fagpublikum.</p>
-
+  <div class="panel-section" id="p9-artikler" data-sec="p9-artikler">
+    <h3>Trial by Error — artikler om Norge</h3>
       <ul class="source-list">
         <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2026 — Norsk retningslinje</span></li>
         <li><strong>Tuller D.</strong> <a href="https://virology.ws/2026/03/02/trial-by-error-norways-problematic-draft-guideline-combining-long-term-fatigue-and-me-cfs/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Problematic Draft Guideline Combining Long-Term Fatigue and ME/CFS.</a> Virology Blog. 2. mars 2026. [Kritikk av høringsutkastets sammenslåing av utmattelse og ME/CFS; de fire interne dissensene omtalt som representanter for «the interests of the biopsychosocial ideological brigades».]</li>
@@ -3749,541 +4331,28 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2022 — LP-RCT · NEM-lobbyisme · NAFKAM</span></li>
         <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/12/07/trial-by-error-top-lightning-process-proponent-privately-lobbied-for-approval-of-norways-lp-study/" target="_blank" style="color:var(--accent)">Trial By Error: Top Lightning Process Proponent Privately Lobbied for Approval of Norway's LP Study.</a> Virology Blog. 7. desember 2022. [FOI-dokumentert: Flottorp sendte privat SMS til NEM-medlem Jo Røislien 31. mars 2022 og privat e-post 5. april 2022 — ba om godkjenning av LP-RCT. NEM godkjente (9 mot 3). Befring (nestleder) karakteriserte det som «uprofessionell nettverksstyring».]</li>
         <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/07/20/trial-by-error-mom-speaks-out-about-nhs-abuse-of-daughter-norway-approves-lightning-process-study/" target="_blank" style="color:var(--accent)">Trial By Error: Norway Approves Lightning Process Study.</a> Virology Blog. 20. juli 2022. [NEM godkjente LP-RCT etter første avslag. Tuller dokumenterer studiens metodiske svakheter.]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/05/31/trial-by-error-deja-vu-all-over-again-with-proposed-lightning-process-study-in-norway/" target="_blank" style="color:var(--accent)">Trial By Error: Deja Vu All Over Again with Proposed Lightning Process Study in Norway.</a> Virology Blog. 31. mai 2022. [Re-søknad LP-RCT etter første NEM-avslag 2021. Crawley (Bristol) fortsatt samarbeidspartner. Tuller argumenterer at studien ikke kan støttes vitenskapelig eller etisk.]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/02/18/trial-by-error-my-letter-responding-to-norway-health-leaders-efforts-to-denigrate-my-activist-work/" target="_blank" style="color:var(--accent)">Trial By Error: My Letter Responding to Norway Health Leader's Efforts to Denigrate My «Activist» Work.</a> Virology Blog. 18. februar 2022 [oppdatert 2. mars 2022]. [FOI-frigjort korrespondanse (mai 2020): Flottorp presset NAFKAM-leder Miek Jong til å trekke tilbake LP-advarsel fra 2011 og karakteriserte Tuller som «ME-aktivist» uten å nevne hans Berkeley-tilknytning. Dokumenterer også outcome-swapping i Crawley et al. barnestudi (ADC 2017/2018).]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/05/31/trial-by-error-deja-vu-all-over-again-with-proposed-lightning-process-study-in-norway/" target="_blank" style="color:var(--accent)">Trial By Error: Deja Vu All Over Again with Proposed Lightning Process Study in Norway.</a> Virology Blog. 31. mai 2022. [Re-søknad LP-RCT etter første NEM-avslag 2021. Crawley (Bristol) fortsatt samarbeidspartner.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2022/02/18/trial-by-error-my-letter-responding-to-norway-health-leaders-efforts-to-denigrate-my-activist-work/" target="_blank" style="color:var(--accent)">Trial By Error: My Letter Responding to Norway Health Leader's Efforts to Denigrate My «Activist» Work.</a> Virology Blog. 18. februar 2022. [FOI-frigjort korrespondanse (mai 2020): Flottorp presset NAFKAM-leder Miek Jong til å trekke tilbake LP-advarsel fra 2011 og karakteriserte Tuller som «ME-aktivist» uten å nevne hans Berkeley-tilknytning.]</li>
 
         <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2021 — NEM avslår LP-RCT</span></li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2021/07/13/trial-by-error-some-lightning-process-updates/" target="_blank" style="color:var(--accent)">Trial By Error: Some Lightning Process Updates.</a> Virology Blog. 13. juli 2021. [NEM opprettholdt avslag på LP-RCT. Oppdatering om norsk og britisk LP-situasjon.]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2021/06/07/trial-by-error-norway-rejects-new-clinical-trial-of-woo-woo-lightning-process/" target="_blank" style="color:var(--accent)">Trial By Error: Norway Rejects New Clinical Trial of Woo-Woo Lightning Process.</a> Virology Blog. 7. juni 2021. [NEM avslo LP-RCT første gang — en «bit of a surprise» gitt norsk biopsykososial dominans. Interessekonfliktene og studiedesignfeilene dokumentert.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2021/07/13/trial-by-error-some-lightning-process-updates/" target="_blank" style="color:var(--accent)">Trial By Error: Some Lightning Process Updates.</a> Virology Blog. 13. juli 2021.</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2021/06/07/trial-by-error-norway-rejects-new-clinical-trial-of-woo-woo-lightning-process/" target="_blank" style="color:var(--accent)">Trial By Error: Norway Rejects New Clinical Trial of Woo-Woo Lightning Process.</a> Virology Blog. 7. juni 2021. [NEM avslo LP-RCT første gang. Interessekonfliktene og studiedesignfeilene dokumentert.]</li>
 
         <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2020 — Norsk CBT-studie · LP-forslag · NAFKAM</span></li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/06/18/trial-by-error-bmj-responds-to-appeals-about-norways-cbt-music-therapy-study/" target="_blank" style="color:var(--accent)">Trial By Error: BMJ Responds to Appeals About Norway's CBT-Music Therapy Study.</a> Virology Blog. 18. juni 2020. [BMJ svarer på klager om norsk CBT/musikkterapistudie for ungdom med kronisk utmattelse.]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/30/trial-by-error-two-letters-to-dagbladet-about-its-me-coverage/" target="_blank" style="color:var(--accent)">Trial By Error: Two Letters to Dagbladet About Its ME Coverage.</a> Virology Blog. 30. mai 2020. [Norsk mediedekning av LP-RCT-forslaget. Tuller dokumenterer feilinformasjon fra norske leger.]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/22/trial-by-error-my-letter-to-senior-author-of-norways-cbt-music-therapy-study/" target="_blank" style="color:var(--accent)">Trial By Error: My Letter to Senior Author of Norway's CBT-Music Therapy Study.</a> Virology Blog. 22. mai 2020. [Direkte brev om metodefeil i norsk CBT/musikkterapistudie for ungdom med CFS etter akutt infeksjon.]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/20/trial-by-error-norways-double-whammy-of-fuzzy-science/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Double Whammy of Fuzzy Science.</a> Virology Blog. 20. mai 2020. [To samtidige norske metodefeil: CBT/musikkstudie + LP-RCT-forslag. «Norway's got a double whammy going on.»]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/02/trial-by-error-norways-proposed-lightning-process-trial/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Proposed Lightning Process Trial.</a> Virology Blog. 2. mai 2020. [Første Tuller-artikkel om LP-RCT-forslaget. Bakgrunn: Crawley-studien og outcome-swapping. Etiske innvendinger mot norsk LP-studie.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/06/18/trial-by-error-bmj-responds-to-appeals-about-norways-cbt-music-therapy-study/" target="_blank" style="color:var(--accent)">Trial By Error: BMJ Responds to Appeals About Norway's CBT-Music Therapy Study.</a> Virology Blog. 18. juni 2020.</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/30/trial-by-error-two-letters-to-dagbladet-about-its-me-coverage/" target="_blank" style="color:var(--accent)">Trial By Error: Two Letters to Dagbladet About Its ME Coverage.</a> Virology Blog. 30. mai 2020.</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/22/trial-by-error-my-letter-to-senior-author-of-norways-cbt-music-therapy-study/" target="_blank" style="color:var(--accent)">Trial By Error: My Letter to Senior Author of Norway's CBT-Music Therapy Study.</a> Virology Blog. 22. mai 2020.</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/20/trial-by-error-norways-double-whammy-of-fuzzy-science/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Double Whammy of Fuzzy Science.</a> Virology Blog. 20. mai 2020.</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2020/05/02/trial-by-error-norways-proposed-lightning-process-trial/" target="_blank" style="color:var(--accent)">Trial By Error: Norway's Proposed Lightning Process Trial.</a> Virology Blog. 2. mai 2020. [Første Tuller-artikkel om LP-RCT-forslaget.]</li>
 
         <li style="border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:2px;margin-top:14px;"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);">2018 — Tidlig norsk dekning</span></li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2018/12/31/trial-by-error-my-norwegian-interview/" target="_blank" style="color:var(--accent)">Trial By Error: My Norwegian Interview.</a> Virology Blog. 31. desember 2018. [Intervju med Trude Schei, ME-foreningen. Tuller beskriver norsk biopsykososial dominans.]</li>
-        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2018/12/12/trial-by-error-the-view-from-norway/" target="_blank" style="color:var(--accent)">Trial By Error: The View From Norway.</a> Virology Blog. 12. desember 2018. [Oversiktsartikkel: norsk CBT/GET-miljø, Wyllers rolle, LP-tilknytning. Tidligste dokumentasjon av norsk nettverksstruktur i Tuller-serien.]</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2018/12/31/trial-by-error-my-norwegian-interview/" target="_blank" style="color:var(--accent)">Trial By Error: My Norwegian Interview.</a> Virology Blog. 31. desember 2018.</li>
+        <li><strong>Tuller D.</strong> <a href="https://virology.ws/2018/12/12/trial-by-error-the-view-from-norway/" target="_blank" style="color:var(--accent)">Trial By Error: The View From Norway.</a> Virology Blog. 12. desember 2018. [Tidligste dokumentasjon av norsk nettverksstruktur i Tuller-serien.]</li>
       </ul>
-      </div><!-- /ps ref-tuller -->
-      <div class="panel-section" id="ref-bruker" data-sec="ref-bruker"><div class="source-group-label">Brukerorganisasjoner og høringsdokumenter</div>
-      <ul class="source-list">
-        <li><strong>ME-foreldrene.</strong> <a href="https://www.me-foreldrene.no/apent-brev-til-helsedirektoratet-om-retningslinjearbeidet" target="_blank" style="color:var(--accent)">Åpent brev til Helsedirektoratet om retningslinjearbeidet.</a> 2024.</li>
-      </ul>
-      </div><!-- /ps ref-bruker -->
-
-      <div class="panel-section" id="ref-om-kildene" data-sec="ref-om-kildene">
-      <div class="method-note">Sitater fra podkasten (mars 2026) er hentet fra den publiserte episoden. Sitater fra Recovery Norge-seminaret (Forskningsdagene 2025) er hentet fra en maskinoversatt norsk transkripsjon av Vimeo-opptaket; tidsstemplereferanser gjør det mulig å verifisere mot lydopptaket. Referanser følger NLM Vancouver-format. Titler er klikkbare lenker der DOI eller URL foreligger.</div>
-      </div><!-- /ps ref-om-kildene -->
-
-    </div><!-- /p6 -->
-
-<div class="panel" id="p7">
-      <div class="panel-subnav">
-        <a href="#p7-intro">Innledning</a>
-        <a href="#p7-metodikk">Metodikk</a>
-        <a href="#p7-faglig">Sp. 1–5: faglig</a>
-        <a href="#p7-prosess">Sp. 6–10: prosess</a>
-      </div>
-      <div class="panel-section ps-active" id="p7-intro" data-sec="p7-intro">
-      <h2 id="horingssporsmal">Spørsmål til Helsedirektoratet</h2>
-
-      <p>Del VII inneholder ti spørsmål til Helsedirektoratet om faglige og prosessuelle valg i høringsutkastet. Spørsmålene er formulert som konkrete forespørsler om begrunnelse og kan brukes direkte i formelle høringssvar innen 4. mai 2026.</p>
-
-      <p>Utgangspunktet er Helsedirektoratets egne formuleringer da høringsutkastet ble sendt på høring. Fungerende divisjonsdirektør Marius Kurås Skram uttalte:</p>
-
-      <blockquote>
-        <p>«Arbeidet er bredt og tverrfaglig forankret, med deltakere fra ulike deler av helse- og velferdstjenesten, representanter fra alle helseregioner og flere profesjoner. [...] I tillegg har fire bruker- og pårørendeorganisasjoner deltatt aktivt i arbeidsgruppen.»</p>
-        <cite>Marius Kurås Skram, Helsedirektoratet, pressemelding februar 2026</cite>
-      </blockquote>
-
-      <blockquote>
-        <p>«Utmattelse er et vanlig symptom ved mange tilstander, også etter gjennomgått infeksjon. Hvorfor utmattelse vedvarer hos noen, mens andre blir helt friske, gir ikke forskningen entydige svar på. Derfor har erfaringer fra fagfolk, pasienter og pårørende vært viktig, i tillegg til det kunnskapsgrunnlaget som eksisterer per i dag.»</p>
-        <cite>Marius Kurås Skram, Helsedirektoratet, pressemelding februar 2026</cite>
-      </blockquote>
-
-      <blockquote>
-        <p>«Det skjer mye spennende forskning innen feltet nå. Helsedirektoratet følger dette tett og vil oppdatere retningslinjen når det foreligger god og dokumentert, solid kunnskap.»</p>
-        <cite>Marius Kurås Skram, Helsedirektoratet, pressemelding februar 2026</cite>
-      </blockquote>
-
-      <p>Hver av disse formuleringene er konfronterbar med dokumentert faktainformasjon som fremgår av de foregående delene. «Bredt og tverrfaglig forankret»: Recovery Norge fikk dobbelt så mange representanter som ME-foreningen med tjuefem ganger så mange syke medlemmer, og syv av 21 arbeidsgruppedeltakere tok formell dissens. «Forskningen gir ikke entydige svar»: NICE, IOM, IQWiG og fire andre lands helsemyndigheter har konkludert entydig. «Vil oppdatere når solid kunnskap foreligger»: DecodeME, Cervia-Hasler, Wüst og Sundaram er allerede publisert i Nature, Science og PNAS. Spørsmålene nedenfor utdyper dette.</p>
-
-      <details style="margin:24px 0;border:1px solid var(--rule);border-radius:4px;">
-        <summary style="padding:12px 16px;cursor:pointer;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);list-style:none;display:flex;align-items:center;gap:8px;">
-          <span style="font-family:var(--mono);color:var(--accent);">▶</span>
-          Arbeidsgruppens sammensetning — 21 medlemmer
-        </summary>
-        <div style="padding:0 16px 16px;">
-
-      <div class="table-wrap" style="margin:20px 0;">
-        <table>
-          <thead><tr><th>Navn</th><th>Institusjon</th><th>Organisasjon</th><th>Rolle/spesialitet</th></tr></thead>
-          <tbody>
-            <tr><td>Anette Owesen Espe</td><td>Oslo kommune</td><td>Norsk Sykepleierforbund</td><td>Helsesykepleier</td></tr>
-            <tr><td>Ann Kristin Grøntjernet</td><td>Recovery Norge</td><td>Recovery Norge</td><td>Brukerrepresentant</td></tr>
-            <tr><td>Arnstein Finset</td><td>Universitetet i Oslo</td><td>Norsk psykologforening</td><td>Psykologspesialist. Medforfatter av biopsykososialt motinnlegg (2023). Bidratt til psykologisk ME-studie med Wyller (2011). Ekspertgruppe pakkeforløp.</td></tr>
-            <tr><td>Beate Klungland</td><td>Oslo kommune</td><td>Norges ergoterapeutforbund</td><td>Ergoterapeut</td></tr>
-            <tr><td>Carina Mørch-Storstein</td><td>—</td><td>Norsk Covidforening</td><td>Brukerrepresentant · dissens</td></tr>
-            <tr><td>Hanne Nygaard</td><td>Oslo universitetssykehus / Nasjonal kompetansetjeneste for CFS/ME</td><td>Norges fysioterapeutforbund</td><td>Fysioterapeut. Ansatt ved Nasjonal kompetansetjeneste for CFS/ME og CFS/ME-senteret Aker.</td></tr>
-            <tr><td>Hannah Sagstad</td><td>Recovery Norge</td><td>Recovery Norge</td><td>Brukerrepresentant</td></tr>
-            <tr><td>Ingjerd Helene Jøssang</td><td>—</td><td>Norsk forening for allmennmedisin</td><td>Spesialist i allmennmedisin · dissens. Leder for faggruppen MUPS (Medisinsk uforklarte plager og symptomer) i Legeforeningen.</td></tr>
-            <tr><td>Ingrid B. Helland</td><td>OUS / Kompetansetjenesten for CFS/ME</td><td>—</td><td>Spesialist i barnemedisin</td></tr>
-            <tr><td>Ingrid Skogdal</td><td>Unicare Friskvern / Drammen Fysioterapi</td><td>Norges fysioterapeutforbund</td><td>Fysioterapeut</td></tr>
-            <tr><td>Karen Walseth Hara</td><td>NAV</td><td>—</td><td>Koordinerende rådgivende overlege. Ekspertgruppe pakkeforløp for langvarig utmattelse. Bidratt til utmattelsestudier med psykosomatisk tilnærming.</td></tr>
-            <tr><td>Kristian Sommerfelt</td><td>Haukeland universitetssjukehus (emeritus)</td><td>European ME Clinicians Council</td><td>Professor emeritus i barnenevrologi. Over 30 års erfaring med ME hos barn og unge. Bidragsyter til biomedisinske ME-studier. Utvikler av FUNCAP-kartleggingsverktøy. Sakkyndig vitne for Kolbjørn i Gulating-saken.</td></tr>
-            <tr><td>Linn B. Herner</td><td>Oslo universitetssykehus, S-BUP Rikshospitalet</td><td>—</td><td>Psykologspesialist · dissens. Dissens: retningslinjen gir noceboeffekt, mangler bedringsperspektiv og nevner knapt biopsykososial forståelse.</td></tr>
-            <tr><td>Maja Wilhelmsen</td><td>Universitetssykehuset Nord-Norge</td><td>—</td><td>Spesialist i fysikalsk medisin og rehabilitering</td></tr>
-            <tr><td>Nina Langeland</td><td>Haukeland universitetssykehus</td><td>—</td><td>Spesialist i infeksjonsmedisin. Forsket på senfølger etter Giardia-epidemien (Bergen, 2004). Bidratt til long covid-studier. Leder for referansegruppen til Nasjonal kompetansetjeneste for CFS/ME.</td></tr>
-            <tr><td>Peter Prydz</td><td>Legekontor, Hammerfest</td><td>Norsk forening for allmennmedisin</td><td>Spesialist i allmennmedisin · dissens. Dissens: for mye vekt på å unngå belastninger, rehabiliteringsperspektivet for lite vektlagt.</td></tr>
-            <tr><td>Stine Nilsen Skogheim</td><td>Tromsø kommune</td><td>Norges ergoterapeutforbund</td><td>Ergoterapeut</td></tr>
-            <tr><td>Tanja Thorsen</td><td>—</td><td>ME-foreldrene</td><td>Pårørenderepresentant</td></tr>
-            <tr><td>Tom Farmen Nerli</td><td>Sykehuset Vestfold, Kysthospitalet</td><td>—</td><td>Spesialist i fysikalsk medisin og rehabilitering · dissens. Dissens: retningslinjen vil ha noceboeffekt og tar bort håpet om bedring. Satt i styringskomitéen for Wyllers SIPCOV-studie (CBT/GET mot long covid, NCT05196451, protokoll s. 7–8). Førsteforfatter på Nerli og Wyller (2024) — den eneste norske RCT-en i høringsutkastets evidensgrunnlag, med Wyller som siste og overordnet medforfatter. Medforfatter av innlegg som psykologiserer ME/CFS (2023).</td></tr>
-            <tr><td>Tormod Landmark</td><td>St. Olavs hospital / NTNU</td><td>—</td><td>Psykologspesialist. Bidratt til ME-studie på kognitiv terapi (2023). Foredragsholder på kurs «Utmattelse og CFS/ME».</td></tr>
-            <tr><td>Trude Schei</td><td>—</td><td>Norges ME-forening</td><td>Brukerrepresentant · dissens</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>Alle fire faglige dissenser er nå offentliggjort. Jøssang, Nerli, Herner og Prydz bruker nær identiske begrunnelser: retningslinjen er for forsiktig med aktivitet, gir noceboeffekt og mangler bedringsperspektiv. Herner etterspør eksplisitt biopsykososial forståelse.</p>
-
-      <p>Helsedirektoratets habilitetsvurdering konkluderte med at «ingen interesser med konsekvenser for deltakelse i arbeidet er identifisert». Metodebeskrivelsen utdyper: «Det er sjelden deltakere ekskluderes fra Helsedirektoratets retningslinjeutvikling på grunn av inhabilitet. Helsedirektoratet ønsker bidragsytere med ulike ståsted inn i arbeidet for diskusjoner som kan bidra til fagutvikling.» Det vil si: kjente interessekonflikter anses som en faglig styrke, ikke et habilitetsproblem.</p>
-
-      <p>Brukerrepresentasjonen: Recovery Norge har to representanter (Grøntjernet og Sagstad), ME-foreningen, Norsk Covidforening og ME-foreldrene én hver. Recovery Norges opptaksvilkår begrenser medlemskap til dem som har blitt friske — pasienter som fortsatt er syke er ikke kvalifisert.</p>
-
-
-
-              </div>
-      </details>
-      <p>Høringsutkastet regulerer ikke bare de 2 400–3 800 pasientene som er synlige i Norsk pasientregister med G93.3-kode. Det regulerer behandlingstilbudet for alle som faller inn under kategorien «langvarig utmattelse» — inkludert long covid-pasienter med ME/CFS-lignende symptomer.</p>
-
-      <p>FHI-studien (White m.fl., januar 2026) viste at fastlegekonsultasjoner for utmattelse i 2024 lå 70 prosent over forventet nivå — 205 000 ekstra konsultasjoner sammenlignet med pre-pandemisk trend. Norsk kompetansetjeneste for sykehusinfeksjoner og beredskap har estimert at mellom 50 000 og 100 000 nordmenn kan ha funksjonsnedsettende long covid-symptomer med ME/CFS-lignende forløp. Disse pasientene er i dag i stor grad usynlige i helseregistrene fordi ICPC-2 mangler kode for tilstanden, og fordi spesialisthelsetjenestens G93.3-kode brukes restriktivt.</p>
-
-      <p>Dersom Helsedirektoratets retningslinje vedtas i nåværende form, vil disse pasientene møte en klinisk anbefaling som ikke skiller mellom ME/CFS med dokumentert PEM og annen langvarig utmattelse — og der aktivitetsbaserte intervensjoner fremstilles som en «nyttig» tilnærming. Wien-studien (Kaiserseder et al., Pneumologie, 2026) viste at 26,7 prosent av ME/CFS-pasienter avbrøt rehabiliteringsopphold på grunn av klinisk observert PEM-krasj. ACSM inkluderte i 2025 for første gang ME/CFS og PEM i sine offisielle retningslinjer for belastningstesting, med eksplisitt advarsel mot aktivitetsbasert tilnærming uten hensyn til PEM.</p>
-
-      <p>I et folkehelseperspektiv er dette den kvantitativt viktigste konsekvensen av høringsutkastet. Antall potensielle long covid-pasienter som eksponeres for en retningslinje uten operasjonell PEM-definisjon, er et multiplum av den tradisjonelle ME/CFS-populasjonen. Pandemieffekten gjør at det som i 2007 var et smalt fagpolitisk spørsmål, i 2026 er et spørsmål med direkte relevans for titusenvis av norske pasienter.</p>
-
-</div><!-- /ps p7-intro -->
-      <div class="panel-section" id="p7-faglig" data-sec="p7-faglig">
-      <div class="hq-item">
-        <div class="hq-num">1</div>
-        <div class="hq-body">
-          <h4>Post-exertional malaise: operasjonell definisjon</h4>
-          <p>Post-exertional malaise (PEM) er det diagnostisk obligatoriske kjernesymptomet ved ME/CFS ifølge US Institute of Medicine (IOM, 2015), Canadakriteriene, NICE NG206 og ICD-11 — karakterisert ved uforholdsmessig forverring etter minimal anstrengelse, med forsinkelse på timer til dager. Høringsutkastet bruker begrepet konsekvent uten å operasjonalisere det, og anbefaler aktivitetsbaserte intervensjoner uten å skille mellom pasienter med og uten bekreftet PEM. Wien-studien (Kaiserseder et al., 2026) dokumenterer konsekvensen: ME/CFS-pasienter med bekreftet PEM forverres under rehabilitering som bedrer alle andre, og 26,7 prosent avbrøt på grunn av klinisk observerte PEM-krasj. Hva er den faglige begrunnelsen for at det diagnostisk sentrale kriteriet ikke er operasjonalisert — og hvilken rettslig og klinisk beskyttelse har en pasient med PEM mot behandling som forverrer tilstanden, når retningslinjen ikke definerer kriteriet behandlingsanbefalingene er betinget av?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">2</div>
-        <div class="hq-body">
-          <h4>Kielland og Liu (2025): de eneste tilgjengelige norske registerdata er ikke sitert</h4>
-          <p>Kielland og Liu (Social Sciences &amp; Humanities Open, 2025) er den eneste systematiske analysen av langtidsprognose for norske ME/CFS-pasienter basert på administrative registerdata — 8 485 pasienter koblet mot Statistisk sentralbyrås inntekts- og trygdedata. Funnene er entydige: 95 prosent av pasientene ikke bedres over tre år, rehabiliteringsopphold stoppet ikke forverringen, og av 733 pasienter med svært lav inntekt ved diagnosetidspunktet returnerte kun tre til medianlønn. Studien er ikke sitert i høringsutkastets evidensgrunnlag. Hva er årsaken til at den eneste tilgjengelige populasjonsrepresentative norske langtidsstudien er utelatt — og hvordan begrunner Helsedirektoratet behandlingsanbefalinger for en pasientgruppe uten å ha forankret dem i eksisterende norske langtidsdata?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">3</div>
-        <div class="hq-body">
-          <h4>GRADE-metodikkens egne konklusjoner er ikke reflektert i anbefalingsstyrken</h4>
-          <p>Helsedirektoratets egne GRADE-vurderinger — tilgjengelig i evidenstabellene som vedlegg til høringsutkastet — vurderer tillit til effektestimatet for gradert aktivitet som <em>lav</em> for utmattelse og <em>svært lav</em> for fysisk funksjon, med heterogenitet I²=90,7 %. For kognitiv atferdsterapi vurderes alle utfall som <em>lav til svært lav</em>. For pasienter med PEM og Canadakriterier konkluderer retningslinjen selv med at «forskningsgrunnlaget er svakt» og at det er «få identifiserte studier». GRADE-metodikkens egne prinsipper tilsier at lav til svært lav evidenskvalitet skal gi svake anbefalinger («kan vurderes»), ikke sterke («bør»). Anbefalingsteksten formulerer likevel «bør» for aktivitetsregulering — for alle pasienter, inkludert dem med PEM. Hva er Helsedirektoratets faglige begrunnelse for å fravike GRADE-metodikkens egne konklusjoner i anbefalingsstyrken?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">4</div>
-        <div class="hq-body">
-          <h4>Internasjonal retningslinjekonsensus: seks land peker i én retning — Norge i en annen</h4>
-          <p>USA (IOM, 2015), Canada (Canadakriteriene), Nederland (Gezondheidsraad, 2018), Belgia (Superior Health Council, 2020), Tyskland (IQWiG, 2021) og Storbritannia (NICE NG206, 2021) har alle konkludert med at gradert treningsterapi er kontraindisert for ME/CFS-pasienter med PEM, at kognitiv atferdsterapi ikke er en kurativ behandling, og at PEM er et obligatorisk diagnostisk kriterium. Helsedirektoratets høringsutkast beveger seg i motsatt retning — elleve år etter IOM-rapporten og fem år etter NICE NG206. Hva er den faglige begrunnelsen for dette avviket, og hvilke spesifikke studier eller evidensgrunnlag gjør at norske helsemyndigheter i 2026 vurderer evidensen annerledes enn samtlige sammenlignbare land?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">5</div>
-        <div class="hq-body">
-          <h4>Maja Wilhelmsen: fire samtidige roller i overlappende beslutningsarenaer</h4>
-          <p>Maja Wilhelmsen (Universitetssykehuset Nord-Norge, spesialist i fysikalsk medisin og rehabilitering) er arbeidsgruppedeltaker i retningslinjearbeidet, sitter i referansegruppen til Nasjonal kompetansetjeneste for CFS/ME, leder arbeidsutvalget for regionalt fagnettverk CFS/ME i Helse Nord, og er i styringsgruppen for REHAB-FATIGUE — studien som tester den intervensjonen retningslinjen vurderer, finansiert med 25 millioner kroner fra KLINBEFORSK. Helsedirektoratets habilitetsvurdering konkluderte med at ingen interessekonflikter med konsekvenser for deltakelse ble identifisert. Hva er den konkrete faglige og prosessuelle begrunnelsen for at fire samtidige roller i retningslinjearbeid, faglig infrastruktur, regional koordinering og aktivt pågående intervensjonsstudie ikke utgjør en interessekonflikt med konsekvenser for deltakelse?</p>
-        </div>
-      </div>
-
-      </div><!-- /ps p7-faglig -->
-      <div class="panel-section" id="p7-prosess" data-sec="p7-prosess">
-      <div class="hq-item"><div class="hq-num">6</div>
-        <div class="hq-body">
-          <h4>Brukerrepresentasjon: Recovery Norges opptaksvilkår</h4>
-          <p>Recovery Norge fikk to representanter i arbeidsgruppen (Ann Kristin Grøntjernet og Hannah Sagstad). Organisasjonens egne opptaksvilkår begrenser medlemskap til personer som har blitt friske av ME/CFS — pasienter som fortsatt er syke er ikke kvalifisert for medlemskap. Norges ME-forening, med over 6 300 syke medlemmer, fikk én representant. Kildejournalistisk analyse viser at ca. 2/3 av Recovery Norges historier handler om bedring via Lightning Process — den behandlingsformen organisasjonens stifter forsker på i en pågående randomisert kontrollert studie. Hva er Helsedirektoratets begrunnelse for at erfaringen fra en selektert gruppe av friskmeldte pasienter — med strukturell overvekt av én behandlingsform — er representativ brukererfaring for en retningslinje som skal gjelde for alle pasienter med ME/CFS, inkludert dem som fortsatt er syke?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">7</div>
-        <div class="hq-body">
-          <h4>REHAB-FATIGUE og habiliteten til faglig leder</h4>
-          <p>Professor Wyller er faglig leder for REHAB-FATIGUE (KLINBEFORSK, 25 mill. kr, 2026) — der intervensjonsarmen er Mind Body Reprocessing Therapy (MBRT), et behandlingssystem utviklet av hans nære samarbeidspartner Silje Endresen Reme ved Universitetet i Oslo. Wyller er samtidig den sentrale faglige referansen for det biopsykososiale rammeverket som høringsutkastet hviler på. I podkasten mars 2026 omtalte han REHAB-FATIGUE som «lovende» uten å opplyse om bevilgningens størrelse, sin egen lederrolle eller at studiens eneste engelskspråklige vitenskapelige publisering er et upublisert preprint. Resultatene foreligger ikke. Hva er Helsedirektoratets vurdering av at den sentrale fagpersonen bak retningslinjens teoretiske grunnlag simultant er faglig leder for den eneste store offentlig finansierte intervensjonsstudien som tester dette grunnlagets behandlingsimplikasjoner?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">8</div>
-        <div class="hq-body">
-          <h4>Diagnostisk oppløsning av ME/CFS og WHO-klassifikasjonen</h4>
-          <p>WHO klassifiserte ME/CFS i ICD-11 utelukkende som nevrologisk sykdom (kode 8E49) og fjernet nevrasteni (F48) som alternativkode. Norsk implementering av ICD-11 er planlagt til 2028–29. Høringsutkastet løser opp ME/CFS som distinkt diagnose i kategorien «langvarig utmattelse» uten operasjonell PEM-definisjon — en retning som er uforenlig med ICD-11-klassifikasjonen. Den norske legeforeningens kapittel for barne- og ungdomspsykiatri (2019) anbefaler eksplisitt å «vurdere andre stress-relaterte diagnoser» ved ICD-11-innføringen. Hva er Helsedirektoratets posisjon til dette avviket fra WHO-klassifikasjonen, og hvordan planlegger Helsedirektoratet å håndtere motsetningen mellom en retningslinje som løser opp ME/CFS i «langvarig utmattelse» og en ICD-11-implementering som klassifiserer ME/CFS utelukkende som nevrologisk sykdom?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">9</div>
-        <div class="hq-body">
-          <h4>Dissensene: syv av 21 tok formell dissens — fra to motsatte retninger</h4>
-          <p>Syv av arbeidsgruppens 21 medlemmer tok formell dissens — en tredjedel. Brukerrepresentantenes dissenser er offentliggjort og inneholder konkrete, dokumenterte faglige innvendinger. Trude Schei (ME-foreningen) dokumenterer at høringsutkastets vage formuleringer vil gi NAV samme tolkningsrom som dagens veileder — og at forverring som følge av behandling dermed fortsatt ikke vil anerkjennes rettslig. Tanja Thorsen (ME-foreldrene) dokumenterer at Helsedirektoratet ved oppstart forespeilet to separate kliniske løp for ME/CFS og langvarig utmattelse, at dette ikke er realisert, og at studier NICE vurderer som lav kvalitet er vurdert som middels kvalitet i høringsutkastet uten at avviket er begrunnet. Carina Mørch-Storstein (Norsk Covidforening) fastslår at utkastet ikke er i tråd med internasjonale standarder, ikke hensyntar WHOs røde flagg om ortostatisk intoleranse og PEM, og at «enkelte anbefalinger er faglig feil eller potensielt skadelige» for pasienter med PEM. Alle fire faglige dissenser er nå offentliggjort, og alle fire er nær identiske: retningslinjen gir noceboeffekt, oppfordrer til unngåelsesatferd og mangler bedringsperspektiv. Herner tilføyer at «biopsykososial forståelse, som er et anerkjent rammeverk globalt i arbeidet med pasientgruppen, er knapt nevnt». Prydz tilføyer at han «beklager» dissensen fordi han «opplever at vi ble hørt på områder som angår allmennlegenes oppdrag» — en formulering som antyder at de faglige dissensene ikke er en total avvisning av prosessen, men en protest mot de delene der gruppen ikke nådde frem. Høringsinstansene har nå tilgang til samtlige syv dissenser — fire faglige fra én retning og tre brukerrepresentantdissenser fra motsatt retning. Samlet betyr dette at arbeidsgruppen er delt i tre retninger: faglig dissens for mer aktivitetstilnærming (Jøssang, Nerli, Herner og Prydz — alle fire med identisk begrunnelse), faglig dissens for mer pasientsikkerhet og PEM-presisjon (brukerrepresentantene), og et flertall som støtter utkastet. Helsedirektoratets kommunikasjon reflekterer ikke denne tredelte splittelsen. Vil Helsedirektoratet offentliggjøre de tre gjenværende faglige dissensene, slik at høringsinstansene kan vurdere det samlede bildet av uenigheten — og hvorfor ingen av dissensene fikk gjennomslag?</p>
-        </div>
-      </div>
-
-      <div class="hq-item">
-        <div class="hq-num">10</div>
-        <div class="hq-body">
-          <h4>Ansvaret for tyve år uten dokumenterte resultater</h4>
-          <p>Tre uavhengige datakilder over syv år peker i samme retning. Helsedirektoratets egne evalueringer konkluderte i 2018 at Nasjonal kompetansetjeneste for CFS/ME ikke kunne dokumentere effekt av sin virksomhet. Fafo/SINTEF (2023) konkluderte at rehabiliteringsopphold «stort sett gjør pasientene sykere enn de var før». Kielland og Liu (2025) viser at 95 prosent av norske ME-pasienter ikke bedres over tre år under gjeldende behandlingsregime, og at rehabiliteringsopphold ikke stoppet forverringen. Nasjonal kompetansetjeneste fortsatte etter evalueringen. Det biopsykososiale rammeverket videreføres i høringsutkastet. Det er ikke et spørsmål om faglig uenighet. Det er et spørsmål om institusjonelt ansvar: hva er Helsedirektoratets svar på spørsmålet om hva som skal til for at dokumentert ineffektivitet over syv år, fra tre uavhengige kilder, får konsekvenser for de anbefalingene som er ansvarlige for den?</p>
-        </div>
-      </div>
-
-      </div><!-- /ps p7-prosess -->
-      <div class="panel-section" id="p7-metodikk" data-sec="p7-metodikk">
-      <h3 id="metodisk-bakgrunn">Metodisk bakgrunn for spørsmålene</h3>
-      <p>Denne seksjonen gir det metodologiske grunnlaget for spørsmålene — for lesere som ønsker å forstå de faglige standardene de er formulert ut fra.</p>
-
-      <p>En gjennomgående svakhet i nettverkets litteratur er sirkulær sitering: nettverket siterer primært egne studier som bevis for egne konklusjoner. Wyllers systematiske oversikt fra 2025 er basert på 30 studier der 19 (63 prosent) er fra nettverkets egne forfattere.</p>
-
-      <p>OCFC-manifestet (2023) er et eklatant eksempel. Artikkelen hevder at «after 40 years of research neither a specific biological defect or pathology, nor a specific biomarker, has been identified». Referanselisten inneholder 46 referanser. Av disse er ref [39] Knoop et al. 2007 — en studie der Hans Knoop er medforfatter. Knoop oppgir royalties fra en CBT-manual i interessekonflikt-erklæringen. Han siterer sin egen litteratur som bevis for at CBT kan gi full bedring, i et manifest han selv har signert. Ref [43] er Sharpe, Chalder og White — PACE-arkitektene — som siterer sin egen oppsummeringsartikkel som «evidence-based care». Sharpe og Chalder oppgir royalties og lederverv i sine egne interessekonflikt-erklæringer.</p>
-
-      <p>Vitenskapelig konsensus oppstår når <em>uavhengige</em> forskergrupper, med ulike metoder og uten koordinert felles rammeverk, konvergerer mot samme funn. Det er en annen prosess enn at et koordinert nettverk produserer en felleserklæring og siterer hverandre. Størrelse i et konsensusnettverk dokumenterer koordinering — ikke replisering.</p>
-
-      <h4>GRADE og sammenhengen mellom evidenskvalitet og anbefalingsstyrke</h4>
-
-      <p>GRADE-systemet (Grading of Recommendations Assessment, Development and Evaluation) er den internasjonale standarden for retningslinjearbeid. Det vurderer tillit til effektestimater langs fire dimensjoner: risiko for skjevhet, konsistens, direkthet og presisjon. Konklusjonen kobles eksplisitt til anbefalingsstyrken: lav til svært lav evidenskvalitet skal gi svake anbefalinger («kan vurderes»), ikke sterke («bør»).</p>
-
-      <p>Helsedirektoratets høringsutkast (2026) har gjennomført GRADE-vurderinger. Evidenstabellene — tilgjengelig som PDF fra Helsedirektoratets egne nettsider — viser:</p>
-
-      <p>For gradert aktivitet: tillit til effektestimatet vurdert som <em>lav</em> for utmattelse og <em>svært lav</em> for fysisk funksjon (ved oppfølging), med heterogenitet I²=90,7 %. For kognitiv atferdsterapi: tillit til effektestimatet vurdert som <em>lav til svært lav</em> for alle utfall (utmattelse, fysisk funksjon, depresjon, angst). For PICO-spesifikt rettet mot pasienter med PEM og Canadakriterier: retningslinjen konkluderer selv med at «forskningsgrunnlaget er svakt» og at det er «få identifiserte studier».</p>
-
-      <p>Anbefalingsteksten formulerer likevel «bør» for aktivitetsregulering — for alle pasienter, inkludert dem med PEM. Dette er et direkte brudd med GRADE-metodikkens prinsipper. Det er ikke en redaksjonell tilfeldighet. Det er resultatet av at klinisk erfaring og brukererfaring fra Recovery Norges miljø er tillagt vekt som kompenserer for fraværet av sterk forskningsmessig evidens — i tråd med retningslinjen metodebeskrivelse: «På områder der det er funnet mindre forskningsbasert kunnskap [...] blir klinisk kunnskap og brukerkunnskap tillagt større vekt.»</p>
-
-      <h4>Representativitet i studiepopulasjonen — inklusjonskriteriene avgjør alt</h4>
-
-      <p>Den mest gjennomgripende metodologiske svakheten i CBT- og GET-litteraturen er diskrepansen mellom inklusjonspopulasjon og den populasjonen konklusjonene er ment å gjelde for. Maas et al. (2024) — en av de sentrale metaanalysene for CBT i høringsutkastet — inkluderer studier som primært bruker Oxford- og CDC/Fukuda-kriterier. Oxfordkriteriene krever kun kronisk utmattelse i minimum seks måneder. De krever ikke PEM. De ble trukket tilbake av sine egne opphavspersoner.</p>
-
-      <p>Canadakriteriene — som retningslinjen selv anbefaler for ME/CFS-diagnose (punkt 10) — krever PEM som obligatorisk kriterium, i tillegg til søvnforstyrrelser, smerter, nevrokognitive symptomer og autonome/nevroendokrine/immunologiske symptomer. Det er en fundamentalt annen pasientpopulasjon. En studie av Oxford-pasienter kan ikke generere gyldige konklusjoner om ME/CFS-pasienter med Canadakriterier.</p>
-
-      <p>Wien-studien (Kaiserseder et al., Pneumologie 2026) dokumenterer dette empirisk: i en post-covid rehabiliteringskohorte (n=216) oppfylte 6,9 prosent Canadakriteriene. Denne gruppen forbedret seg ikke i fatigue under rehabilitering (Δ+1,3 mot Δ−5,1 i kontrollgruppen, p<0,001). 26,7 prosent avbrøt rehabiliteringen — alle pga. PEM-krasj. Rehabilitering virker for post-covid-pasienter uten ME/CFS. Det virker ikke for dem med ME/CFS. En samlet analyse av begge gruppene ville gi en gjennomsnittlig positiv effekt — som ikke er meningsfull for ME/CFS-pasienten.</p>
-
-      <h4>Klinisk versus statistisk signifikans</h4>
-
-      <p>En statistisk signifikant effekt (p<0,05) er ikke nødvendigvis klinisk relevant. Det som teller klinisk er effektstørrelse, absolutt risikoreduksjon og NNT (number needed to treat). Effektstørrelsene i CBT-litteraturen — standardisert gjennomsnittlig effekt (SMD) på −0,52 for utmattelse i Maas et al. (2024) — er i det moderate registeret. Med lav til svært lav tillit til estimatene, og med usikkerhet om overførbarhet til Canadakriterier-populasjonen, er dette utilstrekkelig grunnlag for en sterk anbefaling rettet mot en pasientgruppe med gjennomsnittlig 17 år med sykdomsbelastning.</p>
-
-      <p>Til sammenligning: daratumumab-piloten ved Haukeland (professor Fluge, professor Mella og professor Tronstad, 2025) viste 60 prosent klinisk og objektiv bedring hos 10 pasienter (6 av 10) med ME/CFS. Det er en liten studie — pilotstudier er per definisjon for små til å gi sikre konklusjoner. Men effektstørrelsen er dramatisk annerledes, mekanismen er biologisk spesifikk (CD38-positiv plasmacelle-depletering), og resultatet er objektivt målt, ikke selvrapportert. Den randomiserte oppfølgingsstudien vil gi svar. Den er privatfinansiert.</p>
-
-      <h4>Langtidsoppfølging og den virkelige prøven</h4>
-
-      <p>Studier av CBT og GET måler typisk endringer over 3–18 måneder, med subjektive utfallsmål. Det er den kortsiktige prøven. Den virkelige prøven er langtidsregistrering av faktisk funksjonsnivå i den reelle pasientpopulasjonen — arbeidsdeltakelse, inntektsutvikling, helsetjenestbruk — over 3–5 år eller mer.</p>
-
-      <p>Kielland og Liu (Social Sciences & Humanities Open, 2025) er den eneste studien som gir dette langtidsperspektivet for norske ME/CFS-pasienter. Administrative registerdata fra 8 485 pasienter med G93.3-diagnose, koblet mot SSBs inntekts- og trygdedata: 57 prosent ingen bedring, 38 prosent forverring, 5 prosent noen form for bedring. Av 733 personer med svært lav inntekt ved diagnosetidspunktet: tre år senere hadde kun tre returnert til medianlønn. Rehabiliteringsopphold stoppet ikke forverringen. Dette er den virkelige langtidseffekten av den biopsykososiale behandlingstilnærmingen anvendt på den norske ME/CFS-populasjonen over tyve år. Den er ikke referert i høringsutkastet.</p>
-
-      <p>Wien-studien (2026) dokumenterer det samme i et tredje datasett: fatigue bedres ikke i ME/CFS-gruppen under rehabilitering, mens gangtest-mål kan vise fremgang. Det betyr at man kan fremstille rehabilitering som «effektiv» basert på kliniske outputmål (CROM) uten at pasientene opplever bedring på egne velferdsmål (PROM). Dette er præsis den diskrepansen som gjør det mulig å opprettholde et behandlingsregime over tiår uten å konfrontere dets reelle mangel på effekt i praksis.</p>
-
-      <h4>Hva en metodologisk forsvarlig retningslinje ville ha krevd</h4>
-
-      <p>En metodologisk forsvarlig nasjonal retningslinje for ME/CFS i 2026 ville ha:</p>
-
-      <p>Gjennomført systematiske litteratursøk på biologisk patofysiologi, immunologi og biomarkørforskning — ikke bare på aktivitetsbaserte intervensjoner og CBT. Brukt separate PICO-analyser for pasienter diagnostisert etter Canadakriteriene med bekreftet PEM, adskilt fra pasienter med generell langvarig utmattelse. Reflektert GRADE-vurderingenes faktiske konklusjoner (lav til svært lav evidenskvalitet) i anbefalingsstyrken. Nevnt NICE NG206 (2021) i evidensgrunnlaget for aktivitetsregulering — der den er mest relevant — ikke bare under legemidler. Opplyst eksplisitt om at Nerli og Wyller (2024) — ifølge høringsutkastets evidensgrunnlag den eneste norske RCT-en — er en studie der arbeidsgruppedeltakeren Nerli er førsteforfatter og professor Wyller er siste og overordnet medforfatter. Inkludert registerdata fra Kielland og Liu (2025) som dokumentasjon på den faktiske langtidseffekten av gjeldende behandlingstilnærming.</p>
-
-      <p>Ingen av disse kravene er urimelige. Det er standardkravene til kunnskapsbasert retningslinjearbeid, slik de er beskrevet i Helsedirektoratets egen metodeveileder.</p>
-
-    
-      </div><!-- /ps p7-metodikk -->
-</div><!-- /panel p7 -->
-
-<!-- DEL VIII: ORDLISTE -->
-<div class="panel" id="p8">
-  <div class="panel-subnav">
-    <a href="#p8" style="pointer-events:none;">Ordliste og begreper</a>
-  </div>
-  <h2 style="display:none;">Ordliste og begreper</h2>
-  <p style="color:var(--ink-mid);font-size:18px;margin-bottom:24px;">48 fagtermer og forkortelser brukt i dokumentet.</p>
-  <div id="glossary-body">
-
-    <div class="glossary-cat-heading" data-cat="diagnose">Diagnostiske kriterier og sykdomsdefinisjon</div>
-
-    <div class="glossary-term" data-terms="me cfs myalgic encephalomyelitis chronic fatigue syndrome g93.3">
-      <h4>ME/CFS</h4>
-      <p>Myalgic Encephalomyelitis/Chronic Fatigue Syndrome. Nevrologisk sykdom klassifisert under G93.3 i ICD-10. Karakterisert av vedvarende utmattelse, kognitiv svikt, søvnforstyrrelser og post-exertional malaise (PEM). WHO har klassifisert tilstanden under nevrologi siden 1969.</p>
-    </div>
-    <div class="glossary-term" data-terms="pem post-exertional malaise anstrengelsesutløst forverring">
-      <h4>PEM — Post-Exertional Malaise</h4>
-      <p>Forverring av symptomer etter fysisk eller kognitiv anstrengelse, typisk med 12–48 timers forsinkelse og varighet fra dager til uker. Definert av IOM 2015 som det obligatoriske og sentrale diagnostiske kriteriet for ME/CFS. Norsk: anstrengelsesutløst symptomforverring.</p>
-    </div>
-    <div class="glossary-term" data-terms="kanadakriteriene canadakriteriene carruthers">
-      <h4>Canadakriteriene</h4>
-      <p>Diagnostiske kriterier for ME/CFS utviklet av Carruthers et al. (2003). Krever åtte symptomer inkludert PEM. Brukt internasjonalt som gullstandard i klinisk og forskningsmessig sammenheng. Anbefalt av Helsedirektoratets veileder fra 2014.</p>
-    </div>
-    <div class="glossary-term" data-terms="oxford-kriterier oxford sharpe 1991">
-      <h4>Oxford-kriterier</h4>
-      <p>Diagnostiske kriterier fra 1991 (Sharpe et al.) som kun krever kronisk utmattelse i seks måneder — ingen krav om PEM eller andre spesifikke symptomer. Brukt i PACE-studien og i Cochrane-oversikten (Larun et al.). Kritisert for å fange inn en bredere populasjon enn ME/CFS slik sykdommen er definert i dag.</p>
-    </div>
-    <div class="glossary-term" data-terms="iom 2015 institute of medicine national academy">
-      <h4>IOM 2015</h4>
-      <p>Rapport fra US Institute of Medicine (nå National Academy of Medicine): «Beyond Myalgic Encephalomyelitis/Chronic Fatigue Syndrome: Redefining an Illness». Definerte PEM som obligatorisk diagnostisk kriterium og karakteriserte ME/CFS som «en alvorlig, kronisk, kompleks, systemisk sykdom».</p>
-    </div>
-    <div class="glossary-term" data-terms="fukuda-kriterier fukuda cdc 1994">
-      <h4>Fukuda-kriterier</h4>
-      <p>CDC-kriterier fra 1994. Brukt i mye eldre ME/CFS-forskning. Krever kronisk utmattelse pluss fire av åtte tilleggssymptomer. Inkluderer ikke PEM som obligatorisk.</p>
-    </div>
-    <div class="glossary-term" data-terms="long covid long-covid post-covid senfølger">
-      <h4>Long covid / post-COVID-tilstand</h4>
-      <p>Vedvarende symptomer etter SARS-CoV-2-infeksjon. Overlapper klinisk og biologisk med ME/CFS, inkludert PEM, kognitiv svikt og autonom dysfunksjon. WHO-definisjon: symptomer som oppstår vanligvis innen tre måneder etter akutt COVID-19 og varer minst to måneder.</p>
-    </div>
-    <div class="glossary-term" data-terms="g93.3 icd kode diagnose">
-      <h4>G93.3</h4>
-      <p>ICD-10-kode for ME/CFS (postviral utmattelsessyndrom) i spesialisthelsetjenesten. Antall pasienter med denne koden i Norge falt fra 3 854 (2017) til 2 426 (2025).</p>
-    </div>
-    <div class="glossary-term" data-terms="r53 icd kode tretthet uvelhet">
-      <h4>R53</h4>
-      <p>ICD-10-kode for «uvelhet og tretthet» — et symptom uten etiologisk innhold. Steg fra 4 747 til over 6 000 i samme periode G93.3 falt. Diagnostisk fortrengning: pasienter kodes med R53 i stedet for G93.3.</p>
-    </div>
-    <div class="glossary-term" data-terms="icpc-2 primærhelsetjeneste fastlege kode">
-      <h4>ICPC-2</h4>
-      <p>International Classification of Primary Care, versjon 2. Brukes i norsk primærhelsetjeneste. Har ingen kode for ME/CFS — nærmeste er A04 (slapphet/tretthet). Gjør det strukturelt umulig å registrere ME/CFS-diagnose hos fastlege.</p>
-    </div>
-
-    <div class="glossary-cat-heading" data-cat="behandling">Behandlingsformer og intervensjoner</div>
-
-    <div class="glossary-term" data-terms="cbt kognitiv atferdsterapi cognitive behavioural therapy">
-      <h4>CBT — Kognitiv atferdsterapi</h4>
-      <p>Psykologisk behandlingsmetode som i ME/CFS-kontekst bygger på antakelsen om at feilaktige sykdomsoppfatninger og aktivitetsunngåelse opprettholder utmattelsen. Frarådt av NICE NG206 (2021) som kurativ behandling for ME/CFS-pasienter med PEM.</p>
-    </div>
-    <div class="glossary-term" data-terms="get gradert treningsterapi graded exercise therapy">
-      <h4>GET — Gradert treningsterapi</h4>
-      <p>Behandlingsmetode basert på antakelsen om at dekondisjonering opprettholder ME/CFS. Frarådt av NICE NG206 (2021) for ME/CFS-pasienter med PEM. Wüst et al. (Nature Communications, 2023) dokumenterte muskelbiopsi-funn som forklarer hvorfor trening kan forverre tilstanden.</p>
-    </div>
-    <div class="glossary-term" data-terms="lp lightning process parker kurs">
-      <h4>LP — Lightning Process</h4>
-      <p>Kommersielt kurs utviklet av britisk osteopat Phil Parker. Basert på nevroplastisitetsteorier og mentale teknikker. Ca. 20 000 kr per deltaker. Instruktører krever ingen helsefaglig utdanning. NICE NG206 fraråder eksplisitt LP for ME/CFS-pasienter.</p>
-    </div>
-    <div class="glossary-term" data-terms="mbrt mind body reprocessing therapy reme jacobsen">
-      <h4>MBRT — Mind Body Reprocessing Therapy</h4>
-      <p>Behandlingssystem utviklet ved Mind Body Lab (Reme og Jacobsen, UiO). Basert på prediktiv prosessering, klassisk læring og relasjonsrammeteori. Eneste engelskspråklige vitenskapelige publisering er et upublisert preprint (2025). Testes i MINIRICO-studien (KLINBEFORSK, 25 mill. kr).</p>
-    </div>
-    <div class="glossary-term" data-terms="daratumumab haukeland fluge mella behandling">
-      <h4>Daratumumab</h4>
-      <p>Monoklonalt antistoff opprinnelig brukt mot myelomatose. Testes ved Haukeland universitetssykehus (Fluge/Mella) mot ME/CFS basert på autoantistoff-hypotesen. Pilotforsøk 2025 (n=10): 60 % klinisk og objektiv bedring. Finansiert av ME-fondet og private bidrag — ikke offentlige midler.</p>
-    </div>
-    <div class="glossary-term" data-terms="pacing energistyring aktivitetstilpasning">
-      <h4>Pacing</h4>
-      <p>Energistyringsmetode der pasienten tilpasser aktivitetsnivå til tilgjengelig energi for å unngå PEM. Ikke en terapeutisk intervensjon, men en mestringsstrategi. Anbefalt av NICE NG206.</p>
-    </div>
-    <div class="glossary-term" data-terms="igg-aferese aferese autoantistoff fjerning">
-      <h4>IgG-aferese</h4>
-      <p>Fjerning av IgG-antistoffer fra blodet. Scheibenbogen/Charité (Lancet Regional Health Europe, 2024): klinisk bedring i kontrollert studie etter fjerning av autoantistoffer mot adrenerge reseptorer.</p>
-    </div>
-
-    <div class="glossary-cat-heading" data-cat="teori">Teori og rammeverk</div>
-
-    <div class="glossary-term" data-terms="sustained arousal stressrespons wyller teori">
-      <h4>Sustained arousal</h4>
-      <p>Wyllers teoretiske modell (formalisert 2009): ME/CFS forklares som en vedvarende aktivering av hjernens stressrespons, der biologiske funn som immunaktivering er epifenomener — konsekvenser av stressresponsen, ikke primære sykdomsmekanismer. Teoriens kausale kjerne er falsifisert av Kongsnes et al. (Stress, 2026) fra Wyllers egen forskningsgruppe.</p>
-    </div>
-    <div class="glossary-term" data-terms="prediktiv hjerne prediktiv prosessering forventning">
-      <h4>Prediktiv hjerne-teori</h4>
-      <p>Nevrovitenskapelig modell der hjernen konstruerer sanseopplevelser basert på forventninger. Brukes av Wyller, Reme og Jacobsen som teoretisk ramme for sustained arousal og MBRT. Presenteres med optiske illusjoner som analogi på Recovery Norge-seminaret 2025.</p>
-    </div>
-    <div class="glossary-term" data-terms="biopsykososial modell rammeverk psykologisk">
-      <h4>Biopsykososial modell</h4>
-      <p>Rammeverk som forstår sykdom som samspill mellom biologiske, psykologiske og sosiale faktorer. I ME/CFS-kontekst brukt til å begrunne psykologiske og atferdsmessige behandlinger. Skilles fra biomedisinsk modell som søker primære biologiske mekanismer.</p>
-    </div>
-    <div class="glossary-term" data-terms="nocebo forventning media dekning">
-      <h4>Nocebo-effekt</h4>
-      <p>Negativ helseeffekt forårsaket av forventning om skade — speilbildet av placebo. Wyller argumenterer i Vaksinepodden mars 2026 at mediedekning av long covid skaper nocebo-effekter. Ziyad Al-Aly: «Det er ikke noe empirisk evidens for noe slikt.»</p>
-    </div>
-    <div class="glossary-term" data-terms="mups medisinsk uforklarte plager symptomer">
-      <h4>MUPS — Medisinsk uforklarte plager og symptomer</h4>
-      <p>Paraplybegrep for symptombaserte tilstander uten påvist organisk årsak. ME/CFS kategoriseres som MUPS i deler av det norske fagmiljøet. Kontroversiell kategorisering siden IOM 2015 definerte ME/CFS som en selvstendig sykdom. Legeforeningens MUPS-gruppe inkluderer Prydz og Jøssang.</p>
-    </div>
-
-    <div class="glossary-cat-heading" data-cat="metode">Metode, institusjoner og studier</div>
-
-    <div class="glossary-term" data-terms="grade grading recommendations assessment evidens kvalitet">
-      <h4>GRADE</h4>
-      <p>Grading of Recommendations, Assessment, Development and Evaluation. Internasjonalt system for å vurdere kvaliteten på forskningsevidens og styrken av behandlingsanbefalinger. Flottorp er GRADE-ekspert. Metoden forutsetter at lav evidenskvalitet gir svakere anbefalinger — en sammenheng høringsutkastet 2026 ikke konsekvent reflekterer.</p>
-    </div>
-    <div class="glossary-term" data-terms="pace pace-studien white chalder sharpe lancet 2011">
-      <h4>PACE-studien</h4>
-      <p>«Pacing, graded Activity and Cognitive behaviour therapy: a randomised Evaluation» (White, Chalder, Sharpe et al., Lancet 2011). Største RCT på CBT og GET ved ME/CFS. £5 mill., delfinansiert av Department for Work and Pensions. Kritisert for svekket «recovery»-definisjon etter datainnsamling. NICE NG206 (2021) konkluderte at studien ikke gir tilstrekkelig grunnlag for CBT/GET-anbefalinger.</p>
-    </div>
-    <div class="glossary-term" data-terms="rct randomisert kontrollert studie gullstandard">
-      <h4>RCT — Randomisert kontrollert studie</h4>
-      <p>Gullstandard for klinisk effektforskning. Deltakere fordeles tilfeldig til behandlings- og kontrollgrupper. Resultater er ikke gyldige dersom inklusjonskriteriene rekrutterer feil populasjon — et kjerneproblem i GET/CBT-studier som bruker Oxford-kriterier.</p>
-    </div>
-    <div class="glossary-term" data-terms="norcapital klonidin wyller sympatikus">
-      <h4>NorCAPITAL</h4>
-      <p>Wyllers klonidin-studie (data 2010–2012, publisert 2015). Testet klonidin som farmakologisk hemmer av sympatikusaktivitet, basert på sustained arousal-teorien. Klonidin ga ingen symptomlindring — økte faktisk utmattelse. Wyller tolket ikke dette som falsifikasjon av teorien.</p>
-    </div>
-    <div class="glossary-term" data-terms="sipcov rørtveit kysthospitalet long covid cbt">
-      <h4>SIPCOV</h4>
-      <p>«Short-time behavioural intervention in post-Covid syndrome». RCT ledet av Wyller (Ahus), n=310. Tester CBT og gradert trening mot long covid med sustained arousal som rammeverk. Styringskomité: Wyller, Rørtveit, Flottorp, Reme, Jacobsen. ClinicalTrials.gov NCT05196451.</p>
-    </div>
-    <div class="glossary-term" data-terms="cfq chalder fatigue questionnaire spørreskjema">
-      <h4>CFQ — Chalder Fatigue Questionnaire</h4>
-      <p>11-spørsmåls selvrapporteringsskjema for utmattelse. Utviklet av Trudie Chalder. Brukt som primærutfallsmål i PACE og som inklusjonsinstrument i REHAB-FATIGUE. NINDS (USA) godkjenner ikke CFQ som inklusjonsinstrument i forskning på postinfeksiøs utmattelse. Terskel CFQ>4 fanger inn dagligdags tretthet.</p>
-    </div>
-    <div class="glossary-term" data-terms="cpet belastningstest sykkelttest pem objektiv">
-      <h4>CPET — Cardiopulmonary Exercise Test</h4>
-      <p>To-dagers belastningstesting. Objektiv metode for å dokumentere PEM: pasienter med ME/CFS viser signifikant redusert arbeidskapasitet på dag to, noe friske kontroller ikke gjør. Over 30 studier har replisert funnet.</p>
-    </div>
-    <div class="glossary-term" data-terms="klinbeforsk finansiering forskningsmidler 25 millioner">
-      <h4>KLINBEFORSK</h4>
-      <p>Nasjonalt program for klinisk behandlingsforskning i spesialisthelsetjenesten. Bevilget 25 mill. kr til REHAB-FATIGUE/MINIRICO i februar 2026. Programmet vurderer ikke faglige uenigheter i tildelingsprosessen — opplyst i svarbrev mars 2026.</p>
-    </div>
-    <div class="glossary-term" data-terms="decodeme genetikk genomomfattende edinburgh ponting">
-      <h4>DecodeME</h4>
-      <p>Genomomfattende assosiasjonsstudie fra University of Edinburgh (Ponting et al., 2025, n>17 000). Identifiserte åtte signifikante genetiske loki uten overlapp med angst, depresjon eller generell utmattelse. Dokumenterer at ME/CFS har en selvstendig genetisk arkitektur.</p>
-    </div>
-    <div class="glossary-term" data-terms="nem nasjonal etisk forskningskomite">
-      <h4>NEM</h4>
-      <p>Nasjonal etisk forskningskomité for medisin og helsefag. Flottorps e-post om Cochrane-prosessen var adressert til et NEM-medlem — den er et primærdokument som viser hennes innramming av fagkritikk som «aktivistpress».</p>
-    </div>
-    <div class="glossary-term" data-terms="nafkam alternativ medisin tromsø uit">
-      <h4>NAFKAM</h4>
-      <p>Nasjonalt forskningssenter innen komplementær og alternativ medisin, UiT. Sendte bekymringsmelding til Helsedirektoratet i 2011 etter tre negative LP-meldinger. Opprettholdt risikovurderingen i 2015 og 2020. Flottorp forsøkte å forhindre et NAFKAM-seminar om LP i 2020.</p>
-    </div>
-    <div class="glossary-term" data-terms="coffi collaborative fatigue following infection wyller internasjonalt">
-      <h4>COFFI</h4>
-      <p>Collaborative on Fatigue Following Infection. Internasjonalt forskningskonsortium ledet av Wyller. Scientific advisory committee: Sharpe og Chalder. Grunnlagt 2015/2018 med White som operativt medforfatter. Bruker Fukuda-kriterier, ikke kanadakriterier.</p>
-    </div>
-    <div class="glossary-term" data-terms="ocfn oslo chronic fatigue network reme internasjonalt">
-      <h4>OCFN</h4>
-      <p>Oslo Chronic Fatigue Network. Internasjonalt nettverk ledet av Reme ved Mind Body Lab, UiO. Styringsgruppe inkluderer Sharpe, Chalder, Garner og Liira. Bredere enn COFFI — dekker behandling, ikke bare forskning.</p>
-    </div>
-    <div class="glossary-term" data-terms="ocfc oslo chronic fatigue consortium manifest 51 forfattere">
-      <h4>OCFC</h4>
-      <p>Oslo Chronic Fatigue Consortium. 51-forfattergruppen bak to dokumenter mot NICE: «Chronic fatigue syndromes: real illnesses» (SJPHC, 2023) og «Anomalies in the review process» (JNNP, 2023, White som lead). Norske medforfattere inkluderer Flottorp og Wyller.</p>
-    </div>
-    <div class="glossary-term" data-terms="nkt nasjonal kompetansetjeneste oslo universitetssykehus helland">
-      <h4>NKT</h4>
-      <p>Nasjonal kompetansetjeneste for CFS/ME, Oslo universitetssykehus. Ledet av Ingrid Helland. Helsedirektoratets egne evalueringer konkluderte at tjenesten ikke kan dokumentere effekt av sin virksomhet. Tjenesten fortsatte uendret.</p>
-    </div>
-    <div class="glossary-term" data-terms="rek regional etisk komite godkjenning forskningsetikk">
-      <h4>REK</h4>
-      <p>Regionale komiteer for medisinsk og helsefaglig forskningsetikk. LP-studien til Landmark mistet etisk godkjenning og måtte re-søkes — Per Magnus gikk fra rådgiverrolle til monitoreringskomité etter re-søknad.</p>
-    </div>
-    <div class="glossary-term" data-terms="mind body lab reme jacobsen uio mbrt">
-      <h4>Mind Body Lab</h4>
-      <p>Forskningsgruppe ved Psykologisk institutt, UiO, ledet av Reme og Jacobsen. Utvikler av MBRT. Arrangør av det hemmelige seminaret oktober 2022. Leder Oslo Chronic Fatigue Network.</p>
-    </div>
-    <div class="glossary-term" data-terms="minirico pedersen long covid nikotinamid klinbeforsk">
-      <h4>MINIRICO</h4>
-      <p>«Mental Intervention og Nikotinamid Ribosid-supplement ved langvarig Covid». RCT ledet av Maria Pedersen (Ahus/UiO), 2×2 faktoriell design, n=310. Tester MBRT og nikotinamid ribosid (ChromaDex/TRU NIAGEN). Finansiert av KLINBEFORSK (25 mill. kr, 2026).</p>
-    </div>
-    <div class="glossary-term" data-terms="rehab-fatigue klinbeforsk wyller faglig leder 25 millioner">
-      <h4>REHAB-FATIGUE</h4>
-      <p>KLINBEFORSK-prosjekt (25 mill. kr, februar 2026) ledet av Wyller som faglig leder. Overordnet prosjektramme som inkluderer MINIRICO. Bruker CFQ som måleinstrument.</p>
-    </div>
-    <div class="glossary-term" data-terms="loteca selvakumar barn unge long covid ahus">
-      <h4>LoTECA</h4>
-      <p>«Long-Term Effects of COVID-19 in Children and Adolescents». Studie ved Ahus/UiO, ledet av Joel Selvakumar. Fant at biomarkører ikke predikerer long covid ved seks måneder, men at nevrotisisme og ensomhet gjør det.</p>
-    </div>
-    <div class="glossary-term" data-terms="rituxme rituximab fluge mella haukeland negativt resultat">
-      <h4>RituxME</h4>
-      <p>Fase 3-studie på rituximab ved ME/CFS (Fluge/Mella, Haukeland). 151 pasienter, randomisert, dobbeltblindet. Negativt resultat publisert i Annals of Internal Medicine 2019. Forskerne aksepterte funnet og gikk videre til daratumumab — et eksempel på ordinær vitenskapelig revisjon.</p>
-    </div>
-    <div class="glossary-term" data-terms="nav arbeids velferdsetat trygd uføretrygd">
-      <h4>NAV</h4>
-      <p>Arbeids- og velferdsetaten. Krever gjennomføring av anbefalt behandling som vilkår for trygdeytelser — inkludert behandlinger Fafo-rapporten viser gjør pasienter sykere. Statens prosedyre i Gulating-saken: den biomedisinske modellen er feil.</p>
-    </div>
-    <div class="glossary-term" data-terms="npr norsk pasientregister registerdata diagnose">
-      <h4>NPR — Norsk pasientregister</h4>
-      <p>Primærkilden for G93.3- og R53-kodingsdata brukt i Del IV. Viser fall i G93.3 og stigning i R53 — diagnostisk fortrengning dokumentert over 2017–2025.</p>
-    </div>
-    <div class="glossary-term" data-terms="ssb statistisk sentralbyrå inntekt trygd registerdata">
-      <h4>SSB — Statistisk sentralbyrå</h4>
-      <p>Inntekts- og trygdedata koblet mot NPR i Kielland og Liu (2025, n=8 485). Grunnlaget for dokumentasjonen av at 95 % av norske ME-pasienter ikke bedres over tre år.</p>
-    </div>
-    <div class="glossary-term" data-terms="icd-10 icd-11 who klassifikasjon sykdom">
-      <h4>ICD-10 / ICD-11</h4>
-      <p>WHOs internasjonale klassifikasjon av sykdommer. ICD-11 gir ME/CFS kode 8E49 under nevrologi og skiller det fra psykosomatiske tilstander som klassifiseres under «Bodily Distress Disorder» (6C20). Norge bruker fortsatt ICD-10.</p>
-    </div>
-    <div class="glossary-term" data-terms="helsedirektoratet retningslinje høring mai 2026">
-      <h4>Helsedirektoratet</h4>
-      <p>Norsk fagdirektorat under Helse- og omsorgsdepartementet. Ansvarlig for nasjonal faglig retningslinje for langvarig utmattelse inkl. ME/CFS. Høringsutkast publisert 4. februar 2026. Høringsfrist 4. mai 2026.</p>
-    </div>
-    <div class="glossary-term" data-terms="nice ng206 storbritannia retningslinje 2021">
-      <h4>NICE NG206</h4>
-      <p>National Institute for Health and Care Excellence (UK). Retningslinje publisert oktober 2021 etter 18 måneder og over 900 referanser. Konklusjon: CBT og GET frarådes for ME/CFS-pasienter med PEM; LP frarådes eksplisitt. Wyller, Flottorp og Brurberg svarte med Lancet-kommentaren «more ideology than science?» (2022).</p>
-    </div>
-    <div class="glossary-term" data-terms="nk-celler natural killer immunforsvar biologisk">
-      <h4>NK-celler</h4>
-      <p>Natural killer-celler. Del av medfødt immunforsvar. Redusert NK-celleaktivitet er et av de mest repliserte biologiske funnene ved ME/CFS internasjonalt.</p>
-    </div>
-    <div class="glossary-term" data-terms="autoantistoffer antistoffer charité scheibenbogen">
-      <h4>Autoantistoffer</h4>
-      <p>Antistoffer rettet mot kroppens egne strukturer. Wirth og Scheibenbogen (Charité, 2021) dokumenterte autoantistoffer mot adrenerge reseptorer som fører til vasokonstriksjon og hypoksi ved ME/CFS.</p>
-    </div>
-    <div class="glossary-term" data-terms="mitokondrier energi wüst muskelbiopsi">
-      <h4>Mitokondrier</h4>
-      <p>Cellenes energiproduserende organeller. Wüst et al. (Nature Communications, 2023) dokumenterte redusert mitokondriell kapasitet i muskelvev hos ME/CFS-pasienter — direkte vevsfunn, uavhengig av selvrapportering.</p>
-    </div>
-    <div class="glossary-term" data-terms="preload-svikt ortostatisk hjertesvikt blodvolum">
-      <h4>Preload-svikt</h4>
-      <p>Utilstrekkelig venøs tilbakestrøm til hjertet, resulterer i redusert slagvolum ved oppreist stilling. Dokumentert ved ME/CFS, forklarer ortostatisk intoleranse og kognitive symptomer ved aktivitet.</p>
-    </div>
-
-
-    <div class="glossary-cat-heading" data-cat="forkortelser">Forkortelser og institusjonsnavn</div>
-
-    <div class="glossary-term" data-terms="foi freedom of information offentlighet dokumentinnsyn">
-      <h4>FOI</h4>
-      <p>Freedom of Information. Britisk lov om rett til offentlige dokumenter. Brukes i dokumentet om PACE-dataene — de rådataene som ble frigitt etter FOI-krav og rettsprosess, og som viste at recovery-definisjonen var endret etter datainnsamling.</p>
-    </div>
-    <div class="glossary-term" data-terms="gpcr g-protein reseptor autoantistoffer dysautonomia">
-      <h4>GPCR</h4>
-      <p>G protein-coupled receptor. Reseptorklasse som er mål for autoantistoffer dokumentert hos ME/CFS- og long covid-pasienter (Scheibenbogen, Charité). GPCR-autoantistoffer kobles til dysautonomia og ortostatisk intoleranse ved ME/CFS.</p>
-    </div>
-    <div class="glossary-term" data-terms="iag independent advisory group cochrane">
-      <h4>IAG</h4>
-      <p>Independent Advisory Group. Cochranes uavhengige rådgivningskomité. IAG anbefalte å nedgradere evidenskvaliteten i Larun et al. (GET-oversikten) — en anbefaling FHI/Flottorp aktivt motarbeidet, ifølge interne e-poster.</p>
-    </div>
-    <div class="glossary-term" data-terms="pifs post-infeksiøs utmattelse ppis vedvarende symptomer">
-      <h4>PIFS / PPIS</h4>
-      <p>Post-Infective Fatigue Syndrome / Persistent Post-Infectious Symptoms. Samlebetegnelse for vedvarende utmattelse etter infeksjon, uavhengig av patogen. Wyllers foretrukne begrep i SIPCOV og COFFI, fremfor ME/CFS. Betegnelsen unngår den nevrologiske klassifiseringen i ICD-10/11.</p>
-    </div>
-    <div class="glossary-term" data-terms="nokc nasjonalt kunnskapssenter helsetjenesten fhi">
-      <h4>NOKC</h4>
-      <p>Nasjonalt kunnskapssenter for helsetjenesten. Nå en del av FHI. Wyller og Flottorp var medforfattere på NOKC-rapport nr. 9–2006 om diagnostisering og behandling av CFS/ME — det første statlige kunnskapsgrunnlaget som legitimerte biopsykososial tilnærming i norsk helsevesen.</p>
-    </div>
-    <div class="glossary-term" data-terms="nlp nevrolingvistisk programmering parker lightning process">
-      <h4>NLP</h4>
-      <p>Nevrolingvistisk programmering (Neurolinguistic Programming). Pseudovitenskapelig metode utviklet på 1970-tallet. Phil Parker — grunnlegger av Lightning Process — er NLP-utøver. LP bygger på NLP-teknikker kombinert med positiv psykologi og livschoaching.</p>
-    </div>
-    <div class="glossary-term" data-terms="nihr national institute health research storbritannia">
-      <h4>NIHR</h4>
-      <p>National Institute for Health and Care Research. Britisk statlig forskningsfinansiør. Medfinansierte PACE-studien sammen med Medical Research Council (MRC) og Department for Work and Pensions (DWP). Samfinansieringen med DWP er analytisk relevant for spørsmålet om interessekonflikter i PACE.</p>
-    </div>
-    <div class="glossary-term" data-terms="ukri uk research innovation storbritannia forskningsmidler">
-      <h4>UKRI</h4>
-      <p>UK Research and Innovation. Britisk statlig forskningsfinansiør. Nevnt i interessekonflikt-erklæringer for PACE-arkitekter. Del av det britiske finansieringslandskapet der samfinansering med trygde- og forsikringsinteresser er dokumentert.</p>
-    </div>
-    <div class="glossary-term" data-terms="magenta studie gradert trening barn crawley bristol">
-      <h4>MAGENTA</h4>
-      <p>Randomisert studie av gradert trening for barn med ME/CFS (Crawley et al., Bristol). Viste at gradert treningsterapi ikke hadde statistisk signifikant effekt sammenlignet med kontrollgruppen. Flottorp kjente ikke til MAGENTA da hun avga sin sakkyndigerklæring i Gulating 2026.</p>
-    </div>
-    <div class="glossary-term" data-terms="mms morbidity mortality statistics icd-11 who kode">
-      <h4>MMS</h4>
-      <p>Morbidity and Mortality Statistics. WHO ICD-11s klassifikasjonssystem for sykdomsstatistikk. Brukt i dokumentet som referanse for ICD-11-koden 8E49 (ME/CFS som nevrologisk sykdom). MMS er den statistiske modulen, atskilt fra ICFs funksjonssystem.</p>
-    </div>
-
-  </div><!-- /glossary-body -->
+  </div><!-- /ps p9-artikler -->
 
 </div>
-<!-- /DEL VIII -->
+<!-- /DEL IX -->
 
   </div><!-- /panel-wrap -->
 

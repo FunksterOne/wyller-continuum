@@ -824,7 +824,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
   
 
   <div class="sidebar-brand" id="sidebar-brand" style="padding:20px;background:var(--paper);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:center;">
-  <p style="font-family:var(--mono);font-size:11px;color:var(--ink-light);letter-spacing:0.05em;text-transform:uppercase;margin:0;text-align:center;">Høringsfristen er 4. mai 2026</p>
+  <p style="font-family:var(--mono);font-size:11px;color:#6b1a1a;letter-spacing:0.05em;text-transform:uppercase;margin:0;text-align:center;">Høringsfristen er 4. mai 2026</p>
   </div>
 
   <div class="nav-del">
@@ -891,7 +891,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
 </nav>
 <!-- TOPBAR SEARCH -->
 <div class="topbar-search" id="topbar-search-wrap">
-  <span style="display:flex;align-items:center;height:100%;padding:0 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ink-light);border-right:1px solid var(--rule);white-space:nowrap;">k1.0</span>
+  <span style="display:flex;align-items:center;height:100%;padding:0 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ink-light);border-right:1px solid var(--rule);white-space:nowrap;">k1.00</span>
   <a href="https://www.cfsmeatlas.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;height:100%;padding:0 16px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;border-right:1px solid var(--rule);white-space:nowrap;transition:background 0.12s,color 0.12s;" onmouseover="this.style.background='var(--paper)';this.style.color='var(--accent)';" onmouseout="this.style.background='';this.style.color='var(--ink-light)';">Atlas ↗</a>
   <input type="text" id="global-search" placeholder="Søk i dokumentet…" autocomplete="off" spellcheck="false" style="width:180px;" />
   <div class="search-results" id="search-results"></div>
@@ -942,14 +942,18 @@ td:first-child { font-weight: 500; color: var(--ink); }
     var quotes = [
       {t:'«Vi studerer et fenomen som biologisk sett er et kontinuum. Vi har ikke enten-eller.»', c:'— Professor Vegard Bruun Bratholm Wyller'},
       {t:'«Biologien er sekundær. Det er ikke det som driver plagene. Årsakspilene er andre veien.»', c:'— Professor Vegard Bruun Bratholm Wyller'},
-      {t:'«PEM har ingenting å gjøre med behandlingseffekten. Det er et meningsløst konsept.»', c:'— Postdoktor Maria Pedersen'},
+      {t:'«Som Vegard sa, er utmattelse et vanlig fenomen i befolkningen. Det er ganske normalt, og vi er alle mer eller mindre trøtte.»', c:'— Postdoktor Maria Pedersen'},
+      {t:'«Med alle disse subtile funnene — har vi funnet medisiner som kan hjelpe dem? Jeg kan oppsummere: nei, det har vi ikke.»', c:'— Postdoktor Maria Pedersen'},
+      {t:'«Når jeg møter et barn der foreldrene sier at hver gang han har spilt fotball blir han dårlig. Kanskje det er vi som har skapt dette konseptet?»', c:'— Postdoktor Maria Pedersen'},
+      {t:'«Hun var helt frisk, helt tilbake til seg selv. Dette er en kur som fungerer.»', c:'— Postdoktor Maria Pedersen'},
+      {t:'«PEM har ingenting å gjøre med behandlingseffekten. Da synes jeg det er synd at dette begrepet får så mye oppmerksomhet.»', c:'— Postdoktor Maria Pedersen'},
       {t:'«Frykten for anstrengelsesutløst symptomforverring er ikke noe gyldig argument for å ikke forsøke behandling.»', c:'— Forskningssjef Signe Flottorp'},
       {t:'«Det er viktig å formidle håp og bygge opp motivasjon, først og fremst hos pasienten selv.»', c:'— Forskningssjef Signe Flottorp'},
       {t:'«Hvis 5 000 har gått på Lightning Process og noen ble bra — hvorfor finner jeg ikke de friske i registerdata?»', c:'— Seniorforsker Anne Kielland'},
-      {t:'«Vi vil oppdatere retningslinjen når det foreligger god og dokumentert, solid kunnskap.»', c:'— Kommunikasjonsdirektør Marius Kurås Skram, Helsedirektoratet'},
+      {t:'«Vi vil oppdatere retningslinjen når det foreligger god og dokumentert, solid kunnskap.»', c:'— Fungerende divisjonsdirektør Marius Kurås Skram, Helsedirektoratet'},
       {t:'«Tro endrer ikke fakta. Fakta, hvis man er rasjonell, bør endre tro.»', c:'— Ricky Gervais'},
-      {t:'«Pain Reprocessing Therapy består av fire komponenter: forventning — å si til pasienten at de kan bli friske — forklaring, eksponering og interoceptiv eksponering. Vi bruker flere av disse elementene i Mind Body Reprocessing Therapy.»', c:'— Professor Silje Endresen Reme'},
-      {t:'«Lightning Process bruker forventning på liknende vis som Mind Body Reprocessing Therapy. Mange instruktører har vært syke selv, akkurat som Landmark. De er et levende eksempel på det de kommuniserer.»', c:'— Professor Silje Endresen Reme'},
+      {t:'«Pain Reprocessing Therapy består av: forventning — å si til pasienten at de kan bli friske — forklaring, eksponering og interoceptiv eksponering. Flere av elementene brukes i Mind Body Reprocessing Therapy.»', c:'— Professor Silje Endresen Reme'},
+      {t:'«Lightning Process bruker forventning på liknende vis som MBRT. Mange instruktører har vært syke selv, akkurat som Landmark. De er et levende eksempel på det de kommuniserer.»', c:'— Professor Silje Endresen Reme'},
     ];
     var used = [];
     function next() {
@@ -4136,7 +4140,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p>Del VII inneholder ti spørsmål til Helsedirektoratet om faglige og prosessuelle valg i høringsutkastet. Spørsmålene er formulert som konkrete forespørsler om begrunnelse og kan brukes direkte i formelle høringssvar innen 4. mai 2026.</p>
 
-      <p>Utgangspunktet er Helsedirektoratets egne formuleringer da høringsutkastet ble sendt på høring. Kommunikasjonsdirektør Marius Kurås Skram uttalte:</p>
+      <p>Utgangspunktet er Helsedirektoratets egne formuleringer da høringsutkastet ble sendt på høring. Fungerende divisjonsdirektør Marius Kurås Skram uttalte:</p>
 
       <blockquote>
         <p>«Arbeidet er bredt og tverrfaglig forankret, med deltakere fra ulike deler av helse- og velferdstjenesten, representanter fra alle helseregioner og flere profesjoner. [...] I tillegg har fire bruker- og pårørendeorganisasjoner deltatt aktivt i arbeidsgruppen.»</p>

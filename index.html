@@ -631,9 +631,128 @@ td:first-child { font-weight: 500; color: var(--ink); }
 }
 
 @media (max-width: 768px) {
-  .sidebar { display: none; }
-  .main { margin-left: 0; }
-  .hero, .panel { padding: 36px 24px; }
+  /* ── SIDEBAR: skjult som standard, åpnes via hamburger ── */
+  .sidebar {
+    display: flex;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 500;
+    width: 280px;
+  }
+  .sidebar.mob-open {
+    transform: translateX(0);
+  }
+
+  /* ── OVERLAY bak sidebar ── */
+  .mob-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 490;
+  }
+  .mob-overlay.mob-open {
+    display: block;
+  }
+
+  /* ── MAIN: ingen sidebar-margin ── */
+  .main {
+    margin-left: 0;
+    margin-top: 36px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 16px 20px 14px;
+  }
+
+  /* ── PANEL ── */
+  .panel {
+    padding: 20px 20px 60px;
+  }
+
+  /* ── TOPBAR: kollaps til mobilversjon ── */
+  .topbar-search {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .topbar-search .mob-hide {
+    display: none;
+  }
+  .topbar-search input {
+    width: auto;
+    flex: 1;
+  }
+
+  /* ── SØKERESULTATER: full bredde på mobil ── */
+  .search-results {
+    width: 100vw;
+    left: 0;
+    right: 0;
+  }
+
+  /* ── PROGRESS BAR: start fra venstre kant ── */
+  .progress-bar {
+    left: 0;
+  }
+
+  /* ── SUBNAV: juster negative margins til mobilpadding ── */
+  .panel-subnav, .p3-subnav {
+    margin: -20px -20px 20px -20px;
+    padding: 0;
+  }
+
+  /* ── OM-SEKSJON: full bredde, større font ── */
+  #om.ps-active {
+    padding-top: 6vh;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Container: overstyr inline width:56vw */
+  #om.ps-active > div {
+    width: 92vw !important;
+  }
+
+  /* Sitatboks: overstyr inline height:160px */
+  #sidebar-quotes {
+    height: auto !important;
+    min-height: 80px;
+  }
+
+  /* Tittellinjene: overstyr inline font-size:4.2vw og white-space:nowrap */
+  #om.ps-active .om-title-line {
+    font-size: clamp(26px, 7vw, 38px) !important;
+    white-space: normal !important;
+  }
+
+  /* ── PARALLELL TIDSLINJE: stables vertikalt ── */
+  .tl-parallel {
+    flex-direction: column;
+  }
+  .tl-col-psyk {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    padding-right: 0;
+    margin-right: 0;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* ── TABELLER: mindre skrift ── */
+  table { font-size: 14px; }
+  th, td { padding: 7px 10px; }
+
+  /* ── DEL-COUNTER: skjul på mobil ── */
+  .del-counter { display: none; }
+
+  /* ── STAT CARDS: to kolonner ── */
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
+
+  /* ── SMOKING GUN: smalere dato ── */
+  .smoking-gun-date { width: 70px; font-size: 11px; }
+  .smoking-gun-text { font-size: 16px; }
 }
 
 /* ── TIMELINE CALLOUT (tre-uker boks) ── */
@@ -889,9 +1008,13 @@ td:first-child { font-weight: 500; color: var(--ink); }
     </a>
   </div>
 </nav>
+<!-- MOB OVERLAY -->
+<div class="mob-overlay" id="mob-overlay"></div>
+
 <!-- TOPBAR SEARCH -->
 <div class="topbar-search" id="topbar-search-wrap">
-  <span style="display:flex;align-items:center;height:100%;padding:0 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ink-light);border-right:1px solid var(--rule);white-space:nowrap;">k1.00</span>
+  <button id="mob-hamburger" aria-label="Meny" style="display:none;align-items:center;justify-content:center;height:100%;width:44px;background:none;border:none;border-right:1px solid var(--rule);cursor:pointer;font-size:18px;color:var(--ink);flex-shrink:0;">☰</button>
+  <span class="mob-hide" style="display:flex;align-items:center;height:100%;padding:0 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ink-light);border-right:1px solid var(--rule);white-space:nowrap;">k1.00</span>
   <a href="https://www.cfsmeatlas.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;height:100%;padding:0 16px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;border-right:1px solid var(--rule);white-space:nowrap;transition:background 0.12s,color 0.12s;" onmouseover="this.style.background='var(--paper)';this.style.color='var(--accent)';" onmouseout="this.style.background='';this.style.color='var(--ink-light)';">Atlas ↗</a>
   <input type="text" id="global-search" placeholder="Søk i dokumentet…" autocomplete="off" spellcheck="false" style="width:180px;" />
   <div class="search-results" id="search-results"></div>
@@ -932,8 +1055,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <div id="sq-cite" style="font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-light);margin-top:6px;transition:opacity 1.2s ease;">— Vegard Bruun Bratholm Wyller</div>
     </div>
     <div style="line-height:1.3;font-family:var(--serif);text-align:right;">
-      <div style="font-size:4.2vw;font-weight:500;color:var(--ink);letter-spacing:-0.01em;white-space:nowrap;">Hvorfor tenker du deg</div>
-      <div style="font-size:4.2vw;font-weight:500;color:var(--ink);letter-spacing:-0.01em;margin-top:0.2em;white-space:nowrap;">ikke bare frisk?</div>
+      <div class="om-title-line" style="font-size:4.2vw;font-weight:500;color:var(--ink);letter-spacing:-0.01em;white-space:nowrap;">Hvorfor tenker du deg</div>
+      <div class="om-title-line" style="font-size:4.2vw;font-weight:500;color:var(--ink);letter-spacing:-0.01em;margin-top:0.2em;white-space:nowrap;">ikke bare frisk?</div>
       <div style="font-size:13px;font-style:italic;color:var(--ink-light);text-align:right;margin-top:0.6em;line-height:1.5;">Dokumentet er laget av Anthropic Claude Sonnet 4.6 med Research &amp; Extended Thinking.<br>Human-in-the-loop har vært bidragsyter.</div>
     </div>
   </div>
@@ -5377,7 +5500,58 @@ function glossaryFilter(q) {
   });
 })();
 
-// ── SCROLL POSITION PRESERVATION ──
+// ── HAMBURGER MOBIL ──
+(function() {
+  const btn = document.getElementById('mob-hamburger');
+  const overlay = document.getElementById('mob-overlay');
+  const sidebar = document.querySelector('.sidebar');
+  if (!btn || !overlay || !sidebar) return;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function showHamburger() {
+    if (isMobile()) {
+      btn.style.display = 'flex';
+    } else {
+      btn.style.display = 'none';
+      sidebar.classList.remove('mob-open');
+      overlay.classList.remove('mob-open');
+    }
+  }
+
+  function openMenu() {
+    sidebar.classList.add('mob-open');
+    overlay.classList.add('mob-open');
+  }
+
+  function closeMenu() {
+    sidebar.classList.remove('mob-open');
+    overlay.classList.remove('mob-open');
+  }
+
+  btn.addEventListener('click', function() {
+    if (sidebar.classList.contains('mob-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  // Lukk ved navigasjon (klikk på nav-lenke)
+  sidebar.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (isMobile()) closeMenu();
+    });
+  });
+
+  window.addEventListener('resize', showHamburger);
+  showHamburger();
+})();
+
+
+
 (function() {
   const wrap = document.querySelector('.panel-wrap');
   if (!wrap) return;

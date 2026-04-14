@@ -2,6 +2,7 @@
 <html lang="no">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23faf8f4'/><text x='16' y='23' font-family='Georgia,serif' font-size='14' font-weight='600' fill='%238b1a1a' text-anchor='middle' letter-spacing='-0.5'>WC</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://doi.org">
@@ -1130,6 +1131,11 @@ td:first-child { font-weight: 500; color: var(--ink); }
     </div>
   </div>
 
+  <div style="padding:12px 20px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:10px;color:var(--ink-light);line-height:1.7;">
+    <span style="letter-spacing:0.06em;">v k1.2</span><br>
+    <span style="letter-spacing:0.04em;">14. april 2026</span>
+  </div>
+
 </nav>
 <!-- MOB OVERLAY -->
 <div class="mob-overlay" id="mob-overlay"></div>
@@ -1139,7 +1145,6 @@ td:first-child { font-weight: 500; color: var(--ink); }
 <!-- TOPBAR SEARCH -->
 <div class="topbar-search" id="topbar-search-wrap">
   <button id="mob-hamburger" aria-label="Meny" style="display:none;align-items:center;justify-content:center;height:100%;width:44px;background:none;border:none;border-right:1px solid var(--rule);cursor:pointer;font-size:18px;color:var(--ink);flex-shrink:0;">☰</button>
-  <span class="mob-hide" style="display:flex;align-items:center;height:100%;padding:0 14px;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ink-light);border-right:1px solid var(--rule);white-space:nowrap;">k1.00</span>
   <a href="https://www.cfsmeatlas.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;height:100%;padding:0 16px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;border-right:1px solid var(--rule);white-space:nowrap;transition:background 0.12s,color 0.12s;" onmouseover="this.style.background='var(--paper)';this.style.color='var(--accent)';" onmouseout="this.style.background='';this.style.color='var(--ink-light)';">Atlas ↗</a>
   <input type="text" id="global-search" placeholder="Søk i dokumentet…" autocomplete="off" spellcheck="false" style="width:180px;" />
   <div class="search-results" id="search-results"></div>
@@ -1160,7 +1165,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
     <!-- DEL I -->
     <div class="panel active" id="p1">
       <div class="panel-subnav">
-        <a href="#om" data-tooltip="Om sitatene som åpner dokumentet — og spørsmålet som stilles">Om</a>
+        <a href="#om" data-tooltip="Dette dokumentet er laget for journalister, fagfolk, pasienter og høringsinstanser som ønsker å forstå grunnlaget for Helsedirektoratets høringsutkast 2026 om ME/CFS. Det samler teori, nettverk, registerdata og internasjonal forskning på ett sted — og gir et faktabasert grunnlag for å forstå hvem som har formet norsk ME-politikk, hva forskningen viser og hvorfor Norge skiller seg fra sine naboland. Målet er informerte høringssvar og kvalifisert offentlig debatt. Høringsfristen er 4. mai 2026.">Dokumentet</a>
         <a href="#innledning" data-tooltip="Om Kolbjørn i rullestol, statens argument og hvorfor Norge i 2026 prosederer der Storbritannia snudde i 2021">Rettssaken</a>
         <a href="#tl-2006" data-tooltip="Om hvordan sustained arousal-teorien ble til — og hvilke konsekvenser den fikk fra start">2006–2009</a>
         <a href="#tl-2010" data-tooltip="Om NorCAPITAL-studien, klonidinbehandlingen og hvordan teorien ble omsatt til klinisk praksis">2010–2018</a>

@@ -1119,6 +1119,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <input type="hidden" name="access_key" value="03882e11-45b3-4abd-a665-9e7c19752216">
         <input type="hidden" name="subject" value="Tilbakemelding — The Wyller Continuum">
         <input type="hidden" name="redirect" value="false">
+        <!-- Honeypot: usynlig for brukere, avvises av Web3Forms hvis fylt ut -->
+        <input type="checkbox" name="botcheck" style="display:none;">
         <input class="contact-input" type="text" name="name" placeholder="Navn" autocomplete="off" required>
         <input class="contact-input" type="email" name="email" placeholder="E-post" autocomplete="off" required>
         <textarea class="contact-input contact-textarea" name="message" placeholder="Din melding…" required></textarea>
@@ -1148,7 +1150,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
   <!-- HERO -->
   <div class="hero" id="net-hero">
-    <h1>The Wyller <span class="title-tooltip" data-tooltip="«Det interessante er ikke å tenke dette som enten-eller, men tenke det som et kontinuum. Vi studerer egentlig et fenomen som biologisk sett er et kontinuum. Sånn er symptomer. Vi har mer eller mindre av dem, men vi har ikke enten-eller.» ― Wyller, mars 2026">Continuum</span></h1>
+    <h1><span class="title-tooltip" data-tooltip="«Det interessante er ikke å tenke dette som enten-eller, men tenke det som et kontinuum. Vi studerer egentlig et fenomen som biologisk sett er et kontinuum. Sånn er symptomer. Vi har mer eller mindre av dem, men vi har ikke enten-eller.» ― Wyller, mars 2026">The Wyller Continuum</span></h1>
     <p class="hero-lead">20 år med biopsykososial forståelse av ME har gitt Norges største medisinske skandale</p>
   </div>
 
@@ -5704,7 +5706,7 @@ function glossaryFilter(q) {
   if (!tip) return;
   let hideTimer;
 
-  document.querySelectorAll('.panel-subnav a[data-tooltip], .p3-subnav a[data-tooltip]').forEach(function(el) {
+  document.querySelectorAll('.panel-subnav a[data-tooltip], .p3-subnav a[data-tooltip], .title-tooltip[data-tooltip]').forEach(function(el) {
     el.addEventListener('mouseenter', function(e) {
       clearTimeout(hideTimer);
       tip.textContent = el.getAttribute('data-tooltip');
@@ -5712,9 +5714,8 @@ function glossaryFilter(q) {
       const rect = el.getBoundingClientRect();
       let left = rect.left;
       let top = rect.bottom + 6;
-      // Ikke gå utenfor høyre kant
-      if (left + 260 > window.innerWidth - 10) {
-        left = window.innerWidth - 270;
+      if (left + 320 > window.innerWidth - 10) {
+        left = window.innerWidth - 330;
       }
       tip.style.left = left + 'px';
       tip.style.top = top + 'px';
@@ -5734,18 +5735,50 @@ function glossaryFilter(q) {
   const chevron = document.getElementById('contact-chevron');
   const form = document.getElementById('contact-form');
   const status = document.getElementById('contact-status');
+  const COOLDOWN = 30 * 60 * 1000; // 30 minutter
 
   if (!toggle || !wrap || !form) return;
+
+  function checkCooldown() {
+    const last = localStorage.getItem('wyller_contact_last');
+    if (!last) return false;
+    return (Date.now() - parseInt(last)) < COOLDOWN;
+  }
+
+  function minutesLeft() {
+    const last = localStorage.getItem('wyller_contact_last');
+    if (!last) return 0;
+    return Math.ceil((COOLDOWN - (Date.now() - parseInt(last))) / 60000);
+  }
 
   toggle.addEventListener('click', function() {
     const isOpen = wrap.classList.contains('open');
     wrap.classList.toggle('open');
     chevron.classList.toggle('open');
     toggle.setAttribute('aria-expanded', !isOpen);
+
+    // Sjekk cooldown når skjema åpnes
+    if (!isOpen && checkCooldown()) {
+      const btn = form.querySelector('.contact-submit');
+      btn.disabled = true;
+      status.textContent = 'Du sendte nylig en melding. Vent ' + minutesLeft() + ' min før du sender igjen.';
+      status.style.color = 'var(--ink-light)';
+    } else {
+      const btn = form.querySelector('.contact-submit');
+      btn.disabled = false;
+      status.textContent = '';
+    }
   });
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    if (checkCooldown()) {
+      status.textContent = 'Vent ' + minutesLeft() + ' minutter før du sender igjen.';
+      status.style.color = 'var(--psyk)';
+      return;
+    }
+
     const btn = form.querySelector('.contact-submit');
     btn.textContent = 'Sender…';
     btn.disabled = true;
@@ -5758,19 +5791,21 @@ function glossaryFilter(q) {
       });
       const data = await res.json();
       if (data.success) {
+        localStorage.setItem('wyller_contact_last', Date.now().toString());
         status.textContent = 'Takk — meldingen er sendt.';
         status.style.color = 'var(--bio)';
         form.reset();
       } else {
         status.textContent = 'Noe gikk galt. Prøv igjen.';
         status.style.color = 'var(--psyk)';
+        btn.disabled = false;
       }
     } catch(err) {
       status.textContent = 'Nettverksfeil. Prøv igjen.';
       status.style.color = 'var(--psyk)';
+      btn.disabled = false;
     }
     btn.textContent = 'Send';
-    btn.disabled = false;
   });
 })();
 

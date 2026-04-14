@@ -906,7 +906,35 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
 
 
+/* ── SUBNAV TOOLTIPS ── */
+#subnav-tooltip {
+  display: none;
+  position: fixed;
+  background: var(--paper-mid);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 3px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  max-width: 320px;
+  white-space: normal;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ── CONTINUUM HEADER TOOLTIP ── */
 .title-tooltip {
+  border-bottom: 1px dotted var(--ink-mid);
+  cursor: help;
+  position: relative;
+  white-space: nowrap;
+}
+
   border-bottom: 1px dotted var(--ink-mid);
   cursor: help;
   position: relative;
@@ -1103,6 +1131,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
 </nav>
 <!-- MOB OVERLAY -->
 <div class="mob-overlay" id="mob-overlay"></div>
+<!-- SUBNAV TOOLTIP -->
+<div id="subnav-tooltip"></div>
 
 <!-- TOPBAR SEARCH -->
 <div class="topbar-search" id="topbar-search-wrap">
@@ -1128,17 +1158,17 @@ td:first-child { font-weight: 500; color: var(--ink); }
     <!-- DEL I -->
     <div class="panel active" id="p1">
       <div class="panel-subnav">
-        <a href="#om" title="Om sitatene som åpner dokumentet — og spørsmålet som stilles">Om</a>
-        <a href="#innledning" title="Om Kolbjørn i rullestol, statens argument og hvorfor Norge i 2026 prosederer der Storbritannia snudde i 2021">Rettssaken</a>
-        <a href="#tl-2006" title="Om hvordan sustained arousal-teorien ble til — og hvilke konsekvenser den fikk fra start">2006–2009</a>
-        <a href="#tl-2010" title="Om NorCAPITAL-studien, klonidinbehandlingen og hvordan teorien ble omsatt til klinisk praksis">2010–2018</a>
-        <a href="#tl-2019" title="Om NICE-snuoperasjonen i Storbritannia — og hvorfor Norge valgte å fortsette">2019–2021</a>
-        <a href="#tl-2022" title="Om OCFC-manifestet — 51 forfattere som mobiliserte mot den britiske retningslinjeendringen">2022–2023</a>
-        <a href="#tl-2024" title="Om hva registerdata og Kielland & Liu-studien viser om 20 år med biopsykososial behandling">2024</a>
-        <a href="#tl-2025" title="Om Recovery Norge-seminaret og hvordan høringsutkastet ble forberedt">2025</a>
-        <a href="#tl-feb26" title="Om høringsutkastet som ble publisert 4. februar — og hva det faktisk inneholder">Feb. 2026</a>
-        <a href="#tl-mars26" title="Om måneden debatten eksploderte — faglige motreaksjoner, internasjonal oppmerksomhet og tre parallelle kronikker">Mars 2026</a>
-        <a href="#tl-apr26" title="Om sluttfasen frem mot høringsfristen 4. mai 2026">Apr–mai 2026</a>
+        <a href="#om" data-tooltip="Om sitatene som åpner dokumentet — og spørsmålet som stilles">Om</a>
+        <a href="#innledning" data-tooltip="Om Kolbjørn i rullestol, statens argument og hvorfor Norge i 2026 prosederer der Storbritannia snudde i 2021">Rettssaken</a>
+        <a href="#tl-2006" data-tooltip="Om hvordan sustained arousal-teorien ble til — og hvilke konsekvenser den fikk fra start">2006–2009</a>
+        <a href="#tl-2010" data-tooltip="Om NorCAPITAL-studien, klonidinbehandlingen og hvordan teorien ble omsatt til klinisk praksis">2010–2018</a>
+        <a href="#tl-2019" data-tooltip="Om NICE-snuoperasjonen i Storbritannia — og hvorfor Norge valgte å fortsette">2019–2021</a>
+        <a href="#tl-2022" data-tooltip="Om OCFC-manifestet — 51 forfattere som mobiliserte mot den britiske retningslinjeendringen">2022–2023</a>
+        <a href="#tl-2024" data-tooltip="Om hva registerdata og Kielland & Liu-studien viser om 20 år med biopsykososial behandling">2024</a>
+        <a href="#tl-2025" data-tooltip="Om Recovery Norge-seminaret og hvordan høringsutkastet ble forberedt">2025</a>
+        <a href="#tl-feb26" data-tooltip="Om høringsutkastet som ble publisert 4. februar — og hva det faktisk inneholder">Feb. 2026</a>
+        <a href="#tl-mars26" data-tooltip="Om måneden debatten eksploderte — faglige motreaksjoner, internasjonal oppmerksomhet og tre parallelle kronikker">Mars 2026</a>
+        <a href="#tl-apr26" data-tooltip="Om sluttfasen frem mot høringsfristen 4. mai 2026">Apr–mai 2026</a>
       </div>
       
       <div class="panel-section ps-active" id="om" data-sec="om">
@@ -1416,12 +1446,12 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
         <div class="panel" id="p2">
       <div class="panel-subnav">
-        <a href="#teorien-sustained-arousal-og-prediktiv-hjerne" title="Om sustained arousal: teorien som snur årsaksretningen — biologiske funn er konsekvenser, ikke sykdomsmekanismer">Teorien (2009–2026)</a>
-        <a href="#recovery-norge-seminaret-teorien-i-aksjon" title="Om Recovery Norge-seminaret 2025 der Wyller presenterte teorien slide for slide — og hva argumentrekken faktisk er">Seminaret</a>
-        <a href="#ekko-kammeret" title="Om Vaksinepodden mars 2026 — en samtale der tre fagpersoner bekrefter hverandres premisser uten motforestillinger">Podcasten</a>
-        <a href="#pace-studien-den-har-overlevd" title="Om PACE-studien — den mest siterte i nettverket — og hvorfor det norske miljøet forsvarer den etter at NICE forkastet den">PACE og NICE</a>
-        <a href="#biomark-rp-standen-hva-wyller-sier-hva-litteraturen-viser" title="Om Wyllers påstand om at biomarkørfeltet er «veldig lite reproduserbart» — og hva publisert forskning faktisk viser">Biomarkørene</a>
-        <a href="#kausaliteten-som-aldri-revideres" title="Om to empiriske tester av teorien der begge resultater pekte galt vei — og begge ble tolket som bekreftelse">Intern falsifikasjon</a>
+        <a href="#teorien-sustained-arousal-og-prediktiv-hjerne" data-tooltip="Om sustained arousal: teorien som snur årsaksretningen — biologiske funn er konsekvenser, ikke sykdomsmekanismer">Teorien (2009–2026)</a>
+        <a href="#recovery-norge-seminaret-teorien-i-aksjon" data-tooltip="Om Recovery Norge-seminaret 2025 der Wyller presenterte teorien slide for slide — og hva argumentrekken faktisk er">Seminaret</a>
+        <a href="#ekko-kammeret" data-tooltip="Om Vaksinepodden mars 2026 — en samtale der tre fagpersoner bekrefter hverandres premisser uten motforestillinger">Podcasten</a>
+        <a href="#pace-studien-den-har-overlevd" data-tooltip="Om PACE-studien — den mest siterte i nettverket — og hvorfor det norske miljøet forsvarer den etter at NICE forkastet den">PACE og NICE</a>
+        <a href="#biomark-rp-standen-hva-wyller-sier-hva-litteraturen-viser" data-tooltip="Om Wyllers påstand om at biomarkørfeltet er «veldig lite reproduserbart» — og hva publisert forskning faktisk viser">Biomarkørene</a>
+        <a href="#kausaliteten-som-aldri-revideres" data-tooltip="Om to empiriske tester av teorien der begge resultater pekte galt vei — og begge ble tolket som bekreftelse">Intern falsifikasjon</a>
       </div>
 
       <div class="panel-section ps-active" id="teorien-sustained-arousal-og-prediktiv-hjerne" data-sec="teorien-sustained-arousal-og-prediktiv-hjerne">
@@ -1696,16 +1726,16 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
 <div class="panel" id="p3">
       <div class="panel-subnav">
-        <a href="#nettverkskartet" title="Om aktørene — interaktivt kart, klikk på noder for detaljer">Nettverkskart</a>
-        <a href="#de-fem-beslutningsarenaene" title="Om de fem beslutningsarenaene — forskning, klinikk, forvaltning, media og organisasjon — der nettverket har inntatt posisjoner">Fem arenaer</a>
-        <a href="#finansieringsstrømmene-som-strukturell-makt" title="Om bevilgninger til ME/CFS-forskning i Norge fra 2017 — og hvilke strukturelle konsekvenser finansieringsmønsteret har">Finansiering</a>
-        <a href="#det-internasjonale-nettverket" title="Om COFFI og OCFN — de internasjonale nettverksstrukturene det norske miljøet er del av">Internasjonalt</a>
-        <a href="#ocfc-manifest" title="Om 51-forfatterartikkelen fra 2023 — hvem som skrev den, hvor den ble publisert og hva den argumenterer mot">OCFC-manifest</a>
-        <a href="#rn-stiftelse" title="Om stiftelsen av Recovery Norge — tidspunktet, betingelsene for medlemskap og koblingen til LP-miljøet">Recovery Norge</a>
-        <a href="#lp-studien" title="Om Landmarks ph.d.-studie på Lightning Process — registreringsstatus, forsinkelser og nåværende rekruttering">LP-studien</a>
-        <a href="#mars-2026" title="Om debattmåneden mars 2026 — hvilke stemmer som tok ordet og hva de sa">Offentlig debatt</a>
-        <a href="#interessekonfliktenes-konkrete-form" title="Om interessekonflikter som ikke er deklarert i alle arenaer — og en matrise over konkrete eksempler">Int.konflikter</a>
-        <a href="#p3-selvsiterings-kart" title="Om selvsiteringen i nettverkets oversiktsartikkel — 63 % av studiene er fra egne forfattere">Selvsiterings&shy;kart</a>
+        <a href="#nettverkskartet" data-tooltip="Om aktørene — interaktivt kart, klikk på noder for detaljer">Nettverkskart</a>
+        <a href="#de-fem-beslutningsarenaene" data-tooltip="Om de fem beslutningsarenaene — forskning, klinikk, forvaltning, media og organisasjon — der nettverket har inntatt posisjoner">Fem arenaer</a>
+        <a href="#finansieringsstrømmene-som-strukturell-makt" data-tooltip="Om bevilgninger til ME/CFS-forskning i Norge fra 2017 — og hvilke strukturelle konsekvenser finansieringsmønsteret har">Finansiering</a>
+        <a href="#det-internasjonale-nettverket" data-tooltip="Om COFFI og OCFN — de internasjonale nettverksstrukturene det norske miljøet er del av">Internasjonalt</a>
+        <a href="#ocfc-manifest" data-tooltip="Om 51-forfatterartikkelen fra 2023 — hvem som skrev den, hvor den ble publisert og hva den argumenterer mot">OCFC-manifest</a>
+        <a href="#rn-stiftelse" data-tooltip="Om stiftelsen av Recovery Norge — tidspunktet, betingelsene for medlemskap og koblingen til LP-miljøet">Recovery Norge</a>
+        <a href="#lp-studien" data-tooltip="Om Landmarks ph.d.-studie på Lightning Process — registreringsstatus, forsinkelser og nåværende rekruttering">LP-studien</a>
+        <a href="#mars-2026" data-tooltip="Om debattmåneden mars 2026 — hvilke stemmer som tok ordet og hva de sa">Offentlig debatt</a>
+        <a href="#interessekonfliktenes-konkrete-form" data-tooltip="Om interessekonflikter som ikke er deklarert i alle arenaer — og en matrise over konkrete eksempler">Int.konflikter</a>
+        <a href="#p3-selvsiterings-kart" data-tooltip="Om selvsiteringen i nettverkets oversiktsartikkel — 63 % av studiene er fra egne forfattere">Selvsiterings&shy;kart</a>
       </div>
       
 
@@ -3532,15 +3562,15 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
     <div class="panel" id="p4">
       <div class="panel-subnav">
-        <a href="#koder" title="Om hvorfor ME/CFS ikke finnes som én enhetlig diagnose i norsk helsedatainfrastruktur — og hva det betyr">Koder</a>
-        <a href="#reg-fortrengning" title="Om NPR-data 2017–2025: G93.3 faller 37 %, R53 stiger 28 % — et mønster som ikke debatteres offentlig">Fortrengning</a>
-        <a href="#reg-usynlig" title="Om avviket mellom faktisk sykdomsbyrde og det som vises i KUHR-data fra primærhelsetjenesten">Usynlig gap</a>
-        <a href="#reg-kielland" title="Om den sterkeste langtidsprognosestudien: 8 485 norske pasienter — inntektsfall starter tre år før diagnosen">Kielland & Liu</a>
-        <a href="#reg-fafo" title="Om «Tjenesten og MEg» — pasientenes egne erfaringer med behandlingstilbudet de har fått">Fafo/SINTEF</a>
-        <a href="#reg-emea" title="Om den første pan-europeiske pasientundersøkelsen — 70 % rapporterte forverring eller store fluktuasjoner">EMEA-survey</a>
-        <a href="#reg-konsekvenser" title="Om hva den faglige uenigheten konkret betyr — fra fastlegekontoret til registerdataene som brukes i politikk">Konsekvenser</a>
-        <a href="#reg-paradoks" title="Om tre påstander i den offentlige debatten som er direkte uforenlige med registerdata">Paradokser</a>
-        <a href="#reg-flottorp" title="Om dommen 25. mars 2026 — dissens 2-1, statens argument og historien om Kolbjørn som ni-åring">Gulating-dommen</a>
+        <a href="#koder" data-tooltip="Om hvorfor ME/CFS ikke finnes som én enhetlig diagnose i norsk helsedatainfrastruktur — og hva det betyr">Koder</a>
+        <a href="#reg-fortrengning" data-tooltip="Om NPR-data 2017–2025: G93.3 faller 37 %, R53 stiger 28 % — et mønster som ikke debatteres offentlig">Fortrengning</a>
+        <a href="#reg-usynlig" data-tooltip="Om avviket mellom faktisk sykdomsbyrde og det som vises i KUHR-data fra primærhelsetjenesten">Usynlig gap</a>
+        <a href="#reg-kielland" data-tooltip="Om den sterkeste langtidsprognosestudien: 8 485 norske pasienter — inntektsfall starter tre år før diagnosen">Kielland & Liu</a>
+        <a href="#reg-fafo" data-tooltip="Om «Tjenesten og MEg» — pasientenes egne erfaringer med behandlingstilbudet de har fått">Fafo/SINTEF</a>
+        <a href="#reg-emea" data-tooltip="Om den første pan-europeiske pasientundersøkelsen — 70 % rapporterte forverring eller store fluktuasjoner">EMEA-survey</a>
+        <a href="#reg-konsekvenser" data-tooltip="Om hva den faglige uenigheten konkret betyr — fra fastlegekontoret til registerdataene som brukes i politikk">Konsekvenser</a>
+        <a href="#reg-paradoks" data-tooltip="Om tre påstander i den offentlige debatten som er direkte uforenlige med registerdata">Paradokser</a>
+        <a href="#reg-flottorp" data-tooltip="Om dommen 25. mars 2026 — dissens 2-1, statens argument og historien om Kolbjørn som ni-åring">Gulating-dommen</a>
       </div>
       
 
@@ -3915,11 +3945,11 @@ td:first-child { font-weight: 500; color: var(--ink); }
     <!-- DEL V -->
     <div class="panel" id="p5">
       <div class="panel-subnav">
-        <a href="#bio-fem-funn" title="Om fem biologiske mekanismer reprodusert på tvers av uavhengige forskergrupper i fem land">Fem mekanismer</a>
-        <a href="#bio-funding-table" title="Om den internasjonale økningen i statlig biomedisinsk ME-finansiering siden 2020 — og Norges posisjon">Finansiering</a>
-        <a href="#bio-haukeland" title="Om Fluge og Mella: observasjonen, rituximab-studiene, det negative resultatet og hva det faktisk betyr">Haukeland</a>
-        <a href="#norge-som-unntak" title="Om hva alle sammenlignbare land har konkludert siden 2015 — og hvorfor Norge er unntaket">Norge som unntak</a>
-        <a href="#det-som-mangler-på-den-andre-siden" title="Om det norske biomedisinske miljøet — smalt, privatfinansiert, ikke representert i beslutningsarenaene">Asymmetrien</a>
+        <a href="#bio-fem-funn" data-tooltip="Om fem biologiske mekanismer reprodusert på tvers av uavhengige forskergrupper i fem land">Fem mekanismer</a>
+        <a href="#bio-funding-table" data-tooltip="Om den internasjonale økningen i statlig biomedisinsk ME-finansiering siden 2020 — og Norges posisjon">Finansiering</a>
+        <a href="#bio-haukeland" data-tooltip="Om Fluge og Mella: observasjonen, rituximab-studiene, det negative resultatet og hva det faktisk betyr">Haukeland</a>
+        <a href="#norge-som-unntak" data-tooltip="Om hva alle sammenlignbare land har konkludert siden 2015 — og hvorfor Norge er unntaket">Norge som unntak</a>
+        <a href="#det-som-mangler-på-den-andre-siden" data-tooltip="Om det norske biomedisinske miljøet — smalt, privatfinansiert, ikke representert i beslutningsarenaene">Asymmetrien</a>
       </div>
       
 
@@ -4154,15 +4184,15 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
     <div class="panel" id="p6">
       <div class="panel-subnav">
-        <a href="#ref-psyk" title="Om primærkilder for biopsykososial forskning og argumentasjon">Biopsykososialt</a>
-        <a href="#ref-bio" title="Om primærkilder for biomedisinsk forskning">Biomedisinsk</a>
-        <a href="#ref-rapporter" title="Om offentlige rapporter og utredninger">Rapporter</a>
-        <a href="#ref-rettslige" title="Om rettsdokumenter, dommer og prosesskriv">Rettslige</a>
-        <a href="#ref-retningslinjer" title="Om nasjonale og internasjonale retningslinjer">Retningslinjer</a>
-        <a href="#ref-opptak" title="Om lyd- og videoopptak fra seminarer, podcaster og høringer">Opptak</a>
-        <a href="#ref-debatt" title="Om fagfellevurdert debatt og kommentarer">Fagdebatt</a>
-        <a href="#ref-bruker" title="Om høringssvar og brukerorganisasjoners innspill">Høring</a>
-        <a href="#ref-om-kildene" title="Om metodologisk note om kildeutvalg og dokumentasjon">Om kildene</a>
+        <a href="#ref-psyk" data-tooltip="Om primærkilder for biopsykososial forskning og argumentasjon">Biopsykososialt</a>
+        <a href="#ref-bio" data-tooltip="Om primærkilder for biomedisinsk forskning">Biomedisinsk</a>
+        <a href="#ref-rapporter" data-tooltip="Om offentlige rapporter og utredninger">Rapporter</a>
+        <a href="#ref-rettslige" data-tooltip="Om rettsdokumenter, dommer og prosesskriv">Rettslige</a>
+        <a href="#ref-retningslinjer" data-tooltip="Om nasjonale og internasjonale retningslinjer">Retningslinjer</a>
+        <a href="#ref-opptak" data-tooltip="Om lyd- og videoopptak fra seminarer, podcaster og høringer">Opptak</a>
+        <a href="#ref-debatt" data-tooltip="Om fagfellevurdert debatt og kommentarer">Fagdebatt</a>
+        <a href="#ref-bruker" data-tooltip="Om høringssvar og brukerorganisasjoners innspill">Høring</a>
+        <a href="#ref-om-kildene" data-tooltip="Om metodologisk note om kildeutvalg og dokumentasjon">Om kildene</a>
       </div>
 
 
@@ -4342,10 +4372,10 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
 <div class="panel" id="p7">
       <div class="panel-subnav">
-        <a href="#p7-intro" title="Om de ti spørsmålene og hvordan de kan brukes direkte i et formelt høringssvar">Innledning</a>
-        <a href="#p7-metodikk" title="Om de faglige standardene spørsmålene er formulert ut fra — GRADE, PEM-definisjon, ICD-11">Metodikk</a>
-        <a href="#p7-faglig" title="Om PEM, biomarkørgrunnlaget, internasjonale retningslinjer og kunnskapsasymmetrien">Sp. 1–5: faglig</a>
-        <a href="#p7-prosess" title="Om Recovery Norges rolle i arbeidsgruppen, dissensene, interessekonflikter og ICD-11-avviket">Sp. 6–10: prosess</a>
+        <a href="#p7-intro" data-tooltip="Om de ti spørsmålene og hvordan de kan brukes direkte i et formelt høringssvar">Innledning</a>
+        <a href="#p7-metodikk" data-tooltip="Om de faglige standardene spørsmålene er formulert ut fra — GRADE, PEM-definisjon, ICD-11">Metodikk</a>
+        <a href="#p7-faglig" data-tooltip="Om PEM, biomarkørgrunnlaget, internasjonale retningslinjer og kunnskapsasymmetrien">Sp. 1–5: faglig</a>
+        <a href="#p7-prosess" data-tooltip="Om Recovery Norges rolle i arbeidsgruppen, dissensene, interessekonflikter og ICD-11-avviket">Sp. 6–10: prosess</a>
       </div>
       <div class="panel-section ps-active" id="p7-intro" data-sec="p7-intro">
       <h2 id="horingssporsmal">Spørsmål til Helsedirektoratet</h2>
@@ -4856,9 +4886,9 @@ td:first-child { font-weight: 500; color: var(--ink); }
 <!-- DEL IX -->
 <div class="panel" id="p9">
   <div class="panel-subnav">
-    <a href="#p9-tuller" title="Om UC Berkeley-journalisten som dokumenterte det norske nettverket utenfra — 16 artikler fra 2018 til 2026">David Tuller</a>
-    <a href="#p9-nodekart" title="Om aktørene og Tullers dokumentasjonsspor som interaktivt kart">Nettverkskart</a>
-    <a href="#p9-artikler" title="Om de 16 Trial by Error-artiklene om Norge — sammendrag og lenker">Artikler</a>
+    <a href="#p9-tuller" data-tooltip="Om UC Berkeley-journalisten som dokumenterte det norske nettverket utenfra — 16 artikler fra 2018 til 2026">David Tuller</a>
+    <a href="#p9-nodekart" data-tooltip="Om aktørene og Tullers dokumentasjonsspor som interaktivt kart">Nettverkskart</a>
+    <a href="#p9-artikler" data-tooltip="Om de 16 Trial by Error-artiklene om Norge — sammendrag og lenker">Artikler</a>
   </div>
   <h2 style="display:none;">Internasjonalt</h2>
 
@@ -5668,7 +5698,36 @@ function glossaryFilter(q) {
   });
 })();
 
-// ── KONTAKTSKJEMA ──
+// ── SUBNAV TOOLTIPS ──
+(function() {
+  const tip = document.getElementById('subnav-tooltip');
+  if (!tip) return;
+  let hideTimer;
+
+  document.querySelectorAll('.panel-subnav a[data-tooltip], .p3-subnav a[data-tooltip]').forEach(function(el) {
+    el.addEventListener('mouseenter', function(e) {
+      clearTimeout(hideTimer);
+      tip.textContent = el.getAttribute('data-tooltip');
+      tip.style.display = 'block';
+      const rect = el.getBoundingClientRect();
+      let left = rect.left;
+      let top = rect.bottom + 6;
+      // Ikke gå utenfor høyre kant
+      if (left + 260 > window.innerWidth - 10) {
+        left = window.innerWidth - 270;
+      }
+      tip.style.left = left + 'px';
+      tip.style.top = top + 'px';
+    });
+    el.addEventListener('mouseleave', function() {
+      hideTimer = setTimeout(function() {
+        tip.style.display = 'none';
+      }, 100);
+    });
+  });
+})();
+
+
 (function() {
   const toggle = document.getElementById('contact-toggle');
   const wrap = document.getElementById('contact-form-wrap');

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://doi.org">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Wyller Continuum — Norges mest kontroversielle medisindiagnose</title>
+<title>The Wyller Continuum — Norges mest kontroversielle diagnose</title>
 <meta name="description" content="Teorien, nettverket, vitenskapen — og hva pasientdataene viser.">
 <meta name="keywords" content="ME/CFS, Wyller, sustained arousal, biopsykososial, Helsedirektoratet, høringsinnspill, NKT, Lightning Process, NICE, post-exertional malaise, long covid, norsk ME-forskning, KLINBEFORSK, Kielland Liu 2025">
 <meta name="author" content="The Wyller Continuum">
@@ -17,7 +17,7 @@
 <!-- Open Graph / sosiale medier -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://the-wyller-continuum.vercel.app/">
-<meta property="og:title" content="The Wyller Continuum — Norges mest kontroversielle medisindiagnose">
+<meta property="og:title" content="The Wyller Continuum — Norges mest kontroversielle diagnose">
 <meta property="og:description" content="Teorien, nettverket, vitenskapen — og hva pasientdataene viser.">
 <meta property="og:locale" content="nb_NO">
 <meta property="article:published_time" content="2026-04-01T00:00:00+02:00">
@@ -29,7 +29,7 @@
 
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Wyller Continuum — Norges mest kontroversielle medisindiagnose">
+<meta name="twitter:title" content="The Wyller Continuum — Norges mest kontroversielle diagnose">
 <meta name="twitter:description" content="Teorien, nettverket, vitenskapen — og hva pasientdataene viser.">
 <meta property="og:image" content="https://the-wyller-continuum.vercel.app/social-card.png">
 <meta property="og:image:width" content="1200">
@@ -45,7 +45,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "The Wyller Continuum — Norges mest kontroversielle medisindiagnose",
+  "headline": "The Wyller Continuum — Norges mest kontroversielle diagnose",
   "description": "En dokumentert gjennomgang av professor Vegard Bruun Bratholm Wyllers sustained arousal-teori, NKTs manglende effekt, registerdata fra 8 485 pasienter og nettverket bak Helsedirektoratets høringsutkast 2026.",
   "datePublished": "2026-04-01",
   "dateModified": "2026-04-14",
@@ -936,6 +936,75 @@ td:first-child { font-weight: 500; color: var(--ink); }
 .title-tooltip:hover::after {
   opacity: 1;
 }
+/* ── KONTAKTSKJEMA ── */
+.sidebar-contact {
+  border-top: 1px solid var(--rule);
+}
+.contact-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+  color: var(--accent);
+}
+.contact-toggle:hover { background: var(--paper-mid); }
+.contact-toggle .nav-del-title { color: var(--accent); }
+.contact-chevron {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--ink-light);
+  transition: transform 0.2s;
+}
+.contact-chevron.open { transform: rotate(180deg); }
+.contact-form-wrap {
+  display: none;
+  padding: 8px 16px 16px;
+}
+.contact-form-wrap.open { display: block; }
+.contact-input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-family: var(--mono);
+  border: 1px solid var(--rule);
+  background: var(--paper-mid);
+  color: var(--ink);
+  outline: none;
+  box-sizing: border-box;
+}
+.contact-input:focus { border-color: var(--accent); }
+.contact-textarea {
+  height: 80px;
+  resize: vertical;
+}
+.contact-submit {
+  width: 100%;
+  padding: 8px;
+  background: var(--accent);
+  color: var(--paper);
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.contact-submit:hover { opacity: 0.85; }
+.contact-status {
+  font-family: var(--mono);
+  font-size: 11px;
+  margin-top: 8px;
+  text-align: center;
+  color: var(--bio);
+}
 </style>
 </head>
 <body>
@@ -1009,6 +1078,28 @@ td:first-child { font-weight: 500; color: var(--ink); }
       <span class="nav-del-title">Internasjonal kritikk</span>
     </a>
   </div>
+
+  <!-- KONTAKTSKJEMA -->
+  <div class="sidebar-contact">
+    <button class="contact-toggle" id="contact-toggle" aria-expanded="false">
+      <span class="nav-del-num" style="font-size:14px;">✉</span>
+      <span class="nav-del-title">Send tilbakemelding</span>
+      <span class="contact-chevron" id="contact-chevron">▾</span>
+    </button>
+    <div class="contact-form-wrap" id="contact-form-wrap">
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="03882e11-45b3-4abd-a665-9e7c19752216">
+        <input type="hidden" name="subject" value="Tilbakemelding — The Wyller Continuum">
+        <input type="hidden" name="redirect" value="false">
+        <input class="contact-input" type="text" name="name" placeholder="Navn" autocomplete="off" required>
+        <input class="contact-input" type="email" name="email" placeholder="E-post" autocomplete="off" required>
+        <textarea class="contact-input contact-textarea" name="message" placeholder="Din melding…" required></textarea>
+        <button class="contact-submit" type="submit">Send</button>
+        <p class="contact-status" id="contact-status"></p>
+      </form>
+    </div>
+  </div>
+
 </nav>
 <!-- MOB OVERLAY -->
 <div class="mob-overlay" id="mob-overlay"></div>
@@ -5574,6 +5665,53 @@ function glossaryFilter(q) {
     prevHash = currentHash();
     // Small delay to allow panel to render
     setTimeout(() => restorePos(prevHash), 30);
+  });
+})();
+
+// ── KONTAKTSKJEMA ──
+(function() {
+  const toggle = document.getElementById('contact-toggle');
+  const wrap = document.getElementById('contact-form-wrap');
+  const chevron = document.getElementById('contact-chevron');
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-status');
+
+  if (!toggle || !wrap || !form) return;
+
+  toggle.addEventListener('click', function() {
+    const isOpen = wrap.classList.contains('open');
+    wrap.classList.toggle('open');
+    chevron.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', !isOpen);
+  });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.contact-submit');
+    btn.textContent = 'Sender…';
+    btn.disabled = true;
+    status.textContent = '';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form)
+      });
+      const data = await res.json();
+      if (data.success) {
+        status.textContent = 'Takk — meldingen er sendt.';
+        status.style.color = 'var(--bio)';
+        form.reset();
+      } else {
+        status.textContent = 'Noe gikk galt. Prøv igjen.';
+        status.style.color = 'var(--psyk)';
+      }
+    } catch(err) {
+      status.textContent = 'Nettverksfeil. Prøv igjen.';
+      status.style.color = 'var(--psyk)';
+    }
+    btn.textContent = 'Send';
+    btn.disabled = false;
   });
 })();
 

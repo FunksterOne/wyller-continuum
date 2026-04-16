@@ -6881,35 +6881,38 @@ function glossaryFilter(q) {
     var lines = md.split('\n');
     var chapters = [];
     var current = null;
-
-    // Forside / sammendrag
-    var preamble = [];
-    var inPreamble = true;
+    var foundFirstH2 = false;
 
     for (var i = 0; i < lines.length; i++) {
       var line = lines[i];
-      if (line.startsWith('# ') && inPreamble) {
-        // Tittel → forside
-        current = { num: '', title: isNo ? 'Forside' : 'Cover', lines: [line] };
-        inPreamble = false;
-        continue;
-      }
-      if (line.startsWith('## ') && !inPreamble) {
-        if (current) chapters.push(current);
+
+      if (line.startsWith('## ')) {
         var title = line.replace(/^## /, '').trim();
-        // Trekk ut del-nummer fra tittel
         var num = '';
         var m = title.match(/^(Del [IVX\d]+|Part [IVX\d]+|Summary|Sammendrag|Conclusion|Konklusjon|Executive Summary)/i);
         if (m) {
           num = m[1];
           title = title.replace(m[1], '').replace(/^[\s:—–-]+/, '').trim() || num;
         }
-        current = { num: num, title: title, lines: [line] };
+
+        if (!foundFirstH2) {
+          // Alt frem til første ## (tittel + ingress + sammendrag) → forside
+          if (current) chapters.push(current);
+          foundFirstH2 = true;
+          current = { num: '', title: isNo ? 'Forside' : 'Cover', lines: current ? current.lines : [] };
+          current.lines.push(line);
+        } else {
+          if (current) chapters.push(current);
+          current = { num: num, title: title, lines: [line] };
+        }
         continue;
       }
-      if (current) {
-        current.lines.push(line);
+
+      if (!current) {
+        // Tekst før første ## samles som forside
+        current = { num: '', title: isNo ? 'Forside' : 'Cover', lines: [] };
       }
+      current.lines.push(line);
     }
     if (current) chapters.push(current);
 

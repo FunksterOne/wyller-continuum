@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://doi.org">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Wyller Continuum — Norges mest kontroversielle diagnose</title>
 <meta name="description" content="Teorien, nettverket, vitenskapen — og hva pasientdataene viser.">
@@ -774,8 +773,8 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
   /* ── SUBNAV: juster negative margins til mobilpadding ── */
   .panel-subnav, .p3-subnav {
-    margin: -20px -20px 20px -20px;
-    padding: 0;
+    margin: -20px -20px 20px -20px !important;
+    padding: 0 !important;
   }
 
   /* ── OM-SEKSJON: full bredde, større font ── */
@@ -828,6 +827,29 @@ td:first-child { font-weight: 500; color: var(--ink); }
   /* ── SMOKING GUN: smalere dato ── */
   .smoking-gun-date { width: 70px; font-size: 11px; }
   .smoking-gun-text { font-size: 16px; }
+
+  /* ── SAMMENDRAG: større berøringsflate (≥44 px anbefalt) ── */
+  .summary-trigger {
+    padding: 12px 0 !important;
+    font-size: 12px !important;
+  }
+  .summary-trigger .summary-plus {
+    font-size: 16px !important;
+    width: 16px !important;
+  }
+  .summary-trigger .summary-reading-time {
+    display: none !important;
+  }
+
+  /* ── GENERELT: bump opp de aller minste skriftene for lesbarhet ── */
+  .sidebar-brand p,
+  .sidebar-footer,
+  .nav-del-num,
+  .tl-subnav a,
+  .panel-subnav a,
+  .p3-subnav a {
+    font-size: 12px !important;
+  }
 }
 
 /* ── TIMELINE CALLOUT (tre-uker boks) ── */
@@ -1473,7 +1495,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
     <h1><span class="title-tooltip" data-tooltip="«Det interessante er ikke å tenke dette som enten-eller, men tenke det som et kontinuum. Vi studerer egentlig et fenomen som biologisk sett er et kontinuum. Sånn er symptomer. Vi har mer eller mindre av dem, men vi har ikke enten-eller.» ― Wyller, mars 2026">The Wyller Continuum</span></h1>
     <div class="hero-leadline">
       <p class="hero-lead">20 år med biopsykososial forståelse av ME</p>
-      <button class="summary-trigger" id="sammendrag-trigger" onclick="toggleSummary()" aria-expanded="false" aria-controls="summary-box" type="button"><span class="summary-plus" aria-hidden="true">+</span>Sammendrag (3 min lesing)</button>
+      <button class="summary-trigger" id="sammendrag-trigger" onclick="toggleSummary()" aria-expanded="false" aria-controls="summary-box" type="button"><span class="summary-plus" aria-hidden="true">+</span>Sammendrag<span class="summary-reading-time"> (3 min lesing)</span></button>
     </div>
     <div class="summary-box" id="summary-box" aria-hidden="true">
 
@@ -6559,12 +6581,21 @@ function visHF(id, btn) {
     // Init all panels on load
     document.querySelectorAll('.panel').forEach(initPanel);
 
+    // Reset horizontal scroll på subnav-barer (fokus første fane på mobil)
+    function resetSubnavScroll() {
+      document.querySelectorAll('.panel-subnav, .p3-subnav, .tl-subnav').forEach(function(sn) {
+        sn.scrollLeft = 0;
+      });
+    }
+    resetSubnavScroll();
+
     // Re-init active panel on hashchange (sidebar navigation)
     window.addEventListener('hashchange', function() {
       var hash = window.location.hash;
       if (!hash) return;
       var panel = document.querySelector(hash + '.panel');
       if (panel) initPanel(panel);
+      resetSubnavScroll();
     });
   }
 

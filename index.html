@@ -1531,33 +1531,142 @@ td:first-child { font-weight: 500; color: var(--ink); }
 .nivå2-gruppe details[open] summary { border-bottom: 1px solid var(--border, #ddd); }
 .nivå2-gruppe details .nivå2-innhold { padding: 16px 18px; }
 
-/* Fremdriftsindikator */
-.reading-progress {
-  position: fixed;
-  top: 0;
+/* ── EXECUTIVE SUMMARY ── */
+.hero-leadline {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  gap: 14px;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.hero-leadline .hero-lead {
+  margin: 0;
+  max-width: none;
+  flex: 0 0 auto;
+}
+.summary-wrap {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+.summary-trigger {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.15s ease;
+  user-select: none;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.summary-trigger:hover { color: var(--accent); }
+.summary-trigger .summary-plus {
+  display: inline-block;
+  width: 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.summary-box {
+  display: none;
+  background: var(--paper-mid);
+  border-left: 3px solid var(--accent);
+  padding: 28px 36px 32px;
+  margin: 10px -12px 20px;
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: summary-fade 0.25s ease;
+}
+.summary-box.open { display: block; }
+@keyframes summary-fade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.summary-box h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin: 22px 0 10px;
+}
+.summary-box h3:first-child { margin-top: 0; }
+.summary-box p { margin: 0 0 12px; }
+.summary-box p + p { margin-top: 10px; }
+.summary-box em { font-style: italic; }
+.summary-box strong { font-weight: 600; color: var(--ink); }
+.summary-box ol.summary-findings {
+  list-style: none;
+  counter-reset: findings;
+  padding: 0;
+  margin: 8px 0 16px;
+}
+.summary-box ol.summary-findings > li {
+  counter-increment: findings;
+  position: relative;
+  padding: 10px 0 10px 36px;
+  border-top: 1px solid rgba(139, 26, 26, 0.12);
+}
+.summary-box ol.summary-findings > li:first-child { border-top: none; }
+.summary-box ol.summary-findings > li::before {
+  content: counter(findings);
+  position: absolute;
   left: 0;
-  width: 100%;
-  height: 3px;
-  background: rgba(139, 26, 26, 0.1);
-  z-index: 1001;
-  pointer-events: none;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
 }
-
-.reading-progress-bar {
-  height: 100%;
-  background: var(--accent);
-  width: 0%;
-  transition: width 0.1s ease-out;
-  box-shadow: 0 0 3px rgba(139, 26, 26, 0.3);
+.summary-readmore {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(139, 26, 26, 0.2);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-light);
 }
+.summary-readmore a {
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: 4px;
+}
+.summary-readmore a:hover { text-decoration: underline; }
+.summary-readmore .sep { color: var(--ink-light); margin: 0 6px; }
 
+@media (max-width: 768px) {
+  .summary-details { padding: 0; }
+  .summary-box {
+    padding: 20px 22px 24px;
+    margin: 0 0 16px;
+    font-size: 15px;
+  }
+  .summary-box ol.summary-findings > li { padding-left: 30px; }
+  .summary-readmore { font-size: 10px; }
+  .summary-readmore .sep { margin: 0 3px; }
+}
 
 </style></head><body>
-
-<!-- FREMDRIFTSINDIKATOR -->
-<div class="reading-progress">
-  <div class="reading-progress-bar" id="progress-bar"></div>
-</div>
 
 <!-- SIDEBAR -->
 <nav class="sidebar">
@@ -1685,8 +1794,50 @@ td:first-child { font-weight: 500; color: var(--ink); }
   <!-- HERO -->
   <div class="hero" id="net-hero">
     <h1><span class="title-tooltip" data-tooltip="«Det interessante er ikke å tenke dette som enten-eller, men tenke det som et kontinuum. Vi studerer egentlig et fenomen som biologisk sett er et kontinuum. Sånn er symptomer. Vi har mer eller mindre av dem, men vi har ikke enten-eller.» ― Wyller, mars 2026">The Wyller Continuum</span></h1>
-    <p class="hero-lead">20 år med biopsykososial forståelse av ME</p>
-  </div>
+    <div class="hero-leadline">
+      <p class="hero-lead">20 år med biopsykososial forståelse av ME</p>
+      <button class="summary-trigger" id="sammendrag-trigger" onclick="toggleSummary()" aria-expanded="false" aria-controls="summary-box" type="button"><span class="summary-plus" aria-hidden="true">+</span>Sammendrag (3 min lesing)</button>
+    </div>
+    <div class="summary-box" id="summary-box" aria-hidden="true">
+
+        <h3>Hovedtese</h3>
+        <p>I tyve år har norsk politikk for ME/CFS vært forankret i ett teoretisk rammeverk — sustained arousal-teorien, formalisert av Vegard Bruun Bratholm Wyller i 2009 — og i ett fagmiljø som simultant har vært til stede på alle de fem arenaene der politikken utformes: forskning, retningslinjer, rettssystemet, offentlige medier og klinisk standard. Dokumentet tar ikke stilling til om teorien er riktig eller gal — det spørsmålet er empirisk. Dokumentet viser derimot at teorien har overlevd tyve år med motstridende data fordi institusjonelle strukturer har gjort det vanskelig å teste den åpent — og at kostnaden av dette nå er målbar i registerdata, rettssaker og sykdomsbyrde.</p>
+
+        <h3>Seks funn</h3>
+        <ol class="summary-findings">
+          <li><strong>Teorien kan ikke ta feil.</strong> Sustained arousal-teorien er formulert slik at biologiske funn blir sekundære — de kan ikke falsifisere kjernepremisset. To empiriske tester fra Wyllers egen forskergruppe pekte feil vei: NorCAPITAL-studien (2014) nådde ikke primærendepunktet (p=0,070) og fant at CRP <em>steg</em> når sympatikusaktiviteten falt — det motsatte av modellens prediksjon. Kongsnes et al. (<em>Stress</em>, 2026) viste at utmattelse forutgår stressresponsen — omvendt kausalitet av teoriens kjernepremiss. Begge studier ble tolket som bekreftelse. I Vaksinepodden 16. mars 2026 presenterte Wyller teorien uendret. Kongsnes ble ikke nevnt.</li>
+
+          <li><strong>Finansieringen følger teorien, ikke evidensen.</strong> Siden 2020 har offentlige midler til ME/CFS-forskning nesten utelukkende gått til det biopsykososiale rammeverket. Wyller mottok 11,9 mill. kr i 2020 til ME-forskning (Forskningsrådet, prosjekt 302079) — syv publikasjoner er levert, alle på Covid-pasienter, ingen på ME-pasienter. I 2026 ble det bevilget 27,5 mill. kr til mentale intervensjoner mot utmattelse (REHAB-FATIGUE 25 mill. + MBRT 2,5 mill.). Biomedisinsk behandlingsforskning — inkludert Fluge/Mella/Tronstad ved Haukeland, som viser 60 prosent klinisk bedring i daratumumab-pilot — mottar ikke offentlig behandlingsfinansiering. Den finansieres av pasientene selv gjennom ME-fondet og private bidrag.</li>
+
+          <li><strong>Nettverket er til stede simultant på alle fem arenaene.</strong> Helsedirektoratets arbeidsgruppe for den nye retningslinjen (21 medlemmer) inneholder sentrale nettverksaktører og førsteforfatteren på den eneste norske RCT-en i evidensgrunnlaget (Nerli et al., <em>JAMA Netw Open</em> 2024 — der Wyller er siste og overordnet medforfatter, og der studien ikke nådde den pre-spesifiserte kliniske signifikansgrensen på 10 poeng SF-36-PFS). Sju medlemmer tok formell dissens. Internasjonalt leder Wyller COFFI, med PACE-arkitektene Sharpe og Chalder i vitenskapelig råd. Reme leder Oslo Chronic Fatigue Network med 131 fagpersoner fra 16 land. I oktober 2022 samlet et lukket seminar ved UiO — arrangert av Reme — rundt 50 deltakere under tittelen «hvordan vi kan endre det offentlige narrativet»; elleve måneder senere publiserte 51 forfattere fra samme miljø et manifest i <em>Scandinavian Journal of Primary Health Care</em>, redigert av en av medforfatterne.</li>
+
+          <li><strong>Brukerrepresentasjonen speiler ikke pasientgruppen.</strong> Arbeidsgruppen har fem bruker- og pårørenderepresentanter. Recovery Norge — stiftet av Lightning Process-instruktør Live Landmark, med opptaksvilkår begrenset til personer som har blitt friske (ca. 250 medlemmer) — fikk to plasser. ME-foreningen, med 6 300 syke medlemmer, fikk én. Organisasjonen med færrest medlemmer fikk dobbelt så mange representanter som organisasjonen med flest.</li>
+
+          <li><strong>Rettssystemet har nå avvist rammeverket.</strong> 25. mars 2026 vant Kolbjørn Gundersønn Sønsteby Kallevik — sengeliggende 23-åring med alvorlig ME — saken mot NAV i Gulating lagmannsrett (dissens 2–1). Staten prosederte eksplisitt at den biomedisinske modellen er feil og at biopsykososial forståelse er korrekt medisinsk konsensus. Flertallet kjente NAVs vedtak ugyldig og la vekt på at det ikke gjenstår tilgjengelig, relevant eller faktisk anbefalt behandling. Flottorps sakkyndigerklæring — som blant annet brukte Recovery Norges hjemmeside som kunnskapsgrunnlag og anbefalte Lightning Process — var del av det flertallet tilbakeviste.</li>
+
+          <li><strong>Dataene viser hva tyve år med rammeverket har kostet.</strong> Kielland og Liu (2025) fulgte 8 485 norske ME-pasienter over tre år ved hjelp av administrative registerdata. 95 prosent ble ikke bedre. Inntektsfallet begynte tre år før diagnosen ble satt. For de 415 pasientene som hadde gjennomgått rehabiliteringsopphold — det behandlingstilbudet nettverket anbefaler og NAV i praksis krever — fortsatte lønninger å falle og offentlige overføringer å øke etter behandlingen. Fafo/SINTEF (2023) konkluderte at rehabilitering «stort sett gjør pasientene sykere enn de var før». Helsedirektoratets egne evalueringer i 2018 fant at Nasjonal kompetansetjeneste for CFS/ME ikke kunne dokumentere effekt av sin virksomhet. Tre uavhengige datakilder over sju år peker i samme retning.</li>
+        </ol>
+
+        <h3>Hva dokumentet legger grunnlag for i høringen</h3>
+        <p>Del VII formulerer ti konkrete spørsmål til Helsedirektoratet som kan brukes direkte i formelle høringssvar innen <strong>4. mai 2026</strong>. Hovedlinjene er: operasjonalisering av PEM som obligatorisk diagnosekriterium i tråd med IOM 2015; begrunnelse for avvik fra NICE NG206 og internasjonal konsensus; synliggjøring av interessekonflikter i kunnskapsgrunnlaget og arbeidsgruppen; realisering av de to separate kliniske løpene Helsedirektoratet opprinnelig forespeilet (ett for ME/CFS etter strenge kriterier, ett for langvarig utmattelse uten PEM); og institusjonelt ansvar for at et dokumentert ineffektivt rammeverk har vært videreført i to tiår.</p>
+
+        <h3>Hva dokumentet <em>ikke</em> påstår</h3>
+        <p>Det påstås ikke at det finnes en konspirasjon. Det beskrives et faglig-institusjonelt samvirke som har vokst over tyve år gjennom felles rammeverk, gjensidig legitimering og overlappende roller. Det påstås heller ikke at sustained arousal-teorien er falsifisert — den er ikke testet godt nok til det. Poenget er at strukturene har gjort åpen testing vanskelig, og at konsekvensene nå er synlige i registerdata og rettsvesen.</p>
+
+        <h3>Metode</h3>
+        <p>Dokumentet bygger på åpne kilder: fagfellevurderte artikler, Prosjektbanken, Helsedirektoratets egne arbeidsdokumenter, arbeidsgruppeprotokoller, rettsavgjørelser, administrative registerdata (SSB/KUHR/NAV via Kielland–Liu), pressemeldinger og mediekilder. 134 referanser er oppgitt med PMID eller DOI der tilgjengelig. Hvor data er usikre — særlig rundt eksakt prosjektallokering innenfor samlede tildelinger — er dette markert i hovedteksten.</p>
+
+        <div class="summary-readmore">
+          Les videre:
+          <a href="#" onclick="goToDel('p1',null);return false;">Del I — Historien</a><span class="sep">·</span>
+          <a href="#" onclick="goToDel('p2',null);return false;">Del II — Teorien</a><span class="sep">·</span>
+          <a href="#" onclick="goToDel('p3',null);return false;">Del III — Nettverket og arenaene</a><span class="sep">·</span>
+          <a href="#" onclick="goToDel('p4',null);return false;">Del IV — Dataene</a><span class="sep">·</span>
+          <a href="#" onclick="goToDel('p7',null);return false;">Del VII — Høringsspørsmålene</a>
+        </div>
+
+      </div>
+    </div>
 
   <!-- PANELS -->
   <div class="panel-wrap">
@@ -1861,6 +2012,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <div class="tl-sub"><div class="tl-sub-year">2020</div><div class="tl-sub-text">Rekeland, Fluge, Mella et al. (<em>Front Med</em>): CycloME — cyklofosfamid fase II, åpen studie (n=40). 55 % respons ved utmattelsesscore, 68 % av respondenter fortsatt i remisjon etter 4 år. Finansiert av Kavli Trust. Ingen kontrollgruppe.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">jul. 2021</div><div class="tl-sub-text">Fluge, Tronstad, Mella (<em>J Clin Invest</em>): hypotesemodell — autoantistoffmediert forstyrrelse av blodstrømsregulering gir vevshypoksi og sekundær metabolsk adaptasjon. Tre trinn: immunforstyrrelse etter infeksjon → vaskulær dysregulering → metabolsk kompensasjon.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">aug. 2021</div><div class="tl-sub-text">Hoel, Fluge, Mella, Tronstad et al. (<em>JCI Insight</em>, n=83): metabolsk kartlegging — 67 metabolitter signifikant endret, tre metabolske undergrupper. Funn forenlige med cellulær energistress ved vevshypoksi. Første studie å identifisere tre distinkte metabolske fenotyper ved ME/CFS.</div></div>
+        <div class="tl-sub"><div class="tl-sub-year">jun. 2021</div><div class="tl-sub-text">Røysumtunet åpner Norges første spesialiserte døgnavdeling for alvorlig og svært alvorlig syke ME-pasienter — 12 enerom med lys- og lydisolasjon, tverrfaglig team på 48 ansatte, pacing som grunnprinsipp. Initiativet er Norges ME-forenings. Saugstad (prof. em. UiO) forskningsansvarlig, Storla tilsynslege. Opptak etter Canadakriteriene og NICE-klassifikasjon alvorlig/svært alvorlig; retningslinjene følger NICE NG206 (2021).</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2021</div><div class="tl-sub-text">NICE NG206<span class="ref-tip"><span class="ref-num">[17]</span><span class="ref-box">National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management. NICE guideline NG206. Okt. 2021. <a href="https://www.nice.org.uk/guidance/ng206" target="_blank">nice.org.uk/guidance/ng206 ↗</a></span></span>: CBT og GET frarådes for ME-pasienter med PEM etter 18 måneder og over 900 referanser. NICE fraråder eksplisitt Lightning Process. Norge gjør ingenting.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2021</div><div class="tl-sub-text">Wirth og Scheibenbogen (Charité Berlin, <em>Autoimmunity Reviews</em>): autoantistoffer mot adrenerge reseptorer fører til vasokonstriksjon og hypoksi.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2021</div><div class="tl-sub-text">Tyskland IQWiG: CBT og GET frarådes. Bundesministerium für Gesundheit investerer 50 millioner euro i biomedisinsk ME/CFS-forskning.</div></div>
@@ -1934,6 +2086,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <div class="tl-sub"><div class="tl-sub-year">2025</div><div class="tl-sub-text">Thapaliya, Marshall-Gradisnik et al. (<em>PLOS ONE</em>): 7T MRI viser volumreduksjon i hippocampale subregioner ved long covid og ME/CFS — strukturelle hjerneforandringer replikert med høyoppløselig neuroimaging.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2025</div><div class="tl-sub-text">Pheby/Systrom: 91 % av ME/CFS-pasienter viser hjerneblodstrømsavvik ved tilt-bord-testing. Preload-svikt bekreftet som kardiovaskulær mekanisme.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">2025</div><div class="tl-sub-text">American College of Sports Medicine (ACSM, okt. 2025) inkluderer ME/CFS i offisielle belastningstestingsretningslinjer med eksplisitt advarsel mot aktivitetsprogresjon og anerkjennelse av to-dagers CPET som objektivt mål.</div></div>
+        <div class="tl-sub"><div class="tl-sub-year">okt. 25</div><div class="tl-sub-text">Saugstad, Sollie, Torp, Storla (Røysumtunet, <em>Fatigue: Biomedicine, Health &amp; Behavior</em>): første rapport fra spesialisert norsk ME-avdeling. Retrospektiv journalgjennomgang, 24 pasienter 2021–2024 (17 svært alvorlig, 7 alvorlig). 7 av 24 (29 %) forbedret seg minst ett alvorlighetsnivå (p=0,01); totalt 50 % viste bedring (p&lt;0,01). Kortere sykdomsvarighet ved innleggelse predikerer bedring (2,3 vs 6,7 år, p&lt;0,05). Privat finansiert — ingen offentlig bevilgning.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">des. 25</div><div class="tl-sub-text">PrecisionLife (AI-analyse av DecodeME + UK Biobank): over 250 kjernegener identifisert — 76 overlapper med long covid. Mest detaljerte genetiske analyse av ME/CFS hittil.</div></div>
         <div class="tl-sub"><div class="tl-sub-year">jul. 25</div><div class="tl-sub-text">Komaroff og Dantzer (Harvard / MD Anderson, <em>Cell Reports Medicine</em>): oppdatert systematisk gjennomgang dokumenterer at ME/CFS og long covid deler patofysiologi på tvers av nevrologiske, immunologiske, metabolske og kardiovaskulære systemer — inkl. nye funn om tryptofan-serotonin-kynurenin-banen, von Willebrand-faktor/ADAMTS13-ratio som protrombotisk mekanisme og cirkadisk dysregulering. Direkte motbevis mot bruk av «utmattelse» som diagnosebase.</div></div>
         </div>
@@ -2006,7 +2159,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p style="font-size:13px;font-family:var(--mono);color:var(--ink-light);letter-spacing:0.04em;max-width:740px;margin:0 auto 20px;border-left:3px solid var(--psyk);padding-left:12px;"><a class="del-link" href="#" onclick="goToDel('p2',null);return false;">Del II</a> dokumenterer sustained arousal-teorien — hva den sier, hva den forutsetter, og hvorfor den ikke holder mot egne data, internasjonal forskning og biologisk evidens. Les panelene fra venstre mot høyre for å følge argumentet.</p>
 
-      <p>Sustained arousal-teorien er det teoretiske grunnlaget for alt det norske nettverket har produsert — retningslinjer, studier, høringssvar og posisjonsartikler. For å forstå hva som er galt med norsk ME-politikk, må man forstå hva teorien sier, hva den forutsetter — og hvorfor den ikke holder.</p>
+      <p>Sustained arousal-teorien (på norsk: teorien om vedvarende stressaktivering) er det teoretiske grunnlaget for alt det norske nettverket har produsert — retningslinjer, studier, høringssvar og posisjonsartikler. For å forstå hva som er galt med norsk ME-politikk, må man forstå hva teorien sier, hva den forutsetter — og hvorfor den ikke holder.</p>
 
       <p>Sustained arousal-teorien hevder at ME/CFS er en vedvarende aktivering av hjernens stressrespons der biologiske funn som immunaktivering og autonom dysfunksjon er sekundære konsekvenser — ikke primære sykdomsmekanismer.</p>
 
@@ -4654,6 +4807,16 @@ td:first-child { font-weight: 500; color: var(--ink); }
 
       <p>Professor Fluge og professor Mella tok et negativt resultat fra det strengeste mulige studiedesignet og reviderte hypotesen. Wyller tok et negativt resultat og reviderte konklusjonen. Det er forskjellen mellom vitenskapelig fremgang og vitenskapelig stillstand — illustrert av to norske forskergrupper som driver ME/CFS-forskning i parallell: den ene med 25 millioner kroner fra KLINBEFORSK til psykologisk reprogrammering og nikotinamid-ribosid, den andre med 26 millioner kroner estimert totalkostnad for en placebokontrollert immunologisk behandlingsstudie — uten statlig bevilgning.</p>
 
+      <h4 style="font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink);margin:24px 0 8px;">Røysumtunet — den kliniske parallellen</h4>
+
+      <p>Mens Haukeland-gruppen driver biomedisinsk behandlingsforskning i laboratorium og kontrollerte studier, finnes det en parallell utvikling på klinisk nivå. ME-avdelingen ved Røysumtunet — en privat, ikke-kommersiell stiftelse fra 1965, opprinnelig omsorgstilbud for alvorlig epilepsi — åpnet i juni 2021 med 12 enerom spesialtilpasset svært alvorlig syke ME-pasienter: lys- og lydisolasjon, tverrfaglig team på 48 ansatte, pacing som grunnprinsipp. Initiativet er Norges ME-forenings. Professor emeritus Ola Didrik Saugstad (UiO, pediatrisk forskning) er ansvarlig for forskning og undervisning; Dag Gundersen Storla er tilsynslege. Retningslinjene følger NICE NG206 (2021), og opptak krever diagnose etter Canadakriteriene og alvorlig eller svært alvorlig ME etter NICE-klassifikasjonen.</p>
+
+      <p>Oktober 2025 publiserte Saugstad, Sollie, Torp og Storla den første rapporten fra avdelingen i <em>Fatigue: Biomedicine, Health &amp; Behavior</em><span class="ref-tip"><span class="ref-num">[170]</span><span class="ref-box">Saugstad OD, Sollie MG, Torp HA, Storla DG. Specialised care for severely affected ME/CFS patients. <em>Fatigue: Biomedicine, Health &amp; Behavior.</em> 2026;14(1):61–73. <a href="https://doi.org/10.1080/21641846.2025.2565101" target="_blank">doi:10.1080/21641846.2025.2565101 ↗</a></span></span> — en retrospektiv journalgjennomgang av 24 pasienter innlagt mellom juni 2021 og juni 2024 (20 kvinner, 4 menn, snittalder 37,5 år; 17 svært alvorlig, 7 alvorlig). Primærutfallet var endring i alvorlighetsnivå etter NICE-klassifikasjonen, vurdert av prosjektgruppen ved konsensus basert på journalnotater. Selvrapporteringsskalaer som SF-36 lot seg ikke systematisk bruke — forfatterne beskriver at mange pasienter «kunne bare hviske noen få ord» — og heller ikke pulsklokke eller laktatmåling, fordi de fleste pasientene ikke tålte håndleddsbånd.</p>
+
+      <p>Forfatternes hovedfunn: <cite>«Approximately 30 % of the patients benefited significantly from their stay, and about half of them showed at least some improvement.»</cite> Sju av 24 (29 %) forbedret seg minst ett alvorlighetsnivå (p=0,01); av disse gikk to pasienter fra svært alvorlig til moderat. Ytterligere 5 av 24 (21 %) forbedret seg innen samme nivå — redusert utmattelse, forbedret ernæringstoleranse, selvstendig toalettbesøk — totalt 50 % bedring (p&lt;0,01). Kortere sykdomsvarighet ved innleggelse var signifikant prediktor (2,3 år vs 6,7 år, p&lt;0,05); lavere alder var grensesignifikant (30,2 år vs 41,1 år, p=0,06). Studien er en retrospektiv case-serie uten kontrollgruppe og kan ikke anvendes som evidens for enkeltkomponenter i behandlingsprogrammet — et fire-trinns opplegg med høydose tiamin og oral rehydrering, NADH/koenzym Q10/B12, lavdose naltrekson og lavdose aripiprazol. Forfatterne skriver selv at programmet «is not evidence based and not tested out systematically». Konklusjonen gjelder helheten: tilrettelagt omsorg med pacing, PEM-hensyn og individualisering gir bedring hos halvparten av de alvorligst syke.</p>
+
+      <p>Finansieringen er privat. Stines forskningsfond (tilknyttet Røysumtunet) og Norges ME-forening finansierer både avdelingens drift og studien; Saugstad er lønnet av ME-foreningen og Røysumtunet, Sollie har en 20-prosents forskningsstilling via Stines forskningsfond. Forfatterne avslutter med en advarsel om sårbarheten i modellen: at finansielle begrensninger og uvilje fra lokale myndigheter til å dekke oppholdskostnader utgjør betydelige trusler mot initiativets bærekraft. Kontrasten til offentlig forskningsfinansiering er eksakt: 25 millioner kroner fra KLINBEFORSK gikk i februar 2026 til REHAB-FATIGUE/MINIRICO — psykologisk reprogrammering av samme pasientgruppe, forankret i sustained arousal-teorien. Den eneste publiserte norske behandlingsrapporten fra et spesialtilbud til svært alvorlig syke ME-pasienter er finansiert uten en offentlig krone.</p>
+
 
       </div><!-- /ps bio-haukeland -->
 
@@ -5214,6 +5377,7 @@ td:first-child { font-weight: 500; color: var(--ink); }
         <li><strong>Kaiserseder M, Prüfer F, Untersmayer-Elsenhuber E, Zwick RH</strong> <a href="https://doi.org/10.1055/a-2823-6976" target="_blank" style="color:var(--accent)">Welche Rolle spielt der ME/CFS-Phänotyp in einer ambulanten Post-COVID-Rehabilitation?</a> <em>Pneumologie</em>. 2026. [Post-COVID. Østerriksk rehabiliteringsstudie: identifiserer ME/CFS-fenotypen som distinkt undergruppe i post-covid-rehabilitering med klart dårligere utfall enn øvrige long covid-pasienter — med implikasjoner for triage og behandlingsvalg.]</li>
         <li><strong>Fluge Ø, Rekeland IG, Lien K et al.</strong> <a href="https://doi.org/10.7326/M18-1451" target="_blank" style="color:var(--accent)">B-lymphocyte depletion in ME/CFS: a randomized, double-blind, placebo-controlled trial (RituxME)</a> <em>Ann Intern Med</em>. 2019;170(9):585–593. [ME/CFS. Fase 3, multisenter, n=151. Rituximab ga ingen signifikant effekt vs. placebo (p=0,80) — negativt resultat håndtert korrekt: brukt til å skjerpe teorien mot CD20-negative plasmaceller som terapeutisk mål.]</li>
         <li><strong>Fluge Ø, Rekeland IG, Sørland K, Alme K, Risa K, Bruland O, Tronstad KJ, Mella O.</strong> <a href="https://doi.org/10.3389/fmed.2025.1607353" target="_blank" style="color:var(--accent)">Plasma cell targeting with the anti-CD38 antibody daratumumab in myalgic encephalomyelitis/chronic fatigue syndrome — a clinical pilot study.</a> <em>Front Med</em>. 2025;12:1607353. [ME/CFS. n=10, moderat–alvorlig. 6/10 klinisk bedring, 5 med major og varig respons over 12–24 måneder. Adresserer direkte hypotesen om at langlevende CD20-negative plasmaceller produserer patogene autoantistoffer. ResetME-RCT (n=66) pågår.]</li>
+        <li><strong>Saugstad OD, Sollie MG, Torp HA, Storla DG.</strong> <a href="https://doi.org/10.1080/21641846.2025.2565101" target="_blank" style="color:var(--accent)">Specialised care for severely affected ME/CFS patients.</a> <em>Fatigue: Biomedicine, Health &amp; Behavior</em>. 2026;14(1):61–73. [Første rapport fra spesialisert norsk døgnavdeling for alvorlig/svært alvorlig syke. Retrospektiv journalgjennomgang av 24 pasienter 2021–2024. 29 % forbedret minst ett NICE-alvorlighetsnivå, 50 % viste bedring totalt. Kortere sykdomsvarighet ved innleggelse predikerer bedring. Ikke RCT — case-serie uten kontrollgruppe; forfatterne skriver selv at det tilbudte fire-trinns støttebehandlingsprogrammet «is not evidence based and not tested out systematically». Privat finansiert av Stines forskningsfond (Røysumtunet) og Norges ME-forening.]</li>
       </ul>
 
       <div class="source-group-label" style="border-left:3px solid var(--bio);padding-left:10px;margin-top:28px;">4 — Biologisk og mekanistisk primærforskning</div>
@@ -6515,8 +6679,14 @@ function glossaryFilter(q) {
 
     document.querySelectorAll('.panel').forEach(function(panel) {
       const panelId = panel.id;
-      if (!panelId || panelId === 'p8') return;
+      if (!panelId) return;
       const panelLabel = panelLabels[panelId] || panelId;
+      
+      // Special handling for p8 (glossary) which doesn't use panel-section structure
+      if (panelId === 'p8') {
+        return; // Skip normal processing, handle glossary terms separately below
+      }
+      
       panel.querySelectorAll('.panel-section').forEach(function(sec) {
         const secId = sec.dataset.sec;
         if (!secId) return;
@@ -6533,6 +6703,7 @@ function glossaryFilter(q) {
         const clone = sec.cloneNode(true);
         clone.querySelectorAll('script,style,cite,canvas').forEach(function(el) { el.remove(); });
         const text = clone.textContent.replace(/\s+/g, ' ').trim();
+        
         searchIndex.push({ panelId: panelId, panelLabel: panelLabel, secId: secId, title: title, text: text, textLower: text.toLowerCase() });
       });
     });
@@ -6637,35 +6808,113 @@ function glossaryFilter(q) {
     setTimeout(function() {
       var panel = document.getElementById(panelId);
       if (!panel) return;
+      
       var wrap = document.querySelector('.panel-wrap');
+      
+      // Aktivér riktig panel først
+      document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+      panel.classList.add('active');
+      
+      // Special handling for p8 (glossary) which doesn't use sections
+      if (panelId === 'p8') {
+        if (wrap) {
+          wrap.scrollTop = panel.offsetTop;
+        }
+        if (query) {
+          setTimeout(function() {
+            var qTerms = query.toLowerCase().split(/\s+/).filter(function(t) { return t.length > 0; });
+            highlightMatches(panel, qTerms);
+          }, 200);
+        }
+        return;
+      }
+      
       if (secId) {
         panel.querySelectorAll('.panel-section').forEach(function(s) { s.classList.remove('ps-active'); });
         var sec = panel.querySelector('[data-sec="' + secId + '"]');
+        
         if (sec) {
+          // Aktivér seksjonen
           sec.classList.add('ps-active');
+          
+          // Special handling for timeline sub-sections (tl-2006, tl-apr26, etc.)
+          if (secId.startsWith('tl-') && secId !== 'tl-kronologi') {
+            var timelineParent = panel.querySelector('[data-sec="tl-kronologi"]');
+            if (timelineParent) {
+              timelineParent.classList.add('ps-active');
+            }
+          }
+          
           panel.querySelectorAll('.panel-subnav a, .p3-subnav a').forEach(function(l) {
             l.classList.toggle('ps-active', l.getAttribute('href').replace('#', '') === secId);
           });
+          // Enkel, robust scrolling
           if (wrap) {
             wrap.scrollTop = panel.offsetTop;
-            if (query) {
-              var qTerms = query.toLowerCase().split(/\s+/).filter(function(t) { return t.length > 0; });
-              setTimeout(function() {
-                scrollToFirstMatch(sec, qTerms, wrap);
-                highlightMatches(sec, qTerms);
-              }, 60);
-            }
+          }
+          if (query) {
+            var qTerms = query.toLowerCase().split(/\s+/).filter(function(t) { return t.length > 0; });
+            setTimeout(function() {
+              scrollToFirstMatch(sec, qTerms, wrap || window);
+              highlightMatches(sec, qTerms);
+            }, 200);
           }
         }
       } else {
-        if (wrap) wrap.scrollTop = panel.offsetTop;
+        // Scroll til panel
+        if (wrap) {
+          wrap.scrollTop = panel.offsetTop;
+        }
       }
     }, 50);
   }
 
+  // Expose to global scope for testing
+  window.navigateToSearchResult = navigateToSearchResult;
+  window.highlightMatches = highlightMatches;
+  window.scrollToFirstMatch = scrollToFirstMatch;
+
+  window.toggleSummary = function() {
+    var box = document.getElementById('summary-box');
+    var trigger = document.getElementById('sammendrag-trigger');
+    if (!box || !trigger) return;
+    var isOpen = box.classList.toggle('open');
+    var plus = trigger.querySelector('.summary-plus');
+    if (plus) plus.textContent = isOpen ? '−' : '+';
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    box.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
   window.goToDel = function(panelId, secId) {
+    var box = document.getElementById('summary-box');
+    var trigger = document.getElementById('sammendrag-trigger');
+    if (box && box.classList.contains('open')) {
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden', 'true');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        var plus = trigger.querySelector('.summary-plus');
+        if (plus) plus.textContent = '+';
+      }
+    }
     navigateToSearchResult(panelId, secId || null, null);
   };
+
+  // Åpne sammendraget hvis URL har #sammendrag
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash === '#sammendrag') {
+      var box = document.getElementById('summary-box');
+      var trigger = document.getElementById('sammendrag-trigger');
+      if (box && trigger && !box.classList.contains('open')) {
+        box.classList.add('open');
+        box.setAttribute('aria-hidden', 'false');
+        trigger.setAttribute('aria-expanded', 'true');
+        var plus = trigger.querySelector('.summary-plus');
+        if (plus) plus.textContent = '−';
+        setTimeout(function() { box.scrollIntoView({behavior:'smooth', block:'start'}); }, 50);
+      }
+    }
+  });
 
   function closeSearch() {
     clearHighlights();
@@ -6688,10 +6937,7 @@ function glossaryFilter(q) {
     matches.sort(function(a, b) {
       const aT = terms.every(function(t) { return a.title.toLowerCase().includes(t); }) ? 0 : 1;
       const bT = terms.every(function(t) { return b.title.toLowerCase().includes(t); }) ? 0 : 1;
-      const aG = a.panelId === 'p8' ? 1 : 0;
-      const bG = b.panelId === 'p8' ? 1 : 0;
       if (aT !== bT) return aT - bT;
-      if (aG !== bG) return aG - bG;
       return a.textLower.indexOf(terms[0]) - b.textLower.indexOf(terms[0]);
     });
     const top = matches.slice(0, 8);
@@ -7200,30 +7446,6 @@ function glossaryFilter(q) {
     if (e.key === 'Escape')     closeRapport();
   });
 
-})();
-
-// Fremdriftsindikator
-(function() {
-  function updateProgressBar() {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    const progressBar = document.getElementById('progress-bar');
-    if (progressBar) {
-      progressBar.style.width = Math.min(100, Math.max(0, scrolled)) + '%';
-    }
-  }
-
-  // Oppdater ved scroll
-  window.addEventListener('scroll', updateProgressBar);
-  
-  // Oppdater ved resize (kan endre dokumenthøyde)
-  window.addEventListener('resize', function() {
-    setTimeout(updateProgressBar, 100);
-  });
-
-  // Initial oppdatering
-  setTimeout(updateProgressBar, 500);
 })();
 </script>
 

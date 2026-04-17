@@ -1591,6 +1591,9 @@ td:first-child { font-weight: 500; color: var(--ink); }
   max-width: 740px;
   margin-left: auto;
   margin-right: auto;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   animation: summary-fade 0.25s ease;
 }
 .summary-box.open { display: block; }
@@ -6874,10 +6877,35 @@ function glossaryFilter(q) {
   window.highlightMatches = highlightMatches;
   window.scrollToFirstMatch = scrollToFirstMatch;
 
+  // Hjelper: finn panel-subnav i aktivt panel
+  function getActiveSubnav() {
+    var hash = window.location.hash;
+    var panel = null;
+    if (hash && /^#p\d+$/.test(hash)) {
+      panel = document.querySelector(hash);
+    }
+    if (!panel || !panel.classList.contains('panel')) {
+      panel = document.getElementById('p1');
+    }
+    return panel ? panel.querySelector('.panel-subnav') : null;
+  }
+
+  // Flytt summary-box til rett under aktiv panel-subnav
+  function moveSummaryToActivePanel() {
+    var box = document.getElementById('summary-box');
+    if (!box) return;
+    var subnav = getActiveSubnav();
+    if (subnav && subnav.nextSibling !== box) {
+      subnav.parentNode.insertBefore(box, subnav.nextSibling);
+    }
+  }
+
   window.toggleSummary = function() {
     var box = document.getElementById('summary-box');
     var trigger = document.getElementById('sammendrag-trigger');
     if (!box || !trigger) return;
+    // Flytt boksen til aktiv panel-subnav før vi åpner
+    if (!box.classList.contains('open')) moveSummaryToActivePanel();
     var isOpen = box.classList.toggle('open');
     var plus = trigger.querySelector('.summary-plus');
     if (plus) plus.textContent = isOpen ? '−' : '+';
@@ -6900,12 +6928,21 @@ function glossaryFilter(q) {
     navigateToSearchResult(panelId, secId || null, null);
   };
 
+  // Ved panel-bytte: flytt boks hvis åpen
+  window.addEventListener('hashchange', function() {
+    var box = document.getElementById('summary-box');
+    if (box && box.classList.contains('open')) {
+      moveSummaryToActivePanel();
+    }
+  });
+
   // Åpne sammendraget hvis URL har #sammendrag
   document.addEventListener('DOMContentLoaded', function() {
     if (window.location.hash === '#sammendrag') {
       var box = document.getElementById('summary-box');
       var trigger = document.getElementById('sammendrag-trigger');
       if (box && trigger && !box.classList.contains('open')) {
+        moveSummaryToActivePanel();
         box.classList.add('open');
         box.setAttribute('aria-hidden', 'false');
         trigger.setAttribute('aria-expanded', 'true');

@@ -6814,15 +6814,17 @@ function glossaryFilter(q) {
           // Aktivér seksjonen
           sec.classList.add('ps-active');
           
-          // Special handling for timeline sub-sections (tl-2006, tl-apr26, etc.)
-          if (secId.startsWith('tl-') && secId !== 'tl-kronologi') {
-            var timelineParent = panel.querySelector('[data-sec="tl-kronologi"]');
-            if (timelineParent) {
-              timelineParent.classList.add('ps-active');
+          // Generisk: aktivér alle panel-section-forfedre opp til panel-roten,
+          // slik at nestede seksjoner (arena-*, struk-*, reg-*, tl-*, m.fl.) blir synlige
+          var ancestor = sec.parentElement;
+          while (ancestor && ancestor !== panel) {
+            if (ancestor.classList && ancestor.classList.contains('panel-section')) {
+              ancestor.classList.add('ps-active');
             }
+            ancestor = ancestor.parentElement;
           }
           
-          panel.querySelectorAll('.panel-subnav a, .p3-subnav a').forEach(function(l) {
+          panel.querySelectorAll('.panel-subnav a, .p3-subnav a, .tl-subnav a').forEach(function(l) {
             l.classList.toggle('ps-active', l.getAttribute('href').replace('#', '') === secId);
           });
           // Enkel, robust scrolling

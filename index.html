@@ -6928,11 +6928,20 @@ function glossaryFilter(q) {
     navigateToSearchResult(panelId, secId || null, null);
   };
 
-  // Ved panel-bytte: flytt boks hvis åpen
+  // Ved navigasjon (sidebar, panel-subnav, etc): lukk sammendraget
   window.addEventListener('hashchange', function() {
+    // Hvis hash er #sammendrag, la det være (det er URL-åpning av selve boksen)
+    if (window.location.hash === '#sammendrag') return;
     var box = document.getElementById('summary-box');
+    var trigger = document.getElementById('sammendrag-trigger');
     if (box && box.classList.contains('open')) {
-      moveSummaryToActivePanel();
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden', 'true');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        var plus = trigger.querySelector('.summary-plus');
+        if (plus) plus.textContent = '+';
+      }
     }
   });
 

@@ -1,0 +1,4330 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICE NG206 — ME/CFS: diagnose og behandling (norsk oversettelse)</title>
+<meta name="description" content="Uoffisiell norsk oversettelse av NICE-retningslinjen NG206 (2021) om ME/CFS. Vedlegg til The Wyller Continuum.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23faf8f4'/><text x='16' y='23' font-family='Georgia,serif' font-size='11' font-weight='600' fill='%238b1a1a' text-anchor='middle' letter-spacing='-0.5'>NICE</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bio: #1a6b4a;
+  --bio-light: #e8f5ee;
+  --bio-mid: #2d9e6f;
+  --psyk: #8b2c1a;
+  --psyk-light: #fdf0ed;
+  --psyk-mid: #c44a32;
+  --reg: #1a4a7a;
+  --reg-light: #e8f0f8;
+  --ink: #1c1c1c;
+  --ink-mid: #444;
+  --ink-light: #888;
+  --paper: #faf8f4;
+  --paper-mid: #f2ede4;
+  --rule: #d8d0c4;
+  --accent: #8b1a1a;
+  --sidebar-w: 300px;
+  --serif: 'EB Garamond', Georgia, serif;
+  --mono: 'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  background: var(--paper);
+  border-right: 1px solid var(--rule);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.sidebar-brand {
+  padding: 18px 20px 12px;
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+
+.sidebar-brand h1 {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.sidebar-brand p {
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--ink-light);
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sidebar-back {
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  transition: background 0.12s;
+}
+.sidebar-back:hover { background: var(--paper-mid); }
+
+/* Nav items */
+.nav-del { border-bottom: 1px solid var(--rule); }
+
+.nav-del-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s;
+  text-decoration: none;
+}
+
+.nav-del-header:hover { background: var(--paper-mid); }
+.nav-del-header.active { background: var(--paper-mid); }
+
+.nav-del-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  color: var(--ink-light);
+  width: 22px;
+  flex-shrink: 0;
+}
+
+.nav-del-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  flex: 1;
+  line-height: 1.3;
+}
+
+.nav-del-header.active .nav-del-title,
+.nav-del-header.active .nav-del-num { color: var(--accent); }
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 14px 20px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-light);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+
+/* ── MAIN ── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 18px 72px 16px;
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  max-width: 900px;
+}
+
+.hero-lead {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-mid);
+  font-style: italic;
+  max-width: 900px;
+}
+
+.hero-disclaimer {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--psyk-light);
+  border-left: 3px solid var(--psyk);
+  border-radius: 0 3px 3px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-mid);
+  max-width: 900px;
+}
+.hero-disclaimer strong { color: var(--psyk); font-weight: 600; }
+
+/* ── PANEL CONTAINER ── */
+.panel-wrap {
+  flex: 1;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  position: relative;
+}
+
+.panel {
+  display: none;
+  padding: 28px 72px 100px;
+  max-width: 100%;
+  animation: fadein 0.2s ease;
+}
+
+.panel:target { display: block; }
+.panel.active-deep { display: block; }
+#p1:not(:target):not(.hidden-default) { display: block; }
+body:has(.panel:target) #p1:not(:target):not(.active-deep) { display: none; }
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── TYPOGRAPHY ── */
+.section-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  background: var(--paper-mid);
+  color: var(--ink-mid);
+}
+
+.panel h2 {
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 740px;
+}
+
+.panel h3 {
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 500;
+  margin: 28px auto 12px;
+  max-width: 740px;
+  scroll-margin-top: 20px;
+}
+
+.panel h4 {
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 600;
+  margin: 20px auto 8px;
+  max-width: 740px;
+  scroll-margin-top: 20px;
+}
+
+.panel h5 {
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 600;
+  margin: 16px auto 6px;
+  max-width: 740px;
+  color: var(--ink-mid);
+}
+
+.panel p {
+  margin-bottom: 14px;
+  color: var(--ink);
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel ul, .panel ol {
+  max-width: 740px;
+  margin: 0 auto 14px;
+  padding-left: 24px;
+  color: var(--ink);
+}
+.panel ul li, .panel ol li {
+  margin-bottom: 6px;
+  line-height: 1.55;
+}
+.panel ul ul, .panel ol ol, .panel ul ol, .panel ol ul {
+  margin: 4px 0 4px;
+}
+
+.panel a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139, 26, 26, 0.3);
+  transition: border-color 0.15s;
+}
+.panel a:hover { border-bottom-color: var(--accent); }
+
+.panel strong { color: var(--ink); font-weight: 600; }
+.panel em { font-style: italic; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 28px auto;
+  max-width: 740px;
+}
+
+/* Ankere fra NICE-nummerering (#11, #12, #boks-1 osv) */
+[id] { scroll-margin-top: 16px; }
+
+/* ── BLOCKQUOTE ── */
+blockquote {
+  padding: 4px 0 4px 20px;
+  margin: 20px auto;
+  max-width: 740px;
+  border-left: 2px solid var(--rule);
+}
+blockquote p {
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 0;
+}
+
+/* ── TABLES ── */
+.panel table {
+  width: 100%;
+  max-width: 740px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.panel th {
+  background: var(--paper-mid);
+  color: var(--ink);
+  text-align: left;
+  padding: 10px 13px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: 2px solid var(--rule);
+}
+.panel td {
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-mid);
+  vertical-align: top;
+}
+.panel tr:hover td { background: var(--paper-mid); }
+.panel td:first-child { font-weight: 500; color: var(--ink); }
+
+/* ── DETAILS (NICE-seksjonene) ── */
+.nice-details {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  margin: 0 auto 10px;
+  max-width: 740px;
+  background: var(--paper);
+  scroll-margin-top: 16px;
+}
+.nice-details summary {
+  padding: 13px 18px 13px 40px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  list-style: none;
+  display: block;
+  background: var(--paper-mid);
+  position: relative;
+  border-radius: 4px;
+  transition: background 0.12s;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.nice-details summary:hover { background: #ece5d8; }
+.nice-details summary::-webkit-details-marker { display: none; }
+.nice-details summary::before {
+  content: '▸';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--ink-light);
+  transition: transform 0.18s;
+}
+.nice-details[open] summary::before {
+  transform: translateY(-50%) rotate(90deg);
+  color: var(--accent);
+}
+.nice-details[open] summary {
+  border-bottom: 1px solid var(--rule);
+  border-radius: 4px 4px 0 0;
+}
+.nice-details > *:not(summary) {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.nice-details > *:not(summary):first-of-type { padding-top: 14px; }
+.nice-details > *:not(summary):last-child { padding-bottom: 14px; }
+
+/* Paragraph, lists etc. inside details: overstyr max-width så de flyter i full bredde i containeren */
+.nice-details p,
+.nice-details ul,
+.nice-details ol,
+.nice-details h3,
+.nice-details h4,
+.nice-details h5,
+.nice-details blockquote,
+.nice-details table,
+.nice-details hr {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.nice-details table { margin: 16px 0 !important; }
+.nice-details h3 { font-size: 18px; margin-top: 18px; margin-bottom: 10px; }
+.nice-details h4 { font-size: 16px; margin-top: 14px; margin-bottom: 8px; }
+
+/* Strong i summary (fra pandoc) */
+.nice-details summary strong { font-weight: 500; color: var(--ink); }
+
+/* ── BOKSER (Boks 1-5 — også details, men med annen farge) ── */
+.nice-details.boks { border-color: var(--reg); }
+.nice-details.boks summary {
+  background: var(--reg-light);
+  color: var(--reg);
+}
+.nice-details.boks summary:hover { background: #dfeaf4; }
+
+/* ── PANEL-SUBNAV (toppen av hvert panel) ── */
+.panel-hdr {
+  max-width: 740px;
+  margin: 0 auto 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── OMSLAG: Ordliste-stil for panel 3 ── */
+.panel#p3 h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 24px;
+  color: var(--ink);
+}
+.panel#p3 h3 em {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-style: normal;
+  color: var(--ink-light);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-left: 6px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 500;
+    width: 72vw;
+    max-width: 280px;
+  }
+  .sidebar.mob-open { transform: translateX(0); }
+  .mob-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 490;
+  }
+  .mob-overlay.mob-open { display: block; }
+  .main {
+    margin-left: 0;
+    padding-top: 44px;
+  }
+  .hero { padding: 14px 20px 14px; }
+  .panel { padding: 20px 20px 60px; }
+  .mob-topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 44px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+  }
+  .mob-hamburger {
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .mob-title {
+    margin-left: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+}
+@media (min-width: 1025px) {
+  .mob-topbar { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- MOBILE TOPBAR -->
+<div class="mob-topbar">
+  <button class="mob-hamburger" id="mob-hamburger" aria-label="Meny">☰</button>
+  <span class="mob-title">NICE NG206</span>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <h1>NICE-retningslinjen NG206</h1>
+    <p>ME/CFS · Publisert 29. oktober 2021</p>
+  </div>
+  <a class="sidebar-back" href="index.html" title="Tilbake til The Wyller Continuum">← The Wyller Continuum</a>
+
+  <div class="nav-del"><a class="nav-del-header" href="#p1"><span class="nav-del-num">I</span><span class="nav-del-title">Innledning</span></a></div>
+  <div class="nav-del"><a class="nav-del-header" href="#p2"><span class="nav-del-num">II</span><span class="nav-del-title">Anbefalinger 1.1–1.17</span></a></div>
+  <div class="nav-del"><a class="nav-del-header" href="#p3"><span class="nav-del-num">III</span><span class="nav-del-title">Ordliste</span></a></div>
+  <div class="nav-del"><a class="nav-del-header" href="#p4"><span class="nav-del-num">IV</span><span class="nav-del-title">Forskningsanbefalinger</span></a></div>
+  <div class="nav-del"><a class="nav-del-header" href="#p5"><span class="nav-del-num">V</span><span class="nav-del-title">Begrunnelse og konsekvens</span></a></div>
+  <div class="nav-del"><a class="nav-del-header" href="#p6"><span class="nav-del-num">VI</span><span class="nav-del-title">Kontekst og komité</span></a></div>
+
+  <div class="sidebar-footer">
+    Uoffisiell norsk oversettelse.<br>
+    Kilde: <a href="https://www.nice.org.uk/guidance/ng206" target="_blank" rel="noopener" style="color:var(--ink-mid);text-decoration:none;border-bottom:1px dotted var(--ink-light);">nice.org.uk/guidance/ng206</a>
+  </div>
+</nav>
+
+<!-- MOB OVERLAY -->
+<div class="mob-overlay"></div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="hero">
+    <div class="hero-eyebrow">NICE-retningslinje NG206 · 29. oktober 2021</div>
+    <h1>Myalgisk encefalomyelitt / kronisk utmattelsessyndrom: diagnose og behandling</h1>
+    <p class="hero-lead">Diagnose og behandling av ME/CFS hos barn, unge og voksne.</p>
+    <div class="hero-disclaimer">
+      <strong>Uoffisiell norsk oversettelse.</strong> Originaldokumentet er publisert av NICE (National Institute for Health and Care Excellence). Ved tvil om tolkning eller bruk i klinisk praksis skal originaldokumentet på engelsk konsulteres. Seksjonsnummer og anbefalingsnummer er identiske med originalen for å lette oppslag.
+    </div>
+  </div>
+
+  <!-- PANELS -->
+  <div class="panel-wrap">
+ <div class="panel" id="p1">
+<div class="panel-hdr">
+<div class="section-badge">DEL I · Oversikt og terminologi</div>
+<h2>Innledning</h2>
+</div>
+<p>Denne retningslinjen omfatter diagnostisering og behandling av
+myalgisk encefalomyelitt (eller encefalopati) / kronisk
+utmattelsessyndrom (ME/CFS) hos barn, unge og voksne. Den har som mål å
+øke bevisstheten om og forståelsen av ME/CFS, og gi veiledning om når
+tilstanden skal mistenkes, slik at diagnose stilles tidligere. Den
+inneholder anbefalinger om diagnose, vurdering og omsorgsplanlegging,
+sikring, tilgang til omsorg og håndtering av ME/CFS og symptomene ved
+tilstanden.</p><p>Disse anbefalingene er utarbeidet på grunnlag av kunnskapsgrunnlag
+gjennomgått før covid-19-pandemien. Det er ikke gjennomgått
+kunnskapsgrunnlag om effekter av covid-19, og det skal derfor ikke
+forutsettes at disse anbefalingene gjelder for personer med diagnosen
+post-covid-19-syndrom. NICE har utarbeidet en egen retningslinje om
+håndtering av langtidseffekter av covid-19.</p><h3 id="hvem-er-retningslinjen-for">Hvem er retningslinjen for?</h3><ul>
+<li>Helse- og omsorgsarbeidere, herunder personell som arbeider i eller
+bidrar inn i utdannings- og bedriftshelsetjenester</li>
+<li>Bestillere av helsetjenester</li>
+<li>Personer med mistenkt eller diagnostisert ME/CFS, deres familier og
+omsorgspersoner, samt allmennheten</li>
+</ul><p>Denne retningslinjen er bestilt av NICE og utarbeidet ved National
+Guideline Centre, som er vertskap hos Royal College of Physicians.</p><p>Denne retningslinjen oppdaterer og erstatter NICE-retningslinjen CG53
+(publisert august 2007).</p><p><a id="terminologi"></a></p><h3 id="terminologi">Terminologi</h3><p>Sentrale begreper med engelsk originalterm. Forkortelser som er
+etablert internasjonalt, beholdes på engelsk.</p><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Norsk</th>
+<th>Engelsk original</th>
+<th>Forkortelse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>myalgisk encefalomyelitt / kronisk utmattelsessyndrom</td>
+<td>myalgic encephalomyelitis (or encephalopathy) / chronic fatigue
+syndrome</td>
+<td>ME/CFS</td>
+</tr>
+<tr class="even">
+<td>anstrengelsesutløst symptomforverring</td>
+<td>post-exertional malaise</td>
+<td>PEM</td>
+</tr>
+<tr class="odd">
+<td>gradert treningsterapi</td>
+<td>graded exercise therapy</td>
+<td>GET</td>
+</tr>
+<tr class="even">
+<td>kognitiv atferdsterapi</td>
+<td>cognitive behavioural therapy</td>
+<td>CBT</td>
+</tr>
+<tr class="odd">
+<td>postural ortostatisk takykardi-syndrom</td>
+<td>postural orthostatic tachycardia syndrome</td>
+<td>POTS</td>
+</tr>
+<tr class="even">
+<td>energiforvaltning</td>
+<td>energy management</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>pleie- og støtteplan</td>
+<td>care and support plan</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>forverringsepisode</td>
+<td>flare-up</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>tilbakefall</td>
+<td>relapse</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>ikke-forfriskende søvn</td>
+<td>unrefreshing sleep</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>hjernetåke</td>
+<td>brain fog</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>ortostatisk intoleranse</td>
+<td>orthostatic intolerance</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>spesialistteam for ME/CFS</td>
+<td>ME/CFS specialist team</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>helhetsvurdering</td>
+<td>holistic assessment</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>dagliglivets aktiviteter</td>
+<td>activities of daily living</td>
+<td>ADL</td>
+</tr>
+<tr class="even">
+<td>helse- og omsorgsarbeidere</td>
+<td>health and social care professionals</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>omsorgsperson</td>
+<td>carer</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>alvorlig / svært alvorlig ME/CFS</td>
+<td>severe / very severe ME/CFS</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>helsepersonell i primærhelsetjenesten</td>
+<td>primary healthcare professionals</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>henvisning</td>
+<td>referral</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>klinisk undersøkelse</td>
+<td>physical examination</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>komorbiditet</td>
+<td>comorbidity</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>full blodstatus</td>
+<td>full blood count</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>senkningsreaksjon</td>
+<td>erythrocyte sedimentation rate</td>
+<td>ESR</td>
+</tr>
+<tr class="odd">
+<td>C-reaktivt protein</td>
+<td>C-reactive protein</td>
+<td>CRP</td>
+</tr>
+<tr class="even">
+<td>tyreoideafunksjonsprøver</td>
+<td>thyroid function</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>autonom dysfunksjon</td>
+<td>autonomic dysfunction</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>barnelege</td>
+<td>paediatrician</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>ufrivillige muskelrykninger</td>
+<td>myoclonic jerks</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>muskeltrekninger</td>
+<td>twitching</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>ME/CFS-spesialistteam for barn</td>
+<td>paediatric ME/CFS specialist team</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>pårørendevurdering</td>
+<td>carer’s assessment</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>overgrep og omsorgssvikt</td>
+<td>abuse and neglect</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>mishandling</td>
+<td>maltreatment</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>talsperson</td>
+<td>advocate</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>kommunen / lokal myndighet</td>
+<td>local authority</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>fastlege</td>
+<td>GP</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>sikring</td>
+<td>safeguarding</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>omsorgstjenester</td>
+<td>social care</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>kommunens barneomsorgstjeneste</td>
+<td>children’s social care</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>funksjonsnedsettelse</td>
+<td>disability</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>remisjon</td>
+<td>remission</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>restriktiv diett</td>
+<td>restrictive diet</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>varierende</td>
+<td>fluctuating</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>egenhåndtering</td>
+<td>self-management</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>tverrfaglig omsorg</td>
+<td>multidisciplinary care</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>tverrfaglig team</td>
+<td>multidisciplinary team</td>
+<td>MDT</td>
+</tr>
+<tr class="even">
+<td>rimelige tilpasninger</td>
+<td>reasonable adjustments</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>utpekt kontaktperson</td>
+<td>named contact</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>bedriftshelsetjeneste</td>
+<td>occupational health</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>hjelpemidler</td>
+<td>aids</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>hjemmetilpasning</td>
+<td>home adaptation</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>finmotorikk</td>
+<td>dexterity</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>parkeringsbevis for forflytningshemmede</td>
+<td>blue badge</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>trappeheis</td>
+<td>stairlift</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>rullestol</td>
+<td>wheelchair</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>døgnbehandling</td>
+<td>inpatient care</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>dagbehandling</td>
+<td>outpatient care</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>vurdering av omsorgsbehov</td>
+<td>social care needs assessment</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>uføreytelser</td>
+<td>disability benefits</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>omsorgsytelser</td>
+<td>carers’ benefits</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>kurativ</td>
+<td>curative</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>kur</td>
+<td>cure</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>ikke-medikamentell</td>
+<td>non-pharmacological</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>medikamentell</td>
+<td>pharmacological</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>energigrense</td>
+<td>energy limit</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>baseline</td>
+<td>baseline</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>dekondisjonering</td>
+<td>deconditioning</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>treningsunngåelse</td>
+<td>exercise avoidance</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>trinnvis økning</td>
+<td>incremental increase</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>stabilisering</td>
+<td>stabilisation</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>toleranse</td>
+<td>tolerance</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>fysioterapeut</td>
+<td>physiotherapist</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>ergoterapeut</td>
+<td>occupational therapist</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>sansestimulering</td>
+<td>sensory stimulation</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>aktivitetsmåler</td>
+<td>activity tracker</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>pulsmåler</td>
+<td>heart-rate monitor</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>forebyggende hvile</td>
+<td>pre-emptive rest</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>bærekraftig aktivitetsnivå</td>
+<td>sustainable level of activity</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>søvnforstyrrelse</td>
+<td>sleep disturbance</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>hypersomni</td>
+<td>hypersomnia</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>avbrutt søvn</td>
+<td>broken sleep</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>overflatisk søvn</td>
+<td>shallow sleep</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>avspenningsteknikker</td>
+<td>relaxation techniques</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>leddmobilitet</td>
+<td>joint mobility</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>muskelfleksibilitet</td>
+<td>muscle flexibility</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>trykksår</td>
+<td>pressure ulcers</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>dyp venetrombose</td>
+<td>deep vein thrombosis</td>
+<td>DVT</td>
+</tr>
+<tr class="odd">
+<td>kontrakturer</td>
+<td>contractures</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>immobilitet</td>
+<td>immobility</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>mobilitetshjelpemidler</td>
+<td>mobility aids</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>spesialisthelsetjenesten</td>
+<td>secondary care</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>nevropatisk smerte</td>
+<td>neuropathic pain</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>legemiddelgjennomgang</td>
+<td>medication review</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>kosttilskudd</td>
+<td>supplements</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>klinisk ernæringsfysiolog</td>
+<td>dietitian</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>underernæring</td>
+<td>malnutrition</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>vitamin D-mangel</td>
+<td>vitamin D deficiency</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>husbundne</td>
+<td>housebound</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>sengeliggende</td>
+<td>bedbound</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>matallergi</td>
+<td>food allergy</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>sykdomsoppfatning</td>
+<td>illness belief</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>terapi-blueprint</td>
+<td>therapy blueprint</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>mangelfull vekst</td>
+<td>faltering growth</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>Lightning Process</td>
+<td>Lightning Process</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>komorbide tilstander</td>
+<td>coexisting conditions</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>multimorbiditet</td>
+<td>multimorbidity</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>tyreoideasykdom</td>
+<td>thyroid disease</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>irritabel tarm-syndrom</td>
+<td>irritable bowel syndrome</td>
+<td>IBS</td>
+</tr>
+<tr class="even">
+<td>stemningslidelser</td>
+<td>mood disorders</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>angst</td>
+<td>anxiety</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>depresjon</td>
+<td>depression</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>epikrise</td>
+<td>discharge letter</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>artralgisk</td>
+<td>arthralgic</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>postural hypotensjon</td>
+<td>postural hypotension</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>dobbeltsyn</td>
+<td>double vision</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>inkontinens</td>
+<td>incontinence</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>forstoppelse</td>
+<td>constipation</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>oppblåsthet</td>
+<td>bloating</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>matberikning</td>
+<td>food fortification</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>enteral ernæring</td>
+<td>enteral feeding</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>matintoleranse</td>
+<td>food intolerance</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>berøringssensitivitet</td>
+<td>sensitivity to touch</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>ernæringsstøtte</td>
+<td>nutrition support</td>
+<td>—</td>
+</tr>
+</tbody>
+</table><p><a id="anbefalinger"></a></p>
+</div>
+<div class="panel" id="p2">
+<div class="panel-hdr">
+<div class="section-badge">DEL II · 17 hovedseksjoner · 1.1–1.17</div>
+<h2>Anbefalinger</h2>
+</div>
+<blockquote>
+<p>Personer har rett til å være involvert i drøftinger og ta informerte
+valg om egen omsorg, som beskrevet i <em>NICE’s information on making
+decisions about your care</em>.</p>
+<p><em>Making decisions using NICE guidelines</em> forklarer hvordan
+NICE bruker ord for å angi styrken (eller sikkerheten) av anbefalingene.
+Dokumentet inneholder informasjon om forskriving av legemidler
+(inkludert bruk utenfor godkjent indikasjon), faglige retningslinjer,
+standarder og lovgivning (inkludert om samtykke og samtykkekompetanse)
+samt sikringssaker.</p>
+</blockquote><details class="nice-details boks" id="boks-1">
+<summary>
+<strong>Boks 1 — Alvorlighetsgrad av ME/CFS</strong>
+</summary>
+<p>Med mindre annet er angitt, gjelder disse anbefalingene for alle med
+myalgisk encefalomyelitt (eller encefalopati) / kronisk
+utmattelsessyndrom (ME/CFS), uavhengig av symptomenes alvorlighetsgrad.
+Det finnes også tilleggsvurderinger i seksjonen om omsorg for personer
+med alvorlig eller svært alvorlig ME/CFS.</p>
+<p>Definisjonene av alvorlighetsgrad er ikke skarpt avgrensede, fordi
+enkeltsymptomer varierer mye i intensitet, og personer kan ha noen
+symptomer i sterkere grad enn andre. Definisjonene nedenfor gir en
+veiledning om hvor mye symptomene påvirker hverdagsfunksjonen.</p>
+<h3 id="mild-mecfs">Mild ME/CFS</h3>
+<p>Personer med mild ME/CFS tar vare på seg selv og utfører noen lette
+huslige oppgaver (av og til med støtte), men kan ha vansker med
+forflytning. De fleste er fortsatt i arbeid eller utdanning, men for å
+klare dette har de sannsynligvis avviklet all fritid og sosial
+aktivitet. De har ofte redusert arbeidstid, tar fridager og bruker
+helgen til å komme seg gjennom resten av uken.</p>
+<h3 id="moderat-mecfs">Moderat ME/CFS</h3>
+<p>Personer med moderat ME/CFS har redusert forflytningsevne og er
+begrenset i alle dagliglivets aktiviteter, selv om symptomnivået og
+aktivitetsevnen kan variere i topper og bunner. De har vanligvis sluttet
+i arbeid eller utdanning og trenger hvileperioder, ofte 1–2 timers hvile
+om ettermiddagen. Nattesøvnen er som regel av dårlig kvalitet og
+avbrutt.</p>
+<h3 id="alvorlig-mecfs">Alvorlig ME/CFS</h3>
+<p>Personer med alvorlig ME/CFS klarer ikke å utføre noen aktiviteter
+for seg selv, eller kan kun utføre helt minimale dagligdagse gjøremål
+(som å vaske ansiktet eller pusse tennene). De har alvorlige kognitive
+vansker og kan være avhengige av rullestol for forflytning. De er ofte
+ute av stand til å forlate hjemmet, eller får alvorlige og langvarige
+etterreaksjoner dersom de gjør det. De kan også tilbringe mesteparten av
+tiden i sengen, og er ofte ekstremt overfølsomme for lys og lyd.</p>
+<h3 id="svært-alvorlig-mecfs">Svært alvorlig ME/CFS</h3>
+<p>Personer med svært alvorlig ME/CFS er sengeliggende hele dagen og
+pleietrengende. De trenger hjelp med personlig hygiene og måltider, og
+er svært overfølsomme for sanseinntrykk. Noen klarer ikke å svelge og
+kan trenge sondenæring.</p>
+</details><details class="nice-details" id="11">
+<summary>
+<strong>1.1 Prinsipper for omsorg for personer med ME/CFS</strong>
+</summary>
+<p><em>Se også seksjonen om omsorg for personer med alvorlig eller svært
+alvorlig ME/CFS.</em></p>
+<h3 id="bevissthet-om-mecfs-og-konsekvensene">Bevissthet om ME/CFS og
+konsekvensene</h3>
+<h4 id="section">1.1.1</h4>
+<p>Vær oppmerksom på at ME/CFS:</p>
+<ul>
+<li>er en kompleks, kronisk medisinsk tilstand som rammer flere
+organsystemer, og der patofysiologien fortsatt er under utforskning</li>
+<li>rammer alle ulikt, og virkningen varierer sterkt — for enkelte
+tillater symptomene fortsatt utførelse av noen aktiviteter, mens de for
+andre forårsaker betydelig funksjonssvikt</li>
+<li>er en varierende tilstand der en persons symptomer kan endre seg
+uforutsigbart i karakter og alvorlighetsgrad i løpet av en dag, uke
+eller lenger</li>
+<li>kan påvirke ulike sider av livet til både personer med ME/CFS og
+deres familier og omsorgspersoner, herunder dagliglivets aktiviteter,
+familieliv, sosialt liv, emosjonell velvære, arbeid og utdanning.</li>
+</ul>
+<h4 id="section-1">1.1.2</h4>
+<p>Erkjenn at personer med ME/CFS kan ha opplevd fordommer og mistro, og
+kan føle seg stigmatisert av mennesker (inkludert familie, venner,
+helse- og omsorgsarbeidere og lærere) som ikke forstår sykdommen deres.
+Ta hensyn til:</p>
+<ul>
+<li>virkningen dette kan ha på et barn, en ung person eller en voksen
+med ME/CFS</li>
+<li>at personer med ME/CFS kan ha mistet tilliten til helse- og
+omsorgstjenestene og kan være tilbakeholdne med å involvere dem.</li>
+</ul>
+<h3 id="tilnærming-til-omsorgsutøvelse">Tilnærming til
+omsorgsutøvelse</h3>
+<h4 id="section-2">1.1.3</h4>
+<p>Helse- og omsorgsarbeidere skal:</p>
+<ul>
+<li>ta seg tid til å bygge støttende, tillitsfulle og empatiske
+relasjoner</li>
+<li>anerkjenne overfor personen realiteten i å leve med ME/CFS, og
+hvordan symptomene kan påvirke dem</li>
+<li>bruke en personsentrert tilnærming til omsorg og vurdering</li>
+<li>involvere familie og omsorgspersoner (der det er hensiktsmessig) i
+drøftinger og omsorgsplanlegging dersom personen med ME/CFS velger å
+inkludere dem</li>
+<li>være sensitive overfor personens sosioøkonomiske, kulturelle og
+etniske bakgrunn, overbevisninger og verdier, samt kjønnsidentitet og
+seksuell orientering, og reflektere over hvordan dette kan påvirke
+personens erfaring, forståelse og valg av tilnærming.</li>
+</ul>
+<h4 id="section-3">1.1.4</h4>
+<p>Erkjenn at personer med ME/CFS trenger:</p>
+<ul>
+<li>rettidig og nøyaktig diagnose slik at de får passende omsorg for
+symptomene sine</li>
+<li>jevnlig oppfølging og evaluering, særlig når symptomene forverres,
+endres eller er alvorlige (se seksjonen om håndtering av
+forverringsepisoder og tilbakefall, samt oppfølging i
+primærhelsetjenesten).</li>
+</ul>
+<h4 id="section-4">1.1.5</h4>
+<p>Forklar personer med ME/CFS og deres familie eller omsorgspersoner
+(der det er hensiktsmessig) at de kan takke nei til eller trekke seg fra
+enhver del av pleie- og støtteplanen sin, og at dette ikke vil påvirke
+tilgangen til andre deler av omsorgen. De kan starte eller gjenoppta
+denne delen av planen senere dersom de ønsker det.</p>
+<h4 id="section-5">1.1.6</h4>
+<p>Når du arbeider med barn og unge med ME/CFS, sørg for at deres stemme
+blir hørt ved å:</p>
+<ul>
+<li>bruke en barnesentrert tilnærming, der kommunikasjonen er rettet mot
+dem</li>
+<li>drøfte og jevnlig evaluere med dem hvordan de ønsker å være
+involvert i avgjørelser om egen omsorg</li>
+<li>ta hensyn til at de kan ha vansker med å kommunisere og beskrive
+symptomene sine, og kan trenge hjelp fra foreldrene eller
+omsorgspersonene (der det er hensiktsmessig)</li>
+<li>erkjenne at de kan ha behov for mer enn én konsultasjon for å bygge
+tillit (med eller uten foreldrene eller omsorgspersonene, som
+hensiktsmessig).</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om prinsipper for omsorg for personer med
+ME/CFS.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i:</em></p>
+<ul>
+<li><em>evidence review A: information, education and support for people
+with ME/CFS and their families and carers</em></li>
+<li><em>evidence review C: accessing health and social care
+services</em></li>
+<li><em>appendix 2: involving adults with severe ME/CFS.</em></li>
+</ul>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i evidence
+review B: information, education and support for health and social care
+professionals og appendix 1: involving children and young
+people.</em></p>
+</details><details class="nice-details" id="12">
+<summary>
+<strong>1.2 Når skal ME/CFS mistenkes</strong>
+</summary>
+<h4 id="section-6">1.2.1</h4>
+<p>Forklar personer som henvender seg med mulige symptomer på ME/CFS, at
+det for tiden ikke finnes noen diagnostisk test for ME/CFS, og at
+tilstanden identifiseres utelukkende på kliniske grunnlag.</p>
+<h4 id="section-7">1.2.2</h4>
+<p>Mistenk ME/CFS dersom:</p>
+<ul>
+<li>personen har hatt alle de vedvarende symptomene i Boks 2 i minst 6
+uker for voksne og 4 uker for barn og unge, <strong>og</strong></li>
+<li>personens evne til å delta i yrkes-, utdannings-, sosiale eller
+personlige aktiviteter er betydelig redusert sammenlignet med nivået før
+sykdomsdebut, <strong>og</strong></li>
+<li>symptomene ikke forklares av en annen tilstand.</li>
+</ul>
+
+<details class="nice-details boks" id="boks-2-symptomer-ved-mistanke-om-mecfs"><summary><span class="anchor-alias" id="boks-2"></span><strong>Boks 2 — Symptomer ved
+mistanke om ME/CFS</strong></summary><p>Alle disse symptomene skal være til stede:</p><ul>
+<li><strong>Invalidiserende utmattelse</strong> som forverres av
+aktivitet, ikke er forårsaket av overdreven kognitiv, fysisk, emosjonell
+eller sosial anstrengelse, og som ikke i vesentlig grad lindres ved
+hvile.</li>
+<li><strong>Anstrengelsesutløst symptomforverring (PEM)</strong> etter
+aktivitet, der forverringen av symptomer:
+<ul>
+<li>ofte har forsinket debut, med timer eller dagers ventetid</li>
+<li>er uforholdsmessig stor i forhold til aktiviteten</li>
+<li>har en forlenget restitusjonstid som kan vare i timer, dager, uker
+eller lenger.</li>
+</ul></li>
+<li><strong>Ikke-forfriskende søvn eller søvnforstyrrelse</strong>
+(eller begge deler), som kan omfatte:
+<ul>
+<li>å føle seg utmattet, influensalignende og stiv ved oppvåkning</li>
+<li>avbrutt eller overflatisk søvn, endret søvnmønster eller
+hypersomni.</li>
+</ul></li>
+<li><strong>Kognitive vansker</strong> (noen ganger beskrevet som
+«hjernetåke»), som kan omfatte problemer med å finne ord eller tall,
+talevansker, nedsatt reaksjonsevne, korttidshukommelsesproblemer og
+vansker med konsentrasjon eller å gjøre flere ting samtidig.</li>
+</ul></details>
+<h4 id="section-8">1.2.3</h4>
+<p>Ved mistanke om ME/CFS skal følgende utføres:</p>
+<ul>
+<li>en medisinsk vurdering (inkludert symptomer og sykehistorie,
+komorbiditeter, samlet fysisk og psykisk helse)</li>
+<li>en klinisk undersøkelse</li>
+<li>en vurdering av symptomenes innvirkning på psykisk og sosial
+velvære</li>
+<li>undersøkelser for å utelukke andre diagnoser, for eksempel (men ikke
+begrenset til):
+<ul>
+<li>urinstiks for protein, blod og glukose</li>
+<li>full blodstatus</li>
+<li>urinstoff og elektrolytter</li>
+<li>leverfunksjonsprøver</li>
+<li>tyreoideafunksjonsprøver</li>
+<li>senkningsreaksjon eller plasmaviskositet</li>
+<li>C-reaktivt protein (CRP)</li>
+<li>kalsium og fosfat</li>
+<li>HbA1c</li>
+<li>serum-ferritin</li>
+<li>cøliaki-screening</li>
+<li>kreatinkinase.</li>
+</ul></li>
+</ul>
+<p>Bruk klinisk skjønn for å avgjøre om ytterligere undersøkelser er
+nødvendige for å utelukke andre diagnoser (for eksempel vitamin D-,
+vitamin B12- og folatnivåer; serologiske tester ved infeksjon i
+sykehistorien; og kortisolmåling kl. 09.00 for binyrebarksvikt).</p>
+<h4 id="section-9">1.2.4</h4>
+<p>Vær oppmerksom på at følgende symptomer også kan være forbundet med,
+men ikke er spesifikke for, ME/CFS:</p>
+<ul>
+<li>ortostatisk intoleranse og autonom dysfunksjon, inkludert
+svimmelhet, hjertebank, besvimelse og kvalme ved oppreist stilling fra
+liggende posisjon</li>
+<li>temperaturoverfølsomhet som gir kraftig svetting, frysninger,
+hetetokter eller følelse av å være svært kald</li>
+<li>nevromuskulære symptomer, inkludert muskeltrekninger og ufrivillige
+muskelrykninger</li>
+<li>influensalignende symptomer, inkludert sår hals, ømme lymfekjertler,
+kvalme, frysninger eller muskelverk</li>
+<li>intoleranse mot alkohol, eller mot bestemte matvarer og
+kjemikalier</li>
+<li>økt sensorisk overfølsomhet, inkludert for lys, lyd, berøring, smak
+og lukt</li>
+<li>smerter, herunder berøringssmerter, myalgi, hodepine, øyesmerter,
+magesmerter eller leddsmerter uten akutt rødhet, hevelse eller
+leddvæskeansamling.</li>
+</ul>
+<h4 id="section-10">1.2.5</h4>
+<p>Helsepersonell i primærhelsetjenesten bør vurdere å innhente råd fra
+relevant spesialist dersom det er usikkerhet om tolkning av tegn og
+symptomer, og om det er behov for tidlig henvisning. For barn og unge
+bør det vurderes å innhente råd fra en barnelege.</p>
+<h4 id="section-11">1.2.6</h4>
+<p>Ved mistanke om ME/CFS:</p>
+<ul>
+<li>fortsett med vurderinger som er nødvendige for å utelukke eller
+identifisere andre tilstander</li>
+<li>gi personen råd om håndtering av symptomene i tråd med seksjonen om
+råd til personer med mistenkt ME/CFS.</li>
+</ul>
+<h3 id="henvisning-av-barn-og-unge-med-mistenkt-mecfs">Henvisning av
+barn og unge med mistenkt ME/CFS</h3>
+<h4 id="section-12">1.2.7</h4>
+<p>Når det er mistanke om ME/CFS hos et barn eller en ung person basert
+på kriteriene i anbefaling 1.2.2 og vurderingen i anbefaling 1.2.3:</p>
+<ul>
+<li>henvis vedkommende til en barnelege for videre utredning og
+undersøkelser for ME/CFS og andre tilstander</li>
+<li>innled samarbeid med barnets eller den unges utdannings- eller
+opplæringssted for å tilrettelegge for fleksible tilpasninger.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om mistanke om ME/CFS.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review D: identifying and diagnosing
+ME/CFS.</em></p>
+</details><details class="nice-details" id="13">
+<summary>
+<strong>1.3 Råd til personer med mistenkt ME/CFS</strong>
+</summary>
+<h4 id="section-13">1.3.1</h4>
+<p>Ved mistanke om ME/CFS, gi personen individuelt tilpassede råd om
+håndtering av symptomene. Råd dem også:</p>
+<ul>
+<li>til ikke å bruke mer energi enn de opplever at de har — de bør styre
+sin daglige aktivitet og ikke «kjøre gjennom» symptomene</li>
+<li>til å hvile og rekonvalisere etter behov (dette kan innebære
+endringer i daglig rutine, inkludert arbeid, skole og andre
+aktiviteter)</li>
+<li>til å opprettholde et sunt og balansert kosthold med tilstrekkelig
+væskeinntak.</li>
+</ul>
+<h4 id="section-14">1.3.2</h4>
+<p>Forklar personer med mistenkt ME/CFS at diagnosen først kan bekreftes
+etter 3 måneder med vedvarende symptomer. Forsikre dem om at de kan
+komme tilbake for en ny vurdering før dette dersom de utvikler nye eller
+forverrede symptomer, og sørg for at de vet hvem de skal kontakte for
+råd.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om råd til personer med mistenkt
+ME/CFS.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review E: management strategies before
+diagnosis.</em></p>
+</details><details class="nice-details" id="14">
+<summary>
+<strong>1.4 Diagnose</strong>
+</summary>
+<h4 id="section-15">1.4.1</h4>
+<p>Still diagnosen ME/CFS hos et barn, en ung person eller voksen som
+har symptomene beskrevet i anbefaling 1.2.2, og som har vedvart i 3
+måneder uten å kunne forklares av en annen tilstand.</p>
+<h4 id="section-16">1.4.2</h4>
+<p>Helsepersonell i primærhelsetjenesten bør vurdere å innhente råd fra
+relevant spesialist dersom det er usikkerhet om tolkning av tegn og
+symptomer ved 3 måneder, og om det er behov for ytterligere
+undersøkelser.</p>
+<h4 id="section-17">1.4.3</h4>
+<p>Henvis voksne direkte til et ME/CFS-spesialistteam (se Boks 3) for å
+bekrefte diagnosen og utarbeide en pleie- og støtteplan.</p>
+<h4 id="section-18">1.4.4</h4>
+<p>Henvis barn og unge som har fått diagnosen ME/CFS etter vurdering av
+en barnelege (basert på kriteriene i anbefaling 1.2.2), direkte til et
+ME/CFS-spesialistteam for barn (se Boks 3) for å bekrefte diagnosen og
+utarbeide en pleie- og støtteplan.</p>
+
+<details class="nice-details boks" id="boks-3-mecfs-spesialistteam"><summary><span class="anchor-alias" id="boks-3"></span><strong>Boks 3 — ME/CFS-spesialistteam</strong></summary><p>Spesialistteam består av ulike helsepersonell med opplæring og
+erfaring i vurdering, diagnostisering, behandling og oppfølging av
+ME/CFS. De har vanligvis medisinsk utdannede klinikere fra en rekke
+spesialiteter (inkludert revmatologi, rehabiliteringsmedisin,
+endokrinologi, infeksjonsmedisin, nevrologi, immunologi, allmennmedisin
+og pediatri), samt tilgang til annet helsepersonell som er spesialisert
+på ME/CFS. Dette kan omfatte fysioterapeuter, treningsfysiologer,
+ergoterapeuter, kliniske ernæringsfysiologer og klinisk- eller
+rådgivende psykologer.</p><p>Barn og unge vil sannsynligvis bli fulgt opp av lokale eller
+regionale barnemedisinske team med erfaring i å arbeide med barn og unge
+med ME/CFS, i samarbeid med ME/CFS-spesialistsentre.</p><hr/><p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om diagnose.</em></p><p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review D: identifying and diagnosing
+ME/CFS.</em></p></details>
+</details><details class="nice-details" id="15">
+<summary>
+<strong>1.5 ME/CFS-spesialistteamets vurdering og utarbeidelse av pleie-
+og støtteplan</strong>
+</summary>
+<p><em>Se også seksjonen om omsorg for personer med alvorlig eller svært
+alvorlig ME/CFS.</em></p>
+<h4 id="section-19">1.5.1</h4>
+<p>Gjennomfør og dokumenter en helhetsvurdering for å bekrefte personens
+ME/CFS-diagnose og gi grunnlag for pleie- og støtteplanen. Vurderingen
+skal omfatte:</p>
+<ul>
+<li>en medisinsk vurdering (inkludert relevante symptomer og
+sykehistorie, komorbiditeter, samlet fysisk og psykisk helse, alt som er
+kjent å forverre eller lindre symptomer, samt søvnkvalitet)</li>
+<li>fysisk funksjon</li>
+<li>symptomenes innvirkning på psykisk, emosjonell og sosial
+velvære</li>
+<li>nåværende og tidligere erfaring med legemidler (inkludert toleranse
+og overfølsomhet), vitaminer og mineraltilskudd</li>
+<li>kostholdsvurdering (inkludert vekthistorikk før og etter
+ME/CFS-diagnose, bruk av restriktive og alternative dietter, og tilgang
+til innkjøp og matlaging).</li>
+</ul>
+<h4 id="section-20">1.5.2</h4>
+<p>Utarbeid og bli enig om en individuell pleie- og støtteplan sammen
+med personen med ME/CFS og deres familie eller omsorgspersoner (der det
+er hensiktsmessig), basert på helhetsvurderingen. Inkluder følgende,
+avhengig av personens behov:</p>
+<ul>
+<li>behov for informasjon og støtte (se seksjonen om informasjon og
+støtte)</li>
+<li>støtte til dagliglivets aktiviteter (se seksjonen om tilgang til
+omsorg og støtte, og anbefaling 1.6.8 om tilgang til
+omsorgstjenester)</li>
+<li>mobilitets- og hverdagshjelpemidler, samt tilpasninger for å øke
+eller opprettholde selvstendighet (se anbefalingene om hjelpemidler og
+tilpasninger)</li>
+<li>behov for støtte i utdanning, opplæring eller arbeid (se seksjonen
+om å støtte personer med ME/CFS i arbeid, utdanning og opplæring)</li>
+<li>strategier for egenhåndtering, inkludert energiforvaltning (se
+anbefalingene om energiforvaltning)</li>
+<li>fysisk funksjon og mobilitet (se anbefalingene om fysisk funksjon og
+mobilitet)</li>
+<li>håndtering av ME/CFS og symptomhåndtering, inkludert
+legemiddelhåndtering (se anbefaling 1.12.1–1.12.26 om
+symptomhåndtering)</li>
+<li>veiledning om håndtering av forverringsepisoder og tilbakefall (se
+seksjonen om håndtering av forverringsepisoder og tilbakefall)</li>
+<li>detaljer om hvilke helse- og omsorgsarbeidere som er involvert i
+personens omsorg, og hvem som skal kontaktes (se anbefaling
+1.10.3).</li>
+</ul>
+<h4 id="section-21">1.5.3</h4>
+<p>Erkjenn at personen med ME/CFS selv bestemmer målene for sin pleie-
+og støtteplan.</p>
+<h4 id="section-22">1.5.4</h4>
+<p>Gi personen og deres familie eller omsorgspersoner (der det er
+hensiktsmessig) en kopi av pleie- og støtteplanen, og del en kopi med
+fastlegen.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om ME/CFS-spesialistteamets vurdering og
+utarbeidelse av pleie- og støtteplan.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i:</em></p>
+<ul>
+<li><em>evidence review G: non-pharmacological management of
+ME/CFS</em></li>
+<li><em>evidence review H: appendices for the management of
+ME/CFS</em></li>
+<li><em>evidence review A: information, education and support for people
+with ME/CFS and their families and carers.</em></li>
+</ul>
+</details><details class="nice-details" id="16">
+<summary>
+<strong>1.6 Informasjon og støtte</strong>
+</summary>
+<h3 id="kommunikasjon">Kommunikasjon</h3>
+<h4 id="section-23">1.6.1</h4>
+<p>Sørg for at informasjon gis til personer med ME/CFS og deres familie
+eller omsorgspersoner (der det er hensiktsmessig):</p>
+<ul>
+<li>i ulike formater, som skriftlig materiale, elektronisk eller lyd, og
+tilpasset deres behov (for eksempel på foretrukket språk eller i en
+tilgjengelig versjon)</li>
+<li>både personlig i kliniske sammenhenger og til bruk hjemme.</li>
+</ul>
+<p>Følg prinsippene for kommunikasjon, informasjonsformidling og delt
+beslutningstaking i NICE-retningslinjene om <em>patient experience in
+adult NHS services</em>, <em>people’s experience in adult social care
+services</em> og <em>shared decision making</em>.</p>
+<h4 id="section-24">1.6.2</h4>
+<p>Når du gir informasjon til barn og unge med ME/CFS, ta hensyn til
+deres alder og forståelsesnivå, symptomer og eventuelle
+funksjonsnedsettelser eller kommunikasjonsbehov. Bruk interaktive
+formater som:</p>
+<ul>
+<li>en-til-en-samtale eller gruppesamtale</li>
+<li>skriftlig materiale og bilder</li>
+<li>lek, kunst og musikkaktiviteter</li>
+<li>digitale medier, for eksempel video eller interaktive apper.</li>
+</ul>
+<h3 id="informasjon-om-mecfs">Informasjon om ME/CFS</h3>
+<h4 id="section-25">1.6.3</h4>
+<p>Gi personer med ME/CFS og deres familie eller omsorgspersoner (der
+det er hensiktsmessig) oppdatert informasjon om ME/CFS så snart
+tilstanden mistenkes. Tilpass informasjonen til personens situasjon,
+herunder symptomer, alvorlighetsgrad og hvor lenge de har hatt ME/CFS.
+Spør personen jevnlig om de ønsker mer informasjon eller å gjenoppta
+tidligere samtaler.</p>
+<h4 id="section-26">1.6.4</h4>
+<p>Forklar at ME/CFS:</p>
+<ul>
+<li>er en varierende medisinsk tilstand som rammer alle ulikt, og der
+symptomene og alvorlighetsgraden kan endre seg i løpet av en dag, uke
+eller lenger</li>
+<li>har ulikt langsiktig utfall fra person til person — selv om en andel
+kommer seg eller får en lang periode med remisjon, vil mange måtte
+tilpasse seg livet med ME/CFS</li>
+<li>varierer sterkt i sin påvirkning på menneskers liv, og kan påvirke
+dagliglivets aktiviteter, familie- og sosialliv, samt arbeid eller
+utdanning (disse virkningene kan være alvorlige)</li>
+<li>kan forverres av bestemte utløsere — disse kan være kjente eller nye
+utløsere, og i noen tilfeller finnes ingen klar utløser</li>
+<li>kan håndteres gjennom egenhåndtering med støtte og råd (se seksjonen
+om energiforvaltning)</li>
+<li>kan innebære forverringsepisoder og tilbakefall selv når symptomene
+er godt håndtert, og planlegging for dette bør være en del av
+energiforvaltningsplanen.</li>
+</ul>
+<h4 id="section-27">1.6.5</h4>
+<p>Forklar barn og unge med ME/CFS og deres foreldre eller
+omsorgspersoner (der det er hensiktsmessig) at utsiktene er bedre hos
+barn og unge enn hos voksne.</p>
+<h4 id="section-28">1.6.6</h4>
+<p>Gi personer med ME/CFS og deres familie eller omsorgspersoner (der
+det er hensiktsmessig) informasjon om:</p>
+<ul>
+<li>selvhjelpsgrupper, støttegrupper og andre lokale og nasjonale
+ressurser for personer med ME/CFS</li>
+<li>hvor de kan få råd om økonomisk støtte, herunder å søke om
+ytelser.</li>
+</ul>
+<h3 id="omsorgstjenester">Omsorgstjenester</h3>
+<h4 id="section-29">1.6.7</h4>
+<p>Drøft varsomt med personen og deres familie eller omsorgspersoner
+(der det er hensiktsmessig) hvordan omsorgstjenester kan være til hjelp.
+Forklar at omsorgstjenestene kan hjelpe personen som lever med ME/CFS,
+og samtidig gi familie og omsorgspersoner tilgang til støtte gjennom en
+formell pårørendevurdering. Se også anbefaling 1.8.5 og 1.8.6 om å
+opprettholde selvstendighet.</p>
+<h4 id="section-30">1.6.8</h4>
+<p>Forklar personer med ME/CFS og deres familie eller omsorgspersoner
+(der det er hensiktsmessig) hvordan de på eget initiativ kan be om en
+vurdering av omsorgsbehov hos kommunen. Tilby å gjøre henvisningen for
+dem dersom de foretrekker det.</p>
+<h4 id="section-31">1.6.9</h4>
+<p>Opplys barn og unge med moderat ME/CFS eller alvorlig eller svært
+alvorlig ME/CFS, og deres foreldre eller omsorgspersoner (der det er
+hensiktsmessig), om at de kan ha rett til støtte fra kommunens
+barneomsorgstjeneste som <em>children in need</em> (barn med særskilt
+hjelpebehov) på grunn av funksjonsnedsettelsen.</p>
+<h3 id="støtte-til-familie-og-omsorgspersoner-til-personer-med-mecfs">Støtte
+til familie og omsorgspersoner til personer med ME/CFS</h3>
+<h4 id="section-32">1.6.10</h4>
+<p>Følg anbefalingene i NICE-retningslinjen <em>supporting adult
+carers</em> om identifisering, vurdering og ivaretakelse av omsorgs-,
+fysiske og psykiske helsebehov hos familie og omsorgspersoner.</p>
+<h4 id="section-33">1.6.11</h4>
+<p>Opplys familie og omsorgspersoner om retten til vurdering og støtte
+for egne behov, som følger:</p>
+<ul>
+<li>foreldre og omsorgspersoner til barn og unge under 16 år med ME/CFS,
+i henhold til <em>Children and Families Act 2014</em></li>
+<li>unge omsorgspersoner, i henhold til <em>Young Carers (Needs
+Assessment) Regulations 2015</em>.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om informasjon og støtte.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review A: information, education and
+support for people with ME/CFS and their families and carers.</em></p>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i:</em></p>
+<ul>
+<li><em>evidence review B: information, education and support for health
+and social care professionals</em></li>
+<li><em>evidence review C: accessing health and social care
+services</em></li>
+<li><em>appendix 1: involving children and young people.</em></li>
+</ul>
+</details><details class="nice-details" id="17">
+<summary>
+<strong>1.7 Sikring mot overgrep og omsorgssvikt</strong>
+</summary>
+<p><em>Note til oversettelsen: «Safeguarding» er et britisk begrep uten
+direkte norsk ekvivalent. Det dekker vern av sårbare personer mot
+overgrep, mishandling og omsorgssvikt, og omfatter både
+vurderingsprosesser og tiltak. I norsk kontekst tilsvarer det
+konseptuelt aspekter av barnevern, pasient- og brukersikkerhet, samt
+rettssikkerhet for sårbare voksne. Her beholdes begrepet «sikring» som
+kortform, med underforstått betydning «sikring mot overgrep og
+omsorgssvikt».</em></p>
+<h4 id="section-34">1.7.1</h4>
+<p>Erkjenn at personer med ME/CFS, særlig de med alvorlig eller svært
+alvorlig ME/CFS, er i risiko for at symptomene deres kan forveksles med
+tegn på overgrep eller omsorgssvikt.</p>
+<h4 id="section-35">1.7.2</h4>
+<p>Dersom en person med bekreftet eller mistenkt ME/CFS trenger en
+sikringsvurdering, skal helse- og omsorgsarbeidere med opplæring og
+erfaring i ME/CFS involveres direkte så snart som mulig.</p>
+<h4 id="section-36">1.7.3</h4>
+<p>Dersom en person med bekreftet eller mistenkt ME/CFS må vurderes
+etter <em>Mental Health Act 1983</em> eller <em>Mental Capacity Act
+2005</em>, skal helse- og omsorgsarbeidere med opplæring og erfaring i
+ME/CFS involveres direkte så snart som mulig.</p>
+<h4 id="section-37">1.7.4</h4>
+<p>Erkjenn at følgende ikke nødvendigvis er tegn på overgrep eller
+omsorgssvikt hos barn og unge med bekreftet eller mistenkt ME/CFS:</p>
+<ul>
+<li>fysiske symptomer som ikke passer til et alminnelig anerkjent
+sykdomsbilde</li>
+<li>at mer enn ett barn eller familiemedlem har ME/CFS</li>
+<li>at de, eller foreldrene eller omsorgspersonene på deres vegne, er
+uenige i, takker nei til eller trekker seg fra deler av pleie- og
+støtteplanen</li>
+<li>at foreldre eller omsorgspersoner opptrer som talspersoner og
+kommuniserer på deres vegne</li>
+<li>redusert eller manglende skolefremmøte.</li>
+</ul>
+<h4 id="section-38">1.7.5</h4>
+<p>Vær oppmerksom på at det å gjenkjenne og reagere på mulig mishandling
+og omsorgssvikt av barn er komplekst, og skal vurderes på samme måte for
+barn og unge med bekreftet eller mistenkt ME/CFS som for et hvilket som
+helst barn med kronisk sykdom eller funksjonsnedsettelse. Følg
+NICE-retningslinjene om <em>child maltreatment</em> og <em>child abuse
+and neglect</em>.</p>
+<h4 id="section-39">1.7.6</h4>
+<p>Tilby barn og unge med ME/CFS en gjennomgang av pleie- og
+støtteplanen minst hver 6. måned, og oftere ved behov, avhengig av
+alvorlighetsgraden og kompleksiteten i symptomene.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om sikring.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review B: information, education and
+support for health and social care professionals.</em></p>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i evidence
+review A: information, education and support for people with ME/CFS and
+their families and carers og appendix 1: involving children and young
+people.</em></p>
+</details><details class="nice-details" id="18">
+<summary>
+<strong>1.8 Tilgang til omsorg og støtte</strong>
+</summary>
+<p><em>Se også seksjonen om omsorg for personer med alvorlig eller svært
+alvorlig ME/CFS.</em></p>
+<h4 id="section-40">1.8.1</h4>
+<p>Organisasjoner som leverer helse- og omsorgstjenester, skal sikre at
+personer med ME/CFS kan bruke tjenestene ved å:</p>
+<ul>
+<li>tilpasse tidspunkt, lengde og hyppighet av alle avtaler til
+personens behov</li>
+<li>ta hensyn til fysisk tilgjengelighet, som hvor langt personen må
+reise, om det finnes egnet transport og parkering, og hvor møterommene
+ligger</li>
+<li>ta hensyn til overfølsomhet for lys, lyd, berøring, smerte,
+temperatursvingninger eller lukter</li>
+<li>levere omsorg fleksibelt tilpasset personens behov, for eksempel
+gjennom nett- eller telefonkonsultasjon eller hjemmebesøk.</li>
+</ul>
+<h4 id="section-41">1.8.2</h4>
+<p>Dersom en person med ME/CFS ikke møter til en avtale:</p>
+<ul>
+<li>ikke skriv personen ut av tilbudet på grunn av manglende oppmøte, da
+det kan skyldes forverring av symptomene</li>
+<li>drøft hvorfor personen ikke kunne møte, og hvordan det tverrfaglige
+teamet kan støtte dem.</li>
+</ul>
+<h4 id="section-42">1.8.3</h4>
+<p>Vær oppmerksom på at personer med ME/CFS sjelden blir sett når de er
+dårligst, fordi:</p>
+<ul>
+<li>invalidiserende symptomer, eller risikoen for at symptomene
+forverres, kan hindre personen i å forlate hjemmet</li>
+<li>kognitive vansker kan gjøre at personen venter med å ta kontakt til
+vedkommende opplever å kunne snakke og forklare seg tydelig.</li>
+</ul>
+<h3 id="sykehusomsorg">Sykehusomsorg</h3>
+<p><em>For å bedre tilgangen til sykehusets døgn- og dagbehandling for
+personer med ME/CFS, se anbefaling 1.8.1.</em></p>
+<h4 id="section-43">1.8.4</h4>
+<p>Drøft med personer som trenger døgnbehandling om det er sider ved
+stedet for omsorgen som kan være problematiske, herunder:</p>
+<ul>
+<li>hvor sengen er plassert på avdelingen (forsøk å tilby enerom dersom
+mulig)</li>
+<li>tilgjengelighet til toalett og vaskerom</li>
+<li>miljøfaktorer som lys, lyd, oppvarming og lukter.</li>
+</ul>
+<h3 id="opprettholdelse-av-selvstendighet">Opprettholdelse av
+selvstendighet</h3>
+<p><em>Se også anbefalingene om omsorgstjenester og støtte til familie
+og omsorgspersoner til personer med ME/CFS.</em></p>
+<h4 id="section-44">1.8.5</h4>
+<p>Dersom en person med ME/CFS trenger støtte hjemme, skal det
+gjennomføres en vurdering av omsorgsbehov. Som et minimum skal
+informasjon og støtte registreres og gis om:</p>
+<ul>
+<li>dagliglivets aktiviteter</li>
+<li>mobilitet, herunder forflytning fra seng til stol, tilgang til og
+bruk av toalett og vaskefasiliteter, bruk av trapper og tilgang til
+uteområder</li>
+<li>finmotorikk og balanse, herunder forebygging av fall</li>
+<li>personens hjem, herunder miljøkontroll for å redusere lysnivå,
+lydnivå og temperatursvingninger</li>
+<li>om hjelpemidler og tilpasninger er gjennomførbare</li>
+<li>tilgang til teknologi, inkludert internett</li>
+<li>hvor personen kan få økonomisk støtte og råd, for eksempel
+henvisning til veiledning om økonomistyring og individuelle ordninger
+med banker eller posttjenester for tilgang til egne finanser, samt
+hvordan man søker om omsorgs- og uføreytelser og tilskudd.</li>
+</ul>
+<h4 id="section-45">1.8.6</h4>
+<p>Gi familie og omsorgspersoner informasjon om hvordan de får tilgang
+til opplæring og ressurser om å ha omsorg for en person med ME/CFS (se
+NICE-retningslinjen <em>supporting adult carers</em>).</p>
+<h3 id="hjelpemidler-og-tilpasninger">Hjelpemidler og tilpasninger</h3>
+<h4 id="section-46">1.8.7</h4>
+<p>Legg til rette for rask vurdering av finansiering av
+hjemmetilpasninger. Dersom personen ikke er kvalifisert for
+finansiering, skal informasjon og støtte til å tilrettelegge hjemmet
+likevel tilbys.</p>
+<h4 id="section-47">1.8.8</h4>
+<p>For personer med moderat ME/CFS eller alvorlig eller svært alvorlig
+ME/CFS, vurder å gi eller anbefale hjelpemidler og tilpasninger (som
+rullestol, parkeringsbevis for forflytningshemmede eller trappeheis) som
+kan bidra til å opprettholde selvstendighet og livskvalitet, idet det
+tas hensyn til risiko og nytte. Inkluder dette i personens pleie- og
+støtteplan.</p>
+<h4 id="section-48">1.8.9</h4>
+<p>Lever hjelpemidler og tilpasninger som er identifisert i personens
+vurdering av omsorgsbehov uten forsinkelse, slik at personer med ME/CFS
+i størst mulig grad kan utføre dagliglivets aktiviteter og opprettholde
+livskvaliteten.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om tilgang til omsorg og støtte.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review C: accessing health and social care
+services.</em></p>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i evidence
+review A: information, education and support for people with ME/CFS and
+their families and carers og appendix 2: involving adults with severe
+ME/CFS.</em></p>
+</details><details class="nice-details" id="19">
+<summary>
+<strong>1.9 Å støtte personer med ME/CFS i arbeid, utdanning og
+opplæring</strong>
+</summary>
+<h4 id="section-49">1.9.1</h4>
+<p>Tilby å ta kontakt på personens vegne (med informert samtykke) med
+arbeidsgivere, utdanningsinstitusjoner og støttetjenester. Gi dem
+informasjon om ME/CFS, og drøft personens pleie- og støtteplan samt
+eventuelle tilpasninger som trengs.</p>
+<h4 id="section-50">1.9.2</h4>
+<p>Informer og drøft med personer med ME/CFS at:</p>
+<ul>
+<li>de kan ha rett til rimelige tilpasninger (i henhold til <em>Equality
+Act 2010</em>) for å kunne fortsette i eller gå tilbake til arbeid eller
+utdanning</li>
+<li>det kan være perioder der de ikke kan fortsette i arbeid eller
+utdanning</li>
+<li>noen opplever at det å gå tilbake til arbeid, skole eller studier
+forverrer symptomene.</li>
+</ul>
+<h4 id="section-51">1.9.3</h4>
+<p>Helse- og omsorgsarbeidere skal følge Department for Educations
+veiledning om å støtte elever på skolen med medisinske tilstander, eller
+tilsvarende lovfestet veiledning.</p>
+<h4 id="section-52">1.9.4</h4>
+<p>Helse- og omsorgsarbeidere skal samarbeide med opplærings- og
+utdanningstjenestene om å:</p>
+<ul>
+<li>gi informasjon om ME/CFS og om behovene og funksjonsnedsettelsene
+til barn og unge med ME/CFS, herunder behovet for balanse mellom ulike
+aktiviteter i livet</li>
+<li>drøfte barnets eller den unges pleie- og støtteplan slik at alle har
+en felles forståelse av prioriteringer, ønsker og planer</li>
+<li>drøfte en fleksibel tilnærming til opplæring og utdanning — dette
+kan omfatte tilpasninger av skoledagen, nettbasert undervisning eller
+hjemmeundervisning, og bruk av hjelpemidler.</li>
+</ul>
+<h4 id="section-53">1.9.5</h4>
+<p>Gi foreldre og omsorgspersoner informasjon om <em>education, health
+and care (EHC) plans</em> (utdannings-, helse- og omsorgsplaner) og
+hvordan de kan be om en slik plan fra kommunen.</p>
+<h4 id="section-54">1.9.6</h4>
+<p>Opplys barn og unge med ME/CFS og deres foreldre eller
+omsorgspersoner (der det er hensiktsmessig) om at:</p>
+<ul>
+<li>opplæring eller utdanning ikke skal være den eneste aktiviteten de
+foretar seg</li>
+<li>de skal tilstrebe balanse mellom tid brukt på utdanning eller
+opplæring, hjem og familieliv, og sosiale aktiviteter.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om å støtte personer med ME/CFS i arbeid,
+utdanning og opplæring.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review A: information, education and
+support for people with ME/CFS and their families and carers og appendix
+1: involving children and young people.</em></p>
+</details><details class="nice-details" id="110">
+<summary>
+<strong>1.10 Tverrfaglig omsorg</strong>
+</summary>
+<h4 id="section-55">1.10.1</h4>
+<p>Gi personer med ME/CFS omsorg gjennom en koordinert tverrfaglig
+tilnærming. Basert på personens behov skal det som et minimum være
+tilgang til helse- og omsorgsarbeidere med kompetanse innenfor følgende
+områder, med ytterligere kompetanse avhengig av symptomene:</p>
+<ul>
+<li>medisinsk vurdering og diagnose</li>
+<li>utarbeidelse av individuelle pleie- og støtteplaner</li>
+<li>strategier for egenhåndtering, inkludert energiforvaltning</li>
+<li>symptomhåndtering, inkludert forskrivning og
+legemiddelhåndtering</li>
+<li>håndtering av forverringsepisoder og tilbakefall</li>
+<li>dagliglivets aktiviteter, herunder tannhelse</li>
+<li>psykisk, emosjonell og sosial velvære, inkludert familie- og
+seksuelle relasjoner</li>
+<li>kosthold og ernæring</li>
+<li>mobilitet, forebygging av fall og problemer knyttet til tap av
+finmotorikk, inkludert tilgang til hjelpemidler og
+rehabiliteringstjenester</li>
+<li>omsorgstjenester og støtte</li>
+<li>støtte til deltakelse i arbeid, utdanning, sosiale aktiviteter og
+fritidsinteresser.</li>
+</ul>
+<h4 id="section-56">1.10.2</h4>
+<p>Omsorg for personer med ME/CFS som håndteres i primærhelsetjenesten,
+skal støttes av råd og direkte klinisk konsultasjon fra et
+ME/CFS-spesialistteam.</p>
+<h4 id="section-57">1.10.3</h4>
+<p>Gi voksne, barn og unge med ME/CFS og deres familie eller
+omsorgspersoner (der det er hensiktsmessig) en utpekt kontaktperson i
+primærhelsetjenesten og/eller ME/CFS-spesialistteamet som kan koordinere
+pleie- og støtteplanen, hjelpe dem å få tilgang til tjenester, og støtte
+dem i perioder med tilbakefall.</p>
+<h4 id="section-58">1.10.4</h4>
+<p>Gi barn og unge med ME/CFS og deres familie eller omsorgspersoner
+(der det er hensiktsmessig) opplysninger om en utpekt fagperson i
+ME/CFS-spesialistteamet som de kan kontakte ved eventuelle bekymringer
+om barnets eller den unges helse, utdanning eller sosiale liv.</p>
+<h3 id="overgang-til-voksentjenester">Overgang til voksentjenester</h3>
+<h4 id="section-59">1.10.5</h4>
+<p>For unge voksne med ME/CFS som går over fra barne- til
+voksentjenester, skal overgangen håndteres i tråd med
+NICE-retningslinjen <em>transition from children’s to adults’ services
+for young people using health or social care services</em>.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om tverrfaglig omsorg.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review I: multidisciplinary care og
+evidence review C: accessing health and social care services.</em></p>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i evidence
+review A: information, education and support for people with ME/CFS and
+their families and carers og appendix 1: involving children and young
+people.</em></p>
+</details><details class="nice-details" id="111">
+<summary>
+<strong>1.11 Håndtering av ME/CFS</strong>
+</summary>
+<h4 id="section-60">1.11.1</h4>
+<p>Vær oppmerksom på at symptomer ved ME/CFS kan håndteres, men det
+finnes for tiden ingen kur (verken ikke-medikamentell eller
+medikamentell) mot ME/CFS.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen og hvordan den kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om håndtering av ME/CFS.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i:</em></p>
+<ul>
+<li><em>evidence review F: pharmacological interventions</em></li>
+<li><em>evidence review G: non-pharmacological management of
+ME/CFS</em></li>
+<li><em>evidence review H: appendices for the management of
+ME/CFS.</em></li>
+</ul>
+<h3 id="energiforvaltning">Energiforvaltning</h3>
+<p><em>Se også seksjonen om omsorg for personer med alvorlig eller svært
+alvorlig ME/CFS.</em></p>
+<h4 id="section-61">1.11.2</h4>
+<p>Drøft med personer med ME/CFS prinsippene for energiforvaltning,
+mulige fordeler og risikoer, og hva de kan forvente. Forklar at
+energiforvaltning:</p>
+<ul>
+<li>ikke er kurativ</li>
+<li>er en egenhåndteringsstrategi som ledes av personen selv, med støtte
+fra helsepersonell i et ME/CFS-spesialistteam</li>
+<li>omfatter alle typer aktivitet (kognitiv, fysisk, emosjonell og
+sosial), og tar hensyn til det samlede aktivitetsnivået</li>
+<li>hjelper personer å bruke den energien de har, samtidig som risikoen
+for anstrengelsesutløst symptomforverring (PEM) eller forverring ved å
+overskride egne grenser reduseres</li>
+<li>erkjenner at hver person har en individuell og varierende
+energigrense, og at personen selv er ekspert på å vurdere egne
+grenser</li>
+<li>kan omfatte hjelp fra helsepersonell til å gjenkjenne når personen
+nærmer seg grensen sin (barn og unge kan særlig ha vansker med å vurdere
+egne grenser, og kan overskride dem)</li>
+<li>bruker en fleksibel, tilpasset tilnærming der aktivitet aldri økes
+automatisk, men opprettholdes eller justeres (oppover etter en stabil
+periode, eller nedover ved forverring av symptomer)</li>
+<li>er en langsiktig tilnærming — det kan ta uker, måneder eller noen
+ganger til og med år å oppnå stabilisering eller å øke toleranse eller
+aktivitet.</li>
+</ul>
+<h4 id="section-62">1.11.3</h4>
+<p>Hjelp personer med ME/CFS å utarbeide en plan for energiforvaltning
+som en del av pleie- og støtteplanen. Støtt dem i å etablere realistiske
+forventninger og utvikle mål som er meningsfulle for dem. Drøft og
+dokumenter følgende i planen, sammen med alt annet som er viktig for
+personen:</p>
+<ul>
+<li>kognitiv aktivitet</li>
+<li>mobilitet og annen fysisk aktivitet</li>
+<li>evne til å utføre dagliglivets aktiviteter</li>
+<li>psykiske, emosjonelle og sosiale krav, inkludert familie- og
+seksuelle relasjoner</li>
+<li>hvile og avslapning (både kvalitet og varighet)</li>
+<li>søvnkvalitet og søvnvarighet</li>
+<li>virkningen av miljøfaktorer, inkludert sansestimulering.</li>
+</ul>
+<h4 id="section-63">1.11.4</h4>
+<p>Arbeid sammen med personen for å etablere et individuelt
+aktivitetsmønster innenfor personens nåværende energigrenser som
+minimerer symptomer. For eksempel:</p>
+<ul>
+<li>bli enig om et bærekraftig aktivitetsnivå som første skritt, noe som
+kan innebære å redusere aktivitet</li>
+<li>planlegg perioder med hvile og aktivitet, og innarbeid behovet for
+forebyggende hvile</li>
+<li>veksle og varier mellom ulike typer aktivitet, og del opp
+aktiviteter i små deler.</li>
+</ul>
+<h4 id="section-64">1.11.5</h4>
+<p>Bli enig med personen om hvor ofte energiforvaltningsplanen skal
+gjennomgås, og revider den ved behov.</p>
+<h4 id="section-65">1.11.6</h4>
+<p>Gi personer med ME/CFS råd om hvordan de skal håndtere
+forverringsepisoder og tilbakefall (se seksjonen om håndtering av
+forverringsepisoder og tilbakefall).</p>
+<h4 id="section-66">1.11.7</h4>
+<p>Gjør egenmåling av aktivitet så enkelt som mulig ved å benytte
+verktøy personen allerede bruker, som aktivitetsmåler, pulsmåler på
+telefon eller dagbok.</p>
+<h4 id="section-67">1.11.8</h4>
+<p>Henvis personer med ME/CFS til en fysioterapeut eller ergoterapeut
+som arbeider i et ME/CFS-spesialistteam dersom de:</p>
+<ul>
+<li>har vansker som skyldes redusert fysisk aktivitet eller mobilitet
+(se også seksjonene om fysisk funksjon og mobilitet, og om omsorg for
+personer med alvorlig eller svært alvorlig ME/CFS), eller</li>
+<li>føler seg klare til å øke sin fysiske aktivitet utover det nivået de
+har i dagliglivets aktiviteter (se seksjonen om fysisk aktivitet og
+trening), eller</li>
+<li>ønsker å innlemme et program for fysisk aktivitet eller trening i
+håndteringen av ME/CFS (se seksjonen om å innlemme fysisk aktivitet og
+trening).</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om energiforvaltning.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i evidence
+review A: information, education and support for people with ME/CFS and
+their families and carers og appendix 2: involving adults with severe
+ME/CFS.</em></p>
+<h3 id="å-innlemme-fysisk-aktivitet-og-trening">Å innlemme fysisk
+aktivitet og trening</h3>
+<h4 id="section-68">1.11.9</h4>
+<p>Ikke råd personer med ME/CFS til å drive trening som ikke er en del
+av et program overvåket av et ME/CFS-spesialistteam, for eksempel ved å
+si at de skal gå på treningssenter eller trene mer, fordi dette kan
+forverre symptomene.</p>
+<h4 id="section-69">1.11.10</h4>
+<p>Vurder kun et personlig tilpasset program for fysisk aktivitet eller
+trening til personer med ME/CFS som:</p>
+<ul>
+<li>føler seg klare til å øke sin fysiske aktivitet utover det nivået de
+har i dagliglivets aktiviteter, eller</li>
+<li>ønsker å innlemme fysisk aktivitet eller trening i håndteringen av
+ME/CFS.</li>
+</ul>
+<h4 id="section-70">1.11.11</h4>
+<p>Informer personer om risiko og nytte ved programmer for fysisk
+aktivitet og trening. Forklar at noen personer med ME/CFS har erfart at
+slike programmer kan forverre symptomene, for noen gjør de ingen
+forskjell, og andre opplever dem som nyttige.</p>
+<h4 id="section-71">1.11.12</h4>
+<p>Dersom det tilbys et program for fysisk aktivitet eller trening, skal
+det overvåkes av en fysioterapeut i et ME/CFS-spesialistteam.</p>
+<h4 id="section-72">1.11.13</h4>
+<p>Dersom en person med ME/CFS tar imot tilbudet om et personlig
+tilpasset program for fysisk aktivitet eller trening, skal det avtales
+et program som inneholder følgende, og det skal gjennomgås jevnlig:</p>
+<ul>
+<li>etablering av personens baseline for fysisk aktivitet på et nivå som
+ikke forverrer symptomene</li>
+<li>innledningsvis reduksjon av fysisk aktivitet til under
+baseline-nivået</li>
+<li>vellykket opprettholdelse av dette nivået i en periode før man
+forsøker å øke aktiviteten</li>
+<li>fleksible justeringer av den fysiske aktiviteten (opp eller ned
+etter behov) for å hjelpe personen til gradvis å bedre den fysiske
+kapasiteten, innenfor energigrensene</li>
+<li>tidlig gjenkjenning av forverringsepisode eller tilbakefall, og
+beskrivelse av hvordan den skal håndteres.</li>
+</ul>
+<h4 id="section-73">1.11.14</h4>
+<p>Ikke tilby personer med ME/CFS:</p>
+<ul>
+<li>noen terapi basert på fysisk aktivitet eller trening som kur mot
+ME/CFS</li>
+<li>generaliserte programmer for fysisk aktivitet eller trening — dette
+omfatter programmer utviklet for friske personer eller personer med
+andre sykdommer</li>
+<li>noe program som ikke følger tilnærmingen i anbefaling 1.11.13, eller
+som bruker faste trinnvise økninger i fysisk aktivitet eller trening,
+for eksempel gradert treningsterapi (GET) (se Boks 4)</li>
+<li>programmer for fysisk aktivitet eller trening som bygger på teorier
+om dekondisjonering og treningsunngåelse som opprettholdende faktorer
+ved ME/CFS.</li>
+</ul>
+
+<details class="nice-details boks" id="boks-4-definisjon-av-gradert-treningsterapi-get"><summary><span class="anchor-alias" id="boks-4"></span><strong>Boks 4 —
+Definisjon av gradert treningsterapi (GET)</strong></summary><p>Gradert treningsterapi er et begrep som brukes på ulike måter av
+ulike tjenester som støtter personer med ME/CFS.</p><p>I denne retningslinjen defineres gradert treningsterapi som først å
+etablere en persons baseline av oppnåelig trening eller fysisk
+aktivitet, og deretter gjøre faste trinnvise økninger i tiden brukt på
+fysisk aktivitet. Denne definisjonen av gradert treningsterapi
+gjenspeiler beskrivelsene i det gjennomgåtte kunnskapsgrunnlaget, og det
+er denne tilnærmingen retningslinjen sier ikke skal benyttes.</p><p>En individualisert tilnærming som skal brukes for personer med ME/CFS
+som velger å gjennomføre et program for fysisk aktivitet eller trening,
+er beskrevet i anbefaling 1.11.10 til 1.11.13.</p></details>
+<h3 id="forverringsepisoder-og-tilbakefall">Forverringsepisoder og
+tilbakefall</h3>
+<h4 id="section-74">1.11.15</h4>
+<p>Bli enig med personen om hvordan fysisk aktivitet skal justeres under
+en forverringsepisode eller et tilbakefall. Dette skal omfatte:</p>
+<ul>
+<li>tilgang til oppfølging og støtte fra en fysioterapeut i et
+ME/CFS-spesialistteam</li>
+<li>stabilisering av symptomene ved å redusere fysisk aktivitet til
+innenfor personens nåværende energigrenser</li>
+<li>først når symptomene stabiliserer seg og personen føler seg i stand
+til å gjenoppta fysisk aktivitet, skal det etableres en ny baseline for
+fysisk aktivitet.</li>
+</ul>
+<h4 id="section-75">1.11.16</h4>
+<p>Informer personer med ME/CFS etter en forverringsepisode om at tiden
+det tar å vende tilbake til det fysiske aktivitetsnivået de hadde før,
+varierer fra person til person.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om å innlemme fysisk aktivitet og
+trening.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i:</em></p>
+<ul>
+<li><em>evidence review G: non-pharmacological management of
+ME/CFS</em></li>
+<li><em>evidence review H: appendices for the management of
+ME/CFS</em></li>
+<li><em>evidence review A: information, education and support for people
+with ME/CFS and their families and carers</em></li>
+<li><em>appendix 1: involving children and young people.</em></li>
+</ul>
+</details><details class="nice-details" id="112">
+<summary>
+<strong>1.12 Symptomhåndtering for personer med ME/CFS</strong>
+</summary>
+<p><em>Henvis til relevant NICE-veiledning for håndtering av symptomer
+som ikke er dekket i denne seksjonen, og ta hensyn til anbefalingene i
+seksjonene om prinsipper for omsorg for personer med ME/CFS, tilgang til
+omsorg og støtte, og energiforvaltning.</em></p>
+<h3 id="hvile-og-søvn">Hvile og søvn</h3>
+<h4 id="section-76">1.12.1</h4>
+<p>Informer personer med ME/CFS:</p>
+<ul>
+<li>om hvile sin rolle ved ME/CFS</li>
+<li>om at hvileperioder inngår i alle håndteringsstrategier for
+ME/CFS</li>
+<li>om hvordan hvileperioder kan innlemmes i den daglige rutinen,
+inkludert hvor ofte og hvor lenge, tilpasset hver enkelt</li>
+<li>om at avspenningsteknikker ved starten av hver hvileperiode kan være
+nyttige.</li>
+</ul>
+<h4 id="section-77">1.12.2</h4>
+<p>Gi personer med ME/CFS individuelt tilpasset veiledning om
+søvnhåndtering, som inkluderer:</p>
+<ul>
+<li>forklaring av søvnforstyrrelse sin rolle og virkning ved ME/CFS</li>
+<li>identifisering av vanlige endringer i søvnmønster sett ved ME/CFS
+(som avbrutt eller overflatisk søvn, endret søvnmønster eller
+hypersomni)</li>
+<li>utvikling av gode søvnvaner</li>
+<li>vurdering av behovet for hvile i løpet av dagen, balansert mot
+hvordan personen sover om natten</li>
+<li>gradvis innføring av endringer i søvnmønster.</li>
+</ul>
+<h4 id="section-78">1.12.3</h4>
+<p>Dersom søvnhåndteringsstrategier ikke forbedrer personens søvn og
+hvile, vurder muligheten for en underliggende søvnsykdom eller
+-dysfunksjon, og om det er behov for henvisning til relevant
+spesialist.</p>
+<h4 id="section-79">1.12.4</h4>
+<p>Gjennomgå jevnlig bruken av hvileperioder og
+søvnhåndteringsstrategier som en del av personens pleie- og
+støtteplan.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om hvile og søvn.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+<h3 id="fysisk-funksjon-og-mobilitet">Fysisk funksjon og mobilitet</h3>
+<h4 id="section-80">1.12.5</h4>
+<p>Inkluder strategier for å opprettholde og forhindre forverring av
+fysisk funksjon og mobilitet i pleie- og støtteplanen til personer med
+ME/CFS. Disse strategiene kan måtte utføres i små doser fordelt utover
+dagen. Vurder å inkludere følgende:</p>
+<ul>
+<li>leddmobilitet</li>
+<li>muskelfleksibilitet</li>
+<li>balanse</li>
+<li>støtte til holdning og stilling</li>
+<li>muskelfunksjon</li>
+<li>skjeletthelse</li>
+<li>kardiovaskulær helse.</li>
+</ul>
+<h4 id="section-81">1.12.6</h4>
+<p>Ved hvert kontaktpunkt skal personer med alvorlig eller svært
+alvorlig ME/CFS, eller personer med lange perioder med immobilitet,
+vurderes for:</p>
+<ul>
+<li>områder med risiko for trykksår (se NICE-retningslinjen <em>pressure
+ulcers</em>)</li>
+<li>dyp venetrombose (se NICE-retningslinjen <em>venous thromboembolic
+diseases</em>)</li>
+<li>risiko for kontrakturer.</li>
+</ul>
+<h4 id="section-82">1.12.7</h4>
+<p>Gi personer med ME/CFS og deres familie eller omsorgspersoner (der
+det er hensiktsmessig) informasjon, råd og støtte om hvordan mulige
+komplikasjoner av langvarig immobilitet kan gjenkjennes og
+forebygges.</p>
+<h4 id="section-83">1.12.8</h4>
+<p>Gi familie og omsorgspersoner informasjon, råd og støtte om hvordan
+de kan hjelpe personer med ME/CFS å følge pleie- og støtteplanen når det
+gjelder fysisk funksjon og mobilitet. Dette kan omfatte:</p>
+<ul>
+<li>mobilitet i seng</li>
+<li>forflytning fra liggende til sittende til stående stilling</li>
+<li>forflytning fra seng til stol</li>
+<li>bruk av mobilitetshjelpemidler</li>
+<li>gange</li>
+<li>leddmobilitet</li>
+<li>muskeltøyning</li>
+<li>muskelstyrke</li>
+<li>balanse</li>
+<li>å gå opp og ned trapper.</li>
+</ul>
+<p><em>For opplæring i å gi omsorg og støtte, se NICE-retningslinjen
+</em>supporting adult carers<em>.</em></p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om fysisk funksjon og mobilitet.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+<h3 id="ortostatisk-intoleranse">Ortostatisk intoleranse</h3>
+<h4 id="section-84">1.12.9</h4>
+<p>Vær oppmerksom på at personer med ME/CFS kan oppleve ortostatisk
+intoleranse, inkludert postural ortostatisk takykardi-syndrom
+(POTS).</p>
+<h4 id="section-85">1.12.10</h4>
+<p>Legemiddelbehandling for ortostatisk intoleranse hos personer med
+ME/CFS skal kun forskrives eller overvåkes av helsepersonell med
+kompetanse innenfor ortostatisk intoleranse.</p>
+<h4 id="section-86">1.12.11</h4>
+<p>Henvis personer med ortostatisk intoleranse til
+spesialisthelsetjenesten dersom symptomene er alvorlige eller forverres,
+eller dersom det er bekymring for at en annen tilstand kan være
+årsaken.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om ortostatisk intoleranse.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+<h3 id="smerter">Smerter</h3>
+<h4 id="section-87">1.12.12</h4>
+<p>Vær oppmerksom på at smerter er et symptom som ofte er forbundet med
+ME/CFS.</p>
+<h4 id="section-88">1.12.13</h4>
+<p>Utred og håndter personens smerter i tråd med beste praksis, og
+henvis til spesialisttjeneste for smerter der det er hensiktsmessig.</p>
+<h4 id="section-89">1.12.14</h4>
+<p>Se følgende for råd om behandling av nevropatiske smerter eller
+hodepine:</p>
+<ul>
+<li>NICE-retningslinjen <em>neuropathic pain in adults</em></li>
+<li>NICE-retningslinjen <em>headaches in over 12s</em>.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om smerter.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+<h3 id="legemidler">Legemidler</h3>
+<h4 id="section-90">1.12.15</h4>
+<p>Ikke tilby legemidler eller kosttilskudd som kur mot ME/CFS.</p>
+<h4 id="legemidler-for-symptomhåndtering">Legemidler for
+symptomhåndtering</h4>
+<h4 id="section-91">1.12.16</h4>
+<p>Tilby personer med ME/CFS en legemiddelgjennomgang i tråd med
+NICE-retningslinjene <em>medicines adherence</em> og <em>medicines
+optimisation</em>.</p>
+<h4 id="section-92">1.12.17</h4>
+<p>Ta hensyn ved forskrivning til at personer med ME/CFS kan være mindre
+tolerante for legemiddelbehandling. Vurder å:</p>
+<ul>
+<li>starte med legemidler i lavere dose enn det som er vanlig i klinisk
+praksis</li>
+<li>øke dosen gradvis dersom legemidlet tolereres.</li>
+</ul>
+<h4 id="section-93">1.12.18</h4>
+<p>Legemiddelbehandling for symptomer forbundet med ME/CFS hos barn og
+unge skal kun startes under veiledning eller tilsyn av medisinsk
+fagperson med opplæring og erfaring i forskrivning til barn.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om legemidler.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review F: pharmacological
+interventions.</em></p>
+<h3 id="kostholdshåndtering-og--strategier">Kostholdshåndtering og
+-strategier</h3>
+<p><em>Se også seksjonen om omsorg for personer med alvorlig eller svært
+alvorlig ME/CFS.</em></p>
+<h4 id="section-94">1.12.19</h4>
+<p>Understrek for personer med ME/CFS viktigheten av tilstrekkelig
+væskeinntak og et godt sammensatt kosthold i tråd med NHS’ <em>eat well
+guide</em>.</p>
+<h4 id="section-95">1.12.20</h4>
+<p>Arbeid sammen med personen og deres familie eller omsorgspersoner
+(der det er hensiktsmessig) for å finne måter å minimere komplikasjoner
+forårsaket av gastrointestinale symptomer (som kvalme), endringer i
+appetitt, svelgevansker, sår hals eller vansker med å kjøpe inn,
+tilberede og spise mat.</p>
+<h4 id="section-96">1.12.21</h4>
+<p>Oppmuntre personer med ME/CFS som har kvalme til å opprettholde
+tilstrekkelig væskeinntak, og råd dem til å forsøke å spise regelmessig,
+med små porsjoner ofte. Forklar at det å ikke spise eller drikke kan øke
+kvalmen.</p>
+<h4 id="section-97">1.12.22</h4>
+<p>Henvis personer med ME/CFS til en kostholdsvurdering hos en klinisk
+ernæringsfysiolog med særlig interesse for ME/CFS dersom de:</p>
+<ul>
+<li>går ned i vekt og er i risiko for underernæring</li>
+<li>går opp i vekt</li>
+<li>følger en restriktiv diett.</li>
+</ul>
+<h4 id="section-98">1.12.23</h4>
+<p>Vær oppmerksom på at personer med ME/CFS kan være i risiko for
+vitamin D-mangel, særlig de som er husbundne eller sengeliggende. For
+råd om vitamin D-tilskudd, se NICE-retningslinjen <em>vitamin
+D</em>.</p>
+<h4 id="section-99">1.12.24</h4>
+<p>Forklar personer med ME/CFS at det ikke finnes tilstrekkelig
+kunnskapsgrunnlag for rutinemessig bruk av vitamin- og mineraltilskudd
+som kur mot ME/CFS eller for symptomhåndtering. Dersom de velger å ta et
+vitamin- eller mineraltilskudd, forklar mulige bivirkninger ved doser
+over anbefalt daglig inntak.</p>
+<h4 id="section-100">1.12.25</h4>
+<p>Henvis barn og unge med ME/CFS som går ned i vekt, har mangelfull
+vekst eller kostholdsrestriksjoner, til en klinisk ernæringsfysiolog for
+barn med særlig interesse for ME/CFS.</p>
+<h4 id="section-101">1.12.26</h4>
+<p>For råd om matallergi hos barn, se NICE-retningslinjen <em>food
+allergy in under 19s</em>.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om kostholdshåndtering og
+-strategier.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+<h3 id="lightning-process">Lightning Process</h3>
+<h4 id="section-102">1.12.27</h4>
+<p>Ikke tilby Lightning Process, eller terapier basert på denne, til
+personer med ME/CFS.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen og hvordan den kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om Lightning Process.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+<h3 id="kognitiv-atferdsterapi-cbt">Kognitiv atferdsterapi (CBT)</h3>
+<p><em>Se også seksjonen om omsorg for personer med alvorlig eller svært
+alvorlig ME/CFS.</em></p>
+<h4 id="section-103">1.12.28</h4>
+<p>Drøft kognitiv atferdsterapi (CBT) med voksne, barn og unge med
+ME/CFS (og deres foreldre eller omsorgspersoner, der det er
+hensiktsmessig). Forklar:</p>
+<ul>
+<li>prinsippene for CBT, inkludert at det kan hjelpe dem med å håndtere
+symptomene, men at det ikke er kurativt (se Boks 5), og</li>
+<li>mulige fordeler og risikoer.</li>
+</ul>
+
+<details class="nice-details boks" id="boks-5-kognitiv-atferdsterapi-cbt"><summary><span class="anchor-alias" id="boks-5"></span><strong>Boks 5 — Kognitiv
+atferdsterapi (CBT)</strong></summary><p>Komiteen ønsket å understreke at kognitiv atferdsterapi (CBT) av og
+til har blitt antatt å være en kur mot ME/CFS. CBT skal imidlertid kun
+tilbys for å støtte personer som lever med ME/CFS i å håndtere
+symptomene sine, bedre funksjonen og redusere belastningen forbundet med
+å leve med en kronisk sykdom.</p></details>
+<h4 id="section-104">1.12.29</h4>
+<p>Tilby kun CBT til voksne, barn og unge med ME/CFS dersom de, etter
+drøfting (se anbefaling 1.12.28), ønsker å bruke det som støtte i
+håndteringen av symptomene.</p>
+<h4 id="section-105">1.12.30</h4>
+<p>For barn og unge med ME/CFS som ønsker å bruke CBT:</p>
+<ul>
+<li>involver foreldre eller omsorgspersoner (der det er hensiktsmessig)
+i terapien der det er mulig</li>
+<li>tilpass terapien til barnets eller den unges kognitive og
+emosjonelle utviklingstrinn.</li>
+</ul>
+<p><em>Se også seksjonen om prinsipper for omsorg for personer med
+ME/CFS (inkludert tilleggsprinsipper for omsorg for barn og unge med
+ME/CFS).</em></p>
+<h4 id="section-106">1.12.31</h4>
+<p>CBT skal kun leveres av helsepersonell med relevant opplæring og
+erfaring i CBT for ME/CFS, og under klinisk veiledning av en person med
+særlig kompetanse i CBT for ME/CFS.</p>
+<h4 id="section-107">1.12.32</h4>
+<p>Forklar at CBT for personer med ME/CFS:</p>
+<ul>
+<li>har som mål å bedre livskvaliteten, inkludert funksjonen, og å
+redusere belastningen forbundet med å leve med en kronisk sykdom</li>
+<li>forutsetter ikke at personene har «unormale» sykdomsoppfatninger og
+-atferder som underliggende årsak til ME/CFS, men anerkjenner at tanker,
+følelser, atferd og fysiologi påvirker hverandre gjensidig.</li>
+</ul>
+<h4 id="section-108">1.12.33</h4>
+<p>Forklar hva CBT innebærer, slik at personene vet hva de kan forvente.
+Fortell dem at CBT:</p>
+<ul>
+<li>har en ikke-fordømmende, støttende tilnærming til personens
+opplevelse av symptomene og de utfordringene disse medfører</li>
+<li>er en samarbeidende, strukturert og tidsavgrenset intervensjon som
+fokuserer på de vanskene personen har i nåtid</li>
+<li>innebærer tett samarbeid med terapeuten for å etablere strategier
+mot mål og prioriteringer som personen selv har valgt</li>
+<li>tar hensyn til at symptomer er individuelle for hver enkelt, kan
+variere i alvorlighetsgrad og kan endre seg over tid.</li>
+</ul>
+<h4 id="section-109">1.12.34</h4>
+<p>CBT for personer med ME/CFS skal inneholde følgende komponenter:</p>
+<ul>
+<li>utvikling av en felles forståelse med personen om de sentrale
+vanskene og utfordringene personen står overfor</li>
+<li>utforskning av personens individuelle forståelse av symptomene og
+sykdommen sin, og hvordan dette kan henge sammen med hvordan personen
+håndterer symptomene</li>
+<li>utvikling av en egenhåndteringsplan</li>
+<li>samarbeid om å tilpasse og forfine egenhåndteringsstrategier for å
+bedre personens funksjon og livskvalitet, for eksempel søvn, aktivitet
+og hvile</li>
+<li>jevnlig gjennomgang av planen for å se om egenhåndteringsstrategiene
+må justeres, for eksempel dersom symptomer eller funksjon endrer
+seg</li>
+<li>utvikling av et <em>terapi-blueprint</em> i samarbeid med terapeuten
+ved avslutning av terapiforløpet.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om kognitiv atferdsterapi.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i:</em></p>
+<ul>
+<li><em>evidence review G: non-pharmacological management of
+ME/CFS</em></li>
+<li><em>evidence review H: appendices for the management of
+ME/CFS</em></li>
+<li><em>appendix 2: involving adults with severe ME/CFS.</em></li>
+</ul>
+</details><details class="nice-details" id="113">
+<summary>
+<strong>1.13 Håndtering av komorbide tilstander</strong>
+</summary>
+<h4 id="section-110">1.13.1</h4>
+<p>Vær oppmerksom på at andre tilstander kan forekomme samtidig med
+ME/CFS, og skal utredes og håndteres i tråd med beste praksis.</p>
+<h4 id="section-111">1.13.2</h4>
+<p>Ved håndtering av komorbide tilstander hos personer med ME/CFS, ta
+hensyn til anbefalingene i seksjonene om prinsipper for omsorg for
+personer med ME/CFS, tilgang til omsorg og støtte, og
+energiforvaltning.</p>
+<h4 id="section-112">1.13.3</h4>
+<p>For anbefalinger om multimorbiditet, tyreoideasykdom og irritabel
+tarm-syndrom hos voksne, se:</p>
+<ul>
+<li>NICE-retningslinjen <em>multimorbidity</em></li>
+<li>NICE-retningslinjen <em>thyroid disease</em></li>
+<li>NICE-retningslinjen <em>irritable bowel syndrome in
+adults</em>.</li>
+</ul>
+<h4 id="section-113">1.13.4</h4>
+<p>For anbefalinger om identifisering og behandling av tilhørende eller
+komorbid angst, depresjon eller stemningslidelser, se:</p>
+<ul>
+<li>NICE-retningslinjen <em>depression in adults</em></li>
+<li>NICE-retningslinjen <em>depression in adults with a chronic physical
+health problem</em></li>
+<li>NICE-retningslinjen <em>depression in children and young
+people</em></li>
+<li>NICE-retningslinjen <em>generalised anxiety disorder and panic
+disorder in adults</em></li>
+<li>NICE-retningslinjen <em>common mental health problems</em>.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om håndtering av komorbide
+tilstander.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review D: identifying and diagnosing
+ME/CFS.</em></p>
+</details><details class="nice-details" id="114">
+<summary>
+<strong>1.14 Håndtering av forverringsepisoder og tilbakefall</strong>
+</summary>
+<h4 id="section-114">1.14.1</h4>
+<p>Forklar at forverringsepisoder og tilbakefall kan forekomme ved
+ME/CFS selv når personens symptomer er godt håndtert.</p>
+<h4 id="section-115">1.14.2</h4>
+<p>Fortell personer med ME/CFS at:</p>
+<ul>
+<li>de sannsynligvis har en forverringsepisode dersom de opplever en
+forverring av symptomene utover normal daglig variasjon, som varer i
+noen dager</li>
+<li>et tilbakefall er en vedvarende og markert forverring av
+ME/CFS-symptomer som varer lenger enn en forverringsepisode, og som
+krever betydelig og vedvarende justering av energiforvaltningen.</li>
+</ul>
+<h4 id="section-116">1.14.3</h4>
+<p>Inkluder veiledning om håndtering av forverringsepisoder og
+tilbakefall i personens pleie- og støtteplan.</p>
+<h4 id="section-117">1.14.4</h4>
+<p>Vurder og utred alle nye symptomer eller endringer i symptomer, og
+ikke anta at de skyldes personens ME/CFS.</p>
+<h4 id="section-118">1.14.5</h4>
+<p>Drøft og bli enig med personen med ME/CFS om
+egenhåndteringsstrategier for raskt å kunne reagere dersom personen får
+en forverringsepisode eller et tilbakefall, og dokumenter disse i pleie-
+og støtteplanen. Dette skal omfatte:</p>
+<ul>
+<li><strong>Ved en forverringsepisode:</strong>
+<ul>
+<li>identifisere mulige utløsere, som akutt sykdom eller
+overanstrengelse (i noen tilfeller kan det ikke finnes noen klar
+utløser)</li>
+<li>midlertidig redusere aktivitetsnivåene</li>
+<li>overvåke symptomene, og erkjenne at selv om forverringsepisoder er
+forbigående, kan enkelte utvikle seg til et tilbakefall</li>
+<li>ikke å vende tilbake til vanlige aktivitetsnivåer før
+forverringsepisoden har avtatt.</li>
+</ul></li>
+<li><strong>Ved et tilbakefall:</strong>
+<ul>
+<li>redusere, eller helt stoppe, enkelte aktiviteter</li>
+<li>øke hyppigheten eller varigheten av hvileperioder</li>
+<li>ny vurdering av energigrenser for å stabilisere symptomene.</li>
+</ul></li>
+</ul>
+<h4 id="section-119">1.14.6</h4>
+<p>Dersom en forverringsepisode eller et tilbakefall ikke kan håndteres
+ved bruk av egenhåndteringsstrategiene beskrevet i personens pleie- og
+støtteplan, eller personen er bekymret over nye symptomer eller
+endringer i symptomer, råd personen til å kontakte sin utpekte
+kontaktperson i primærhelsetjenesten eller ME/CFS-spesialistteamet.</p>
+<h4 id="section-120">1.14.7</h4>
+<p>Når en person med ME/CFS har et tilbakefall, gjennomgå pleie- og
+støtteplanen sammen med personen (ved behov), og drøft og bli enig om et
+handlingsforløp, med hensyn til:</p>
+<ul>
+<li>mulige årsaker til tilbakefallet, dersom disse er kjent</li>
+<li>symptomenes karakter</li>
+<li>tilbakefallets alvorlighetsgrad og varighet (husk at dette kan være
+år).</li>
+</ul>
+<h3 id="etter-en-forverringsepisode-eller-et-tilbakefall">Etter en
+forverringsepisode eller et tilbakefall</h3>
+<h4 id="section-121">1.14.8</h4>
+<p>Når en forverringsepisode eller et tilbakefall har avtatt eller
+stabilisert seg, drøft med personen:</p>
+<ul>
+<li>om pleie- og støtteplanen må gjennomgås og justeres for å gjenspeile
+nåværende symptomer og energigrense dersom disse er forskjellige fra før
+forverringsepisoden eller tilbakefallet (for personer som deltar i
+programmer for fysisk aktivitet eller trening, se anbefaling 1.11.15 og
+1.11.16)</li>
+<li>personens erfaring med forverringsepisoden eller tilbakefallet, for
+å avgjøre om det kan etableres strategier for å håndtere mulige utløsere
+i framtiden.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om håndtering av forverringsepisoder og
+tilbakefall.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p>
+</details><details class="nice-details" id="115">
+<summary>
+<strong>1.15 Oppfølging i primærhelsetjenesten</strong>
+</summary>
+<h4 id="section-122">1.15.1</h4>
+<p>Tilby voksne med ME/CFS en gjennomgang av pleie- og støtteplanen i
+primærhelsetjenesten minst én gang i året.</p>
+<h4 id="section-123">1.15.2</h4>
+<p>Tilby barn og unge med ME/CFS en gjennomgang av pleie- og
+støtteplanen minst hver 6. måned.</p>
+<h4 id="section-124">1.15.3</h4>
+<p>Organiser hyppigere oppfølging i primærhelsetjenesten for barn, unge
+og voksne med ME/CFS etter behov, avhengig av symptomenes
+alvorlighetsgrad og kompleksitet, samt effekten av eventuell
+symptomhåndtering.</p>
+<h4 id="section-125">1.15.4</h4>
+<p>Ved gjennomføring av oppfølging i primærhelsetjenesten, sørg for
+tilgang til personens pleie- og støtteplan og alle kliniske meldinger
+fra ME/CFS-spesialistteamet (inkludert epikrise, der det er
+aktuelt).</p>
+<h4 id="section-126">1.15.5</h4>
+<p>Som del av oppfølgingen, drøft med personen med ME/CFS (og deres
+familie eller omsorgspersoner, der det er hensiktsmessig), og dokumenter
+som et minimum:</p>
+<ul>
+<li>personens tilstand, inkludert eventuelle endringer i sykdommen og
+konsekvensene av disse</li>
+<li>symptomer, inkludert om personen har opplevd nye symptomer</li>
+<li>egenhåndtering — spør om energiforvaltningsplanen og (der det er
+aktuelt) programmet for fysisk aktivitet eller trening</li>
+<li>hvem som hjelper personen, og hvordan de gir støtte</li>
+<li>psykisk, emosjonell og sosial velvære</li>
+<li>eventuelle framtidige planer — spør om personen vurderer endringer
+eller har utfordringer foran seg.</li>
+</ul>
+<h4 id="section-127">1.15.6</h4>
+<p>Henvis personen med ME/CFS til sin utpekte kontaktperson i
+ME/CFS-spesialistteamet ved nye eller forverrede sider ved
+tilstanden.</p>
+<h4 id="section-128">1.15.7</h4>
+<p>Vurder å innhente råd fra relevant spesialist dersom det er
+usikkerhet om tolkning av tegn og symptomer, og om det er behov for
+henvisning.</p>
+<h4 id="section-129">1.15.8</h4>
+<p>Vurder og utred om nye symptomer, eller endringer i symptomer,
+skyldes personens ME/CFS eller en annen tilstand.</p>
+<h3 id="tilleggsprinsipper-for-barn-og-unge">Tilleggsprinsipper for barn
+og unge</h3>
+<h4 id="section-130">1.15.9</h4>
+<p>Sørg for at oppfølging gjennomføres av, eller overvåkes av, en
+barnelege med kompetanse innenfor ME/CFS. Involver andre relevante
+spesialister ved behov.</p>
+<h4 id="section-131">1.15.10</h4>
+<p>Når du vurderer hvor ofte oppfølging eller ny vurdering kan være
+nødvendig for barn og unge med ME/CFS, ta hensyn til:</p>
+<ul>
+<li>deres utviklingstrinn</li>
+<li>overganger, som skifte av skole eller eksamen</li>
+<li>symptomenes alvorlighetsgrad og kompleksitet</li>
+<li>effekten av eventuell symptomhåndtering.</li>
+</ul>
+<p><em>Se også anbefaling 1.1.6 om å sikre at barnets stemme blir hørt,
+og om å involvere foreldre eller omsorgspersoner.</em></p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om oppfølging i
+primærhelsetjenesten.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review J: monitoring and reviewing people
+with ME/CFS.</em></p>
+</details><details class="nice-details" id="116">
+<summary>
+<strong>1.16 Opplæring av helse- og omsorgsarbeidere</strong>
+</summary>
+<h4 id="section-132">1.16.1</h4>
+<p>Helse- og omsorgstjenestetilbydere skal sørge for at alt personell
+som gir omsorg til personer med ME/CFS, får opplæring som er relevant
+for deres rolle, slik at de kan gi omsorg i tråd med denne
+retningslinjen. Opplæringen skal inneholde:</p>
+<ul>
+<li>hjelp til å forstå hva ME/CFS er, samt diagnostisering og håndtering
+av tilstanden</li>
+<li>erfaringene til personer med ME/CFS.</li>
+</ul>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen og hvordan den kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om opplæring av helse- og
+omsorgsarbeidere.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review B: information, education and
+support for health and social care professionals.</em></p>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i evidence
+review A: information, education and support for people with ME/CFS and
+their families and carers og appendix 2: involving adults with severe
+ME/CFS.</em></p>
+</details><details class="nice-details" id="117">
+<summary>
+<strong>1.17 Omsorg for personer med alvorlig eller svært alvorlig
+ME/CFS</strong>
+</summary>
+<p><em>Denne seksjonen supplerer resten av retningslinjen med
+tilleggsvurderinger for personer med alvorlig eller svært alvorlig
+ME/CFS.</em></p>
+<h3 id="bevissthet-om-alvorlig-og-svært-alvorlig-mecfs-og-konsekvensene">Bevissthet
+om alvorlig og svært alvorlig ME/CFS og konsekvensene</h3>
+<p><em>Se også hovedseksjonen om prinsipper for omsorg for personer med
+ME/CFS.</em></p>
+<h4 id="section-133">1.17.1</h4>
+<p>Vær oppmerksom på at personer med alvorlig eller svært alvorlig
+ME/CFS kan oppleve følgende symptomer som i betydelig grad påvirker
+livet deres, inkludert mobilitet, emosjonell velvære og evnen til å
+samhandle med andre og ta vare på seg selv:</p>
+<ul>
+<li>alvorlige og konstante smerter, som kan ha muskulær, artralgisk
+eller nevropatisk karakter</li>
+<li>overfølsomhet for lys, lyd, berøring, bevegelse, temperaturekstremer
+og lukter</li>
+<li>ekstrem svakhet, med sterkt redusert bevegelighet</li>
+<li>redusert evne eller manglende evne til å snakke eller svelge</li>
+<li>kognitive vansker som begrenser personens evne til å kommunisere og
+ta imot skriftlig eller muntlig kommunikasjon</li>
+<li>søvnforstyrrelser som ikke-forfriskende søvn, hypersomni og endret
+søvnmønster</li>
+<li>gastrointestinale vansker som kvalme, inkontinens, forstoppelse og
+oppblåsthet</li>
+<li>nevrologiske symptomer som dobbeltsyn og andre synsforstyrrelser,
+samt svimmelhet</li>
+<li>ortostatisk intoleranse og autonom dysfunksjon, som postural
+ortostatisk takykardi-syndrom (POTS) og postural hypotensjon.</li>
+</ul>
+<h4 id="section-134">1.17.2</h4>
+<p>Erkjenn at symptomene ved alvorlig eller svært alvorlig ME/CFS kan
+innebære at personer:</p>
+<ul>
+<li>trenger et omgivelsesmiljø med lav stimulering, for eksempel et
+mørkt og stille rom med samhandling på et nivå de selv velger (dette kan
+bety lite eller ingen sosial kontakt)</li>
+<li>er husbundne eller sengeliggende, og kan trenge støtte til alle
+dagliglivets aktiviteter, inkludert hjelpemidler og tilpasninger for å
+støtte mobilitet og selvstendighet i dagliglivets aktiviteter (for
+eksempel rullestol)</li>
+<li>trenger forsiktig fysisk kontakt ved støtte i dagliglivets
+aktiviteter, med hensyn til mulig berøringssensitivitet</li>
+<li>ikke kan kommunisere uten støtte, og kan trenge å velge noen som kan
+være deres talsperson og kommunisere på deres vegne</li>
+<li>ikke kan spise og fordøye mat lett, og kan trenge støtte med
+væskeinntak og ernæring (se anbefalingene om kostholdshåndtering og
+-strategier)</li>
+<li>har problemer med å tilegne seg informasjon, for eksempel på grunn
+av vansker med skjermbruk, lyd- og lysoverfølsomhet, hodepine som
+påvirker leseevnen, eller hjernetåke som påvirker konsentrasjonen.</li>
+</ul>
+<h4 id="section-135">1.17.3</h4>
+<p>Personlig omsorg og støtte til personer med alvorlig eller svært
+alvorlig ME/CFS skal utføres av helse- og omsorgsarbeidere som:</p>
+<ul>
+<li>er kjente for personen og deres familie eller omsorgspersoner der
+det er mulig</li>
+<li>er kjent med personens behov.</li>
+</ul>
+<h4 id="section-136">1.17.4</h4>
+<p>Risikovurder hvert kontaktpunkt med en person med alvorlig eller
+svært alvorlig ME/CFS på forhånd, for å sikre at nytten oppveier
+risikoen (for eksempel symptomforverring) for personen. For personer med
+svært alvorlig ME/CFS, vurder å drøfte dette med personens familie eller
+omsorgspersoner på deres vegne (der det er hensiktsmessig), samtidig som
+fokuset holdes på personen med ME/CFS.</p>
+<h3 id="mecfs-spesialistteamets-vurdering-og-utarbeidelse-av-pleie--og-støtteplan">ME/CFS-spesialistteamets
+vurdering og utarbeidelse av pleie- og støtteplan</h3>
+<p><em>Se også hovedseksjonen om ME/CFS-spesialistteamets vurdering og
+utarbeidelse av pleie- og støtteplan.</em></p>
+<h4 id="section-137">1.17.5</h4>
+<p>Tilby hjemmebesøk til personer med alvorlig eller svært alvorlig
+ME/CFS for å gjennomføre helhetsvurdering og utarbeide pleie- og
+støtteplan.</p>
+<h3 id="tilgang-til-omsorg-og-støtte">Tilgang til omsorg og støtte</h3>
+<p><em>Se også hovedseksjonen om tilgang til omsorg og støtte.</em></p>
+<h4 id="section-138">1.17.6</h4>
+<p>Tjenestetilbydere skal være proaktive og fleksible i leveringen av
+tjenester til personer med alvorlig eller svært alvorlig ME/CFS, som kan
+ha særlige vansker med å få tilgang til tjenester og uttrykke sine
+behov. Dette kan omfatte hjemmebesøk, nett- eller telefonkonsultasjoner,
+skriftlig kommunikasjon, og støtte til søknader om hjelpemidler.</p>
+<h3 id="sykehusomsorg-1">Sykehusomsorg</h3>
+<h4 id="section-139">1.17.7</h4>
+<p>Ved planlegging av sykehusomsorg for personer med alvorlig eller
+svært alvorlig ME/CFS:</p>
+<ul>
+<li>drøft med personen (og deres familie eller omsorgspersoner, der det
+er hensiktsmessig) hva de kan forvente når de kommer til sykehuset</li>
+<li>tilstreb å minimere ubehag og PEM under transport til sykehuset, for
+eksempel ved å planlegge reisen på forhånd, unngå støyende områder og
+innlegge personen direkte på avdelingen ved ankomst</li>
+<li>drøft personens pleie- og støtteplan med personen, inkludert
+informasjon om komorbiditeter, intoleranser og overfølsomheter, for å
+planlegge nødvendige rimelige tilpasninger</li>
+<li>tilstreb å tilby enerom der det er mulig</li>
+<li>hold stimuli til et minimum, for eksempel ved å:
+<ul>
+<li>se personen én-til-én</li>
+<li>bruke rolige bevegelser og gester</li>
+<li>ikke gjenta vurderinger</li>
+<li>være forsiktig med berøringstrykk</li>
+<li>holde lysnivået dempet</li>
+<li>redusere lyd</li>
+<li>opprettholde stabil temperatur</li>
+<li>minimere lukter.</li>
+</ul></li>
+</ul>
+<h3 id="håndtering-av-mecfs">Håndtering av ME/CFS</h3>
+<p><em>Se også hovedseksjonen om håndtering av ME/CFS.</em></p>
+<h3 id="energiforvaltning-1">Energiforvaltning</h3>
+<p><em>Se også hovedseksjonen om energiforvaltning.</em></p>
+<h4 id="section-140">1.17.8</h4>
+<p>Henvis personer med alvorlig eller svært alvorlig ME/CFS til en
+fysioterapeut eller ergoterapeut som arbeider i et
+ME/CFS-spesialistteam, for støtte til utarbeidelse av
+energiforvaltningsplan.</p>
+<h4 id="section-141">1.17.9</h4>
+<p>Ved utarbeidelse av energiforvaltningsplaner sammen med personer med
+alvorlig eller svært alvorlig ME/CFS (og deres familie eller
+omsorgspersoner, der det er hensiktsmessig), ta hensyn til behovet for å
+gjøre alle aktivitetsendringer mindre, og alle økninger (dersom mulig)
+langt langsommere.</p>
+<h3 id="symptomhåndtering">Symptomhåndtering</h3>
+<p><em>Se også hovedseksjonen om symptomhåndtering for personer med
+ME/CFS.</em></p>
+<h3 id="kostholdshåndtering-og--strategier-1">Kostholdshåndtering og
+-strategier</h3>
+<h4 id="section-142">1.17.10</h4>
+<p>Henvis personer med alvorlig eller svært alvorlig ME/CFS til en
+kostholdsvurdering hos en klinisk ernæringsfysiolog med særlig interesse
+for ME/CFS.</p>
+<h4 id="section-143">1.17.11</h4>
+<p>Overvåk personer med alvorlig eller svært alvorlig ME/CFS som er i
+risiko for underernæring eller utilsiktet vekttap på grunn av:</p>
+<ul>
+<li>restriktive dietter</li>
+<li>dårlig appetitt, for eksempel knyttet til endret smak, lukt og
+tekstur</li>
+<li>matintoleranser</li>
+<li>kvalme</li>
+<li>svelge- og tyggevansker.</li>
+</ul>
+<p><em>Følg anbefalingene om screening for underernæring og indikasjoner
+for ernæringsstøtte i NICE-retningslinjen </em>nutrition support for
+adults<em>.</em></p>
+<h4 id="section-144">1.17.12</h4>
+<p>Gi råd som kan støtte personer med alvorlig eller svært alvorlig
+ME/CFS, som kan omfatte:</p>
+<ul>
+<li>å spise lite og ofte</li>
+<li>å innta næringsrike drikker og mellommåltider, inkludert
+matberikning</li>
+<li>å finne enklere spisemåter for å spare energi, som mat med mykere
+tekstur</li>
+<li>bruk av tilpassede spisehjelpemidler, særlig ved tygge- eller
+svelgevansker</li>
+<li>oral ernæringsstøtte og enteral ernæring.</li>
+</ul>
+<h3 id="kognitiv-atferdsterapi-cbt-1">Kognitiv atferdsterapi (CBT)</h3>
+<h4 id="section-145">1.17.13</h4>
+<p>Helsepersonell som leverer CBT til personer med alvorlig eller svært
+alvorlig ME/CFS, skal tilpasse prosess og tempo i CBT til personens
+behov. Dette kan omfatte kortere og mindre hyppige økter og mer
+langsiktige mål.</p>
+<hr/>
+<p><em>For en kort forklaring på hvorfor komiteen utformet disse
+anbefalingene og hvordan de kan påvirke praksis, se seksjonen
+«Begrunnelse og konsekvens» om omsorg for personer med alvorlig eller
+svært alvorlig ME/CFS.</em></p>
+<p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i:</em></p>
+<ul>
+<li><em>evidence review A: information, education and support for people
+with ME/CFS and their families and carers</em></li>
+<li><em>appendix 1: involving children and young people</em></li>
+<li><em>evidence review B: information, education and support for health
+and social care professionals</em></li>
+<li><em>evidence review C: accessing health and social care
+services</em></li>
+<li><em>evidence review G: non-pharmacological management of
+ME/CFS</em></li>
+<li><em>evidence review H: appendices for the management of
+ME/CFS</em></li>
+<li><em>evidence review I: multidisciplinary care</em></li>
+<li><em>evidence review J: monitoring and reviewing people with
+ME/CFS.</em></li>
+</ul>
+<p><em>Annet støttende kunnskapsgrunnlag og drøfting finnes i evidence
+review A: information, education and support for people with ME/CFS and
+their families and carers og appendix 2: involving adults with severe
+ME/CFS.</em></p>
+</details><p><a id="termer"></a></p>
+</div>
+<div class="panel" id="p3">
+<div class="panel-hdr">
+<div class="section-badge">DEL III · Ordliste med engelske originaltermer</div>
+<h2>Termer brukt i retningslinjen</h2>
+</div>
+<p><em>For andre definisjoner, se NICEs ordliste (</em>NICE
+glossary<em>) og </em>Think Local, Act Personal Care and Support Jargon
+Buster<em>.</em></p><h3 id="aktivitet">Aktivitet</h3><p>Enhver anstrengelse som bruker energi, herunder kognitiv, emosjonell
+og sosial aktivitet så vel som fysisk aktivitet. Ulike aktiviteter
+kombineres og samvirker, og gir en samlet belastning for personen.</p><h3 id="talsperson-advocate">Talsperson (<em>advocate</em>)</h3><p>I denne retningslinjen er talspersonens rolle å støtte en sårbar
+eller vanskeligstilt person med ME/CFS, og sikre at personens
+rettigheter ivaretas innenfor helse- og omsorgssammenheng. Talspersonen
+velges av personen med ME/CFS, og kan være et familiemedlem, en
+omsorgsperson, en venn eller en uavhengig talsperson. Talspersonen
+sørger for at personen blir hørt.</p><h3 id="pleie--og-støtteplan-care-and-support-plan">Pleie- og støtteplan
+(<em>care and support plan</em>)</h3><p>Den individuelle og samarbeidsbaserte pleie- og støtteplanen
+utarbeides av ME/CFS-spesialistteamet på grunnlag av en
+helhetsvurdering. Planen er grunnlaget for andre vurderinger og planer
+innenfor områder som omsorgstjenester, energiforvaltning, fysisk
+aktivitet, fysisk funksjon og mobilitet, kognitiv atferdsterapi og
+kostholdshåndtering.</p><h3 id="omsorgspersoner-carers">Omsorgspersoner (<em>carers</em>)</h3><p>I denne retningslinjen viser <em>omsorgsperson</em> (carer) til en
+person som yter ulønnet omsorg og støtte til et familiemedlem, en
+partner eller en venn med ME/CFS. Dette er forskjellig fra <em>care
+workers</em> (helse- og omsorgsarbeidere som er ansatt for å yte
+støtte).</p><h3 id="barn-og-unge">Barn og unge</h3><p>I denne retningslinjen er <em>barn og unge</em> under 18 år (voksne
+er 18 år eller eldre).</p><h3 id="energigrense-energy-limit">Energigrense (<em>energy
+limit</em>)</h3><p>Den mengden energi en person har tilgjengelig for å utføre alle
+aktiviteter uten å utløse en økning eller forverring av symptomene.</p><h3 id="energiforvaltning-energy-management">Energiforvaltning
+(<em>energy management</em>)</h3><p>En egenhåndteringsstrategi som innebærer at en person med ME/CFS
+styrer aktivitetene sine for å holde seg innenfor energigrensen, med
+støtte fra helsepersonell.</p><h3 id="trening-exercise">Trening (<em>exercise</em>)</h3><p>Trening er planlagt, strukturert, repetitiv og målrettet aktivitet
+som har som formål å bedre eller opprettholde én eller flere komponenter
+av fysisk form. Trening er en underkategori av fysisk aktivitet.</p><h3 id="utmattelse-fatigue">Utmattelse (<em>fatigue</em>)</h3><p>Utmattelse ved ME/CFS har typisk følgende komponenter:</p><ul>
+<li>influensalignende følelse, særlig tidlig i sykdomsforløpet</li>
+<li>uro eller å føle seg «oppspilt, men utmattet» (<em>wired but
+tired</em>)</li>
+<li>lav energi eller mangel på fysisk energi til å starte eller fullføre
+dagliglivets aktiviteter, og følelsen av å være «fysisk tappet»</li>
+<li>kognitiv utmattelse som forverrer eksisterende vansker</li>
+<li>raskt tap av muskelstyrke eller utholdenhet etter at en aktivitet er
+startet, som for eksempel gir plutselig svakhet, klosset bevegelse,
+manglende koordinasjon, og manglende evne til å gjenta en fysisk
+anstrengelse konsekvent.</li>
+</ul><h3 id="forverringsepisode-flare-up">Forverringsepisode
+(<em>flare-up</em>)</h3><p>En forverring av symptomer, utover det som kan forklares av normal
+daglig variasjon, som påvirker personens evne til å utføre sine vanlige
+aktiviteter. Forverringsepisoder kan oppstå spontant, eller være utløst
+av annen sykdom, overanstrengelse eller andre utløsere.
+Forverringsepisoder oppstår vanligvis som en del av anstrengelsesutløst
+symptomforverring (PEM), men det er mulig at andre symptomer, som
+smerte, kan blusse opp uten PEM. Forverringen er forbigående, og
+forverringsepisoder går vanligvis over etter noen dager, enten spontant
+eller som respons på midlertidige endringer i energiforvaltning eller i
+behandling. Et tilbakefall varer lenger enn en forverringsepisode.</p><h3 id="gradert-treningsterapi-get-graded-exercise-therapy">Gradert
+treningsterapi (GET, <em>graded exercise therapy</em>)</h3><p>I denne retningslinjen defineres gradert treningsterapi som å
+etablere en baseline av oppnåelig trening eller fysisk aktivitet, og
+deretter gjøre faste trinnvise økninger i tiden brukt på fysisk
+aktivitet. Det er en terapi basert på teorier om dekondisjonering og
+treningsunngåelse som forklaringer på ME/CFS. Disse teoriene forutsetter
+at ME/CFS opprettholdes av reversible fysiologiske endringer knyttet til
+dekondisjonering og aktivitetsunngåelse. Disse endringene fører til at
+dekondisjoneringen vedvarer og til økt opplevelse av anstrengelse, som
+igjen fører til ytterligere inaktivitet. Denne definisjonen av gradert
+treningsterapi gjenspeiler beskrivelsene i <em>evidence review G:
+non-pharmacological management of ME/CFS</em> og <em>evidence review H:
+appendices for the management of ME/CFS</em>.</p><h3 id="mecfs-spesialistteam-mecfs-specialist-team">ME/CFS-spesialistteam
+(<em>ME/CFS specialist team</em>)</h3><p>Disse teamene består av ulike helsepersonell med kompetanse i
+vurdering, diagnostisering, behandling og oppfølging av ME/CFS. De har
+vanligvis medisinsk utdannede klinikere fra en rekke spesialiteter
+(inkludert revmatologi, rehabiliteringsmedisin, endokrinologi,
+infeksjonsmedisin, nevrologi, immunologi, allmennmedisin og pediatri),
+samt tilgang til annet helsepersonell som er spesialisert på ME/CFS.
+Dette kan omfatte fysioterapeuter, treningsfysiologer, ergoterapeuter,
+kliniske ernæringsfysiologer, og klinisk- eller rådgivende psykologer.
+Barn og unge vil sannsynligvis bli fulgt opp av lokale eller regionale
+barnemedisinske team med erfaring i å arbeide med barn og unge med
+ME/CFS, i samarbeid med ME/CFS-spesialistsentre.</p><h3 id="ortostatisk-intoleranse-orthostatic-intolerance">Ortostatisk
+intoleranse (<em>orthostatic intolerance</em>)</h3><p>En klinisk tilstand der symptomer som ørhet, nær-besvimelse eller
+besvimelse, nedsatt konsentrasjon, hodepine, svakere eller uklart syn,
+kraftige hjerteslag, hjertebank, skjelving og brystsmerter oppstår eller
+forverres ved oppreist stilling, og bedres (men ikke nødvendigvis
+forsvinner) ved å sette eller legge seg. Ortostatisk intoleranse kan
+omfatte postural ortostatisk takykardi-syndrom (POTS), som er en
+betydelig økning av pulsraten ved overgang fra liggende til stående
+stilling, og postural hypotensjon, som er et betydelig fall i
+blodtrykket ved overgang fra liggende til stående stilling. Personer med
+alvorlig ortostatisk intoleranse kan oppleve at de ikke kan sitte
+oppreist i noen særlig tid.</p><h3 id="fysisk-aktivitet-physical-activity">Fysisk aktivitet
+(<em>physical activity</em>)</h3><p>Enhver kroppsbevegelse produsert av skjelettmuskulatur som fører til
+energiforbruk. Dette skal ikke forveksles med trening. Fysisk aktivitet
+i dagliglivet kan deles inn i yrkes-, idretts-, konditions-, hushold-
+eller andre aktiviteter, og kan utføres i fritiden, til å forflytte seg,
+eller som en del av personens arbeid. Se Verdens helseorganisasjons
+(WHO) råd om fysisk aktivitet. Fysisk aktivitet har helsefordeler for de
+fleste mennesker og ved mange tilstander, men hos personer med ME/CFS
+kan fysisk aktivitet forverre symptomene.</p><h3 id="fysisk-funksjon-og-mobilitet-physical-functioning-and-mobility">Fysisk
+funksjon og mobilitet (<em>physical functioning and mobility</em>)</h3><p>Prosessen med å innlemme et bevegelsesnivå i dagliglivets aktiviteter
+som bidrar til å opprettholde ledd- og muskelfleksibilitet, uten å
+forverre ME/CFS-symptomer. Formålet er å støtte personer i å ha størst
+mulig selvstendighet i sine aktiviteter, fra personlig hygiene til
+dagliglivets aktiviteter, arbeid og sosial samhandling. Slik bevegelse
+utføres innenfor personens energigrenser, og unngår å presse seg utover
+toleransegrensene.</p><h3 id="anstrengelsesutløst-symptomforverring-pem-post-exertional-malaise">Anstrengelsesutløst
+symptomforverring (PEM, <em>post-exertional malaise</em>)</h3><p>Forverring av symptomer som kan følge etter minimal kognitiv, fysisk,
+emosjonell eller sosial aktivitet, eller etter aktivitet som tidligere
+ble tolerert. Symptomer kan typisk forverres 12 til 48 timer etter
+aktiviteten, og vare i dager eller til og med uker, og kan av og til
+føre til et tilbakefall. Anstrengelsesutløst symptomforverring omtales
+også som <em>post-exertional symptom exacerbation</em> (PESE).</p><h3 id="tilbakefall-relapse">Tilbakefall (<em>relapse</em>)</h3><p>En vedvarende og markert forverring av symptomer som varer lenger enn
+en forverringsepisode, og som krever en betydelig og vedvarende
+justering av personens energiforvaltning. Det kan være uklart i tidlige
+faser av en symptomforverring om det dreier seg om en forverringsepisode
+eller et tilbakefall. Tilbakefall kan føre til en langvarig reduksjon av
+personens energigrenser.</p><h3 id="særlig-interesse-for-mecfs-special-interest-in-mecfs">Særlig
+interesse for ME/CFS (<em>special interest in ME/CFS</em>)</h3><p>Begrepet «særlig interesse for ME/CFS» viser til helsepersonell som
+ikke arbeider i et ME/CFS-spesialistteam, men som har kunnskap og
+erfaring på området.</p><h3 id="terapi-blueprint-therapy-blueprint">Terapi-blueprint
+(<em>therapy blueprint</em>)</h3><p>Dette oppsummerer terapiforløpet og gir et grunnlag for framtidig,
+selvstendig egenhåndtering. Terapi-blueprinten kan inneholde
+terapiformuleringen, strategier som har vært til hjelp, «varselstegn» og
+utløsere for forverringsepisoder og hvordan disse kan håndteres, samt
+mål for framtiden. Det er viktig at terapi-blueprinten ledes av personen
+selv og er formulert med personens egne ord, med støtte og veiledning
+fra terapeuten.</p><h3 id="ikke-forfriskende-søvn-unrefreshing-sleep">Ikke-forfriskende
+søvn (<em>unrefreshing sleep</em>)</h3><p>Ikke-forfriskende søvn er søvn som ikke gir restitusjon. Selv etter
+en full natts søvn opplever personer ikke å være uthvilte. Personer med
+ME/CFS rapporterer ofte at de våkner utmattet, og føler det som om de
+ikke har sovet i det hele tatt, uansett hvor lenge de har sovet.</p><p><a id="forskning"></a></p>
+</div>
+<div class="panel" id="p4">
+<div class="panel-hdr">
+<div class="section-badge">DEL IV · Nøkkelanbefalinger og andre forskningsanbefalinger</div>
+<h2>Forskningsanbefalinger</h2>
+</div>
+<p>Retningslinjekomiteen har utformet følgende nøkkelanbefalinger for
+forskning.</p><h3 id="nøkkelanbefalinger-for-forskning">Nøkkelanbefalinger for
+forskning</h3><h4 id="diagnostiske-tester">1. Diagnostiske tester</h4><p>Hvilke diagnostiske tester er klinisk effektive og kostnadseffektive
+hos personer med mistenkt myalgisk encefalomyelitt (eller encefalopati)
+/ kronisk utmattelsessyndrom (ME/CFS)?</p><p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen, se begrunnelsen under «mistanke om ME/CFS».</em></p><p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review D: identifying and diagnosing
+ME/CFS.</em></p><h4 id="et-felles-sett-av-utfallsmål">2. Et felles sett av
+utfallsmål</h4><p>Hvilket felles sett av relevante helseutfallsmål bør brukes i studier
+av behandling for ME/CFS og symptomhåndtering ved ME/CFS?</p><p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen, se begrunnelsen under «håndtering av ME/CFS».</em></p><p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p><h4 id="diagnostiske-kriterier">3. Diagnostiske kriterier</h4><p>Hvor effektive er NICEs konsensusbaserte diagnostiske kriterier fra
+2021 for å identifisere personer med ME/CFS, blant personer med mistenkt
+ME/CFS?</p><p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen, se begrunnelsen under «mistanke om ME/CFS».</em></p><p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review D: identifying and diagnosing
+ME/CFS.</em></p><h3 id="andre-forskningsanbefalinger">Andre forskningsanbefalinger</h3><h4 id="strategier-for-egenmåling">4. Strategier for egenmåling</h4><p>Hva er den kliniske effekten og kostnadseffektiviteten av
+egenmålingsstrategier og -teknikker for å veilede energiforvaltning?</p><p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen, se begrunnelsen under «energiforvaltning».</em></p><p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p><h4 id="strategier-for-søvnhåndtering">5. Strategier for
+søvnhåndtering</h4><p>Hva er den kliniske effekten og kostnadseffektiviteten av
+søvnhåndteringsstrategier i behandlingen av ME/CFS?</p><p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen, se begrunnelsen under «hvile og søvn».</em></p><p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p><h4 id="kostholdsstrategier">6. Kostholdsstrategier</h4><p>Hva er den kliniske effekten og kostnadseffektiviteten av
+kostholdsstrategier i behandlingen av ME/CFS?</p><p><em>For en kort forklaring på hvorfor komiteen utformet denne
+anbefalingen, se begrunnelsen under «kostholdshåndtering og
+-strategier».</em></p><p><em>Fullstendige detaljer om kunnskapsgrunnlaget og komiteens
+drøftinger finnes i evidence review G: non-pharmacological management of
+ME/CFS og evidence review H: appendices for the management of
+ME/CFS.</em></p><p><a id="begrunnelse"></a></p>
+</div>
+<div class="panel" id="p5">
+<div class="panel-hdr">
+<div class="section-badge">DEL V · Komiteens resonnement bak anbefalingene</div>
+<h2>Begrunnelse og konsekvens</h2>
+</div>
+<p><em>Disse seksjonene forklarer kort hvorfor komiteen utformet
+anbefalingene, og hvordan de kan påvirke praksis.</em></p><details class="nice-details">
+<summary>
+<strong>Prinsipper for omsorg for personer med ME/CFS</strong>
+(anbefaling 1.1.1 til 1.1.6)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Gjennomgående temaer i det kvalitative kunnskapsgrunnlaget viste
+manglende tiltro til myalgisk encefalomyelitt (eller encefalopati) /
+kronisk utmattelsessyndrom (ME/CFS) som en reell tilstand hos helse- og
+omsorgsarbeidere, og manglende forståelse av hva det er og hvilken
+innvirkning det har. Komiteen brukte dette kunnskapsgrunnlaget til å
+utforme anbefalinger for å øke bevisstheten om ME/CFS. Ett sterkt tema
+viste hvordan opplevelsen av manglende forståelse og fordommer kan føre
+til at personer mister tilliten til helse- og omsorgstjenestene.
+Komiteen var enige om at helse- og omsorgsarbeidere må ta hensyn til
+virkningen av å ikke bli trodd, i byggingen av relasjoner med personer
+med ME/CFS og deres familier. Komiteen anså dette som særlig relevant
+for barn og unge, og utformet egne anbefalinger som fremhevet
+kommunikasjon med barn.</p>
+<p>Kunnskapsgrunnlaget viste at denne tapte tilliten kan forsterkes når
+personer med ME/CFS har negative erfaringer med helsetjenestene ved å
+takke nei til behandling som er tilbudt. Dette var et sterkt tema i
+kunnskapsgrunnlaget om barn og unge. Komiteen var enige om at det å
+takke nei til en spesifikk behandling ikke skal påvirke andre sider ved
+personens omsorg.</p>
+<p>Det kvalitative kunnskapsgrunnlaget viste også at en av barrierene
+for god ME/CFS-håndtering var sen diagnose og mangel på oppfølging, og
+dette samsvarte med komiteens erfaring.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis">Hvordan anbefalingene
+kan påvirke praksis</h3>
+<p>Disse overordnede prinsippene vil bedre konsistensen i beste praksis
+og krever ikke ytterligere ressurser for å gjennomføre.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Mistanke om ME/CFS</strong> (anbefaling 1.2.1 til 1.2.7)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-1">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen tok hensyn til både mangelen på kunnskapsgrunnlag om
+diagnostiske tester og at personer verdsetter realistisk informasjon om
+ME/CFS (særlig om diagnose) da de utformet anbefalingen om å forklare
+hvordan tilstanden identifiseres.</p>
+<p><strong>Kriterier</strong></p>
+<p>Komiteen anerkjente at det pågår debatt i ME/CFS-miljøet om hvilke
+diagnostiske kriterier som bør brukes for å identifisere og
+diagnostisere ME/CFS. Komiteen utformet en anbefaling for
+nøkkelsymptomer basert på gjennomgangen av nåværende diagnostiske
+kriterier, men ingen enkelt kriteriesett ble ansett som best samlet
+sett. Faktorer som påvirker disse drøftingene er hvor brede
+inklusjonskriteriene er, hvordan enkelte symptomer er definert, og
+kriterienes brukbarhet som klinisk verktøy. Det er bekymring for at
+mange av de eksisterende kriteriene ikke nøyaktig identifiserer personer
+med eller uten ME/CFS. Basert på både kunnskapsgrunnlaget og egen
+erfaring, ble komiteen enig om at <em>Institute of
+Medicine</em>-kriteriene fra 2015 hadde den beste balansen mellom
+inklusjon og eksklusjon av alle gjennomgåtte kriterier, men at de måtte
+tilpasses for optimal bruk. Komiteen mente særlig at forsinkelsen på 6
+måneder burde reduseres slik at håndtering kunne starte tidligere, og at
+utmattelse og anstrengelsesutløst symptomforverring (PEM) burde
+defineres tydelig for å gjøre de reviderte kriteriene lettere å
+tolke.</p>
+<p>Basert på komiteens erfaring ble det besluttet at ME/CFS skulle
+mistenkes dersom personen har alle 4 nøkkelsymptomer (invalidiserende
+utmattelse, anstrengelsesutløst symptomforverring, ikke-forfriskende
+søvn eller søvnforstyrrelse [eller begge deler], og kognitive vansker) i
+minst 6 uker hos voksne og 4 uker hos barn og unge. Komiteen var enige
+om at det ville være uvanlig om en akutt sykdom, også en virussykdom,
+vedvarte lenger enn dette hos noen med alle 4 nøkkelsymptomer. De
+understreket at det er kombinasjonen og samvirket av symptomene som er
+avgjørende for å skille ME/CFS fra andre tilstander og sykdommer.</p>
+<p>I dag fører fraværet av validerte diagnostiske kriterier for ME/CFS
+til forvirring om hvilke kriterier som skal brukes. Komiteen besluttet å
+utforme en forskningsanbefaling om diagnostiske kriterier for å
+informere framtidig veiledning.</p>
+<p>I tillegg til de 4 nøkkelsymptomene merket komiteen seg at mange av
+kriteriene som brukes for å definere ME/CFS også inkluderer andre
+symptomer som ofte oppleves av personer med ME/CFS. De var enige om at
+selv om disse symptomene ikke er avgjørende for diagnose, er de viktige
+for å forstå ME/CFS og for å hjelpe med å håndtere symptomene, og de
+utformet derfor en anbefaling for å øke bevisstheten om disse.</p>
+<p><strong>Diagnostiske tester</strong></p>
+<p>Det ble ikke identifisert kunnskapsgrunnlag for noen tester eller
+spesifikke tegn og symptomer som prediktorer for en senere
+ME/CFS-diagnose. Nøyaktige diagnostiske tester som korrekt identifiserer
+ME/CFS, vil støtte helsepersonell i å identifisere personer som har
+ME/CFS, og utelukke dem som ikke har det. Komiteen utformet en
+forskningsanbefaling om diagnostiske tester for å bidra til å
+identifisere effektive diagnostiske tester for ME/CFS som vil legge til
+rette for tidlig diagnose, og potensielt føre til bedre utfall for
+personer med ME/CFS. De håpet denne forskningen ville informere
+framtidig veiledning.</p>
+<p>Ved angivelse av nøkkelområder for vurdering var komiteen enig om at
+selv om de ikke kunne gi en liste over standardtester, var det viktig å
+gjennomføre undersøkelser for å utelukke andre mulige diagnoser. De
+oppga noen eksempler på tester som kunne gjøres for å utelukke
+reversible tilstander med lignende symptomer som ME/CFS, og som ofte
+blir oversett.</p>
+<p>Komiteen drøftet den uspesifikke karakteren og det vanlige kliniske
+bildet av enkelte ME/CFS-symptomer (for eksempel kognitive vansker som
+hjernetåke), som gjør det vanskelig å diagnostisere og skille fra andre
+tilstander. Dette har ført til feildiagnose, oversett diagnose og
+forsinkelser i diagnostiseringen av både ME/CFS og andre tilstander. På
+grunn av dette var komiteen enig om at når helsepersonell mistenker
+ME/CFS, bør de også vurdere alternative forklarende diagnoser eller
+komorbide tilstander. De bør utrede disse, og henvise til relevant
+spesialist ved usikkerhet. Komiteen var også enig om at diagnosen kan
+revurderes dersom symptomene endrer seg eller nye symptomer oppstår.</p>
+<p>Kunnskapsgrunnlaget og komiteens erfaring antydet at tidlig
+håndtering av symptomer kan hindre at de forverres og personens helse
+svekkes. For å gjenspeile dette, anbefalte komiteen råd om
+symptomhåndtering så snart ME/CFS mistenkes.</p>
+<p>Komiteen var enige om at for å unngå forstyrrelser i utdanningen, så
+snart ME/CFS mistenkes hos et barn eller en ung person, skal barnets
+eller den unges utdanningssted kontaktes for å gi råd om fleksible
+tilpasninger.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-1">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Det er variasjon i praksis, og det brukes ikke ett enkelt
+kriteriesett klinisk — en «mix and match»-tilnærming brukes sammen med
+klinisk erfaring. Disse anbefalingene vil standardisere praksis, og det
+antas at de ikke vil ha noen innvirkning på ressursbruk eller
+opplæring.</p>
+<p>Det blir ingen endring i dagens praksis med å diagnostisere ME/CFS
+basert på klinisk vurdering og sykehistorie, og med å gjennomføre tester
+for differensialdiagnoser der det er hensiktsmessig.</p>
+<p>Anbefalingene har som mål å øke bevisstheten om symptomer og
+assosierte tilstander som bør vekke mistanke om ME/CFS, særlig blant
+helsepersonell med begrenset kunnskap om ME/CFS. Dette kan øke antallet
+personer med mistenkt ME/CFS som deretter henvises til et
+ME/CFS-spesialistteam, men det vil bidra til å sikre at de får passende
+omsorg og bedre utfall.</p>
+<p>Anbefalingen om at barn og unge med mistenkt ME/CFS skal henvises til
+barnelege etter 4 uker, er tidligere enn dagens praksis. Tidligere
+henvisning for videre vurdering vil imidlertid hjelpe barn og unge med å
+få passende omsorg tidligere, ved å identifisere og utelukke andre
+tilstander i tillegg til ME/CFS, og dermed bedre utfallet deres.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Råd til personer med mistenkt ME/CFS</strong> (anbefaling 1.3.1
+og 1.3.2)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-2">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Det var begrenset klinisk kunnskapsgrunnlag om håndteringsstrategier
+for personer med mistenkt ME/CFS. Det kvalitative kunnskapsgrunnlaget og
+komiteens erfaring antydet at tidlig håndtering av symptomer kan
+forhindre at de forverres og at personens helse svekkes. For å
+gjenspeile dette, utformet komiteen en anbefaling om å gi råd om
+symptomhåndtering basert på egen kunnskap og erfaring.</p>
+<p>Det kvalitative kunnskapsgrunnlaget antydet at dette kan være en
+bekymringsfull tid for personer med mistenkt ME/CFS, og komiteen var
+enig om at det var viktig at personer visste hvem de skulle kontakte
+dersom symptomene endret seg.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-2">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Det å gi rådene i disse anbefalingene vil ikke påføre NHS betydelige
+kostnader. Dersom disse rådene fører til at færre personer får
+forverrede symptomer, vil anbefalingene være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Diagnose</strong> (anbefaling 1.4.1 til 1.4.4)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-3">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen var enig om at selv om en forsinkelse på 6 måneder før
+diagnostisering er innebygd i <em>Institute of Medicine</em>-kriteriene,
+kunne kriteriene trygt endres ved å redusere denne perioden til 3
+måneder. Komiteen så at å fjerne denne forsinkelsen var nyttig fordi det
+kunne muliggjøre tidligere håndtering og potensielt forbedre langsiktige
+utfall.</p>
+<p>I tråd med gjennomgående temaer i kunnskapsgrunnlaget om manglende
+kunnskap om ME/CFS, og kunnskapsgrunnlaget om at ikke-spesialister i
+ME/CFS ikke føler seg trygge på å diagnostisere og håndtere ME/CFS,
+anbefalte komiteen at personer med ME/CFS henvises til et
+ME/CFS-spesialistteam ved 3 måneder for å bekrefte diagnosen og
+utarbeide en pleie- og støtteplan.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-3">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Varigheten av symptomer før diagnose kan stilles er redusert, men
+kriteriene er nå strengere ved at 4 ulike sett av symptomer alle må være
+til stede for at ME/CFS kan mistenkes. Konsekvensen vil derfor ikke
+nødvendigvis være en økning i henvisninger, men at personer får
+diagnosen tidligere, noe som framskynder deres vurdering og pleieplan.
+Tidligere tilgang til passende råd og omsorg kan forhindre
+sykdomsprogresjon, og kan derfor føre til noen ressursbesparelser på
+lengre sikt.</p>
+</details><details class="nice-details">
+<summary>
+<strong>ME/CFS-spesialistteamets vurdering og utarbeidelse av pleie- og
+støtteplan</strong> (anbefaling 1.5.1 til 1.5.4)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-4">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen var enig om at nøkkelen til vellykket håndtering av
+ME/CFS-symptomer er en samarbeidende, individuelt tilpasset pleie- og
+støtteplan. Denne skal utarbeides basert på en helhetsvurdering så snart
+personens diagnose er bekreftet. Komiteen var enige om at en medisinsk
+vurdering skal være en del av denne vurderingen, som typisk krever
+tilgang til en medisinsk utdannet kliniker. En kopi av pleie- og
+støtteplanen kan deles med primærhelsetjenesten, og en kopi oppbevares
+av personen selv. Planen kan henvises til i situasjoner som planlegging
+av innleggelse på sykehus. Etter komiteens erfaring er denne
+tilnærmingen til vurdering og planlegging vanlig i
+ME/CFS-spesialistteam.</p>
+<p>Komiteen skisserte nøkkelområder for å vurdere hvilken støtte som
+kunne være nødvendig, basert på sin erfaring. Komiteen merket seg at
+nøkkelområdene for vurdering, og støtten som trengs, vil avhenge av
+personens alvorlighetsgrad av ME/CFS, symptomenes innvirkning og deres
+behov. Når pleie- og støtteplanen er avtalt, utgjør den et grunnlag for
+de mer detaljerte vurderingene og planene skissert i spesifikke
+intervensjoner i retningslinjen, som vurdering av omsorgsbehov,
+energiforvaltning, fysisk funksjon og mobilitet, kognitiv atferdsterapi
+(CBT) og kostholdshåndtering.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-4">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Å gjennomføre en helhetsvurdering og utarbeide en pleie- og
+støtteplan er allerede dagens praksis i ME/CFS-spesialisttjenester, selv
+om disse anbefalingene kan føre til flere henvisninger til
+spesialisttjenesten. Det å ha en pleie- og støtteplan vil imidlertid
+lette personenes omsorg og kan føre til bedre utfall. Dersom vurderingen
+gjennomføres tidlig og en pleieplan iverksettes, kan det redusere
+ressursbruk på lengre sikt ved å forhindre sykdomsprogresjon.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Informasjon og støtte</strong> (anbefaling 1.6.1 til 1.6.11)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-5">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Kvalitativt kunnskapsgrunnlag viste at personer med ME/CFS verdsatte
+informasjon fra helse- og omsorgsarbeidere i formater som tok hensyn til
+hvordan symptomer som «hjernetåke» påvirket deres evne til å ta inn og
+huske informasjon. Komiteen fremhevet formater som ble rapportert som
+nyttige.</p>
+<p>Kunnskapsgrunnlaget viste at personer med ME/CFS og deres familier og
+omsorgspersoner verdsatte generell informasjon om ME/CFS som de kunne
+bruke selv og dele med andre (familie, venner, arbeidsgivere og
+klinikere), særlig rundt diagnosetidspunktet og i de tidlige fasene av
+ME/CFS. Dette gjorde dem i stand til å utvikle realistiske forventninger
+til framtiden, lette belastningen forårsaket av den generelle mangelen
+på informasjon, og lære opp andre. Kunnskapsgrunnlaget antydet at
+personer med ME/CFS ønsket realistisk informasjon om hva ME/CFS er og
+hvordan det kan påvirke dem i framtiden, og dette dannet grunnlaget for
+anbefalingene som skisserer nøkkelkjennetegnene ved ME/CFS.</p>
+<p>Anbefalingen om at det langsiktige utfallet kan være bedre hos barn
+og unge, var basert på komiteens erfaring.</p>
+<p>Kunnskapsgrunnlaget støttet komiteens vurdering om at informasjon om
+ME/CFS og råd om annen støtte ikke er lett tilgjengelig fra helse- og
+omsorgstjenestene, og de var enige om at personer ville ha nytte av
+informasjon fra lokale og nasjonale støttegrupper.</p>
+<p>Kunnskapsgrunnlaget antydet at personer med ME/CFS trengte praktisk
+støtte, både for seg selv og for omsorgspersonene sine. Komiteen mente
+at enkelte kan ha forbehold mot å engasjere seg med omsorgstjenestene,
+etter å ha opplevd mistro om sin sykdom og dens innvirkning på daglig
+funksjon. Av denne grunn understreket komiteen behovet for varsomhet når
+man snakker med personer og deres familier om støtte fra
+omsorgstjenestene.</p>
+<p>Komiteen utformet anbefalinger som henviser til ulike vurderinger og
+støtteordninger som kunne være til hjelp. Etter komiteens erfaring
+visste helse- og omsorgsarbeidere ikke alltid hvilken støtte som er
+tilgjengelig for familier og omsorgspersoner til personer med ME/CFS, og
+komiteen henviste derfor også til NICE-retningslinjen <em>supporting
+adult carers</em>.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-5">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene er i tråd med de generelle prinsippene for
+informasjonsgivning som allerede er etablert i den eksisterende
+NICE-retningslinjen om pasienterfaring i NHS, og ble derfor ikke ansett
+som sannsynlig å ha ytterligere innvirkning på praksis.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Sikring mot overgrep og omsorgssvikt</strong> (anbefaling 1.7.1
+til 1.7.6)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-6">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen erkjente at sikring er en særlig problemstilling ved ME/CFS
+på en måte som skiller seg fra andre kroniske sykdommer og
+funksjonsnedsettelser, fordi personer med ME/CFS ofte rapporterer at de
+ikke blir trodd. Det ble ikke identifisert kunnskapsgrunnlag om sikring
+ved ME/CFS, men komiteen var enige om at det var svært viktig å utforme
+anbefalinger basert på konsensus. Anbefalingene tar opp noen av
+misoppfatningene på dette området, og fremhever behovet for kompetanse i
+ME/CFS ved gjennomføring av sikringsvurderinger.</p>
+<p>Komiteen understreket behovet for hyppig oppfølging av barn og unge
+med ME/CFS (i tråd med anbefaling 1.15.2 og 1.15.3). Viktigheten av
+passende oppfølging fremheves også i NICE-retningslinjene om <em>child
+maltreatment</em> og <em>child abuse and neglect</em>.</p>
+<p>Komiteen merket seg at selv om sikring ikke bare handler om barn og
+unge, så relaterte de fleste bekymringene de kjente til seg til barn og
+unge med ME/CFS, og de utformet derfor separate anbefalinger for denne
+gruppen.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-6">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene vil bedre konsistensen i beste praksis og krever ikke
+ytterligere ressurser for å gjennomføre.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Tilgang til omsorg og støtte</strong> (anbefaling 1.8.1 til
+1.8.9)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-7">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Kunnskapsgrunnlaget viste at personer med ME/CFS kan ha vansker med å
+bruke helsetjenestene, særlig på grunn av fysisk tilgjengelighet og
+tidsbegrensninger ved avtaler. Dette kan gjøre det vanskeligere å få den
+støtten og behandlingen de trenger. Komiteen var også oppmerksom på at
+vanlige overfølsomheter ved ME/CFS, som for lys og lyd, kan gjøre det
+utfordrende å reise til og møte til avtaler, og å motta døgnbehandling.
+Komiteen utformet anbefalinger for å bedre tilgangen til omsorg basert
+på disse potensielle barrierene.</p>
+<p>Komiteen drøftet den uforutsigbare og varierende karakteren av
+ME/CFS, og risikoen for at personer blir skrevet ut av tilbud dersom de
+ikke møter til avtaler når symptomene forverres. De utformet en
+konsensusbasert anbefaling for å ta opp den manglende bevisstheten om
+dette i helse- og omsorgstjenestene.</p>
+<p><strong>Opprettholdelse av selvstendighet</strong></p>
+<p>Det var begrenset kunnskapsgrunnlag som direkte adresserte barrierer
+og tilretteleggere for tilgang til omsorgstjenester. Komiteen var
+imidlertid enig om at dette var et viktig omsorgsområde, og de kunne
+trekke slutninger fra kunnskapsgrunnlaget om helsetjenester og bruke sin
+egen erfaring til å utforme anbefalinger.</p>
+<p>ME/CFS kan påvirke en persons evne til å utføre dagliglivets
+aktiviteter og opprettholde selvstendighet og livskvalitet. Komiteen var
+enig om at alle med ME/CFS bør spørres om hvordan symptomene påvirker
+selvstendigheten deres, og at en vurdering av omsorgsbehov bør
+gjennomføres ved behov. Ved å bruke sin erfaring skisserte komiteen
+temaene for vurdering og drøfting.</p>
+<p>Komiteen utformet også ytterligere anbefalinger basert på egen
+kunnskap og erfaring, inkludert at:</p>
+<ul>
+<li>mange familier og omsorgspersoner ikke vet hva som er de mest
+hensiktsmessige måtene å støtte noen med ME/CFS, og trenger råd om
+dette</li>
+<li>personer med ME/CFS ofte har vansker med å få det utstyret de
+trenger for å støtte dagliglivets aktiviteter og opprettholde
+livskvaliteten.</li>
+</ul>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-7">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Noen av disse anbefalingene kan kreve ekstra personaltid eller annen
+bruk av helsetjenesteressurser, for eksempel for å tilby fleksible
+avtaler og hjemmebesøk, gjøre tilpasninger under innleggelse, og gi
+tilgang til hjelpemidler og tilpasninger. Av hensyn til likeverd trenger
+imidlertid personer med ME/CFS samme tilgang til helsetjenester og
+støtte som andre NHS-pasienter, tilsvarende alvorlighetsgraden av
+sykdommen deres.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Å støtte personer med ME/CFS i arbeid, utdanning og
+opplæring</strong> (anbefaling 1.9.1 til 1.9.6)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-8">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Kunnskapsgrunnlaget viste en mangel på støtte til utdanning og
+opplæring for barn og unge med ME/CFS og deres familier og
+omsorgspersoner, og dette kan føre til at enkelte barn eller unge
+forlater utdanningen. Dette samsvarte med komiteens erfaring, og de var
+enige om at mange av temaene i kunnskapsgrunnlaget også kunne anvendes
+på personer i arbeid.</p>
+<p>Det gjennomgående temaet om mangel på kunnskap og forståelse om
+ME/CFS ble gjentatt i dette kunnskapsgrunnlaget, med manglende
+bevissthet om virkningen et høyt stimulerende miljø (som en skole) kan
+ha på en person med ME/CFS. Det var manglende forståelse for behovet for
+en fleksibel tilnærming til utdanning, med mulige tilpasninger. Komiteen
+var enig om at bedre kommunikasjon mellom helse- og omsorgsarbeidere og
+opplærings- og utdanningstjenester er avgjørende for å utvikle en felles
+forståelse av behovene og funksjonsnedsettelsene til personer med
+ME/CFS, og hvordan man kan gi dem passende utdanningsstøtte.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-8">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene vil bedre konsistensen i beste praksis og krever ikke
+ytterligere ressurser for å gjennomføre.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Tverrfaglig omsorg</strong> (anbefaling 1.10.1 til 1.10.5)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-9">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Det var begrenset kunnskapsgrunnlag om sammensetningen av et
+tverrfaglig team, men basert på sin erfaring var komiteen enig om at god
+omsorg for personer med ME/CFS er resultat av tilgang til et integrert
+team av helse- og omsorgsarbeidere som er opplært og erfarne i å
+diagnostisere og håndtere ME/CFS.</p>
+<p>Den varierende karakteren av ME/CFS betyr at personers støttebehov
+kan endre seg, slik at tilgang til ulik kompetanse trengs til
+forskjellige tider. Komiteen var enig om at medisinsk vurdering og
+diagnose typisk krever tilgang til en ME/CFS-spesialistlege eller en
+fastlege med særlig interesse for ME/CFS. Komiteen besluttet å utforme
+anbefalinger om å tilby en koordinert tverrfaglig tilnærming, og å
+identifisere kompetansen som skulle være tilgjengelig.</p>
+<p>Etter komiteens erfaring kan omsorg for de fleste personer med ME/CFS
+håndteres i primærhelsetjenesten etter at diagnosen er bekreftet og en
+pleie- og støtteplan er avtalt. Komiteen erkjente imidlertid den
+manglende tryggheten som ikke-spesialister kan ha ved å håndtere ME/CFS,
+og de anbefalte støtte fra et ME/CFS-spesialistteam.</p>
+<p>Det kvalitative kunnskapsgrunnlaget viste at personer med ME/CFS
+verdsatte kontinuitet i omsorgen, og komiteen var enig om at det å ha
+ett enkelt kontaktpunkt i omsorgsteamet ville unngå behovet for kontakt
+og avtaler med flere fagpersoner — noe som for enkelte kunne forverre
+helsen deres.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-9">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene om det tverrfaglige ME/CFS-spesialistteamet, om å tilby
+en utpekt kontaktperson, og om å gi støtte til primærhelsetjenesten, kan
+kreve ressurser. Dagens tilgjengelighet av ME/CFS-spesialistteam
+varierer betydelig mellom ulike deler av landet, og økt bemanning kan
+bli nødvendig i enkelte områder ved flere henvisninger. Spesialistteamet
+må dekke ulike kompetanseområder, men de fleste personer vil bare trenge
+tilgang til noen elementer, og bare på bestemte tidspunkter. Raskere
+tilgang til diagnose og passende omsorg bør imidlertid føre til bedre
+symptomhåndtering og vesentlig bedre utfall for personer med ME/CFS, og
+kan derfor redusere helse- og omsorgskostnadene på lengre sikt.</p>
+<p>Å tildele et enkelt kontaktpunkt til personer med ME/CFS er ikke
+rutinemessig praksis på tvers av NHS. Dette kan implementeres ulikt i
+forskjellige regioner etter lokale tjenestestrukturer, og vil ikke
+nødvendigvis kreve tilføring av nytt personell. Det kan bedre
+effektiviteten i omsorgen for personer med ME/CFS ved å redusere byrden
+av gjentatte avtaler.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Håndtering av ME/CFS</strong> (anbefaling 1.11.1)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingen">Hvorfor komiteen
+utformet anbefalingen</h3>
+<p>Samlet sett var kunnskapsgrunnlaget for ikke-medikamentelle og
+medikamentelle intervensjoner ved ME/CFS heterogent og inkonklusivt, med
+begrenset kunnskapsgrunnlag for noen enkelt intervensjon, og dette
+støttet komiteens erfaring. Komiteen var klar over påstander som har
+blitt fremsatt om kur mot ME/CFS, og at det ofte er en økonomisk kostnad
+for personer med ME/CFS når de følger disse. For å ta opp dette ble
+komiteen enig om å øke bevisstheten i anbefalingene om at det i dag ikke
+finnes noen kur mot ME/CFS.</p>
+<p><strong>Kjerneutfall ved ME/CFS</strong></p>
+<p>Det er betydelig debatt om utfallsmålene som brukes i studier av
+behandling for ME/CFS og symptomhåndtering. Inkonsistens i utfallsmål
+som brukes, og bekymringer om gyldigheten av enkelte utfallsmål i en
+ME/CFS-populasjon, gjør det vanskelig å kombinere og sammenligne
+resultater fra ulike studier, og begrenser muligheten for å trekke
+konklusjoner om klinisk effekt og kostnadseffektivitet av
+intervensjoner. Komiteen utformet en forskningsanbefaling om
+kjerneutfallssett for å muliggjøre direkte sammenligning av behandlinger
+for ME/CFS og symptomhåndtering, og for å forme og optimalisere
+utformingen av ME/CFS-studier.</p>
+<h3 id="hvordan-anbefalingen-kan-påvirke-praksis">Hvordan anbefalingen
+kan påvirke praksis</h3>
+<p>Anbefalingene gjenspeiler dagens praksis, så det forventes ingen
+effekt på ressursbruk.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Energiforvaltning</strong> (anbefaling 1.11.2 til 1.11.8)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-10">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen drøftet hvordan kontroversen om gradert treningsterapi hadde
+ført til forvirring om hvilken støtte som skulle være tilgjengelig for
+personer med ME/CFS for å trygt håndtere sitt aktivitetsnivå, inkludert
+fysisk aktivitet eller trening. De var enige om at det var viktig å gi
+tydelig informasjon og klar veiledning om energiforvaltning, fysisk
+aktivitet og trening til personer med ME/CFS. Komiteen var også enig om
+at personer trenger klar informasjon om tjenester tilgjengelig for dem,
+for å støtte utarbeidelsen av energiforvaltningsplaner.</p>
+<p>Basert på sin erfaring var komiteen enig om at energiforvaltning er
+et av de viktigste verktøyene personer med ME/CFS har for å støtte dem i
+å leve med symptomene av ME/CFS. De var enige om at personer med ME/CFS
+skal ha tilgang til støtte fra et ME/CFS-spesialistteam for å utarbeide
+en plan for energiforvaltning.</p>
+<p>Komiteen listet opp komponentene i energiforvaltning og hva en
+vurdering og plan vil inneholde, med merknad om at den sentrale
+komponenten er å forstå prinsippet om å bruke energi på en måte som
+minimerer anstrengelsesutløst symptomforverring. De anbefalte en
+detaljert vurdering som tar hensyn til alle områder av aktuell
+aktivitet, og evaluering av hvile og søvn, for å etablere et individuelt
+aktivitetsmønster innenfor personens aktuelle energigrense. Komiteen
+merket seg at energiforvaltning ikke er et program for fysisk aktivitet
+eller trening, selv om prinsippene for energiforvaltning også gjelder
+for programmer for fysisk aktivitet og trening.</p>
+<p>For å unngå potensielle skader ved at energiforvaltning feilaktig
+anvendes på personer med ME/CFS uten tilstrekkelig støtte og kompetanse,
+anbefalte komiteen at personer med ME/CFS i spesifikke situasjoner skal
+henvises til en fysioterapeut eller ergoterapeut i et
+ME/CFS-spesialistteam.</p>
+<p><strong>Strategier og teknikker for egenmåling</strong></p>
+<p>Det manglet kunnskapsgrunnlag om effektivitet av strategier og
+verktøy for å støtte personer i egenmåling av aktivitetshåndtering.
+Komiteen vurderte det kvalitative kunnskapsgrunnlaget og egen erfaring
+om fordelene ved å bruke strategier og verktøy for å overvåke aktivitet,
+opp mot potensielle skader ved å øke byrden for personen og skape
+ytterligere bekymring om aktivitetsnivåene. Komiteen besluttet å
+anbefale at aktivitetsregistrering skal være så enkel som mulig, og at
+personer bør benytte verktøy de allerede bruker. Komiteen besluttet også
+å utforme en forskningsanbefaling om egenmålingsstrategier for å bidra
+til å fastslå hvilke strategier og teknikker som er effektive.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-10">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Energiforvaltningsplanen inngår i pleie- og støtteplanen og er en del
+av ME/CFS-spesialistomsorg. Passende energiforvaltning støtter personer
+i å holde seg innenfor sine energigrenser og tar sikte på å forhindre at
+symptomene forverres. Den støtter dem også i å øke aktiviteten dersom
+det er mulig. Dersom dette hjelper personer å opprettholde eller bedre
+helsen sin, vil det være svært kostnadseffektivt.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Å innlemme fysisk aktivitet og trening</strong> (anbefaling
+1.11.9 til 1.11.16)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-11">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen var enig om at tydelig informasjon og klar veiledning om
+energiforvaltning knyttet til all aktivitet skal være tilgjengelig for
+personer med ME/CFS. Komiteen var også enig om at personer trenger klar
+informasjon om tjenester tilgjengelig for dem, og særlig om de konkrete
+omstendighetene der et personlig tilpasset program for fysisk aktivitet
+eller trening kan vurderes av en person med ME/CFS.</p>
+<p>Etter komiteens erfaring har personer med ME/CFS hatt varierende
+resultater fra programmer for fysisk aktivitet og trening. Komiteen var
+enig om at det var viktig å drøfte dette med personer med ME/CFS og å
+forklare dem mulige risikoer og fordeler.</p>
+<p>På grunn av skadene rapportert av personer med ME/CFS i det
+kvalitative kunnskapsgrunnlaget, og komiteens erfaring med virkningene
+når personer overskrider sine energigrenser, anbefalte komiteen at
+personer med ME/CFS ikke bør gjennomføre et program for fysisk aktivitet
+eller trening med mindre det overvåkes av en fysioterapeut med opplæring
+og kompetanse i ME/CFS.</p>
+<p>Komiteen skisserte hva et personlig tilpasset program for fysisk
+aktivitet eller trening bør, og ikke bør, inkludere. Ved utarbeidelse av
+anbefalinger om innhold, tilnærming og gjennomføring av programmer for
+fysisk aktivitet og trening, vurderte komiteen fordelene og skadene
+forbundet med gradert treningsterapi som er rapportert ved ME/CFS i det
+kvantitative og kvalitative kunnskapsgrunnlaget, sammen med sine egne
+erfaringer. De erkjente at ulike definisjoner av begrepet «gradert
+treningsterapi» brukes, og at innholdet og anvendelsen av programmer for
+gradert treningsterapi derfor varierer. Dette har ført til forvirring.
+Med hensyn til beskrivelsene av gradert treningsterapi i det
+kunnskapsgrunnlaget de gjennomgikk, inkluderte komiteen en definisjon i
+denne retningslinjen for å klargjøre hva gradert treningsterapi skal
+bety i anbefalingen.</p>
+<p>Komiteen konkluderte med at ethvert program som bruker faste
+trinnvise økninger i fysisk aktivitet eller trening (for eksempel
+gradert treningsterapi), eller programmer for fysisk aktivitet eller
+trening som er basert på teorier om dekondisjonering og
+treningsunngåelse, ikke skal tilbys personer med ME/CFS. Komiteen ønsket
+også å understreke at det ikke finnes noen terapi basert på fysisk
+aktivitet eller trening som er effektiv som kur mot ME/CFS.</p>
+<p>For personer med ME/CFS som velger å delta i et program for fysisk
+aktivitet eller trening, skal dette følge prinsippene som er fastsatt i
+denne seksjonen og i seksjonen om energiforvaltning.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-11">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Disse anbefalingene skal forhindre at upassende eller ustrukturerte
+programmer for fysisk aktivitet eller trening forverrer personenes
+symptomer. Henvisningen til en fysioterapeut eller ergoterapeut i et
+ME/CFS-spesialistteam kan kreve økte ressurser. Dette bør likevel ikke
+påføre NHS betydelige kostnader, og dersom det fører til at færre
+personer får forverrede symptomer, vil det være svært
+kostnadseffektivt.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Hvile og søvn</strong> (anbefaling 1.12.1 til 1.12.4)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-12">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen mente at råd om planlegging av hvile og aktivitet var en
+grunnleggende del av enhver håndteringsstrategi. Etter komiteens
+erfaring var forståelsen av hviles rolle og hvordan man innfører
+hvileperioder, viktig for vellykket energiforvaltning.</p>
+<p>Det manglet kunnskapsgrunnlag om søvnhåndtering, men komiteen
+erkjente at søvnvansker var et bekymringsområde for mange personer med
+ME/CFS. Komiteen drøftet å utforme konsensusbaserte anbefalinger for å
+gi råd til personer med ME/CFS, og var enige om at de kunne anbefale
+generelle råd om søvnhåndtering. De merket seg at det finnes vanlige
+søvnmønstre hos personer med ME/CFS som må tas i betraktning når man gir
+råd om søvnhåndtering. I tillegg utformet de en forskningsanbefaling om
+søvnhåndteringsstrategier.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-12">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene bør ikke påføre NHS betydelige kostnader, og dersom de
+fører til at færre personer får forverrede symptomer, vil de være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Fysisk funksjon og mobilitet</strong> (anbefaling 1.12.5 til
+1.12.8)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-13">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Komiteen drøftet at personer med ME/CFS kan ha redusert eller
+begrenset mobilitet, og etter deres erfaring kan dette føre til
+helseproblemer. Fysisk funksjon og mobilitet skal derfor vurderes og
+inkluderes i personens pleie- og støtteplan.</p>
+<p>Komiteen var enig om at personer med ME/CFS som er immobile, trenger
+informasjon som hjelper dem å gjenkjenne og forebygge mulige
+komplikasjoner av langvarig immobilitet, for eksempel knyttet til
+skjeletthelse og hudproblemer. Etter komiteens erfaring får familie og
+omsorgspersoner bare begrenset informasjon om disse omsorgsområdene (for
+eksempel hvordan man forflytter noen fra seng til stol), og slik
+informasjon ville ha hjulpet dem.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-13">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene er allerede etablert i annen NICE-veiledning, og bør
+ikke påføre NHS betydelige kostnader. Dersom de fører til at færre
+personer får forverrede symptomer, vil de være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Ortostatisk intoleranse</strong> (anbefaling 1.12.9 til 1.12.11)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-14">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Ortostatisk intoleranse er identifisert som ett av symptomene som
+ofte er forbundet med, men ikke spesifikke for, ME/CFS (se seksjonen om
+mistanke om ME/CFS). Etter komiteens erfaring er det ikke alle med
+ME/CFS som opplever ortostatisk intoleranse, men det er svært vanlig, og
+symptomene kan være vanskelige å skille fra andre ME/CFS-symptomer.</p>
+<p>Basert på konsensus utformet komiteen anbefalinger for å øke
+bevisstheten om at personer med ME/CFS kan oppleve ortostatisk
+intoleranse, og for å klargjøre når personer med ortostatisk intoleranse
+skal henvises til spesialisthelsetjenesten.</p>
+<p>Komiteen utformet ingen anbefalinger om håndtering av ortostatisk
+intoleranse, fordi dette kan innebære råd om kosthold, daglige
+aktiviteter og aktivitetsstøtte, og må tilpasses hver person med hensyn
+til personens øvrige ME/CFS-symptomer.</p>
+<p>Komiteen anbefalte at legemidler kun skal forskrives eller overvåkes
+av en kliniker med kompetanse i ortostatisk intoleranse, fordi
+legemidlene som vanligvis forskrives kan forverre andre symptomer hos
+personer med ME/CFS.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-14">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene bør ikke påføre NHS betydelige kostnader, og dersom de
+fører til at færre personer får forverrede symptomer, vil de være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Smerter</strong> (anbefaling 1.12.12 til 1.12.14)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-15">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Smerter er identifisert som ett av symptomene som ofte er forbundet
+med, men ikke spesifikke for, ME/CFS (se seksjonen om mistanke om
+ME/CFS). Komiteen var enig om at smerter er et vanlig symptom hos
+personer med ME/CFS, og er særlig intense hos personer med alvorlig
+eller svært alvorlig ME/CFS. Mangelen på kunnskapsgrunnlag gjorde at de
+ikke kunne anbefale noen intervensjoner, men de henviste til
+NICE-retningslinjene om nevropatiske smerter og hodepine. Komiteen
+utformet også konsensusbaserte anbefalinger for å øke bevisstheten om
+smerter ved ME/CFS, og om hvilke tiltak som skal tas.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-15">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingen som henviser til annen NICE-veiledning, bør ikke ha noen
+ressursinnvirkning, siden disse anbefalingene allerede er etablert. De
+øvrige anbefalingene bør ikke påføre NHS betydelige kostnader, og dersom
+de fører til at færre personer får forverring, vil de være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Legemidler</strong> (anbefaling 1.12.15 til 1.12.18)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-16">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Kunnskapsgrunnlaget for medikamentelle intervensjoner ved ME/CFS var
+inkonklusivt, med begrenset kunnskapsgrunnlag for ett enkelt legemiddel,
+og dette støttet komiteens erfaring. Komiteen var klar over påstander om
+kurer mot ME/CFS, og det er ofte en økonomisk kostnad for personer med
+ME/CFS når disse følges opp. Komiteen mente det var viktig å fremheve at
+legemidler eller kosttilskudd ikke skal tilbys som kur mot ME/CFS.</p>
+<p><strong>Legemidler for symptomhåndtering</strong></p>
+<p>Komiteen erkjente at legemidler kan være nyttige for personer med
+ME/CFS for å håndtere symptomene. Komiteen var enig om at personer med
+ME/CFS kan være mindre tolerante for legemiddelbehandling, og besluttet
+derfor å øke bevisstheten om dette. For å redusere risikoen for skade
+drøftet komiteen å bruke en forsiktig tilnærming til forskrivning av
+legemidler, som innebærer å starte legemidlet på lavere dose enn i
+vanlig klinisk praksis, og å overvåke hvordan personens symptomer
+responderer før dosen justeres.</p>
+<p>Komiteen drøftet legemiddelhåndtering for barn og unge, og merket seg
+potensialet for skade. Dette førte til at de anbefalte at forskrivning
+skulle igangsettes under veiledning av en barnelege med kompetanse i
+ME/CFS.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-16">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene bør ikke påføre NHS betydelige kostnader, og dersom de
+fører til at færre personer får forverrede symptomer, vil de være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Kostholdshåndtering og -strategier</strong> (anbefaling 1.12.19
+til 1.12.26)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-17">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Det var ikke tilstrekkelig kunnskapsgrunnlag til å utforme en
+anbefaling for en bestemt kostholdsstrategi ved ME/CFS. Komiteen var
+imidlertid enig om noen generelle anbefalinger for å sikre at personer
+med ME/CFS får passende støtte knyttet til kosthold. Dette inkluderte
+veiledning om når en person skal henvises til en klinisk
+ernæringsfysiolog med særlig interesse for ME/CFS. Komiteen henviste
+også til annen relevant NICE-veiledning.</p>
+<p>Komiteen erkjente at vansker med kosthold og ernæring var et
+bekymringsområde for mange personer med ME/CFS. De drøftet å utforme
+konsensusbaserte anbefalinger om kostholdsstrategier for personer med
+ME/CFS, men var enige om at det var vanskelig å være trygg på å utforme
+anbefalinger når det ikke var kunnskapsgrunnlag og det manglet konsensus
+på området, og de utformet derfor en forskningsanbefaling om
+kostholdsstrategier.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-17">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene bør ikke påføre NHS betydelige kostnader, og dersom de
+fører til at færre personer får forverrede symptomer, vil de være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Lightning Process</strong> (anbefaling 1.12.27)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingen-1">Hvorfor komiteen
+utformet anbefalingen</h3>
+<p>Komiteen drøftet det begrensede kunnskapsgrunnlaget om Lightning
+Process. De erkjente at selv om noen nytte ble vist, og enkelte aspekter
+ved prosessen — som målsetting, praktiske eksempler og anvendelser, samt
+likepersonstøtte — ble funnet nyttige, var det kvalitative
+kunnskapsgrunnlaget om folks erfaringer med terapien variert, og ga
+grunn til bekymring. I det kvalitative kunnskapsgrunnlaget rapporterte
+noen personer negative erfaringer knyttet til den forvirrende karakteren
+av det pedagogiske elementet, intensiteten i øktene, og hemmeligholdet
+rundt terapien. Mens barn under 16 år i SMILE-studien var ledsaget av
+foreldre, var komiteen særlig bekymret for det rapporterte
+hemmeligholdet av Lightning Process i det kvalitative
+kunnskapsgrunnlaget, og mangelen på offentlig informasjon om hvordan
+prosessen gjennomføres i praksis. Komiteen var enig om at åpenhet om
+enhver intervensjon er viktig, og merket seg at det i det kvalitative
+kunnskapsgrunnlaget var rapportert at personer eksplisitt var blitt
+oppfordret til ikke å snakke om terapien. Komiteen var enig om at dette
+var et upassende og uvanlig budskap å gi, særlig til barn og unge.</p>
+<p>Komiteen drøftet bekymringer om at Lightning Process oppmuntrer
+personer med ME/CFS til å ignorere og «kjøre gjennom» symptomene sine,
+og at dette potensielt kan forårsake skade. I det kvalitative
+kunnskapsgrunnlaget rapporterte noen deltakere at de hadde fått råd om
+at de kunne gjøre som de ville. Komiteen merket seg at de hadde utformet
+klare anbefalinger om prinsippene for energiforvaltning, og at slike råd
+synes å stå i motsetning til disse prinsippene.</p>
+<p>Samlet sett mente komiteen at det manglet klarhet om hvordan
+Lightning Process gjennomføres i praksis, og at det kvalitative
+kunnskapsgrunnlaget reiste noen bekymringsverdige forhold. Som følge av
+dette ble komiteen enig om at Lightning Process ikke skal tilbys
+personer med ME/CFS.</p>
+<h3 id="hvordan-anbefalingen-kan-påvirke-praksis-1">Hvordan anbefalingen
+kan påvirke praksis</h3>
+<p>Lightning Process tilbys ikke som del av dagens praksis, så denne
+anbefalingen vil opprettholde dagens praksis.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Kognitiv atferdsterapi</strong> (anbefaling 1.12.28 til 1.12.34)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-18">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Det kvantitative og kvalitative kunnskapsgrunnlaget var blandet for
+voksne, barn og unge, og dette gjenspeilte komiteens erfaring. Basert på
+kritikk i det kvalitative kunnskapsgrunnlaget av kognitiv atferdsterapi
+(CBT) som ble beskrevet som «behandling» (kur) for ME/CFS, mente
+komiteen det var viktig å fremheve at CBT ikke er en kur mot ME/CFS, og
+ikke skal tilbys som det. CBT har i stedet som mål å bedre velvære og
+livskvalitet, og kan være nyttig for å støtte personer som lever med
+ME/CFS i å håndtere symptomene sine og redusere belastningen forbundet
+med å leve med en kronisk sykdom. Det skal derfor kun tilbys i denne
+konteksten, og etter at personene er fullt informert om prinsippene og
+målsettingene. Komiteen var enig om at dersom et barn eller en ung
+person ønsker å bruke CBT, er det viktig å tilpasse terapien med hensyn
+til personens kognitive og emosjonelle modenhet.</p>
+<p>Det kvalitative kunnskapsgrunnlaget viste at personer med ME/CFS har
+funnet CBT nyttig når det leveres av en terapeut som forstår ME/CFS, men
+også at det er potensial for skade når det leveres upassende. For å
+unngå dette utformet komiteen anbefalingen om hvem som skal levere CBT,
+og hvilken klinisk veiledning de skal ha.</p>
+<p>Komiteen utformet også anbefalinger basert på egen erfaring, for å
+forklare prinsippene for CBT for personer med ME/CFS, og hva personene
+bør forvente dersom de vurderer CBT.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-18">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>CBT tilbys i dag for personer med ME/CFS i
+ME/CFS-spesialisttjenester. Anbefalingene klargjør når CBT skal tilbys
+til personer med ME/CFS. De bør ikke ha innvirkning på NHS-ressurser og
+-kostnader.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Håndtering av komorbide tilstander</strong> (anbefaling 1.13.1
+til 1.13.4)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-19">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Kunnskapsgrunnlaget om de diagnostiske kriteriene identifiserte at
+enkelte tilstander er vanlige hos personer med ME/CFS, og dette
+gjenspeilte komiteens erfaring. Komiteen utformet anbefalinger for å
+fremheve dette, og henviste til relevant NICE-veiledning.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-19">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene bør ikke påføre NHS betydelige kostnader.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Håndtering av forverringsepisoder og tilbakefall</strong>
+(anbefaling 1.14.1 til 1.14.8)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-20">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Etter komiteens erfaring er forverringsepisoder og tilbakefall en
+vanlig del av ME/CFS. Komiteen mente det var viktig å gi personer
+informasjon om hva en forverringsepisode er, hvordan den skal
+gjenkjennes, og hvordan den kan utvikle seg til et tilbakefall dersom
+aktivitet ikke overvåkes og justeres.</p>
+<p>Komiteen drøftet viktigheten av å gjenkjenne når en
+forverringsepisode har utviklet seg til et tilbakefall, og at dette må
+utløse en gjennomgang av pleie- og støtteplanen. Det er også mulig at et
+tilbakefall kan føre til at noen går over til en mer alvorlig form av
+ME/CFS. En del av gjennomgangen av pleie- og støtteplanen er å vurdere
+hva årsakene til tilbakefallet kan ha vært, og å ta dette i betraktning
+ved revisjon av planen.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-20">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Anbefalingene bør ikke påføre NHS betydelige kostnader, og dersom de
+fører til at færre personer får forverrede symptomer, vil de være svært
+kostnadseffektive.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Oppfølging i primærhelsetjenesten</strong> (anbefaling 1.15.1
+til 1.15.10)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingene-21">Hvorfor komiteen
+utformet anbefalingene</h3>
+<p>Kunnskapsgrunnlaget viste at personer med ME/CFS ikke alltid fikk
+oppfølging eller gjennomgang av omsorgen sin, men de som fikk det,
+verdsatte dette. Dette samsvarte med komiteens erfaring, og de anbefalte
+derfor minst årlig oppfølging for voksne.</p>
+<p>Komiteen var enig om at barn og unge trenger hyppigere oppfølging for
+å ta hensyn til endringer i ME/CFS etter hvert som de utvikler seg. De
+ønsket også å fremheve viktigheten av å involvere en barnelege.</p>
+<p>Komiteen skisserte temaer for drøfting under oppfølgingen, inkludert
+å spørre personer om hvor mye støtte de hadde til å utføre dagliglivets
+aktiviteter. Dette var fordi dette etter komiteens erfaring er et område
+som ofte overses, og bidraget fra familie og omsorgspersoner ofte ikke
+anerkjennes. Komiteen merket seg at dersom problemer identifiseres, skal
+råd innhentes fra relevant spesialist.</p>
+<h3 id="hvordan-anbefalingene-kan-påvirke-praksis-21">Hvordan
+anbefalingene kan påvirke praksis</h3>
+<p>Det er variasjon i praksis, og noen personer med ME/CFS, inkludert de
+med alvorlig eller svært alvorlig ME/CFS, får ikke rutinemessig klinisk
+oppfølging, så for noen vil dette være en endring i praksis. Disse
+anbefalingene er i tråd med andre langvarige tilstander, og støtter
+likeverdig tilgang til omsorg for personer med ME/CFS. Rutinemessig
+oppfølging er ikke på plass overalt, men de fleste personer med ME/CFS
+har allerede jevnlig kontakt med sitt team i primærhelsetjenesten, så
+det forventes ikke stor ressursinnvirkning.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Opplæring av helse- og omsorgsarbeidere</strong> (anbefaling
+1.16.1)
+</summary>
+<h3 id="hvorfor-komiteen-utformet-anbefalingen-2">Hvorfor komiteen
+utformet anbefalingen</h3>
+<p>Et sterkt tema i kunnskapsgrunnlaget var mangelen på kunnskap,
+forståelse og oppdatert opplæring hos helse- og omsorgsarbeidere om
+ME/CFS. Dette gjenspeilte komiteens erfaring, og de anbefalte derfor at
+alt helse- og omsorgspersonell som gir omsorg til personer med ME/CFS,
+skal få opplæring, slik at de kan gi omsorg i tråd med denne
+retningslinjen.</p>
+<h3 id="hvordan-anbefalingen-kan-påvirke-praksis-2">Hvordan anbefalingen
+kan påvirke praksis</h3>
+<p>Opplæring og utdanning i ME/CFS er ikke utbredt, og dette vil være en
+endring i praksis, så det vil være en ressursinnvirkning fra kostnaden
+ved å tilby denne opplæringen. Økt kunnskap og bevissthet om ME/CFS vil
+støtte tidligere identifisering av ME/CFS, noe som bør bedre personers
+omsorg og føre til bedre utfall.</p>
+</details><details class="nice-details">
+<summary>
+<strong>Omsorg for personer med alvorlig eller svært alvorlig
+ME/CFS</strong> (anbefaling 1.17.1 til 1.17.13)
+</summary>
+<h3 id="bevissthet-om-alvorlig-og-svært-alvorlig-mecfs-og-konsekvensene-1">Bevissthet
+om alvorlig og svært alvorlig ME/CFS og konsekvensene</h3>
+<p>Personer med alvorlig eller svært alvorlig ME/CFS ble utpekt som en
+gruppe for særskilt hensyn i retningslinjens virkeområde.
+Kunnskapsgrunnlag knyttet til personer med alvorlig ME/CFS forsterket
+komiteens erfaring om at denne gruppen personer ofte blir oversett, og
+at alvorlighetsgraden av symptomene deres misforstås. For hver
+anbefaling vurderte komiteen om det var behov for ulike eller
+ytterligere anbefalinger for denne gruppen. Begrunnelse og
+konsekvens-seksjonene for disse anbefalingene er nedenfor. Disse
+tilleggshensynene for personer med alvorlig eller svært alvorlig ME/CFS
+ble plassert i en egen seksjon for å sikre at de var lette å finne i
+retningslinjen.</p>
+<h3 id="vurdering-og-pleie--og-støtteplan">Vurdering og pleie- og
+støtteplan</h3>
+<p><strong>Hvorfor komiteen utformet anbefalingen</strong></p>
+<p>Basert på kunnskapsgrunnlaget om problemer med å få tilgang til
+tjenester, utformet komiteen en anbefaling om hjemmebesøk til personer
+med alvorlig eller svært alvorlig ME/CFS for å gjennomføre
+vurderingen.</p>
+<p><strong>Hvordan anbefalingen kan påvirke praksis</strong></p>
+<p>Det kan bli en økning i antallet hjemmebesøk til personer med
+alvorlig eller svært alvorlig ME/CFS. Dette vil imidlertid gi likeverdig
+tilgang til omsorg for denne gruppen som vanligvis er husbundne.</p>
+<h3 id="tilgang-til-omsorg-og-støtte-1">Tilgang til omsorg og
+støtte</h3>
+<p><strong>Hvorfor komiteen utformet anbefalingene</strong></p>
+<p>Komiteen var oppmerksom på at vansker med å få tilgang til omsorg er
+forsterket hos personer med alvorlig eller svært alvorlig ME/CFS, særlig
+når de trenger sykehusomsorg. Kunnskapsgrunnlaget viste at som følge av
+dette har noen personer med alvorlig eller svært alvorlig ME/CFS lite
+kontakt og støtte fra helse- og omsorgstjenestene. For å ta opp dette
+fremhevet komiteen fleksibiliteten og den spesifikke støtten som
+personer med alvorlig eller svært alvorlig ME/CFS trenger.</p>
+<p><strong>Hvordan anbefalingene kan påvirke praksis</strong></p>
+<p>Det kan bli en økning i antallet hjemmebesøk til personer med
+alvorlig eller svært alvorlig ME/CFS. Dette vil imidlertid gi likeverdig
+tilgang til omsorg for denne gruppen som vanligvis er husbundne. Noen av
+disse kostnadene kan veies opp av muligheten til å tilby nettbaserte
+konsultasjoner når det er hensiktsmessig. Vektleggingen i denne
+retningslinjen av rettidig diagnose og henvisning til et
+ME/CFS-spesialistteam for en individuelt tilpasset pleie- og støtteplan,
+har som mål å minimere antallet personer som kan utvikle alvorlig
+ME/CFS.</p>
+<h3 id="energiforvaltning-2">Energiforvaltning</h3>
+<p><strong>Hvorfor komiteen utformet anbefalingene</strong></p>
+<p>Komiteen var enig om at dersom energiforvaltningsstrategier anvendes
+upassende hos personer med alvorlig eller svært alvorlig ME/CFS, vil
+dette øke potensialet for skade. For å gjenspeile dette anbefalte de
+spesialisert fysioterapiveiledning og ytterligere omsorg for personer
+med alvorlig eller svært alvorlig ME/CFS som har valgt å utarbeide en
+energiforvaltningsplan.</p>
+<p><strong>Hvordan anbefalingene kan påvirke praksis</strong></p>
+<p>Energiforvaltningsplanen inngår i pleie- og støtteplanen, og er en
+vanlig del av ME/CFS-spesialistomsorg. Passende energiforvaltning
+støtter personer i å holde seg innenfor sine energigrenser, og tar sikte
+på å forhindre at symptomene forverres. Den støtter dem også i å øke
+aktiviteten dersom det er mulig. Dersom dette hjelper personer å
+opprettholde eller bedre helsen sin, vil det være svært
+kostnadseffektivt.</p>
+<h3 id="kostholdshåndtering-og--strategier-2">Kostholdshåndtering og
+-strategier</h3>
+<p><strong>Hvorfor komiteen utformet anbefalingene</strong></p>
+<p>Komiteen mente at personer med alvorlig eller svært alvorlig ME/CFS
+er særlig utsatt for problemer knyttet til spising, og sannsynligvis
+trenger ytterligere støtte og henvisning til en klinisk
+ernæringsfysiolog med særlig interesse for ME/CFS. Komiteen brukte også
+egen erfaring til å anbefale noen generelle kostholdsråd som kan være
+til hjelp for personer med alvorlig eller svært alvorlig ME/CFS.</p>
+<p><strong>Hvordan anbefalingene kan påvirke praksis</strong></p>
+<p>Anbefalingene bør ikke påføre NHS betydelige kostnader, og dersom de
+fører til at færre personer får forverrede symptomer, vil de være svært
+kostnadseffektive.</p>
+<h3 id="kognitiv-atferdsterapi">Kognitiv atferdsterapi</h3>
+<p><strong>Hvorfor komiteen utformet anbefalingen</strong></p>
+<p>Ingen av det kliniske kunnskapsgrunnlaget inkluderte eller
+gjenspeilte behovene til personer med alvorlig eller svært alvorlig
+ME/CFS, og det kvalitative kunnskapsgrunnlaget var blandet, med noen som
+rapporterte nytte og andre som rapporterte skade. Komiteen erkjente at
+CBT kunne være støttende for personer med alvorlig eller svært alvorlig
+ME/CFS i enkelte situasjoner, men på grunn av alvorlighetsgraden av
+symptomene er det viktig å være mer fleksibel og tilpasse
+gjennomføringen av CBT til personens begrensninger.</p>
+<p><strong>Hvordan anbefalingen kan påvirke praksis</strong></p>
+<p>CBT tilbys i dag for personer med ME/CFS i
+ME/CFS-spesialisttjenester. Anbefalingene klargjør når CBT skal tilbys
+til personer med ME/CFS. De bør ikke ha innvirkning på NHS-ressurser og
+-kostnader.</p>
+</details><p><a id="kontekst"></a></p>
+</div>
+<div class="panel" id="p6">
+<div class="panel-hdr">
+<div class="section-badge">DEL VI · Bakgrunn, metodikk og oppdateringer</div>
+<h2>Kontekst og komitéopplysninger</h2>
+</div>
+<p>Begrepene myalgisk encefalomyelitt (ME; eller encefalopati), kronisk
+utmattelsessyndrom (CFS), CFS/ME og ME/CFS er alle brukt om denne
+tilstanden, og er ikke entydig definerte. Det finnes lite patologisk
+belegg for hjerneinflammasjon, noe som gjør begrepet «myalgisk
+encefalomyelitt» problematisk. Myalgisk encefalomyelitt er klassifisert
+under sykdommer i nervesystemet i SNOMED CT og ICD-10 (G93.3). Mange
+personer med ME/CFS oppfatter betegnelsen «kronisk utmattelsessyndrom»
+som for bred, forenklet og fordømmende. For konsistens brukes
+forkortelsen ME/CFS i denne retningslinjen.</p><p>Nylige data fra UK Biobank antyder at det finnes over 250 000
+personer i England og Wales med ME/CFS, og at omtrent 2,4 ganger så
+mange kvinner som menn er rammet. ME/CFS kan ramme personer i alle
+aldre. Det er en kompleks, multisystemisk, kronisk medisinsk tilstand
+som har betydelige personlige, sosiale og økonomiske konsekvenser, og en
+betydelig innvirkning på livskvaliteten, inkludert psykisk, emosjonell
+og sosial velvære. Hverdagen for personer med ME/CFS, deres familie og
+omsorgspersoner er preget av avbrudd og uforutsigbarhet. Mange med
+tilstanden står utenfor arbeidslivet, og mindre enn en femtedel arbeider
+fulltid. Omtrent 25 % har alvorlig sykdom og er husbundne eller
+sengeliggende. Livskvaliteten til personer med ME/CFS er lavere enn for
+mange personer med andre alvorlige kroniske tilstander, inkludert
+multippel sklerose og enkelte former for kreft.</p><p>Det er uklart hva som forårsaker ME/CFS. I mange tilfeller antas
+symptomene å være utløst av en infeksjon, men tilstanden er ikke enkel
+utmattelse etter sykdom. Den varer lenger, og selv minimal mental eller
+fysisk aktivitet kan forverre symptomene.</p><p>Det finnes ingen diagnostisk test eller universelt anerkjent
+definisjon av ME/CFS. Personer med tilstanden rapporterer om forsinket
+diagnose, og mange helsepersonell mangler trygghet og kunnskap til å
+gjenkjenne, diagnostisere og håndtere tilstanden. Utmattelse knyttet til
+en annen kronisk sykdom kan bli forvekslet med ME/CFS, og enkelte
+klinikere er tilbakeholdne med å stille ME/CFS-diagnosen når ingen andre
+årsaker blir funnet.</p><p>Personer med ME/CFS rapporterer om manglende tiltro og anerkjennelse
+fra helse- og omsorgsarbeidere om tilstanden og tilhørende problemer,
+noe som kan føre til at de blir misfornøyde med omsorgen og trekker seg
+fra tjenestene. For barn og unge kommer det i tillegg utfordringer
+dersom sykdommen gjør skolegang vanskelig, slik at familiene blir fanget
+opp av utdannings- og omsorgstjenestene.</p><p>NICE utga en retningslinje om CFS/ME i 2007. Den retningslinjen
+inneholdt anbefalinger om kognitiv atferdsterapi og gradert
+treningsterapi. Begge behandlingene er omdiskuterte for denne
+tilstanden, og det er uenighet og usikkerhet om deres effektivitet både
+blant personer med ME/CFS og blant helseleverandører.
+Kunnskapsgrunnlaget for andre ofte forskrevne behandlinger har også
+blitt satt spørsmålstegn ved.</p><p>Det er ulik tilgang til ME/CFS-spesialisttjenester i England og
+Wales, og enkelte områder rapporterer om svært begrenset tilgang. Det er
+viktig at denne ulikheten i tilgang adresseres.</p><p><a id="mer-info"></a></p><h3 id="mer-informasjon-og-komitéopplysninger">Mer informasjon og
+komitéopplysninger</h3><p>For å finne NICE-veiledning om beslektede temaer, inkludert
+veiledning under utvikling, se NICEs temaside om ME/CFS.</p><p>For fullstendige detaljer om kunnskapsgrunnlaget og
+retningslinjekomiteens drøftinger, se evidensgjennomgangene. Informasjon
+om hvordan retningslinjen ble utarbeidet, inkludert detaljer om
+komiteen, er også tilgjengelig.</p><p>NICE har utarbeidet verktøy og ressurser for å hjelpe deg med å
+implementere denne retningslinjen i praksis. For generell hjelp og råd
+om å omsette NICE-veiledning til praksis, se <em>resources to help you
+put NICE guidance into practice</em>.</p><p><a id="oppdatering"></a></p><h3 id="oppdateringsinformasjon">Oppdateringsinformasjon</h3><p>Oktober 2021: Denne retningslinjen oppdaterer og erstatter NICEs
+retningslinje om <em>chronic fatigue syndrome/myalgic encephalomyelitis
+(or encephalopathy): diagnosis and management</em>, publisert i august
+2007.</p><p>ISBN: 978-1-4731-4221-3</p>
+</div>
+  </div>
+
+</main>
+
+<script>
+
+(function(){
+  function showPanelForHash(){
+    var h = (location.hash || '#p1').replace(/^#/,'');
+    var pId = null;
+    if (/^p[1-6]$/.test(h)) {
+      pId = h;
+    } else {
+      var el = document.getElementById(h);
+      if (el) {
+        var p = el.closest('.panel');
+        if (p) pId = p.id;
+      }
+      if (!pId) pId = 'p1';
+    }
+    // Fjern active-deep fra alle paneler, og sett på det riktige
+    document.querySelectorAll('.panel').forEach(function(p){
+      p.classList.toggle('active-deep', p.id === pId);
+    });
+    // Skjul p1 hvis annet panel er valgt
+    var p1 = document.getElementById('p1');
+    if (p1 && pId !== 'p1') p1.classList.add('hidden-default');
+    else if (p1) p1.classList.remove('hidden-default');
+    // Oppdater sidebar active state
+    document.querySelectorAll('.nav-del-header').forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + pId);
+    });
+    // Åpne details hvis ankeret er innenfor en
+    if (h !== pId && h !== 'p1') {
+      var anchorEl = document.getElementById(h);
+      if (anchorEl) {
+        var d = anchorEl.closest('details');
+        while (d) {
+          d.open = true;
+          d = d.parentElement ? d.parentElement.closest('details') : null;
+        }
+        setTimeout(function(){
+          anchorEl.scrollIntoView({block:'start'});
+        }, 80);
+      }
+    } else {
+      // Scroll panel-wrap til topp når vi bytter panel
+      var pw = document.querySelector('.panel-wrap');
+      if (pw) pw.scrollTop = 0;
+    }
+    // Lukk mobilmeny
+    var sb = document.querySelector('.sidebar');
+    var ov = document.querySelector('.mob-overlay');
+    if (sb) sb.classList.remove('mob-open');
+    if (ov) ov.classList.remove('mob-open');
+  }
+
+  window.addEventListener('hashchange', showPanelForHash);
+  window.addEventListener('DOMContentLoaded', showPanelForHash);
+
+  // Mobilmeny
+  window.addEventListener('DOMContentLoaded', function(){
+    var btn = document.getElementById('mob-hamburger');
+    var sb = document.querySelector('.sidebar');
+    var ov = document.querySelector('.mob-overlay');
+    if (btn && sb && ov) {
+      btn.addEventListener('click', function(){
+        sb.classList.toggle('mob-open');
+        ov.classList.toggle('mob-open');
+      });
+      ov.addEventListener('click', function(){
+        sb.classList.remove('mob-open');
+        ov.classList.remove('mob-open');
+      });
+    }
+  });
+})();
+
+</script>
+
+</body>
+</html>
